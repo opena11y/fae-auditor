@@ -1,0 +1,12 @@
+{ "title"        : "US Federal Government (Good URLs)",
+  "audit_slug"   : "2015-09-fed-gov-1", 
+  "depth"        : 2,
+  "ruleset_id"   : "ARIA_STRICT",
+  "wait_time"    : 90000,
+  "groups"       : [
+  { "id"    : "department",
+    "title"   : "Department",
+    "position": 1
+  }
+  ]
+}

@@ -1,0 +1,16 @@
+{ "title"        : "2015 Basketball Athletic Conferences",
+  "audit_slug"   : "2015-06-ac", 
+  "depth"        : 2,
+  "ruleset_id"   : "ARIA_STRICT",
+  "wait_time"    : 90000,
+  "groups"       : [
+    { "id"    : "conf",
+      "title"   : "Athletic Conferences",
+      "position": 1
+    },  
+    { "id"    : "univ",
+      "title"   : "Universities",
+      "position": 2
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/faeaudit/!svn/ver/146/trunk/audit_data
+END
+2012-10-conferences-url-data.txt
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/faeaudit/!svn/ver/109/trunk/audit_data/2012-10-conferences-url-data.txt
+END
+2015-06-conferences.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/faeaudit/!svn/ver/110/trunk/audit_data/2015-06-conferences.txt
+END
+2014-04-illinois.csv
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/faeaudit/!svn/ver/66/trunk/audit_data/2014-04-illinois.csv
+END
+2015-09-federal-good.txt
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/faeaudit/!svn/ver/123/trunk/audit_data/2015-09-federal-good.txt
+END
+2016-02-illinois.csv
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/faeaudit/!svn/ver/151/trunk/audit_data/2016-02-illinois.csv
+END
+populate_websites_from_csv.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/faeaudit/!svn/ver/146/trunk/audit_data/populate_websites_from_csv.py
+END
+audit-group-urls-to-csv.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/faeaudit/!svn/ver/135/trunk/audit_data/audit-group-urls-to-csv.py
+END
+2015-06-illinois.csv
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/faeaudit/!svn/ver/110/trunk/audit_data/2015-06-illinois.csv
+END
+2014-04-illinois.xlsx
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/faeaudit/!svn/ver/39/trunk/audit_data/2014-04-illinois.xlsx
+END
+2015-09-federal-gov.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/faeaudit/!svn/ver/114/trunk/audit_data/2015-09-federal-gov.txt
+END
+audit-urls-to-csv.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/faeaudit/!svn/ver/151/trunk/audit_data/audit-urls-to-csv.py
+END
+2016-02-bigten.txt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/faeaudit/!svn/ver/151/trunk/audit_data/2016-02-bigten.txt
+END
+2015-09-fed-gov.csv
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/faeaudit/!svn/ver/114/trunk/audit_data/2015-09-fed-gov.csv
+END
+2015-06-conferences.csv
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/faeaudit/!svn/ver/112/trunk/audit_data/2015-06-conferences.csv
+END
+create_csv_from_urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/faeaudit/!svn/ver/102/trunk/audit_data/create_csv_from_urls.py
+END
+2014-04-illinois.json
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/faeaudit/!svn/ver/39/trunk/audit_data/2014-04-illinois.json
+END
+2016-02-illinois.json
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/faeaudit/!svn/ver/151/trunk/audit_data/2016-02-illinois.json
+END
+2015-06-illinois.json
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/faeaudit/!svn/ver/102/trunk/audit_data/2015-06-illinois.json
+END
+2015-09-fed-gov-good-urls.csv
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/faeaudit/!svn/ver/144/trunk/audit_data/2015-09-fed-gov-good-urls.csv
+END
+2016-02-illinois.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/faeaudit/!svn/ver/151/trunk/audit_data/2016-02-illinois.txt
+END
+2015-06-illinois.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/faeaudit/!svn/ver/110/trunk/audit_data/2015-06-illinois.txt
+END
+2016-06-illinois.txt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/faeaudit/!svn/ver/98/trunk/audit_data/2016-06-illinois.txt
+END
+2015-06-conferences.json
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/faeaudit/!svn/ver/112/trunk/audit_data/2015-06-conferences.json
+END
+2015-09-fed-gov.json
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/faeaudit/!svn/ver/144/trunk/audit_data/2015-09-fed-gov.json
+END

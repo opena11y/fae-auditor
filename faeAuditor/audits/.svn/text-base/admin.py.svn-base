@@ -1,0 +1,30 @@
+from django.contrib import admin
+from audit.models import Audit
+from audit.models import AuditGroup
+from audit.models import AuditGroupItem
+from audit.models import Website
+
+class AuditAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug', 'depth', 'ruleset', 'user')
+    list_filter = ('user',)
+    
+admin.site.register(Audit, AuditAdmin)
+
+class AuditGroupAdmin(admin.ModelAdmin):
+    list_display = ('title', 'audit', 'slug', 'position')
+    list_filter = ('audit',)
+    
+admin.site.register(AuditGroup, AuditGroupAdmin)
+
+class AuditGroupItemAdmin(admin.ModelAdmin):
+    list_display = ('title', 'audit_group', 'audit_sub_group', 'slug')
+    list_filter = ('audit_group',)
+    
+admin.site.register(AuditGroupItem, AuditGroupItemAdmin)
+
+class WebsiteAdmin(admin.ModelAdmin):
+    list_display = ('url', 'title')
+    list_filter = ('audit',)
+
+admin.site.register(Website, WebsiteAdmin)
+

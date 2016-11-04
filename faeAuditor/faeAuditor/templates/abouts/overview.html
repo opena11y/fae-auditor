@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+  <li>Overview</li>
+{% endblock %}
+
+{% block title %}
+Overview
+{% endblock %}
+
+
+{% block content %}
+
+    <p>The Functional Accessibility Evaluator (FAE) is a service of the <a href="http://disability.illinois.edu">Division of Disability Resources and Education Services</a> in the <a href="http://ahs.illinois.edu">College of Applied Health Studies</a> at the <a href="http://illinois.edu">University of Illinios in Urbana-Champaign</a>.</p>
+
+    
+    <h2>What is FAE?</h2>
+    
+    <ul>
+        <li>The Functional Accessibility Evaluator (FAE) 2.0 analyzes web pages for requirements
+            defined by the <a href="http://www.w3.org/TR/WCAG/" target="_spec">W3C Web Content 
+            Accessibility Guidelines 2.0</a> Level A and AA Success Criteria.</li>
+
+        <li>Every rule used in FAE 2.0 references a primary WCAG 2.0 Success Criterion requirement.</li>
+
+        <li>The rules are based on the <a href="https://www.w3.org/TR/wai-aria-practices/">Authoring Practices</a> of the <a href="http://www.w3.org/TR/wai-aria/" target="_spec">W3C Accessible Rich Internet Application (ARIA)</a> and <a href="http://www.w3.org/TR/html5" target="_spec">HTML5</a> specifications</li>
+        
+        <li>The rules used in FAE and AInspector have been developed over six years through the work of the <a href="http://www.openajax.org/member/wiki/Accessibility">OpenAjax Accessibility Task Force</a> and feedback from users of FAE and AInspector Sidebar</li>
+
+        <li>FAE is designed to be used in conjunction with <a href="https://addons.mozilla.org/en-US/firefox/addon/ainspector-sidebar/">AInspector Sidebar for Firefox</a> and <a href="http://accessibility-bookmarklets.org/">Accessibility Bookmarklets</a> to help people understand the accessibility features, issues and potential issues of a web resource.</li>
+    </ul>
+
+    
+    <h2 id="running_the_evaluator">Running the Evaluator</h2>
+    
+    <p>The &ldquo;Run FAE&rdquo; page provides a form for specifying the following analysis parameters:</p>
+
+   <table class="details table table-striped table-hover" aria-labelledby="running_the_evaluator">
+        <thead>
+            <tr>
+                <th class="text">Input</th>
+                <th class="text">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>URL</th>
+                <td>
+                    <ul>
+                        <li>Specifies the URL that will serve as the starting point of the analysis. Depending on the &ldquo;Depth of Evaluation&rdquo; and &ldquo;Follow Links in&rdquo; settings (described below), additional pages linked from the starting URL may also be included in the analysis.</li>
+                    </ul>    
+                </td>
+            </tr>
+            <tr>
+                <th>Report Title</th>
+                <td>
+                    <ul>
+                        <li>The title to be displayed at the top of each report page. If no title is specified, then &ldquo;Untitled Report&rdquo; is displayed.</li>
+                    </ul>    
+                </td>
+            </tr>
+            <tr>
+                <th>Depth of Evaluation</th>
+                <td>
+                    <ul>
+                       <li>When &ldquo;Top-level page only&rdquo; is selected, only the page specified by the URL will be analyzed.</li>
+                        <li>&ldquo;Include second-level pages&rdquo; will cause all pages linked from the top-level page (with domain restrictions as explained below) to be included in the analysis.</li>
+                        {% if payment_enabled %}
+                        <li>You can increase the depth of spidering a website by purchasing or increasing your <a href="{% url 'subscription' %}">subscription level</a>.</li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Follow Links in</th>
+                <td>
+                    <ul>
+                        <li>In cases where &ldquo;Depth of Evaluation&rdquo; is set to either &ldquo;Include second-level pages&rdquo; or &ldquo;Include third-level pages&rdquo; the web crawler used by FAE can follow links in two different ways:</li>
+                        <li>When &ldquo;Specified domain only&rdquo; is selected, link following is restricted to the same domain as the specified URL.</li>
+                        <li>When &ldquo;Next-level subdomains&rdquo; is selected, links that are in subdomains of the next-level domain (relative to the domain specified by the URL) will also be followed.</li>
+                        {% if payment_enabled %}
+                        <li>You can more control over what domains are included and excluded by purchaisng or increasing your <a href="{% url 'subscription' %}">subscription level</a> that includes the "Advanced" run feature.</li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Ruleset</th>
+                <td>
+                    <ul>
+                        <li><em>HTML4 Legacy Techniques</em> ruleset recommends (<em>but does not require</em>) that ARIA landmarks be used in the design of the web page
+                            and that a failure of one of the landmark rules will result in a "warning".</li>
+                        <li><em>HTML5 and ARIA Techniques</em> ruleset requires that ARIA landmarks be used in the design of the web page
+                        and that a failure of one of the landmark rules will result in a "violation".</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Maximum Pages</th>
+                <td>
+                    <ul>
+                        <li>Limits the number of pages evaluated, which is useful to limit the amount or results or to get results faster.</li>
+                        {% if payment_enabled %}
+                        <li>You can increase the maximum number of pages by purchasing or increasing your <a href="{% url 'subscription' %}">subscription level</a>.</li>
+                        {% endif %}
+                    </ul>    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+            
+    <p>After successfully completing the analysis, FAE displays the Summary Report, which provides a high-level view of the evaluation results, and places a link to this report in the Archived Reports list. This list includes additional report information such as the analysis date/time, the number of pages analyzed, the report title, the starting URL and the depth of evaluation.</p>
+    
+    <h2 id="rule_categories">Rule Categories</h2>
+    
+    <p>FAE organizes the analysis of documents based on the following rule categories:</p>
+    
+    <table class="details table table-striped table-hover" aria-labelledby="rule_categories">
+        <thead>
+            <tr>
+                <th class="text">Category</th>
+                <th class="text">Definition</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rule_category in rule_categories %}
+            <tr>
+                <th>{{rule_category.title}}</th>
+                <td>{{rule_category.description}}</td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+    </table>        
+
+    <dl>
+    </dl>
+        
+    <h2>Announcements and Discussion E-mail Lists</h2>
+    
+    <dl>
+    <dt>Announcements</dt>  
+    <dd>The <a href="https://lists.illinois.edu/lists/subscribe/oaa-tools-announcements">Open Accessibility Alliance Tools announcements list</a> is for people who would like learn about the latest releases of FAE 2.0.  It is a one way low volume e-mail list announcing major changes to the tools or training opportunities to learn more about accessibility.</dd>
+
+    <dt>Discussion</dt>  
+    <dd>The <a href="https://lists.illinois.edu/lists/subscribe/oaa-tools-discussions">Open Accessibility Alliance Tools discussion list</a> is for people who would like to have more direct participation in setting the direction for development of FAE 2.0 and discuss issues with the development team.  The group also holds a monthly teleconference to discuss user and development issues.</dd>
+    </dl>
+    
+    
+    <h2>Report an Issue</h2>
+    
+    <dl>
+      <dt><a href="https://github.com/opena11y/fae2/issues">OpenAjax Evaluation Library Rulesets and Rules Issues List</a></dt>
+      <dd>Request a new rule</dd>
+      <dd>Report a bug or enhancement to an existing rule (<em>note:</em> Please include the rule title)</dd> 
+      
+      <dt><a href="https://github.com/opena11y/fae-ainspector/issues">FAE 2.0 Issues List</a></dt>
+      <dd>Request a new feature for FAE 2.0</dd>
+      <dd>Report a bug or enhancement to an existing feature of FAE 2.0</dd>
+      <dd><em>note:</em> Please include URLs to websites or to FAE 2.0 reports when possible to help clarify an issue.</dd>
+    </dl>
+
+    <h2>Linking Directly to FAE</h2>
+    
+    <p>It is possible to place a link to FAE on a web page that, when selected, causes FAE to evaluate the page and display the resulting Summary Report. The following HTML snippet should be used:</p>
+    
+    <p><code>&lt;a href="{{site.domain}}/evaluate/link/"&gt;Check with FAE&lt;/a&gt;</code></p>
+    
+
+{% endblock %}
+
+

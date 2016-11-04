@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+  <li>Donate</li>
+{% endblock %}
+
+{% block title %}
+ Donate
+{% endblock %}
+
+{% block content %}
+
+{% include "subscriptions/use_of_funds.html"  with start="Your donation " %}
+
+<form action="https://ps.uif.uillinois.edu/Gifts/Payment.aspx" method="post" >
+    {% csrf_token %}
+
+    <input type="hidden" name="FUND1"            value="11336380 – IT Web Accessibility Research">
+    <input type="hidden" name="DEPARTMENT"       value="Disability Resources and Education Services">
+    <input type="hidden" name="DEPARTMENT_EMAIL" value="jongund@illinois.edu,jsmccoy@illinois.edu,giving@ahs.uiuc.edu">
+    <input type="hidden" name="TRACKING_CODE"    value="5WAAA">
+
+    <input type="hidden" name="RedirectAfterSubmit"    value="{{site.domain}}{% url 'donate' %}">
+    <input type="hidden" name="RedirectAfterSubmitConfirmMessage"    value="Thank you for your donation!">
+
+    <div class="input" >
+        <label for="id_donation_amount">Gift Amount (in U.S. Dollars)</label>
+        <div class="fae_input fae_input_text">
+          <input 
+            id="id_donation_amount"
+            type="text"
+            name="GIFT_AMOUNT1"
+            size=10
+            onkeypress="numbersOnly(event)"
+            onkeyup="enableSubmit(event)" style="display: inline">
+        </div>    
+    </div>
+
+
+   <input id="id_submit" name="submit" disabled type="submit" value="Donate using Credit Card"  title="This button takes "/>
+
+</form>
+
+{% endblock %}
+
+
+{% block javascript %}
+
+<script src="{% static 'js/form-control-focus.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+    function numbersOnly(event){
+
+        if (!event.charCode) return;
+
+        var c = String.fromCharCode(event.charCode);
+
+        console.log(c + ' ' + event.charCode);
+
+        if (c < '0' || c > '9') {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+    }
+
+   function enableSubmit() {
+
+
+     function test_amount() {
+  
+       var s  = node_amount.value;
+       s = s.trim();
+       
+       return s.length > 0 && /^[0-9.]+$/.test(s);;
+   
+     }
+
+     var node_submit   = document.getElementById('id_submit');
+
+     var node_amount   = document.getElementById('id_donation_amount')
+
+     if (test_amount()) {
+        node_submit.disabled = false;
+        node_submit.setAttribute('title', 'Donation is ready for credit card processing');     
+     }
+     else {
+        node_submit.disabled = true;
+        node_submit.setAttribute('title', 'You must enter an amount before credit card processing');     
+     }
+   
+   }
+
+   window.addEventListener('load', enableSubmit);
+</script>
+
+{% endblock %}
+
+

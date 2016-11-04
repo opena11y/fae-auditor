@@ -1,0 +1,16 @@
+{ "title"        : "2016 Basketball Atheletic Conferences",
+  "audit_slug"   : "2016-10-atheletic", 
+  "depth"        : 2,
+  "ruleset_id"   : "ARIA_STRICT",
+  "wait_time"    : 90000,
+  "groups"       : [
+  { "id"       : "conference",
+    "title"    : "Conference",
+    "position" : 1
+  },
+  { "id"       : "university",
+    "title"    : "University",
+    "position" : 2
+  }
+  ]
+}

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+  <li>My Account</li>
+{% endblock %}
+
+{% block title %}
+  My Account
+{% endblock %}
+
+{% block content %}
+
+
+
+<table  id="id_table_show_summary" class="details table table-striped table-hover"  aria-labelledby="id_title" style="margin-top: 2em">
+    <tbody>
+        <tr>
+            <th class="text">Name </th>
+            <td class="text">
+                {{user.first_name}} {{user.last_name}}
+                {% if user_profile.dept %}, {{user_profile.dept}}{% endif %}
+                {% if user_profile.org  %}, {{user_profile.org }}{% endif %}
+                <br/><a href="{% url 'update_profile' %}">Update Profile</a>
+            </td>
+        </tr>
+        <tr>
+            <th class="text">Username</th>
+            <td class="text">{{user.username}}</td>
+        </tr>
+        <tr>
+            <th class="text" style="width: 9em">Account Type</th>
+            <td class="text">{{user_profile.account_type.title}}</td>
+        </tr>
+        {% if user_profile.account_type.description_html %}
+        <tr>
+            <th class="text">Account Description</th>
+            <td class="text">{{user_profile.account_type.description_html|safe}}</td>
+        </tr>
+        {% endif %}
+        {% if payment_enabled %}
+        <tr>
+            <th class="text">Subscription</th>
+            <td class="text">
+            {% if user_profile.subscription_status == 'FREE' %}
+                <a href="{% url 'update_subscription' %}">Subscribe to FAE</a>
+            {% else %}
+                <ul class="status">
+                {% if user_profile.subscription_status == 'CURRENT' %}
+                    {% if user_profile.subscription_days > 1 %}
+                    <li>{{user_profile.subscription_days}} days remaining</li>
+                    {% else %}
+                        {% if user_profile.subscription_days == 1 %}
+                    <li>1 day remaining</li> 
+                        {% else %}
+                    <li>Last day</li> 
+                        {% endif %}
+                    {% endif %}
+                    <li><a href="{% url 'update_subscription' %}">Extend or Change Subscription</a></li>
+                {% else %}
+                    <li>Subscription expired on {{user_profile.subscription_end|date:"n/j/Y"}}</li>
+                    <li><a href="{% url 'update_subscription' %}">Renew Subscription</a></li>
+                {% endif %}
+                </ul>    
+            {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+        <tr>
+            <th class="text" title="Total number of reports saved">Maximum Archived Reports</th>
+            <td class="num">{{user_profile.account_type.max_archive}}</td>
+        </tr>
+        <tr>
+            <th class="text" title="Total number of reports that can be archived">Permanent Archived Reports</th>
+            <td class="text">{{user_profile.account_type.max_permanent}}</td>
+        </tr>
+        <tr>
+            <th class="text">Max Depth of Spidering</th>
+            <td class="text">{{user_profile.account_type.max_depth}}</td>
+        </tr>
+        <tr>
+            <th class="text">Max web pages per report</th>
+            <td class="text">{{user_profile.account_type.max_pages}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="id_stats">Usage Statistics</h2>
+
+<table  id="id_table_show_summary" class="details table table-striped table-hover"  aria-labelledby="id_stats" style="max-width: 20em">
+    <thead>
+      <tr>
+        <th id="id_grp" class="text" style="max-width: 4em">Time Period</th>
+        <th id="id_nor" class="num"  style="max-width: 3em">Reports</th>
+        <th id="id_imp" class="mum"  style="max-width: 3em">Pages</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th class="text">Last 30 Days</th>
+            <td class="num">{{user_stats.get_last_30_days.num_reports}}</td>
+            <td class="num">{{user_stats.get_last_30_days.num_pages}}</td>
+        </tr>
+        <tr>
+            <th class="text">All Time</th>
+            <td class="num">{{user_stats.ws_report_group.num_total_reports}}</td>
+            <td class="num">{{user_stats.ws_report_group.num_total_pages}}</td>
+        </tr>
+    </tbody>
+</table>    
+
+
+{% endblock %}
+
+

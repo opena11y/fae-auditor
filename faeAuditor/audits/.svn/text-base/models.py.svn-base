@@ -1,0 +1,237 @@
+from datetime import datetime
+from audit.uid      import generate
+
+
+from django.db import models
+
+from rules.models    import Updated
+from rulesets.models   import Ruleset
+
+from django.contrib.auth.models import User, Group
+
+class UserGroup(Updated):
+  user_group_id    = models.AutoField(primary_key=True)
+  title            = models.CharField('Title', max_length=512)  
+  domain_name      = models.CharField('Domain Name', max_length=512)
+  slug             = models.SlugField('Slug', max_length=50)
+  users            = models.ManyToManyField(User, blank=True, null=True)
+
+  class Meta:
+    verbose_name        = "User Group"
+    verbose_name_plural = "User Groups"
+    ordering = ['title']
+    
+
+  def __unicode__(self):
+      return "User Group: " + self.title    
+
+      
+RULESET_CHOICES = (
+  ('ARIA_TRANS',  'WCAG + Landmarks'),
+  ('ARIA_STRICT', 'WCAG + ARIA')
+)
+
+BROWSER_CHOICES = (
+  ('Firefox',  'Mozilla Firefox'),
+  ('IE',       'Microsoft Internet Explorer'),
+  ('Chrome',   'Google Chrome' )
+)
+
+DEPTH_CHOICES = (
+  (1, 'Start URL only'),
+  (2, 'First level links'),
+  (3, 'Second level links')
+)
+      
+WAIT_TIME_CHOICES = (
+  (30000,  ' 30 seconds'),
+  (45000,  ' 45 seconds'),
+  (60000,  ' 60 seconds'),
+  (90000,  ' 90 seconds'),
+  (120000, '120 seconds')
+)            
+      
+class Audit(models.Model):
+
+  id       = models.AutoField(primary_key=True)
+  user     = models.ForeignKey(User)
+  created  = models.DateTimeField(auto_now_add=True, editable=False)
+
+  slug   = models.SlugField(max_length=50, blank=True)
+
+  title             = models.CharField('Audit Title', max_length=512)
+  
+  ruleset           = models.ForeignKey(Ruleset)
+  depth             = models.IntegerField(default=2, choices=DEPTH_CHOICES)
+  wait_time         = models.IntegerField(default=30000, choices=WAIT_TIME_CHOICES)
+  browser_emulation = models.CharField("Browser Emulation", max_length=32, choices=BROWSER_CHOICES, default="Chrome")
+  
+  class Meta:
+    verbose_name        = "Audit"
+    verbose_name_plural = "Audits"
+    ordering = ['title']
+    
+
+  def __unicode__(self):
+      return "Audit: " + self.title      
+
+  @models.permalink
+  def get_show_audit_url(self):
+    return ('show_audit', [self.id])        
+
+  @models.permalink
+  def get_audit_start_url(self):
+    return ('audit_start', [self.id])        
+            
+  def get_website_count(self):
+    count = len(this.websites.all())
+    return count    
+
+  def has_audit_results(self):
+    return (len(self.audit_results.all()) > 0)   
+    
+  def is_processing(self):
+    try:
+      ars = self.audit_results.all()
+      
+      for ar in ars:
+        if not ar.is_added():
+          return True
+      
+      return False
+    except: 
+      return False
+
+  def get_processing_status(self):
+    try:
+      ars = self.audit_results.all()
+      
+      for ar in ars:
+        if not ar.is_complete():
+          return ar.show_audit_status()
+      
+      return ar.show_audit_status()
+    except: 
+      return ""     
+
+  def is_processing(self):
+    ars = self.audit_results.all()
+      
+    for ar in ars:
+      if not ar.is_added():
+        return True
+      
+    return False
+
+  def get_processing_reports(self):
+    ra = []
+    
+    ars = self.audit_results.all()
+      
+    for ar in ars:
+      if not ar.is_added():
+        ra.append(ar)
+      
+    return ra
+      
+  def get_complete_reports(self):
+    ra = []
+    
+    ars = self.audit_results.all()
+      
+    for ar in ars:
+      if ar.is_added():
+        ra.append(ar)
+      
+    return ra
+          
+      
+class Website(models.Model):
+
+  id     = models.AutoField(primary_key=True)
+
+  audit = models.ForeignKey(Audit, related_name="websites")
+  
+  url   = models.URLField('Website URL',     max_length=1024)
+  title = models.CharField('Website Title',  max_length=512, default="no title")
+  
+  span_sub_domains      = models.CharField("Span Domains (space separated)",    max_length=1024, default="", blank=True)
+  exclude_sub_domains   = models.CharField("Exclude Domains (space separated)", max_length=1024, default="", blank=True)
+  include_domains       = models.CharField("Include Domains (space separated)", max_length=1024, default="", blank=True)
+  
+  
+  class Meta:
+    verbose_name        = "Website"
+    verbose_name_plural = "Websites"
+    ordering = ['url']
+
+  def __unicode__(self):
+      return self.title + ": " + self.url  
+      
+  def get_domain(self):
+    url_parts    = self.url.split("//")  
+    url_parts    = url_parts[1].split("/")
+    domain_parts = url_parts[0].split(".")
+  
+    last = len(domain_parts)
+    domain =  domain_parts[last-2] + "." + domain_parts[last-1]
+      
+    domain = domain.rstrip(".")
+  
+    return domain
+
+  def get_group_items(self):
+    gis = []
+    for g in self.audit.groups.all():
+      item = False
+      for gi in self.group_items.all():
+        if gi.audit_group.id == g.id:
+          item = gi
+          break
+          
+      gis.append(item)    
+  
+    return gis
+
+class AuditGroup(models.Model):
+
+  id     = models.AutoField(primary_key=True)
+
+  audit  = models.ForeignKey(Audit, related_name="groups")
+
+  slug   = models.SlugField(max_length=50, blank=True)
+  
+  title  = models.CharField('Group Title',  max_length=512, default="no group title")
+
+  position  = models.IntegerField('Position', default=0)
+  
+  class Meta:
+    verbose_name        = "Audit Group"
+    verbose_name_plural = "Audit Groups"
+    ordering = ['audit']
+
+  def __unicode__(self):
+      return self.title
+  
+class AuditGroupItem(models.Model):
+
+  id     = models.AutoField(primary_key=True)
+
+  audit_group = models.ForeignKey(AuditGroup, related_name="group_items")
+
+  audit_sub_group = models.ForeignKey('self', related_name="audit_sub_groups", null=True, blank=True)
+  
+  slug   = models.SlugField(max_length=50, blank=True)
+  
+  websites = models.ManyToManyField(Website, related_name="group_items")
+  
+  title = models.CharField('Group Item Title',  max_length=512, default="no group itrem title")
+  
+  class Meta:
+    verbose_name        = "Audit Group Item"
+    verbose_name_plural = "Audit Groups Items"
+    ordering = ['audit_group']
+
+  def __unicode__(self):
+      return self.audit_group.title + "(" + str(self.audit_group.position) + "): " + self.title
+  

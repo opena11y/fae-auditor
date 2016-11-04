@@ -1,0 +1,6 @@
+{ "title"        : "University of Illinois at Urbana/Champaign (June 2015a)",
+  "audit_slug"   : "illinois-2015a", 
+  "depth"        : 2,
+  "ruleset_id"   : "ARIA_STRICT",
+  "wait_time"    : 90000
+}

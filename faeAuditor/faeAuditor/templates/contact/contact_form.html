@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+  <li>Contact Form</li>
+{% endblock %}
+
+{% block title %}
+  Feedback and Questions Form
+{% endblock %}
+
+{% block content %}
+
+<form id="id_contact_form" action="{% url 'contact_form' %}" method="post" >
+    {% csrf_token %}
+
+    {% include "forms/input_text.html" with input=form.topic size=60 datalist='topic_options'%}
+
+    <datalist id="topic_options">
+        <option value="Problem evaluating websites">
+        <option value="Question or problem about a rule">
+        <option value="New feature or enhancement">
+        <option value="Typo or bug in information in FAE">
+        <option value="Other">
+    </datalist>
+
+
+    {% include "forms/textarea.html" with textarea=form.message rows=10 cols=80 desc="Details of the comment or feedback"%}
+
+    <input type="hidden" name="status" value="NR">
+    <input type="hidden" name="comment" value="">
+
+    <input type="submit" value="Send Feedback or Question"/>
+
+</form>
+
+<section aria-labelledby="id_my_contacts" style="margin-top: 5em">
+    <h2 id="id_my_contacts">My Feedback and Questions</h2>
+
+    <table class="details table table-striped table-hover" aria-labelledby="id_my_contacts">
+        <thead>
+            <th>Date</th>
+            <th>Topic</th>
+            <th>Message</th>
+            <th>Response</th>
+        </thead>
+        <tbody>
+            {% for contact in user.contacts.all %}
+            <tr>
+                <td>{{contact.date}}</td>
+                <td>{{contact.topic}}</td>
+                <td>{{contact.message}}</td>
+                <td>
+                    <strong>{{contact.show_status}}</strong><br/>
+                    {{contact.comments}}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td><span class="none">none</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script src="{% static 'js/form-control-focus.js' %}" type="text/javascript"></script>
+
+{% endblock %}
+
+
+

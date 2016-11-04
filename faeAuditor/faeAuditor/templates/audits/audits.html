@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block title %}
+Audits
+{% endblock %}
+
+{% block content %}
+
+
+<table class="details table table-striped table-hover sortable"  aria-labelledby="{{id_title}}">
+        <thead>
+            <tr>
+                <th class="text">Title</th>
+                <th class="text">Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if audits.count %}
+            {% for a in audits %}
+            <tr>
+                <td class="text" style="min-width: 15em;">
+                <a href="{% url 'audit' a.id %}">{{a.title}}</a>
+                </td>
+                
+                <td class="text date">
+                    {{ a.created|date:"Y-m-d H:i" }}
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td>No audits defined</td>
+            </tr>
+            {% endif %}
+            
+        </tbody>
+        
+    </table>
+
+    
+{% endblock %}

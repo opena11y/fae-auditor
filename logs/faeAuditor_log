@@ -1,0 +1,2231 @@
+Not Found: /admin
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 204, in render
+    with context.bind_template(self):
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/context.py", line 256, in bind_template
+    processors = (template.engine.template_context_processors +
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/functional.py", line 33, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/engine.py", line 105, in template_context_processors
+    return tuple(import_string(path) for path in context_processors)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/engine.py", line 105, in <genexpr>
+    return tuple(import_string(path) for path in context_processors)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/module_loading.py", line 20, in import_string
+    module = import_module(module_path)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/faeAuditor/context_processors.py", line 33, in <module>
+    from faeAuditor.settings import PAYMENT_ENABLED
+ImportError: cannot import name PAYMENT_ENABLED
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 204, in render
+    with context.bind_template(self):
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/context.py", line 256, in bind_template
+    processors = (template.engine.template_context_processors +
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/functional.py", line 33, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/engine.py", line 105, in template_context_processors
+    return tuple(import_string(path) for path in context_processors)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/engine.py", line 105, in <genexpr>
+    return tuple(import_string(path) for path in context_processors)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/module_loading.py", line 27, in import_string
+    six.reraise(ImportError, ImportError(msg), sys.exc_info()[2])
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/module_loading.py", line 23, in import_string
+    return getattr(module, class_name)
+ImportError: Module "faeAuditor.context_processors" does not define a "anonymous" attribute/class
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 204, in render
+    with context.bind_template(self):
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/context.py", line 256, in bind_template
+    processors = (template.engine.template_context_processors +
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/functional.py", line 33, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/engine.py", line 105, in template_context_processors
+    return tuple(import_string(path) for path in context_processors)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/engine.py", line 105, in <genexpr>
+    return tuple(import_string(path) for path in context_processors)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/module_loading.py", line 27, in import_string
+    six.reraise(ImportError, ImportError(msg), sys.exc_info()[2])
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/module_loading.py", line 23, in import_string
+    return getattr(module, class_name)
+ImportError: Module "faeAuditor.context_processors" does not define a "anonymous" attribute/class
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 204, in render
+    with context.bind_template(self):
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/context.py", line 256, in bind_template
+    processors = (template.engine.template_context_processors +
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/functional.py", line 33, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/engine.py", line 105, in template_context_processors
+    return tuple(import_string(path) for path in context_processors)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/engine.py", line 105, in <genexpr>
+    return tuple(import_string(path) for path in context_processors)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/module_loading.py", line 27, in import_string
+    six.reraise(ImportError, ImportError(msg), sys.exc_info()[2])
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/module_loading.py", line 23, in import_string
+    return getattr(module, class_name)
+ImportError: Module "faeAuditor.context_processors" does not define a "anonymous" attribute/class
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 204, in render
+    with context.bind_template(self):
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/context.py", line 260, in bind_template
+    updates.update(processor(self.request))
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/faeAuditor/context_processors.py", line 38, in self_registration
+    'self_registration_enabled': SELF_REGISTRATION_ENABLED
+NameError: global name 'SELF_REGISTRATION_ENABLED' is not defined
+Not Found: /
+Internal Server Error: /admin/audits/auditgroup2item/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1468, in changelist_view
+    self.list_max_show_all, self.list_editable, self)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/views/main.py", line 78, in __init__
+    self.queryset = self.get_queryset(request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/views/main.py", line 321, in get_queryset
+    filters_use_distinct) = self.get_filters(request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/views/main.py", line 130, in get_filters
+    self.model, self.model_admin, field_path=field_path)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/filters.py", line 159, in create
+    model, model_admin, field_path=field_path)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/filters.py", line 169, in __init__
+    self.lookup_choices = self.field_choices(field, request, model_admin)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/filters.py", line 198, in field_choices
+    return field.get_choices(include_blank=False)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 826, in get_choices
+    limit_choices_to)]
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/encoding.py", line 42, in smart_text
+    return force_text(s, encoding, strings_only, errors)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/encoding.py", line 78, in force_text
+    s = six.text_type(s)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/models.py", line 168, in __unicode__
+    return self.audit_group.title + "(" + str(self.audit_group.position) + "): " + self.title
+AttributeError: 'AuditGroupItem' object has no attribute 'audit_group'
+Internal Server Error: /admin/audits/auditgroup2item/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1468, in changelist_view
+    self.list_max_show_all, self.list_editable, self)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/views/main.py", line 78, in __init__
+    self.queryset = self.get_queryset(request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/views/main.py", line 321, in get_queryset
+    filters_use_distinct) = self.get_filters(request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/views/main.py", line 130, in get_filters
+    self.model, self.model_admin, field_path=field_path)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/filters.py", line 159, in create
+    model, model_admin, field_path=field_path)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/filters.py", line 169, in __init__
+    self.lookup_choices = self.field_choices(field, request, model_admin)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/filters.py", line 198, in field_choices
+    return field.get_choices(include_blank=False)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 826, in get_choices
+    limit_choices_to)]
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/encoding.py", line 42, in smart_text
+    return force_text(s, encoding, strings_only, errors)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/encoding.py", line 78, in force_text
+    s = six.text_type(s)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/models.py", line 168, in __unicode__
+    return self.audit_group.title + ": " + self.title
+AttributeError: 'AuditGroupItem' object has no attribute 'audit_group'
+Internal Server Error: /admin/audits/auditgroup2item/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1468, in changelist_view
+    self.list_max_show_all, self.list_editable, self)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/views/main.py", line 78, in __init__
+    self.queryset = self.get_queryset(request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/views/main.py", line 321, in get_queryset
+    filters_use_distinct) = self.get_filters(request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/views/main.py", line 130, in get_filters
+    self.model, self.model_admin, field_path=field_path)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/filters.py", line 159, in create
+    model, model_admin, field_path=field_path)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/filters.py", line 169, in __init__
+    self.lookup_choices = self.field_choices(field, request, model_admin)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/filters.py", line 198, in field_choices
+    return field.get_choices(include_blank=False)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 826, in get_choices
+    limit_choices_to)]
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/encoding.py", line 42, in smart_text
+    return force_text(s, encoding, strings_only, errors)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/encoding.py", line 78, in force_text
+    s = six.text_type(s)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/models.py", line 168, in __unicode__
+    return self.audit_group.title + ": " + self.title
+AttributeError: 'AuditGroupItem' object has no attribute 'audit_group'
+Internal Server Error: /admin/audits/auditgroupitem/4/change/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 1039, in render
+    output = self.filter_expression.resolve(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 732, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaultfilters.py", line 47, in _dec
+    args[0] = force_text(args[0])
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/encoding.py", line 78, in force_text
+    s = six.text_type(s)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/models.py", line 168, in __unicode__
+    return self.audit_group.title + ": " + self.title
+AttributeError: 'AuditGroupItem' object has no attribute 'audit_group'
+Not Found: /
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /admin
+Not Found: /
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 157, in get
+    context = self.get_context_data(**kwargs)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 58, in get_context_data
+    user_profile = UserProfile.objects.get(user=user)
+NameError: global name 'UserProfile' is not defined
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 157, in get
+    context = self.get_context_data(**kwargs)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 60, in get_context_data
+    user_profile = UserProfile.objects.get(user=user)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 387, in get
+    self.model._meta.object_name
+DoesNotExist: UserProfile matching query does not exist.
+Not Found: /admin
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 157, in get
+    context = self.get_context_data(**kwargs)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 62, in get_context_data
+    audits = Audits.objects.filter(user=user)
+NameError: global name 'Audits' is not defined
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 157, in get
+    context = self.get_context_data(**kwargs)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 62, in get_context_data
+    audits = Audit.objects.filter(user=user)
+NameError: global name 'Audit' is not defined
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    template = self._resolve_template(self.template_name)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 90, in _resolve_template
+    new_template = self.resolve_template(template)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 80, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader.py", line 74, in select_template
+    raise TemplateDoesNotExist(', '.join(template_name_list), chain=chain)
+TemplateDoesNotExist: audits/audits.html
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'usage_statistics' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'donate' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'fae_status' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'all_user_information' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'my_account' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'my_account' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'logout' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'run_report' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'run_report' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'run_report' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'run_report' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'run_report' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Not Found: /accounts/login/
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Not Found: /admin
+Not Found: /logout
+Not Found: /login
+Not Found: /logout
+Not Found: /login
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/debug.py", line 76, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 78, in dispatch
+    return super(LoginView, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 132, in render_to_response
+    template=self.get_template_names(),
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 145, in get_template_names
+    "TemplateResponseMixin requires either a definition of "
+ImproperlyConfigured: TemplateResponseMixin requires either a definition of 'template_name' or an implementation of 'get_template_names()'
+Not Found: /accounts/login/
+Not Found: /favicon.ico
+Not Found: /login
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/debug.py", line 76, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 78, in dispatch
+    return super(LoginView, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 132, in render_to_response
+    template=self.get_template_names(),
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 145, in get_template_names
+    "TemplateResponseMixin requires either a definition of "
+ImproperlyConfigured: TemplateResponseMixin requires either a definition of 'template_name' or an implementation of 'get_template_names()'
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/debug.py", line 76, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 79, in dispatch
+    return super(LoginView, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 132, in render_to_response
+    template=self.get_template_names(),
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 145, in get_template_names
+    "TemplateResponseMixin requires either a definition of "
+ImproperlyConfigured: TemplateResponseMixin requires either a definition of 'template_name' or an implementation of 'get_template_names()'
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'django.contrib.auth.views.login' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'password_reset_recover' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/debug.py", line 76, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 79, in dispatch
+    return super(LoginView, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 221, in post
+    return self.form_valid(form)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 89, in form_valid
+    return super(LoginView, self).form_valid(form)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 108, in form_valid
+    return HttpResponseRedirect(self.get_success_url())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 92, in get_success_url
+    redirect_to = self.request.REQUEST.get(self.redirect_field_name)
+AttributeError: 'WSGIRequest' object has no attribute 'REQUEST'
+Forbidden (CSRF token missing or incorrect.): /login/
+Not Found: /logout
+Not Found: /login
+Not Found: /login
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /login
+Not Found: /login
+Not Found: /login
+Not Found: /login
+Not Found: /accounts/login/
+Not Found: /login
+Not Found: /accounts/login
+Internal Server Error: /audit/2/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 167, in render
+    values = list(values)
+TypeError: 'RelatedManager' object is not iterable
+Not Found: /admin
+Not Found: /admin
+Internal Server Error: /audit/8/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 157, in get
+    context = self.get_context_data(**kwargs)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 91, in get_context_data
+    audit = Audit.objects.get(user=user, id=kwargs['audit_id'])
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 387, in get
+    self.model._meta.object_name
+DoesNotExist: Audit matching query does not exist.
+Not Found: /audits
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 123, in get_context_data
+    context = super(RunView, self).get_context_data(**kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 121, in get_context_data
+    kwargs.setdefault('form', self.get_form())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 73, in get_form
+    form_class = self.get_form_class()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 160, in get_form_class
+    return model_forms.modelform_factory(model, fields=self.fields)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/forms/models.py", line 545, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/forms/models.py", line 257, in __new__
+    raise FieldError(message)
+FieldError: Unknown field(s) (span_sub_domains) specified for AuditResult
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 125, in get_context_data
+    audit = Audit.objects.filter(user=self.request.user).latest('last_viewed')
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 544, in latest
+    return self._earliest_or_latest(field_name=field_name, direction="-")
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 538, in _earliest_or_latest
+    return obj.get()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 381, in get
+    num = len(clone)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 240, in __len__
+    self._fetch_all()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 841, in execute_sql
+    sql, params = self.as_sql()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 384, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 49, in pre_sql_setup
+    order_by = self.get_order_by()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 295, in get_order_by
+    field, self.query.get_meta(), default_order=asc))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 570, in find_ordering_name
+    field, targets, alias, joins, path, opts = self._setup_joins(pieces, opts, alias)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 603, in _setup_joins
+    pieces, opts, alias)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1405, in setup_joins
+    names, opts, allow_many, fail_on_missing=True)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1330, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+FieldError: Cannot resolve keyword 'last_viewed' into field. Choices are: audit_results, browser_emulation, created, depth, follow, group2s, groups, id, max_pages, ruleset, ruleset_id, slug, title, user, user_id, wait_time, websites
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 125, in get_context_data
+    audit = Audit.objects.filter(user=self.request.user,id=kwargs['audit_id'])
+KeyError: 'audit_id'
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 125, in get_context_data
+    audit = Audit.objects.filter(user=self.request.user,id=kwargs['audit_id'])
+KeyError: 'audit_id'
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 125, in get_context_data
+    audit = Audit.objects.get(user=self.request.user, id=kwargs['audit_id'])
+KeyError: 'audit_id'
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 125, in get_context_data
+    audit = Audit.objects.get(user=self.request.user, id=kwargs['audit_id'])
+KeyError: 'audit_id'
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 125, in get_context_data
+    audit = Audit.objects.get(user=self.request.user, id=kwargs['audit_id'])
+KeyError: 'audit_id'
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 127, in get_context_data
+    audit = Audit.objects.get(user=self.request.user, id=kwargs['audit_id'])
+KeyError: 'audit_id'
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 131, in get_context_data
+    audit = Audit.objects.get(user=user, id=kwargs['audit_id'])
+KeyError: 'audit_id'
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 131, in get_context_data
+    audit = Audit.objects.get(user=user, id=kwargs['audit_id'])
+KeyError: 'audit_id'
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 131, in get_context_data
+    audit = Audit.objects.get(user=user, id=kwargs['audit_id'])
+KeyError: 'audit_id'
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 132, in get_context_data
+    audit = Audit.objects.get(user=user, id=kwargs['audit_id'])
+KeyError: 'audit_id'
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 132, in get_context_data
+    audit = Audit.objects.get(user=user, id=self.audit_id)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 387, in get
+    self.model._meta.object_name
+DoesNotExist: Audit matching query does not exist.
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 136, in get_context_data
+    check_for_announcements(user_profile, self.request)
+NameError: global name 'check_for_announcements' is not defined
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 135, in rendered_content
+    template = self._resolve_template(self.template_name)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 90, in _resolve_template
+    new_template = self.resolve_template(template)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 80, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader.py", line 62, in select_template
+    return engine.get_template(template_name, dirs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 40, in get_template
+    return Template(self.engine.get_template(template_name, dirs), self)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/engine.py", line 190, in get_template
+    template, origin = self.find_template(template_name, dirs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/engine.py", line 157, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loaders/base.py", line 46, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 189, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 514, in parse
+    raise self.error(token, e)
+TemplateSyntaxError: Unclosed tag on line 35: 'block'. Looking for one of: endblock.
+Internal Server Error: /run/11/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 174, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 172, in get_response
+    response = response.render()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 160, in render
+    self.content = self.rendered_content
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/response.py", line 137, in rendered_content
+    content = template.render(context, self._request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/backends/django.py", line 95, in render
+    return self.template.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 988, in render
+    bit = node.render_annotated(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/base.py", line 955, in render_annotated
+    return self.render(context)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 513, in render
+    six.reraise(*exc_info)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/template/defaulttags.py", line 499, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 600, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 508, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'run_report' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Not Found: /admin
+Internal Server Error: /admin/userProfiles/userprofile/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1575, in changelist_view
+    selection_note=_('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 240, in __len__
+    self._fetch_all()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 852, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+ProgrammingError: column userProfiles_userprofile.account_type_id does not exist
+LINE 1: ...user"."id") INNER JOIN "accounts_accounttype" ON ("userProfi...
+                                                             ^
+
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 157, in get
+    context = self.get_context_data(**kwargs)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 74, in get_context_data
+    user_profile = UserProfile.objects.get(user=user)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 381, in get
+    num = len(clone)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 240, in __len__
+    self._fetch_all()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 852, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+ProgrammingError: column userProfiles_userprofile.account_type_id does not exist
+LINE 1: ...file"."id", "userProfiles_userprofile"."user_id", "userProfi...
+                                                             ^
+
+Not Found: /admin
+Internal Server Error: /admin/userProfiles/userprofile/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1575, in changelist_view
+    selection_note=_('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 240, in __len__
+    self._fetch_all()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 852, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+ProgrammingError: column userProfiles_userprofile.account_type_id does not exist
+LINE 1: ...user"."id") INNER JOIN "accounts_accounttype" ON ("userProfi...
+                                                             ^
+
+Internal Server Error: /admin/userProfiles/userprofile/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1575, in changelist_view
+    selection_note=_('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 240, in __len__
+    self._fetch_all()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 852, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+ProgrammingError: column userProfiles_userprofile.account_type_id does not exist
+LINE 1: ...user"."id") INNER JOIN "accounts_accounttype" ON ("userProfi...
+                                                             ^
+
+Internal Server Error: /admin/userProfiles/userprofile/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1575, in changelist_view
+    selection_note=_('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 240, in __len__
+    self._fetch_all()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 852, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+ProgrammingError: column userProfiles_userprofile.account_type_id does not exist
+LINE 1: ...user"."id") INNER JOIN "accounts_accounttype" ON ("userProfi...
+                                                             ^
+
+Internal Server Error: /admin/userProfiles/userprofile/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1575, in changelist_view
+    selection_note=_('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 240, in __len__
+    self._fetch_all()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 852, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+ProgrammingError: column userProfiles_userprofile.account_type_id does not exist
+LINE 1: ...user"."id") INNER JOIN "accounts_accounttype" ON ("userProfi...
+                                                             ^
+
+Internal Server Error: /admin/userProfiles/userprofile/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1575, in changelist_view
+    selection_note=_('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 240, in __len__
+    self._fetch_all()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 852, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+ProgrammingError: column userProfiles_userprofile.account_type_id does not exist
+LINE 1: ...user"."id") INNER JOIN "accounts_accounttype" ON ("userProfi...
+                                                             ^
+
+Internal Server Error: /admin/userProfiles/userprofile/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1575, in changelist_view
+    selection_note=_('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 240, in __len__
+    self._fetch_all()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 852, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+ProgrammingError: column userProfiles_userprofile.account_type_id does not exist
+LINE 1: ...user"."id") INNER JOIN "accounts_accounttype" ON ("userProfi...
+                                                             ^
+
+Internal Server Error: /admin/userProfiles/userprofile/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1575, in changelist_view
+    selection_note=_('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 240, in __len__
+    self._fetch_all()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 852, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+ProgrammingError: column userProfiles_userprofile.account_type_id does not exist
+LINE 1: ...user"."id") INNER JOIN "accounts_accounttype" ON ("userProfi...
+                                                             ^
+
+Internal Server Error: /admin/userProfiles/userprofile/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1468, in changelist_view
+    self.list_max_show_all, self.list_editable, self)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/views/main.py", line 79, in __init__
+    self.get_results(request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/views/main.py", line 174, in get_results
+    result_count = paginator.count
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/paginator.py", line 72, in _get_count
+    self._count = self.object_list.count()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 371, in count
+    return self.query.get_count(using=self.db)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/query.py", line 483, in get_count
+    number = obj.get_aggregation(using, ['__count'])['__count']
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/query.py", line 464, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 852, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+ProgrammingError: relation "userProfiles_userprofile" does not exist
+LINE 1: SELECT COUNT(*) AS "__count" FROM "userProfiles_userprofile"
+                                          ^
+
+Not Found: /admin
+Internal Server Error: /admin/auditResults/auditresult/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/utils/decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1575, in changelist_view
+    selection_note=_('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 240, in __len__
+    self._fetch_all()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 852, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+ProgrammingError: column auditResults_auditresult.status does not exist
+LINE 1: ...es", "auditResults_auditresult"."total_websites", "auditResu...
+                                                             ^
+
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Internal Server Error: /run/3/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 255, in post
+    return super(BaseCreateView, self).post(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 221, in post
+    return self.form_valid(form)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 122, in form_valid
+    return super(RunView, self).form_valid(form)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 200, in form_valid
+    self.object = form.save()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/forms/models.py", line 451, in save
+    self.instance.save()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/base.py", line 700, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/base.py", line 728, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/base.py", line 812, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/base.py", line 851, in _do_insert
+    using=using, raw=raw)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 1039, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+IntegrityError: null value in column "audit_id" violates not-null constraint
+DETAIL:  Failing row contains (0, -1, -1, U, U, NC, 0, 0, 0, 0, 0, 0, 1, 2016-11-04 18:30:56.937592+00, 158309ba6a9a96de, 2, 100, 30000, Chrome, 1, 0, 0, null, 2, -).
+
+Internal Server Error: /run/3/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 139, in get_context_data
+    context = super(RunView, self).get_context_data(**kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 121, in get_context_data
+    kwargs.setdefault('form', self.get_form())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 73, in get_form
+    form_class = self.get_form_class()
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 160, in get_form_class
+    return model_forms.modelform_factory(model, fields=self.fields)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/forms/models.py", line 545, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/forms/models.py", line 257, in __new__
+    raise FieldError(message)
+FieldError: Unknown field(s) (title) specified for AuditResult
+Internal Server Error: /processing/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 157, in get
+    context = self.get_context_data(**kwargs)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 158, in get_context_data
+    audit_results = AuditResult.objects.filter(user=self.request.user)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 790, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/query.py", line 808, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1243, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1269, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1149, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1035, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1330, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+FieldError: Cannot resolve keyword 'user' into field. Choices are: audit, audit_gl_results, audit_id, audit_rc_results, audit_rs_results, audit_rule_results, browser_emulation, created, depth, follow, group_results, id, implementation_pass_fail_score, implementation_pass_fail_status, implementation_score, implementation_status, manual_check_status, max_pages, result_value, rules_manual_check, rules_na, rules_passed, rules_violation, rules_warning, rules_with_hidden_content, ruleset, ruleset_id, slug, status, title, total_pages, total_websites, wait_time, ws_reports
+Internal Server Error: /processing/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 157, in get
+    context = self.get_context_data(**kwargs)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 160, in get_context_data
+    check_for_announcements(user_profile, self.request)
+NameError: global name 'check_for_announcements' is not defined
+Not Found: /admin
+Not Found: /audit/2/ws.url

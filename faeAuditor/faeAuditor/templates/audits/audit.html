@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+<li>Audit</li>
+{% endblock %}
+
+{% block title %}
+Audit: {{audit.title}}
+{% endblock %}
+
+{% block content %}
+
+<div class="run"><a href="{% url 'audit_run' audit.id %}">Run Report</a></div>
+
+<table class="details table table-striped table-hover sortable"  aria-labelledby="{{id_title}}">
+        <thead>
+            <tr>
+                <th class="text">Group</th>
+                <th class="text">Sub Group</th>
+                <th class="text">Title</th>
+                <th class="text">Slug</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if audit.websites.count %}
+            {% for ws in audit.websites.all %}
+            <tr>
+                <td class="text">{% if ws.group_item %}{{ws.group_item.title}}{% else %}-{% endif %}</td>
+                <td class="text">{% if ws.group2_item %}{{ws.group2_item.title}}{% else %}-{% endif %}</td>
+                <td class="text"><a href="{{ws.url}}">{{ws.title}}</a></td>
+                <td class="text date">{{ ws.slug }}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td>No websites defined</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    
+{% endblock %}

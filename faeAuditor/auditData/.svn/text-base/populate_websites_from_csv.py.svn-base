@@ -1,0 +1,227 @@
+import sys
+import os
+import string
+import glob
+
+import optparse
+import subprocess
+import shlex
+import time
+import getopt
+
+import json
+import textile
+from string import capwords
+
+sys.path.append(os.path.abspath('..'))
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae_audit.settings')
+from django.conf import settings
+
+"""This file is for populating the database with markup information
+I empty it. Run as a standalone script!"""
+
+from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User
+
+from audit.models import Audit
+from audit.models import AuditGroup
+from audit.models import AuditGroupItem
+from audit.models import Website
+from audit.uid import generate
+
+from rulesets.models import Ruleset
+  
+def removeQuotes(rs):
+
+  s = ""
+
+  for c in rs:
+    if c != '"' and c != "\n":
+      s += c
+      
+  return s
+
+def titleFromSlug(s):
+
+  parts = s.split('_')
+
+  title = ""
+  for p in parts:
+    if title == "":
+      title = p.title()
+    else:  
+      title = title + " " + p.title()
+
+  return title
+  
+def getDomain(s):
+
+  url_parts    = s.split("//")  
+  url_parts    = url_parts[1].split("/")
+  domain_parts = url_parts[0].split(".")
+  
+  domain = ""
+  
+  for p in domain_parts:
+    if p != 'www':
+      domain += p + "."
+      
+  domain = domain.rstrip(".")
+  
+  return domain
+
+audit_groups = []
+audit_group_items = []
+
+def getAuditGroup(pos):
+  for ag in audit_groups:
+    print(ag.position)
+    if ag.position == (pos+1):
+      return ag
+      
+  return False
+
+def getAuditGroupItem(id):
+  for agi in audit_group_items:
+    print(agi.slug)
+    if agi.slug == id:
+      return agi
+      
+  return False
+  
+def addWebsite(audit, title, url, groups):
+
+  sd = getDomain(url)
+  sd = sd.strip()
+  
+  try:
+    ws = Website.objects.get(audit=audit, url=url)
+    print("  Updating Website: " + url)
+    ws.title = title 
+    ws.span_domains = sd
+  except:
+    ws = Website(audit=audit, url=url, span_sub_domains=sd, title=title)
+    print("  Creating Website: " + url)  
+
+  ws.save()
+  
+  items = []
+  if len(groups):
+    i = 0
+    for g in groups:
+      slug = removeQuotes(g.strip())
+      print(str(i) + ": " + slug)
+      audit_group = getAuditGroup(i)
+      print(str(audit_group))
+      try:
+        agi = AuditGroupItem.objects.get(audit_group=audit_group, slug=slug)
+        print("  Found Audit group Item: " + g + " " + url)
+      except:
+        agi =  AuditGroupItem(audit_group=audit_group, slug=slug, title=titleFromSlug(slug))
+        print("  Creating Audit Group Item: " +  g + " " + url)  
+        agi.save()
+      
+      items.append(agi)
+      
+      agi.websites.add(ws)
+      agi.save()
+      i = i + 1
+  
+  agi1 = False  
+  for i in items:
+    if i.audit_group.position ==1:
+      agi1 = i
+      break;      
+      
+  for i in items:
+    if agi1 and i.audit_group.position > 1:
+      i.audit_sub_group = agi1
+      i.save()
+      
+  return
+
+
+def addAuditGroup(audit, data):
+
+  try:
+    audit_group = AuditGroup.objects.get(audit=audit, slug=data['id'], position=data['position'])
+    print("  Updating Audit Group: " + data['title'])
+    audit_group.title    = data['title']
+    audit_group.position = data['position']
+   
+  except ObjectDoesNotExist:  
+    print("  Creating Audit Group: " + data['title'])
+    audit_group = AuditGroup(audit=audit, title=data['title'], slug=data['id'], position=data['position']) 
+
+  print("  Saving Audit Group: " + data['title'])
+  audit_group.save()
+  
+  print("  Appending Audit Group: " + str(audit_group))
+  audit_groups.append(audit_group)
+  
+  return audit_group
+
+def addAudit(data):
+
+  try:
+    audit = Audit.objects.get(title=data['title'])
+    print("  Updating Audit: " + data['title'])
+   
+  except ObjectDoesNotExist:  
+    print("  Creating Audit: " + data['title'])
+    audit = Audit(title=data['title'], user=user) 
+     
+  audit.slug    = data['audit_slug']
+  audit.depth   = data['depth']
+  
+  audit.ruleset   = Ruleset.objects.get(ruleset_id=data['ruleset_id'])
+  audit.wait_time = data['wait_time']
+  audit.save()
+
+  groups = data['groups']
+
+  try:
+    if groups:
+      print("Groups: " + str(groups))
+      for g in groups:
+        print("  Group: " + str(g))
+        addAuditGroup(audit, g)
+  except:
+    print("No group information")
+
+  return audit
+
+# Get title and other information for the audit
+ 
+user = User.objects.get(username='jongund')
+date = time.strftime('%Y-%m-%d')
+
+if len(sys.argv) < 2:
+  print("python populate_websites_from_csv.py file1.json file2.csv")
+  exit()
+ 
+file_json = open(sys.argv[1], 'r')
+
+audit_data = json.load(file_json)
+
+audit = addAudit(audit_data)
+
+if len(sys.argv) < 3:
+  print("python populate_websites_from_csv.py file1.json file2.csv")
+  exit()
+
+# Read in the CSV of the urls
+
+file_csv  = open(sys.argv[2], 'rU')
+
+for line in file_csv:
+  print('LINE: ' + line)
+  parts = line.split('","')
+  if len(parts) > 1:
+    title  = removeQuotes(parts[0]).strip()
+    url    = removeQuotes(parts[1]).strip()
+    print(str(len(parts)) + " " + title + " " + url)
+    addWebsite(audit, title, url, parts[2:])
+  else:
+    print("**** Error: " + line) 

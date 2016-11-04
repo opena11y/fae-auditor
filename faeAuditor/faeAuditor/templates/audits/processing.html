@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+<li>Processing</li>
+{% endblock %}
+
+{% block title %}
+Audit Processing
+{% endblock %}
+
+{% block content %}
+
+
+<table class="details table table-striped table-hover sortable"  aria-labelledby="{{id_title}}">
+        <thead>
+            <tr>
+                <th class="text">Title</th>
+                <th class="text">Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if audit_results_processing.count %}
+            {% for a in audit_results_processing %}
+            <tr>
+                <td class="text" style="min-width: 15em;">
+                {{a.title}}
+                </td>
+                
+                <td class="text date">
+                    {{ a.created|date:"Y-m-d H:i" }}
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td>No audits processing</td>
+            </tr>
+            {% endif %}
+            
+        </tbody>
+        
+    </table>
+
+    
+{% endblock %}

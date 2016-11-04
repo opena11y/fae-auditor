@@ -1,0 +1,46 @@
+{% extends "rulesets/rulesets_base.html" %}
+
+{% block rulesets_comparison %}
+
+{% for rg in rule_categories %}
+    <h3 id="{{ rg.slug }}" >{{ rg.title }}</h3>
+
+    <table aria-labelledby="{{ rg.slug }}" class="table table-striped sortable">
+        <thead>
+            <tr>
+                <th style="min-width: 6.5em">Rule ID</th>
+                <th>Summary</th>
+                <th title"WCAG 2.0 Level">Level</th>
+                <th title"WCAG 2.0 Success Criteria">SC</th>
+                {% for rs in rulesets %}
+                <th>{{ rs.title }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in rg.rules.all %}
+            <tr>
+                <td>{{ r.nls_rule_id }}</td>
+                <td><a href="{% url 'rulesets_rule' r.rule_id %}">{{ r.summary_html | safe }}</a></td>
+                <td>{{ r.wcag_primary.show_level_html | safe}}</td>
+                <td>{{ r.wcag_primary.show_number_html | safe }}</td>
+                {% for rm in r.get_rule_mappings %}
+                {% if rm == '1' %}
+                <td>Required</td>
+                {% else %}
+                  {% if rm == '2' %}
+                  <td>Recommended</td>
+                  {% else %}
+                  <td title="Not included in ruleset">-</td>
+                  {% endif %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
+{% endfor %}
+
+{% endblock %}
+
+

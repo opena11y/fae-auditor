@@ -1,0 +1,12 @@
+{ "title"        : "Big Ten Universities",
+  "audit_slug"   : "2016-02-big-ten", 
+  "depth"        : 2,
+  "ruleset_id"   : "ARIA_STRICT",
+  "wait_time"    : 90000,
+  "groups"       : [
+  { "id"       : "University",
+    "title"    : "University",
+    "position" : 1
+  }
+  ]
+}
