@@ -16,16 +16,16 @@ class Counter(object):
         self.reset()
 
     def reset(self):
-        self.value = long(random.uniform(1, Counter.MAX_COUNTER))
+        self.value = int(random.uniform(1, Counter.MAX_COUNTER))
 
     def increment(self, now):
         prev = self.value
-        self.value += long(random.uniform(1, Counter.INCREMENT))
+        self.value += int(random.uniform(1, Counter.INCREMENT))
 
         while self.value > Counter.MAX_COUNTER or self.value == prev:
             self.reset()
             time.sleep(.01)
-            now = long(time.time() * 1000)
+            now = int(time.time() * 1000)
 
         return now
 
@@ -44,7 +44,7 @@ def generate():
     lock.acquire() # can't generate two uids at the same time
 
     try:
-        now = long(time.time() * 1000)
+        now = int(time.time() * 1000)
         if now == lasttime:
             now = counter.increment(now)
         else:

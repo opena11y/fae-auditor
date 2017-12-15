@@ -35,10 +35,10 @@ here = lambda *dirs: join(abspath(dirname(__file__)), *dirs)
 root = lambda *dirs: join(abspath(here("..","..")), *dirs)
 
 BASE_DIR = here("", "")
-print("BASE_DIR: " + BASE_DIR)
+# print("BASE_DIR: " + BASE_DIR)
 
 APP_DIR  = root("")
-print(" APP_DIR: " + APP_DIR)
+# print(" APP_DIR: " + APP_DIR)
 
 
 # JSON-based secrets module
@@ -253,7 +253,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = join(BASE_DIR, 'static/')
 
-print('STATIC ROOT: ' + STATIC_ROOT)
+# print('STATIC ROOT: ' + STATIC_ROOT)
 
 STATICFILES_DIRS = (
   join(APP_DIR, "faeAuditor/static"),

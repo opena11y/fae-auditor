@@ -28,7 +28,7 @@ from django.db import models
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
-from websiteResultGroups.models import WebsiteResultGroup
+from auditResultGroups.models import auditResultGroup
 from rulesets.models            import Ruleset
 
 
@@ -42,7 +42,7 @@ from rulesets.models            import Ruleset
 class StatsAll(models.Model):
     id   = models.AutoField(primary_key=True)
 
-    ws_report_group = models.OneToOneField(WebsiteResultGroup)
+    ws_report_group = models.OneToOneField(AuditResultGroup)
 
     class Meta:
         verbose_name        = 'Stats All'

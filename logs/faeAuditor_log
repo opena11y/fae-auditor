@@ -2229,3 +2229,274 @@ Traceback (most recent call last):
 NameError: global name 'check_for_announcements' is not defined
 Not Found: /admin
 Not Found: /audit/2/ws.url
+Not Found: /favicon.ico
+Not Found: /admin
+Internal Server Error: /run/2/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 146, in get_context_data
+    form.instance.depth = 1
+NameError: global name 'form' is not defined
+Internal Server Error: /run/2/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 146, in get_context_data
+    form.instance.depth = 1
+NameError: global name 'form' is not defined
+Internal Server Error: /run/2/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 251, in get
+    return super(BaseCreateView, self).get(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/fae2/lib/python2.7/site-packages/django/views/generic/edit.py", line 212, in get
+    return self.render_to_response(self.get_context_data())
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 146, in get_context_data
+    form.instance.depth = 1
+NameError: global name 'form' is not defined
+Not Found: /favicon.ico
+Not Found: /admin
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /admin
+Not Found: /favicon.ico
+Not Found: /admin
+Not Found: /favicon.ico
+Not Found: /admin
+Invalid HTTP_HOST header: '0.0.0.0:8000'. You may need to add '0.0.0.0' to ALLOWED_HOSTS.
+"GET / HTTP/1.1" 400 66668
+Invalid HTTP_HOST header: '0.0.0.0:8000'. You may need to add '0.0.0.0' to ALLOWED_HOSTS.
+"GET /favicon.ico HTTP/1.1" 400 66730
+"GET / HTTP/1.1" 302 0
+"GET /accounts/login/?next=/ HTTP/1.1" 200 10445
+"GET /static/css/bootstrap-sortable.css HTTP/1.1" 200 1691
+"GET /static/css/bootstrap-accessibility.css HTTP/1.1" 200 1577
+"GET /static/css/fae2.css HTTP/1.1" 200 11466
+"GET /static/css/bootstrap-theme.css HTTP/1.1" 200 26132
+"GET /static/js/bootstrap-accessibility.min.js HTTP/1.1" 200 15041
+"GET /static/js/jquery-2.1.4.min.js HTTP/1.1" 200 84345
+"GET /static/js/bootstrap-sortable.js HTTP/1.1" 200 13799
+"GET /static/js/bootstrap.js HTTP/1.1" 200 68890
+"GET /static/js/fae2.js HTTP/1.1" 200 4916
+"GET /static/css/bootstrap.css HTTP/1.1" 200 147421
+"GET /static/js/SkipTo.min.js HTTP/1.1" 200 19720
+"GET /static/js/form-control-focus.js HTTP/1.1" 200 1889
+"GET /static/js/moment.min.js HTTP/1.1" 200 84975
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3151
+"POST /accounts/login/ HTTP/1.1" 200 10546
+"POST /accounts/login/ HTTP/1.1" 200 10552
+"GET /accounts/login/ HTTP/1.1" 200 10517
+"POST /accounts/login/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 10395
+"GET /rulesets/ HTTP/1.1" 200 101936
+"GET / HTTP/1.1" 200 10395
+"GET / HTTP/1.1" 200 10395
+"GET / HTTP/1.1" 200 10406
+"GET /static/css/bootstrap-accessibility.css HTTP/1.1" 304 0
+"GET /static/css/bootstrap-sortable.css HTTP/1.1" 304 0
+"GET /static/css/fae2.css HTTP/1.1" 304 0
+"GET /static/css/bootstrap-theme.css HTTP/1.1" 304 0
+"GET /static/css/bootstrap.css HTTP/1.1" 304 0
+"GET /static/js/jquery-2.1.4.min.js HTTP/1.1" 304 0
+"GET /static/js/fae2.js HTTP/1.1" 304 0
+"GET /static/js/bootstrap-accessibility.min.js HTTP/1.1" 304 0
+"GET /static/js/bootstrap-sortable.js HTTP/1.1" 304 0
+"GET /static/js/bootstrap.js HTTP/1.1" 304 0
+"GET /static/js/SkipTo.min.js HTTP/1.1" 304 0
+"GET /static/js/moment.min.js HTTP/1.1" 304 0
+"GET / HTTP/1.1" 302 0
+"GET /accounts/login/?next=/ HTTP/1.1" 200 10528
+"GET /static/css/bootstrap-accessibility.css HTTP/1.1" 200 1577
+"GET /static/css/bootstrap-sortable.css HTTP/1.1" 200 1691
+"GET /static/css/bootstrap-theme.css HTTP/1.1" 200 26132
+"GET /static/css/fae2.css HTTP/1.1" 200 11466
+"GET /static/js/bootstrap-accessibility.min.js HTTP/1.1" 200 15041
+"GET /static/js/bootstrap-sortable.js HTTP/1.1" 200 13799
+"GET /static/js/jquery-2.1.4.min.js HTTP/1.1" 200 84345
+"GET /static/css/bootstrap.css HTTP/1.1" 200 147421
+"GET /static/js/bootstrap.js HTTP/1.1" 200 68890
+"GET /static/js/fae2.js HTTP/1.1" 200 4916
+"GET /static/js/SkipTo.min.js HTTP/1.1" 200 19720
+"GET /static/js/form-control-focus.js HTTP/1.1" 200 1889
+"GET /static/js/moment.min.js HTTP/1.1" 200 84975
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3151
+"POST /accounts/login/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 11265
+"GET /audit/2/ HTTP/1.1" 200 19622
+"GET / HTTP/1.1" 200 11265
+"GET /audit/3/ HTTP/1.1" 200 19823
+"GET /audit/1/ HTTP/1.1" 200 19481
+"GET /run/1/ HTTP/1.1" 200 18354
+"GET / HTTP/1.1" 200 11265
+"GET /audit/2/ HTTP/1.1" 200 19622
+"GET / HTTP/1.1" 200 11265
+"GET /audit/3/ HTTP/1.1" 200 19823
+"GET /admin HTTP/1.1" 301 0
+"GET /admin/ HTTP/1.1" 200 39089
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+"GET /static/admin/css/base.css HTTP/1.1" 200 16066
+"GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+"GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+"GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+"GET /admin/audits/auditgroupitem/ HTTP/1.1" 200 7519
+"GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+"GET /static/admin/js/core.js HTTP/1.1" 200 7976
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6591
+"GET /static/admin/js/actions.js HTTP/1.1" 200 6501
+"GET /static/admin/js/urlify.js HTTP/1.1" 200 8186
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1538
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 258648
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+"GET /admin/audits/auditgroupitem/4/change/ HTTP/1.1" 200 5808
+"GET /static/admin/css/forms.css HTTP/1.1" 200 8173
+"GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+"GET /admin/audits/auditgroupitem/ HTTP/1.1" 200 7519
+"GET /admin/audits/auditgroupitem/4/change/ HTTP/1.1" 200 5808
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"POST /admin/audits/auditgroupitem/4/change/ HTTP/1.1" 302 0
+"GET /admin/audits/auditgroupitem/ HTTP/1.1" 200 7735
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+"GET /admin/audits/auditgroupitem/3/change/ HTTP/1.1" 200 5808
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"POST /admin/audits/auditgroupitem/3/change/ HTTP/1.1" 302 0
+"GET /admin/audits/auditgroupitem/ HTTP/1.1" 200 7736
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/audits/auditgroupitem/2/change/ HTTP/1.1" 200 5818
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"POST /admin/audits/auditgroupitem/2/change/ HTTP/1.1" 302 0
+"GET /admin/audits/auditgroupitem/ HTTP/1.1" 200 7737
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/audits/auditgroupitem/8/change/ HTTP/1.1" 200 5808
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"POST /admin/audits/auditgroupitem/8/change/ HTTP/1.1" 302 0
+"GET /admin/audits/auditgroupitem/ HTTP/1.1" 200 7738
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/audits/auditgroupitem/7/change/ HTTP/1.1" 200 5808
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"POST /admin/audits/auditgroupitem/7/change/ HTTP/1.1" 302 0
+"GET /admin/audits/auditgroupitem/ HTTP/1.1" 200 7739
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/audits/auditgroupitem/6/change/ HTTP/1.1" 200 5818
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"POST /admin/audits/auditgroupitem/6/change/ HTTP/1.1" 302 0
+"GET /admin/audits/auditgroupitem/ HTTP/1.1" 200 7740
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/audits/auditgroupitem/5/change/ HTTP/1.1" 200 5804
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"POST /admin/audits/auditgroupitem/5/change/ HTTP/1.1" 302 0
+"GET /admin/audits/auditgroupitem/ HTTP/1.1" 200 7740
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/audits/ HTTP/1.1" 200 4343
+"GET /admin/audits/auditgroupitem/ HTTP/1.1" 200 7525
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/audits/ HTTP/1.1" 200 4343
+"GET /admin/audits/auditgroup2item/ HTTP/1.1" 200 11226
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/audits/auditgroup2item/13/change/ HTTP/1.1" 200 7356
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/audits/auditgroup2item/ HTTP/1.1" 200 11226
+"GET /admin/audits/auditgroup2item/9/change/ HTTP/1.1" 200 7344
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"POST /admin/audits/auditgroup2item/9/change/ HTTP/1.1" 302 0
+"GET /admin/audits/auditgroup2item/ HTTP/1.1" 200 11451
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/audits/auditgroup2item/8/change/ HTTP/1.1" 200 7344
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"POST /admin/audits/auditgroup2item/8/change/ HTTP/1.1" 302 0
+"GET /admin/audits/auditgroup2item/ HTTP/1.1" 200 11469
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/audits/auditgroup2item/7/change/ HTTP/1.1" 200 7352
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/audits/auditgroup2item/ HTTP/1.1" 200 11251
+"GET /admin/audits/auditgroup2item/6/change/ HTTP/1.1" 200 7354
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/audits/auditgroup2item/ HTTP/1.1" 200 11251
+"GET / HTTP/1.1" 200 11265
+"GET /audit/2/ HTTP/1.1" 200 19645
+"GET / HTTP/1.1" 200 11265
+"GET /audit/3/ HTTP/1.1" 200 19914
+"GET /run/3/ HTTP/1.1" 200 18352
+Internal Server Error: /run/3/
+Traceback (most recent call last):
+  File "/Users/jongund/virtual-environments/faeAuditor/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Users/jongund/virtual-environments/faeAuditor/lib/python3.5/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Users/jongund/virtual-environments/faeAuditor/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/jongund/virtual-environments/faeAuditor/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jongund/virtual-environments/faeAuditor/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/faeAuditor/lib/python3.5/site-packages/django/contrib/auth/mixins.py", line 56, in dispatch
+    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/faeAuditor/lib/python3.5/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/faeAuditor/lib/python3.5/site-packages/django/views/generic/edit.py", line 217, in post
+    return super(BaseCreateView, self).post(request, *args, **kwargs)
+  File "/Users/jongund/virtual-environments/faeAuditor/lib/python3.5/site-packages/django/views/generic/edit.py", line 183, in post
+    return self.form_valid(form)
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/views.py", line 120, in form_valid
+    form.instance.slug = generate()
+  File "/Users/jongund/GitHub/jongund/faeAuditor/faeAuditor/audits/uid.py", line 55, in generate
+    return '%0x%05x' % (now, counter.value)
+TypeError: %x format: an integer is required, not float
+"POST /run/3/ HTTP/1.1" 500 101302
+"POST /run/3/ HTTP/1.1" 302 0
+"GET /processing/ HTTP/1.1" 200 10655
+"GET /admin/ HTTP/1.1" 200 42017
+"GET /admin/auditResults/auditresult/ HTTP/1.1" 200 7195
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/ HTTP/1.1" 200 42017
+"GET /admin/auditResults/auditrulecategoryresult/ HTTP/1.1" 200 4592
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /admin/ HTTP/1.1" 200 42017
+"GET /admin/websiteResults/websiteresult/ HTTP/1.1" 200 4209
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189

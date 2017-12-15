@@ -70,10 +70,10 @@ class AuditResult(RuleGroupResult):
   audit    = models.ForeignKey(Audit, related_name="audit_results", blank=True, null=True)  
   slug     = models.SlugField(max_length=16, default="none", blank=True, editable=False)
 
-  ruleset           = models.ForeignKey(Ruleset)
-  depth             = models.IntegerField(default=2, choices=DEPTH_CHOICES)
-  max_pages         = models.IntegerField("Maximum Pages", choices=MAX_PAGES_CHOICES, default=0, blank=False)
-  wait_time         = models.IntegerField(default=30000, choices=WAIT_TIME_CHOICES)
+  ruleset           = models.ForeignKey(Ruleset, on_delete=models.SET_NULL, null=True, default=2, blank=False)
+  depth             = models.IntegerField(choices=DEPTH_CHOICES, default=2)
+  max_pages         = models.IntegerField("Maximum Pages", choices=MAX_PAGES_CHOICES, default=200, blank=False)
+  wait_time         = models.IntegerField(choices=WAIT_TIME_CHOICES, default=30000)
   browser_emulation = models.CharField("Browser Emulation", max_length=32, choices=BROWSER_CHOICES, default="Chrome") 
   follow            = models.IntegerField("Follow Links in", choices=FOLLOW_CHOICES, default=1, blank=False)
 
@@ -101,6 +101,7 @@ class AuditResult(RuleGroupResult):
     except:
       pass   
 
+ 
 # ---------------------------------------------------------------
 #
 # AuditRuleCategoryResult

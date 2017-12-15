@@ -13,7 +13,6 @@ import time
 import getopt
 
 import json
-import textile
 from string import capwords
 
 import django
@@ -183,8 +182,9 @@ def addAudit(data):
     print("  Creating Audit: " + data['title'])
     audit = Audit(title=data['title'], user=user) 
      
-  audit.slug    = data['audit_slug']
-  audit.depth   = data['depth']
+  audit.slug      = data['audit_slug']
+  audit.depth     = data['depth']
+  audit.max_pages = data['max_pages']
   
   audit.ruleset   = Ruleset.objects.get(ruleset_id=data['ruleset_id'])
   audit.wait_time = data['wait_time']

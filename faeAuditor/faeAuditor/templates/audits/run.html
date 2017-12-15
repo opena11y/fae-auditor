@@ -42,6 +42,19 @@ Run: {{audit.title}}
 
 <script type="text/javascript">
 
+    var audit = {
+        title: "{{audit.title}}",
+        ruleset: "{{audit.ruleset.ruleset_id}}",
+        depth: {{audit.depth}},
+        max_pages: {{audit.max_pages}},
+        wait_time: {{audit.wait_time}},
+        follow: {{audit.follow}} 
+    };
+ 
+    document.getElementById("id_input_title").value    = audit.title;
+    document.getElementById("max_pages_" + audit.max_pages).checked  = true;
+
+
 </script>
 
 {% endblock %}

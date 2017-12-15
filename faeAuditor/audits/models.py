@@ -49,6 +49,14 @@ WAIT_TIME_CHOICES = (
   (90000,  ' 90 seconds'),
   (120000, '120 seconds')
 )            
+
+FREQUENCY_CHOICES = (
+  ('none',    'None'),
+  ('daily',   'Daily'),
+  ('weekly',  'Weekly'),
+  ('monthly', 'Monthly')
+)            
+ 
       
 class Audit(models.Model):
 
@@ -66,6 +74,9 @@ class Audit(models.Model):
   wait_time         = models.IntegerField(default=30000, choices=WAIT_TIME_CHOICES)
   browser_emulation = models.CharField("Browser Emulation", max_length=32, choices=BROWSER_CHOICES, default="Chrome") 
   follow            = models.IntegerField("Follow Links in", choices=FOLLOW_CHOICES, default=1, blank=False)
+
+  frequency         = models.CharField("Audit Frequency", max_length=32, choices=FREQUENCY_CHOICES, default="monthly")
+  enable_audit      = models.BooleanField("Enable Auditing", default=True)
  
   class Meta:
     verbose_name        = "Audit"

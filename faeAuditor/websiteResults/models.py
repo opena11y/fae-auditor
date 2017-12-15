@@ -167,9 +167,9 @@ class WebsiteResult(RuleGroupResult):
 
   user  = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, editable=True, related_name="ws_results")
 
-  audit_result         = models.ForeignKey(AuditResult,       related_name="ws_reports")
-  audit_group_result   = models.ForeignKey(AuditGroupResult,  related_name="ws_reports")
-  audit_group2_result  = models.ForeignKey(AuditGroup2Result, related_name="ws_reports")
+  audit_result   = models.ForeignKey(AuditResult,       related_name="ws_reports")
+  group_result   = models.ForeignKey(AuditGroupResult,  related_name="ws_reports")
+  group2_result  = models.ForeignKey(AuditGroup2Result, related_name="ws_reports")
     
   slug  = models.SlugField(max_length=256, default="", blank=True, editable=False, unique=True)
 

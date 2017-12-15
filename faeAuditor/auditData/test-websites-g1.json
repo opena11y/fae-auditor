@@ -3,6 +3,7 @@
   "depth"        : 2,
   "ruleset_id"   : "ARIA_STRICT",
   "wait_time"    : 90000,
+  "max_pages"    : 200,
   "groups"       : [
   { "id"       : "conference",
     "title"    : "Conference"
