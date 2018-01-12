@@ -25,7 +25,7 @@ import fnmatch
 import os
 from datetime import datetime
 
-from os.path import join 
+from os.path import join
 
 from django.db import models
 
@@ -39,13 +39,13 @@ from django.core.urlresolvers import reverse
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
 
-from faeAuditor.settings import APP_DIR
-
 from django.db import models
 
 from django.core.urlresolvers import reverse
 
 from .baseResults import RuleResult
+from .baseResults import RuleElementPageResult
+from .baseResults import RuleElementResult
 from .baseResults import RuleGroupResult
 
 from auditResults.models        import AuditResult
@@ -72,7 +72,7 @@ RESULT_VALUE = {
   'MANUAL_CHECK'   : 3,
   'WARNING'        : 4,
   'VIOLATION'      : 5
-}  
+}
 
 IMPLEMENTATION_STATUS_CHOICES = (
     ('U',   'Undefined'),
@@ -118,14 +118,14 @@ class PagesSummary:
 
     if result == RESULT_VALUE['VIOLATION']:
       self.pages_violation += 1
-    elif result == RESULT_VALUE['WARNING']:  
+    elif result == RESULT_VALUE['WARNING']:
       self.pages_warning += 1
-    elif result == RESULT_VALUE['MANUAL_CHECK']:  
+    elif result == RESULT_VALUE['MANUAL_CHECK']:
       self.pages_manual_check += 1
-    elif result == RESULT_VALUE['PASS']:  
+    elif result == RESULT_VALUE['PASS']:
       self.pages_passed += 1
-    elif result == RESULT_VALUE['NOT_APPLICABLE']:  
-      self.pages_not_applicable += 1  
+    elif result == RESULT_VALUE['NOT_APPLICABLE']:
+      self.pages_not_applicable += 1
 
 
 
@@ -147,13 +147,13 @@ LAST_REPORT_TYPE_CHOICES = (
   ('rules',   'Summary'),
   ('pages',   'All Pages'),
   ('page',    'Page')
-)  
+)
 
 LAST_VIEW_CHOICES = (
   ('rc',   'Rule Category'),
   ('gl',   'WCAG Guideline'),
   ('rs',   'Rule Scope')
-)  
+)
 
 # ---------------------------------------------------------------
 #
@@ -165,16 +165,14 @@ class WebsiteResult(RuleGroupResult):
 
   id    = models.AutoField(primary_key=True)
 
-  user  = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, editable=True, related_name="ws_results")
+  audit_result   = models.ForeignKey(AuditResult,       related_name="ws_results")
+  group_result   = models.ForeignKey(AuditGroupResult,  related_name="ws_results")
+  group2_result  = models.ForeignKey(AuditGroup2Result, related_name="ws_results")
 
-  audit_result   = models.ForeignKey(AuditResult,       related_name="ws_reports")
-  group_result   = models.ForeignKey(AuditGroupResult,  related_name="ws_reports")
-  group2_result  = models.ForeignKey(AuditGroup2Result, related_name="ws_reports")
-    
-  slug  = models.SlugField(max_length=256, default="", blank=True, editable=False, unique=True)
+  slug  = models.SlugField(max_length=256, editable=False)
 
   title    = models.CharField("Title",  max_length=1024, default="", blank=False)
-  
+
   url        = models.URLField("URL",      max_length=1024, default="", blank=False)
   follow     = models.IntegerField("Follow Links in", choices=FOLLOW_CHOICES, default=1, blank=False)
   depth      = models.IntegerField("Depth of Evaluation", choices=DEPTH_CHOICES, default=2, blank=False)
@@ -184,13 +182,13 @@ class WebsiteResult(RuleGroupResult):
   browser_emulation    = models.CharField("Browser Emulation", max_length=32, default="FIREFOX")
 
   wait_time            = models.IntegerField("How long to wait for website to load resources", choices=WAIT_TIME_CHOICES, default=90000)
-  
+
   span_sub_domains     = models.CharField("Span Sub-Domains (space separated)",    max_length=1024, default="", blank=True)
   exclude_sub_domains  = models.CharField("Exclude Sub-Domains (space separated)", max_length=1024, default="", blank=True)
   include_domains      = models.CharField("Include Domains (space separated)",     max_length=1024, default="", blank=True)
   authorization        = models.TextField("Authentication Information",            max_length=8192, default="", blank=True)
 
-  page_count = models.IntegerField("Number of Pages",  default=0)  
+  page_count = models.IntegerField("Number of Pages",  default=0)
 
   # Archiving information
 
@@ -199,19 +197,19 @@ class WebsiteResult(RuleGroupResult):
   stats       = models.BooleanField(default=False)
 
   # Report History Information
-  
+
   last_viewed        = models.DateTimeField(auto_now=True, editable=False)
   last_report_type   = models.CharField('Last Report Type', max_length=16, default="rules", choices=LAST_REPORT_TYPE_CHOICES)
   last_view          = models.CharField('Last Viewed', max_length=4, default="rc", choices=LAST_VIEW_CHOICES)
   last_group         = models.CharField('Last Group', max_length=32, default="")
   last_page          = models.IntegerField('Last Page Viewed', default=1)
-  
+
   # fae-util and fae20 processing information
 
   created      = models.DateTimeField(auto_now_add=True, editable=False)
-  status       = models.CharField('Status',  max_length=10, choices=EVAL_STATUS, default='-')  
-  
-  # processining information    
+  status       = models.CharField('Status',  max_length=10, choices=EVAL_STATUS, default='-')
+
+  # processining information
   processing_time        = models.IntegerField(default=-1)
   processed_urls_count   = models.IntegerField(default=-1)
   unprocessed_urls_count = models.IntegerField(default=-1)
@@ -224,12 +222,12 @@ class WebsiteResult(RuleGroupResult):
   data_multiple_urls_file  = models.CharField('Multiple URLs File Name',  max_length=1024, default="", blank=True)
 
   log_file                 = models.CharField('Log file',       max_length=1024, default="")
-  
+
   # Rule results summary information
-    
+
   class Meta:
-    verbose_name        = "Report"
-    verbose_name_plural = "Reports"
+    verbose_name        = "Website Result"
+    verbose_name_plural = "Website Results"
     ordering = ['-archive', '-created']
 
   def __str__(self):
@@ -247,7 +245,7 @@ class WebsiteResult(RuleGroupResult):
 
         try:
           if url_parts.netloc.find('www.') < 0:
-            self.span_sub_domains = url_parts.netloc      
+            self.span_sub_domains = url_parts.netloc
           else:
             if url_parts.netloc.find('www.') == 0:
               self.span_sub_domains = url_parts.netloc[4:]
@@ -259,25 +257,21 @@ class WebsiteResult(RuleGroupResult):
         except:
           pass
 
-      DIR = APP_DIR
+      self.data_dir_slug = self.slug
 
-      count = len(WebsiteResult.objects.filter(user=self.user)) + 1
+      self.data_directory     = self.audit_result.audit_directory + "/" + self.slug
+      self.data_property_file = self.data_directory + "/" +  self.data_dir_slug + ".properties"
 
-      self.data_dir_slug = "report_" + "%05d" % (count,)
-
-      self.data_directory          = DIR + "data/" + self.user.username + "/" + self.data_dir_slug 
-      self.data_property_file      = self.data_directory + "/" +  self.data_dir_slug + ".properties"
-      
       if len(self.authorization) > 0:
         self.data_authorization_file = self.data_directory + "/" +  self.data_dir_slug + ".authorization"
-      else:  
+      else:
         self.data_authorization_file = ""
 
-      self.log_file = self.data_directory + "/" +  self.data_dir_slug + ".log" 
-    
-      self.status = '-' 
+      self.log_file = self.data_directory + "/" +  self.data_dir_slug + ".log"
 
-    super(WebsiteResult, self).save() # Call the "real" save() method        
+      self.status = '-'
+
+    super(WebsiteResult, self).save() # Call the "real" save() method
 
   def delete_page_reports(self):
     # Delete page level results
@@ -297,9 +291,9 @@ class WebsiteResult(RuleGroupResult):
           os.remove(join(path,file))
 
     except:
-      return False   
+      return False
 
-    return True    
+    return True
 
 
   def set_status_initialized(self):
@@ -314,17 +308,22 @@ class WebsiteResult(RuleGroupResult):
     self.status = 'S'
     self.save()
 
-  def set_status_complete(self):
-    self.delete_data_files()
+  def set_status_complete(self, save_data=False):
+    # default is to delete data files
+    if not save_data:
+      self.delete_data_files()
+
     self.status = 'C'
     self.save()
 
     if self.title == '' and self.page_count == 1:
-      try: 
+      try:
         self.title = str(self.page_all_results.first().title).strip()
       except:
         self.ttile = "no title"
-      self.save()    
+      self.save()
+
+      self.audit_result.check_if_audit_result_complete()
 
   def is_complete(self):
     return self.status == 'C'
@@ -362,14 +361,14 @@ class WebsiteResult(RuleGroupResult):
     for wsrr in ws_result.ws_rule_results.all():
       wsrr.rule_number = num
       wsrr.save()
-      num += 1  
+      num += 1
 
   def set_page_numbers(self):
     num = 1
     for pr in self.page_all_results.all():
       pr.page_number = num
       pr.save()
-      num += 1     
+      num += 1
 
   def update_last_viewed(self):
     self.last_viewed = datetime.now()
@@ -389,7 +388,7 @@ class WebsiteResult(RuleGroupResult):
         elif view == 'rc':
           pr = pr.page_rc_results.get(rule_category__slug=group)
 
-        ps.update_summary(pr.result_value) 
+        ps.update_summary(pr.result_value)
 
       return ps
 
@@ -398,10 +397,10 @@ class WebsiteResult(RuleGroupResult):
     if self.status == 'C' or self.status == 'E' or self.status == 'D':
         return self.page_count
 
-    return self.get_processing_status().processed 
+    return self.get_processing_status().processed
 
   def to_json_results(self):
-    tz = timezone(str(self.user.profile.timezone))
+    tz = timezone(str(self.audit_result.user.profile.timezone))
 
     json = {}
     json['id']          = 'r' + str(self.id)
@@ -426,7 +425,7 @@ class WebsiteResult(RuleGroupResult):
 
 
   def to_json_status(self):
-    tz = timezone(str(self.user.profile.timezone))
+    tz = timezone(str(self.audit_result.user.profile.timezone))
 
     json = {}
     json['id']          = 'r' + str(self.id)
@@ -449,9 +448,9 @@ class WebsiteResult(RuleGroupResult):
 
 
   def get_processing_status(self):
-  
+
     class processing_info:
-    
+
        def __init__(self):
          self.status = ''
          self.url    = ''
@@ -459,9 +458,9 @@ class WebsiteResult(RuleGroupResult):
          self.unprocessed = 0
          self.filtered  = 0
          self.time  = 0.0
-         self.login_attempts = 0 
+         self.login_attempts = 0
          self.login_success  = 0
-         self.login_fail     = 0  
+         self.login_fail     = 0
 
     pi = processing_info()
 
@@ -471,7 +470,7 @@ class WebsiteResult(RuleGroupResult):
 
     try:
       file = open( fname, "r")
-      for line in file.readlines():   
+      for line in file.readlines():
         if line.find("status=") >= 0:
           pi.status = line[7:]
         elif line.find("url=") >= 0:
@@ -490,10 +489,10 @@ class WebsiteResult(RuleGroupResult):
           pi.login_success = int(line[14:])
         elif line.find("login_fail=") >= 0:
           pi.login_fail = int(line[11:])
-        
+
     except:
-      pi.status = "file not found"  
-    
+      pi.status = "file not found"
+
     return pi
 
   def broken_urls(self):
@@ -501,9 +500,9 @@ class WebsiteResult(RuleGroupResult):
 
     for url in self.processed_urls.all():
       if url.http_status_code != 200:
-        urls.append(url) 
+        urls.append(url)
 
-    return urls    
+    return urls
 
 
 # ---------------------------------------------------------------
@@ -511,26 +510,26 @@ class WebsiteResult(RuleGroupResult):
 # ProcessedURL
 #
 # ---------------------------------------------------------------
- 
+
 class ProcessedURL(models.Model):
   processed_url_id = models.AutoField(primary_key=True)
 
   ws_report  = models.ForeignKey(WebsiteResult, on_delete=models.CASCADE, related_name="processed_urls")
-  
+
   page_seq_num    = models.IntegerField(default=-1)
 
   url_requested    = models.URLField( 'Processed URL',  max_length=4096)
   url_returned     = models.URLField( 'Returned URL',   max_length=4096)
   redirect         = models.BooleanField("Server redirect", default=False)
-  http_status_code = models.IntegerField('http status code')  
-  
+  http_status_code = models.IntegerField('http status code')
+
   url_referenced   = models.URLField( 'Referenced URL', max_length=4096)
- 
-  dom_time   = models.IntegerField('Loading DOM time')  
-  link_time  = models.IntegerField('Retreive links tIme')   
-  event_time = models.IntegerField('Event time')  
-  eval_time  = models.IntegerField('Evaluation time')   
-  save_time  = models.IntegerField('Saving results time')   
+
+  dom_time   = models.IntegerField('Loading DOM time')
+  link_time  = models.IntegerField('Retreive links tIme')
+  event_time = models.IntegerField('Event time')
+  eval_time  = models.IntegerField('Evaluation time')
+  save_time  = models.IntegerField('Saving results time')
   total_time = models.IntegerField('Total processing time')
 
   class Meta:
@@ -539,33 +538,33 @@ class ProcessedURL(models.Model):
     ordering = ['http_status_code', 'url_returned', 'total_time']
 
   def __unicode__(self):
-    return self.url_returned + " (" + str(self.total_time) + " milliseconds)" 
-    
+    return self.url_returned + " (" + str(self.total_time) + " milliseconds)"
+
   def get_url_requested(self):
     if len(self.url_requested) > 50:
-      return self.url_requested[:50] + '...... '   
+      return self.url_requested[:50] + '...... '
     else:
-      return self.url_requested   
-      
+      return self.url_requested
+
 
   def get_url_returned(self):
     if len(self.url_returned) > 50:
-      return self.url_returned[:50] + '...... '   
+      return self.url_returned[:50] + '...... '
     else:
-      return self.url_returned  
+      return self.url_returned
 
   def get_reference_url(self):
     if len(self.url_referenced) > 50:
-      return self.url_referenced[:50] + '...... '   
+      return self.url_referenced[:50] + '...... '
     else:
-      return self.url_referenced  
+      return self.url_referenced
 
 # ---------------------------------------------------------------
 #
 # UnprocessedURL
 #
 # ---------------------------------------------------------------
- 
+
 class UnprocessedURL(models.Model):
   unprocessed_url_id = models.AutoField(primary_key=True)
 
@@ -573,12 +572,12 @@ class UnprocessedURL(models.Model):
 
   url             = models.URLField( 'Unprocessed URL', max_length=4096)
   url_referenced  = models.URLField( 'Referenced URL',  max_length=4096)
- 
-  dom_time   = models.IntegerField('Loading DOM time')  
-  link_time  = models.IntegerField('Retreive links tIme')   
-  event_time = models.IntegerField('Event time')  
-  eval_time  = models.IntegerField('Evaluation time')   
-  save_time  = models.IntegerField('Saving results time')   
+
+  dom_time   = models.IntegerField('Loading DOM time')
+  link_time  = models.IntegerField('Retreive links tIme')
+  event_time = models.IntegerField('Event time')
+  eval_time  = models.IntegerField('Evaluation time')
+  save_time  = models.IntegerField('Saving results time')
   total_time = models.IntegerField('Total processing time')
 
   class Meta:
@@ -587,26 +586,26 @@ class UnprocessedURL(models.Model):
     ordering = ['url', 'url_referenced']
 
   def __unicode__(self):
-    return self.url + " (" + self.url_referenced + ")" 
+    return self.url + " (" + self.url_referenced + ")"
 
   def get_url(self):
     if len(self.url) > 50:
-      return self.url[:50] + '...... '   
+      return self.url[:50] + '...... '
     else:
-      return self.url   
-     
+      return self.url
+
   def get_reference_url(self):
     if len(self.url_referenced) > 50:
-      return self.url_referenced[:50] + '...... '   
+      return self.url_referenced[:50] + '...... '
     else:
-      return self.url_referenced  
+      return self.url_referenced
 
 # ---------------------------------------------------------------
 #
 # FilteredURL
 #
 # ---------------------------------------------------------------
-  
+
 class FilteredURL(models.Model):
   filtered_url_id = models.AutoField(primary_key=True)
 
@@ -621,23 +620,23 @@ class FilteredURL(models.Model):
     ordering = ['url_referenced', 'url']
 
   def __unicode__(self):
-    return self.url 
+    return self.url
 
   def get_url(self):
     if len(self.url) > 50:
-      return self.url[:50] + '...... '   
+      return self.url[:50] + '...... '
     else:
-      return self.url   
+      return self.url
 
   def get_domain(self):
     parsed = urlparse(self.url)
-    
-    return parsed.netloc   
-      
-     
+
+    return parsed.netloc
+
+
   def get_reference_url(self):
     if len(self.url_referenced) > 50:
-      return self.url_referenced[:50] + '...... '   
+      return self.url_referenced[:50] + '...... '
     else:
       return self.url_referenced
 
@@ -664,13 +663,13 @@ class WebsiteRuleCategoryResult(RuleGroupResult):
     ordering            = ['rule_category']
 
   def __unicode__(self):
-    return self.rule_category.title_plural 
+    return self.rule_category.title_plural
 
   def get_title(self):
-    return self.rule_category.title   
+    return self.rule_category.title
 
   def get_id(self):
-    return 'wsrcr_' + self.rule_category.id   
+    return 'wsrcr_' + self.rule_category.id
 
 
 
@@ -678,7 +677,7 @@ class WebsiteRuleCategoryResult(RuleGroupResult):
 #
 # WebsiteGuidelineResult
 #
-# ---------------------------------------------------------------    
+# ---------------------------------------------------------------
 
 class WebsiteGuidelineResult(RuleGroupResult):
   id                 = models.AutoField(primary_key=True)
@@ -695,13 +694,13 @@ class WebsiteGuidelineResult(RuleGroupResult):
     ordering            = ['guideline']
 
   def __unicode__(self):
-    return str(self.guideline) 
+    return str(self.guideline)
 
   def get_title(self):
-    return self.guideline.title   
+    return self.guideline.title
 
   def get_id(self):
-    return 'wsglr_' + self.guideline.id   
+    return 'wsglr_' + self.guideline.id
 
 
 
@@ -719,7 +718,7 @@ class WebsiteRuleScopeResult(RuleGroupResult):
 
   ws_report        = models.ForeignKey(WebsiteResult, on_delete=models.CASCADE, related_name="ws_rs_results")
 
-  rule_scope       = models.ForeignKey(RuleScope, on_delete=models.SET_NULL, null=True)  
+  rule_scope       = models.ForeignKey(RuleScope, on_delete=models.SET_NULL, null=True)
 
 
   class Meta:
@@ -728,13 +727,13 @@ class WebsiteRuleScopeResult(RuleGroupResult):
     ordering            = ['-rule_scope']
 
   def __unicode__(self):
-    return self.rule_scope.title 
-    
+    return self.rule_scope.title
+
   def get_id(self):
-    return 'wsrsr_' + self.rule_scope.id   
+    return 'wsrsr_' + self.rule_scope.id
 
   def get_title(self):
-    return self.rule_scope.title   
+    return self.rule_scope.title
 
 
 # ---------------------------------------------------------------
@@ -743,38 +742,16 @@ class WebsiteRuleScopeResult(RuleGroupResult):
 #
 # ---------------------------------------------------------------
 
-class WebsiteRuleResult(RuleResult):
-  id                 = models.AutoField(primary_key=True)
+class WebsiteRuleResult(RuleElementPageResult):
+  id            = models.AutoField(primary_key=True)
 
-  slug  = models.SlugField(max_length=16, default="none", blank=True, editable=False)
-
-  rule                  = models.ForeignKey(Rule, on_delete=models.SET_NULL, null=True)
-  rule_required         = models.BooleanField(default=False)
-  
   ws_report     = models.ForeignKey(WebsiteResult, on_delete=models.CASCADE, related_name="ws_rule_results")
-  
+
   ws_rc_result  = models.ForeignKey(WebsiteRuleCategoryResult, on_delete=models.SET_NULL,  null=True, related_name="ws_rule_results")
   ws_gl_result  = models.ForeignKey(WebsiteGuidelineResult,    on_delete=models.SET_NULL,  null=True, related_name="ws_rule_results")
   ws_rs_result  = models.ForeignKey(WebsiteRuleScopeResult,    on_delete=models.SET_NULL,  null=True, related_name="ws_rule_results")
 
   rule_number   = models.IntegerField(default=-1)
-
-  pages_violation    = models.IntegerField(default=0)
-  pages_warning      = models.IntegerField(default=0)
-  pages_manual_check = models.IntegerField(default=0)
-  pages_passed       = models.IntegerField(default=0)
-  pages_na           = models.IntegerField(default=0)
-
-  elements_violation     = models.IntegerField(default=0)
-  elements_warning       = models.IntegerField(default=0)
-  elements_mc_identified = models.IntegerField(default=0)
-  elements_mc_passed     = models.IntegerField(default=0)
-  elements_mc_failed     = models.IntegerField(default=0)
-  elements_mc_na         = models.IntegerField(default=0)
-  elements_passed        = models.IntegerField(default=0)
-  elements_hidden        = models.IntegerField(default=0)
-
-  pages_with_hidden_content  = models.IntegerField(default=0)
 
   class Meta:
     verbose_name        = "Website Rule Result"
@@ -782,15 +759,15 @@ class WebsiteRuleResult(RuleResult):
     ordering = ['-pages_violation', '-pages_warning', '-pages_manual_check', '-pages_passed', '-pages_with_hidden_content', '-rule__scope']
 
   def __unicode__(self):
-    return "Website Rule Result: " + self.rule.summary_text 
+    return "Website Rule Result: " + self.rule.summary_text
 
   def get_id(self):
-    return 'wsrr_' + self.rule.id  
-    
-  def get_title(self):
-    return self.rule.summary_text   
+    return 'wsrr_' + self.rule.id
 
-  def to_json_results(self):  
+  def get_title(self):
+    return self.rule.summary_text
+
+  def to_json_results(self):
     json = {}
     json['id']        = self.rule.nls_rule_id
     json['num']       = self.rule_number
@@ -801,23 +778,23 @@ class WebsiteRuleResult(RuleResult):
     json['scope']          = str(self.rule.scope)
 
 
-    json['pages_violation']    = self.pages_violation 
-    json['pages_warning']      = self.pages_warning   
+    json['pages_violation']    = self.pages_violation
+    json['pages_warning']      = self.pages_warning
     json['pages_manual_check'] = self.pages_manual_check
-    json['pages_passed']       = self.pages_passed    
-    json['pages_na']           = self.pages_na           
+    json['pages_passed']       = self.pages_passed
+    json['pages_na']           = self.pages_na
 
-    json['elements_violation']     = self.elements_violation    
-    json['elements_warning']       = self.elements_warning       
-    json['elements_mc_identified'] = self.elements_mc_identified 
-    json['elements_mc_passed']     = self.elements_mc_passed    
-    json['elements_mc_failed']     = self.elements_mc_failed   
-    json['elements_mc_na']         = self.elements_mc_na         
-    json['elements_passed']        = self.elements_passed       
-    json['elements_hidden']        = self.elements_hidden        
+    json['elements_violation']     = self.elements_violation
+    json['elements_warning']       = self.elements_warning
+    json['elements_mc_identified'] = self.elements_mc_identified
+    json['elements_mc_passed']     = self.elements_mc_passed
+    json['elements_mc_failed']     = self.elements_mc_failed
+    json['elements_mc_na']         = self.elements_mc_na
+    json['elements_passed']        = self.elements_passed
+    json['elements_hidden']        = self.elements_hidden
 
-    json['pages_with_hidden_content'] = self.pages_with_hidden_content  
+    json['pages_with_hidden_content'] = self.pages_with_hidden_content
 
     return json
 
-       
+

@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -281,6 +282,9 @@ class FaeUtil {
         if (m_props.containsKey(m_ctrl.maxPages.getLongOpt()))
             m_ctrl.MAX_PAGES = m_props.getProperty(m_ctrl.maxPages.getLongOpt());
         m_props.remove(m_ctrl.maxPages.getLongOpt());
+        if (m_props.containsKey(m_ctrl.path.getLongOpt()))
+            m_ctrl.PATH = m_props.getProperty(m_ctrl.path.getLongOpt());
+        m_props.remove(m_ctrl.path.getLongOpt());
         
       }
       catch (FileNotFoundException e) {
@@ -462,7 +466,7 @@ class FaeUtil {
       BROWSER_VERSION = BrowserVersion.INTERNET_EXPLORER;
     }
     else {
-      BROWSER_VERSION = BrowserVersion.FIREFOX_45;
+      BROWSER_VERSION = BrowserVersion.FIREFOX_52;
     }
     //System.out.println("browser version: " + BROWSER_VERSION.getNickname());
 
@@ -569,8 +573,16 @@ class FaeUtil {
           processor.process(this, "ENTRY_POINT", url_str);
         }
         else {
-          //System.out.println("\n");
-
+          //Updating url if path is provided
+        	if (m_ctrl.PATH != null
+					&& !m_ctrl.PATH.toString().isEmpty()) {
+	        	if (url_str.endsWith("/")) {
+	        		url_str = url_str + m_ctrl.PATH + "/";
+				} else {
+					url_str = url_str + "/" + m_ctrl.PATH + "/";
+				}	
+        	}
+        	
           // IF TRAVERSING
           URL url = new URL(url_str);
           System.out.println("url: " + url);
@@ -702,6 +714,15 @@ class FaeUtil {
       webClient.setIncorrectnessListener(new NoOpIncListener());
     }
 
+    //PJ added - turn off htmlunit warnings
+    //Logger logger = Logger.getRootLogger();
+    Logger.getLogger("com.gargoylesoftware.htmlunit.javascript.host.css.CSSStyleSheet").setLevel(Level.OFF);
+    Logger.getLogger("com.gargoylesoftware.htmlunit.WebConsole").setLevel(Level.OFF);
+    Logger.getLogger("com.gargoylesoftware.htmlunit.javascript.JavaScriptEngine").setLevel(Level.OFF);
+    Logger.getLogger("com.gargoylesoftware.htmlunit.html.HtmlScript").setLevel(Level.OFF);
+    Logger.getLogger("com.gargoylesoftware.htmlunit.javascript.StrictErrorReporter").setLevel(Level.OFF);
+    Logger.getLogger("com.gargoylesoftware.htmlunit.javascript.background.JavaScriptJobManagerImpl").setLevel(Level.OFF);
+    
     // Disallow exceptions of these types when getPage() is called
     webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
     webClient.setRefreshHandler(new RefreshHandler() {
@@ -719,7 +740,7 @@ class FaeUtil {
     });
 
     // Set a ScriptPreProcessor to not process problem JavaScript
-//    webClient.setScriptPreProcessor(new org.fae.util.ScriptPreprocessor(this));
+    webClient.setScriptPreProcessor(new org.fae.util.ScriptPreprocessor(this));
   }
 
   // ==============================================================================================
@@ -762,6 +783,7 @@ class FaeUtil {
       out.write("url=" + url + NEWLINE);
       out.write("processed=" + m_urlsRead.size() + NEWLINE);
       out.write("unprocessed=" + m_unprocessedURLs.size() + NEWLINE);
+      out.write("excluded=" + m_excludedURLs.size() + NEWLINE);
       out.write("filtered=" + m_filteredURLs.size() + NEWLINE);
 
       long endTime = System.currentTimeMillis();
@@ -770,6 +792,7 @@ class FaeUtil {
       out.write("login_attempts=" + attempt + NEWLINE);
       out.write("login_success=" + URLProcessor.m_loginSuccessURLs.size() + NEWLINE);
       out.write("login_fail=" + URLProcessor.m_loginFailURLs.size() + NEWLINE);
+      out.write("more_urls=" + URLProcessor.more_urls + NEWLINE);
 
       out.close();
     }
@@ -876,6 +899,8 @@ class FaeUtil {
           boolean passes = true;
           for (String ext : m_extensionsToNotProcess) {
             if (link.endsWith(ext)) {
+            	m_excludedURLs.add(link);
+				m_excludedURLsCSV.add("\"" + link + "\",\"" + URLProcessor.excludedURLParent + "\"," + ext);
               passes = false;
             }
           }
@@ -1088,6 +1113,49 @@ class FaeUtil {
 
     // ------------------------------------------------------------------------
     // ------------------------------------------------------------------------
+    
+    if (m_excludedURLs.size() > 0) {
+        try {
+          Thread.sleep(2000);
+        }
+        catch (InterruptedException e1) {
+          e1.printStackTrace();
+        }
+        if (OUTPUT_DIRECTORY != null) {
+          try {
+            File file = new File(OUTPUT_DIRECTORY + FILESEP + "excluded_urls.txt");
+            System.out.println("writting to " + file);
+            FileWriter fstream = new FileWriter(file);
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write("These URL(s) were excluded based on the extensions to not process:" + NEWLINE);
+            for (String url : m_excludedURLs) {
+              out.write(url.toString() + NEWLINE);
+            }
+            out.close();
+          }
+          catch (IOException e) {
+            e.printStackTrace();
+            displayException(e);
+          }
+          try {
+            File file = new File(OUTPUT_DIRECTORY + FILESEP + "excluded_urls.csv");
+            System.out.println("writting to " + file);
+            FileWriter fstream = new FileWriter(file);
+            BufferedWriter out = new BufferedWriter(fstream);
+            for (String csv : m_excludedURLsCSV) {
+              out.write(csv + NEWLINE);
+            }
+            out.close();
+          }
+          catch (IOException e) {
+            e.printStackTrace();
+          }
+        }
+        System.out.println(NEWLINE);
+      }
+
+      // ------------------------------------------------------------------------
+      // ------------------------------------------------------------------------
     System.out.println(m_treeRepresentation);
 
     //create authorization status file
@@ -1123,7 +1191,7 @@ class FaeUtil {
   public Properties m_props = null;
   public static Controller m_ctrl = new Controller("java org.fae.util.FaeUtil <options>");
   
-  public static BrowserVersion BROWSER_VERSION = BrowserVersion.FIREFOX_45;
+  public static BrowserVersion BROWSER_VERSION = BrowserVersion.FIREFOX_52;
   public boolean DEBUG = false;
   public int DEPTH = 1;
   public String OUTPUT_DIRECTORY;
@@ -1148,6 +1216,8 @@ class FaeUtil {
   public Vector<String> m_filteredURLsCSV = new Vector<String>();
   public Vector<URL> m_unprocessedURLs = new Vector<URL>();
   public Vector<String> m_unprocessedURLsCSV = new Vector<String>();
+  public Vector<String> m_excludedURLs = new Vector<String>();
+  public Vector<String> m_excludedURLsCSV = new Vector<String>();
 
   // authorization variables
   public static Vector<String> m_authorizationURLs = new Vector<String>();

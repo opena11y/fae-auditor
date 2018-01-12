@@ -31,8 +31,10 @@ from audits.models  import AuditGroup2Item
 from auditResults.models      import AuditResult
 from auditGroupResults.models import AuditGroupResult
 
-from websiteResults.models import RuleResult
-from websiteResults.models import RuleGroupResult
+from websiteResults.baseResults import RuleResult
+from websiteResults.baseResults import RuleElementPageResult
+from websiteResults.baseResults import RuleGroupResult
+from websiteResults.baseResults import AllRuleGroupResult
 
 from ruleCategories.models import RuleCategory
 from rulesets.models       import Ruleset
@@ -53,12 +55,12 @@ from audits.models import BROWSER_CHOICES
 #
 # ---------------------------------------------------------------
 
-class AuditGroup2Result(RuleGroupResult):
+class AuditGroup2Result(AllRuleGroupResult):
   id             = models.AutoField(primary_key=True)
 
-  group_result   = models.ForeignKey(AuditGroupResult, related_name="group2_results")  
+  group_result   = models.ForeignKey(AuditGroupResult, related_name="group2_results")
 
-  group2_item     = models.ForeignKey(AuditGroup2Item)  
+  group2_item     = models.ForeignKey(AuditGroup2Item)
 
   slug           = models.SlugField(max_length=16, default="none", blank=True, editable=False)
 
@@ -72,16 +74,59 @@ class AuditGroup2Result(RuleGroupResult):
   def __unicode__(self):
       return 'Group2 Results: ' + self.group2_item.title
 
-  def add_website_report(self, ws_result):
+  def __str__(self):
+      return 'Group2 Results: ' + self.group2_item.title
+
+
+  def add_website_result(self, ws_result):
 #    print('[AuditResult][add_website_report] ws_result: ' + str(ws_result))
     try:
-      self.total_websites = self.total_websites + 1  
+      self.total_websites = self.total_websites + 1
       self.total_pages    = self.total_pages + ws_result.page_count
 
       self.ws_results.add(ws_result)
       self.save()
     except:
-      pass   
+      pass
+
+  def get_group_rule_result(self, rule):
+      try:
+        ag2rr = AuditGroup2RuleResult.objects.get(group2_result=self, rule=rule)
+      except:
+        ag2rr = AuditGroup2RuleResult(group2_result=self, rule=rule, slug=rule.slug)
+        ag2rr.save()
+
+      return ag2rr
+
+  def get_all_group_rule_results(self):
+      return self.group2_rule_results.all()
+
+  def get_group_rc_result(self, rule_category):
+      try:
+        ag2rcr = AuditGroup2RuleCategoryResult.objects.get(group2_result=self, rule_category=rule_category)
+      except:
+        ag2rcr = AuditGroup2RuleCategoryResult(group2_result=self, rule_category=rule_category, slug=rule_category.slug)
+        ag2rcr.save()
+
+      return ag2rcr
+
+  def get_group_gl_result(self, guideline):
+      try:
+        ag2glr = AuditGroup2GuidelineResult.objects.get(group2_result=self, guideline=guideline)
+      except:
+        ag2glr = AuditGroup2GuidelineResult(group2_result=self, guideline=guideline, slug=guideline.slug)
+        ag2glr.save()
+
+      return ag2glr
+
+  def get_group_rs_result(self, rule_scope):
+      try:
+        ag2rsr = AuditGroup2RuleScopeResult.objects.get(group2_result=self, rule_scope=rule_scope)
+      except:
+        ag2rsr = AuditGroup2RuleScopeResult(group2_result=self, rule_scope=rule_scope, slug=rule_scope.slug)
+        ag2rsr.save()
+
+      return ag2rsr
 
 # ---------------------------------------------------------------
 #
@@ -104,20 +149,20 @@ class AuditGroup2RuleCategoryResult(RuleGroupResult):
 
 
   def __unicode__(self):
-      return 'Group2 RC Result: ' + self.rule_category.title_plural 
+      return 'Group2 RC Result: ' + self.rule_category.title_plural
 
   def save(self):
-  
+
     if self.slug == '':
         self.slug = self.rule_category.category_id
-      
-    super(AuditGroup2RuleCategoryResult, self).save() # Call the "real" save() method. 
+
+    super(AuditGroup2RuleCategoryResult, self).save() # Call the "real" save() method.
 
   def get_title(self):
-    return self.rule_category.title   
+    return self.rule_category.title
 
   def get_id(self):
-    return 'ag2rcr_' + self.rule_category.id   
+    return 'ag2rcr_' + self.rule_category.id
 
 # ---------------------------------------------------------------
 #
@@ -139,20 +184,20 @@ class AuditGroup2GuidelineResult(RuleGroupResult):
     ordering = ['guideline']
 
   def __unicode__(self):
-    return 'Group2 GL Result: ' + str(self.guideline) 
+    return 'Group2 GL Result: ' + str(self.guideline)
 
   def save(self):
-  
+
     if self.slug == '':
         self.slug = self.guideline.slug
-      
-    super(AuditGroup2GuidelineResult, self).save() # Call the "real" save() method. 
+
+    super(AuditGroup2GuidelineResult, self).save() # Call the "real" save() method.
 
   def get_title(self):
-    return self.guideline.title   
+    return self.guideline.title
 
   def get_id(self):
-    return 'ag2glr_' + self.guideline.id   
+    return 'ag2glr_' + self.guideline.id
 
 # ---------------------------------------------------------------
 #
@@ -166,7 +211,7 @@ class AuditGroup2RuleScopeResult(RuleGroupResult):
   group2_result = models.ForeignKey(AuditGroup2Result, on_delete=models.CASCADE, related_name="group2_rs_results")
 
   slug           = models.SlugField(max_length=16, default="", blank=True, editable=False)
-  rule_scope   = models.ForeignKey(RuleScope, on_delete=models.SET_NULL, null=True, default=None)  
+  rule_scope   = models.ForeignKey(RuleScope, on_delete=models.SET_NULL, null=True, default=None)
 
   class Meta:
     verbose_name        = "Group2 Rule Scope Result"
@@ -174,20 +219,20 @@ class AuditGroup2RuleScopeResult(RuleGroupResult):
     ordering = ['-rule_scope']
 
   def __unicode__(self):
-    return 'Group2 RS Result: ' + self.rule_scope.title 
-  
+    return 'Group2 RS Result: ' + self.rule_scope.title
+
   def save(self):
-  
+
     if self.slug == '':
         self.slug = self.rule_scope.slug
-      
-    super(AuditGroup2RuleScopeResult, self).save() # Call the "real" save() method. 
+
+    super(AuditGroup2RuleScopeResult, self).save() # Call the "real" save() method.
 
   def get_title(self):
-    return self.rule_scope.title   
+    return self.rule_scope.title
 
   def get_id(self):
-    return 'ag2rsr_' + self.rule_scope.id   
+    return 'ag2rsr_' + self.rule_scope.id
 
 
 # ---------------------------------------------------------------
@@ -196,30 +241,19 @@ class AuditGroup2RuleScopeResult(RuleGroupResult):
 #
 # ---------------------------------------------------------------
 
-class AuditGroup2RuleResult(RuleResult):
+class AuditGroup2RuleResult(RuleElementPageResult):
   id          = models.AutoField(primary_key=True)
 
-  group2_result = models.ForeignKey(AuditGroupResult, on_delete=models.CASCADE, related_name="group2_rule_results")
- 
+  group2_result = models.ForeignKey(AuditGroup2Result, on_delete=models.CASCADE, related_name="group2_rule_results")
+
   group2_rc_result  = models.ForeignKey(AuditGroup2RuleCategoryResult, on_delete=models.SET_NULL,  null=True, related_name="group2_rule_results")
   group2_gl_result  = models.ForeignKey(AuditGroup2GuidelineResult,    on_delete=models.SET_NULL,  null=True, related_name="group2_rule_results")
   group2_rs_result  = models.ForeignKey(AuditGroup2RuleScopeResult,    on_delete=models.SET_NULL,  null=True, related_name="group2_rule_results")
 
-  slug  = models.SlugField(max_length=16, default='', blank=True, editable=False)
-  rule  = models.ForeignKey(Rule, on_delete=models.SET_NULL, null=True, default=None)
-  
-  pages_violation    = models.IntegerField(default=0)
-  pages_warning      = models.IntegerField(default=0)
-  pages_manual_check = models.IntegerField(default=0)
-  pages_passed       = models.IntegerField(default=0)
-  pages_na           = models.IntegerField(default=0)
-
-  pages_with_hidden_content  = models.IntegerField(default=0)
-
   def save(self):
-  
+
     if self.slug == '':
         self.slug = self.rule.nls_rule_id
-      
-    super(AuditGroup2RuleResult, self).save() # Call the "real" save() method. 
+
+    super(AuditGroup2RuleResult, self).save() # Call the "real" save() method.
 

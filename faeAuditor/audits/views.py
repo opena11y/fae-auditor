@@ -21,7 +21,7 @@ Author: Jon Gunderson
 
 from __future__ import absolute_import
 
-from django.http import HttpResponse 
+from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.shortcuts import redirect
@@ -35,8 +35,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .uid import generate
 
 from django.views.generic import TemplateView
-from django.views.generic import CreateView 
-from django.views.generic import FormView 
+from django.views.generic import CreateView
+from django.views.generic import FormView
 from django.views.generic import RedirectView
 
 from django.contrib.auth.models import User
@@ -77,8 +77,8 @@ class AuditsView(LoginRequiredMixin, TemplateView):
 
         context['audits']       = audits
         context['user_profile']  = user_profile
-        
-        return context            
+
+        return context
 
 class AuditView(LoginRequiredMixin, TemplateView):
     template_name = 'audits/audit.html'
@@ -94,8 +94,8 @@ class AuditView(LoginRequiredMixin, TemplateView):
 
         context['audit']         = audit
         context['user_profile']  = user_profile
-        
-        return context              
+
+        return context
 
 class RunView(LoginRequiredMixin, CreateView):
 
@@ -109,7 +109,7 @@ class RunView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         user     = self.request.user
-        audit_id = self.kwargs.get('audit_id', None) 
+        audit_id = self.kwargs.get('audit_id', None)
         audit = Audit.objects.get(id=audit_id)
 
         form.instance.user = self.request.user
@@ -118,27 +118,25 @@ class RunView(LoginRequiredMixin, CreateView):
 
         form.instance.user = user
         form.instance.slug = generate()
-        form.instance.audit = audit        
+        form.instance.audit = audit
         form.instance.browser_emulation = audit.browser_emulation
-
-        print("Valid")
 
         return super(RunView, self).form_valid(form)
 
     def form_invalid(self, form):
 
         user     = self.request.user
-        audit_id = self.kwargs.get('audit_id', None) 
+        audit_id = self.kwargs.get('audit_id', None)
 
         print("Invalid")
 
         return super(RunView, self).form_invalid(form)
-  
+
     def get_context_data(self, **kwargs):
         context = super(RunView, self).get_context_data(**kwargs)
 
         user     = self.request.user
-        audit_id = self.kwargs.get('audit_id', None) 
+        audit_id = self.kwargs.get('audit_id', None)
 
         user_profile = UserProfile.objects.get(user=user)
         audit = Audit.objects.get(user=user, id=audit_id)
@@ -146,7 +144,7 @@ class RunView(LoginRequiredMixin, CreateView):
         context['audit'] = audit
         context['user_profile'] = user_profile
 
-        return context              
+        return context
 
 class ProcessingView(LoginRequiredMixin, TemplateView):
     template_name = 'audits/processing.html'
@@ -159,6 +157,6 @@ class ProcessingView(LoginRequiredMixin, TemplateView):
         user_profile = UserProfile.objects.get(user=self.request.user)
         context['audit_results_processing'] = audit_results.exclude(status='C').exclude(status='E').exclude(status='SUM').order_by('-created')
         context['audit_results_complete']   = audit_results.filter(status='C').order_by('-created')[:2]
-        
-        return context    
+
+        return context
 

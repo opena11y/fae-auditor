@@ -82,7 +82,7 @@ def debug(s):
 
 def info(s):
   if INFO and log:
-    try: 
+    try:
       log.write('[PROC_EVAL_REQ][INFO]: ' + str(s) + '\n')
       log.flush()
       print('[PROC_EVAL_REQ][INFO]: ' + str(s))
@@ -90,7 +90,7 @@ def info(s):
       log.write('[PROC_EVAL_REQ][INFO]: error in string "s" \n')
       log.flush()
       print('[PROC_EVAL_REQ][INFO]: error in string "s" \n')
-      
+
 
 def error(s):
   if log:
@@ -100,7 +100,7 @@ def error(s):
     except:
       log.write('[PROC_EVAL_REQ][**ERROR]: error in string "s" \n')
       log.flush()
-      
+
 
 def init_oaa_script_file():
   f = open(fae_util_path + '/openajax_a11y/scripts.txt', 'w')
@@ -113,103 +113,130 @@ def init_oaa_script_file():
 def init_audit_result(audit_result):
 
     def get_audit_group_result(group_item):
-      print("[AudtResult][init_results][get_audit_group_result](self): " + str(self))
       print("[AudtResult][init_results][get_audit_group_result](group_item): " + str(group_item))
 
       try:
-        print("[AudtResult][init_results][get_audit_group_result]: A")
-        agr = AuditGroupResult.objects.get(audit_result=self, group_item=group_item)
-        print("[AudtResult][init_results][get_audit_group_result]: B")
-      except:  
-        print("[AudtResult][init_results][get_audit_group_result]: C")
-        agr = AuditGroupResult(audit_result=self, group_item=group_item)
-        print("[AudtResult][init_results][get_audit_group_result]: D")
+        agr = AuditGroupResult.objects.get(audit_result=audit_result, group_item=group_item)
+      except:
+        agr = AuditGroupResult(audit_result=audit_result, group_item=group_item, slug=group_item.slug)
         agr.save()
-        print("[AudtResult][init_results][get_audit_group_result]: E" )
 
-      return agr  
+      print("[AudtResult][init_results][get_audit_group_result](agr): " + str(agr))
+      return agr
 
     def get_audit_group2_result(group_result, group2_item):
+      print("[AudtResult][init_results][get_audit_group2_result](group2_item): " + str(group2_item.title))
 
       try:
-        ag2r = AuditGroup2Result.objects.get(group_result=group_results, group2_item=group2_item)
-      except:  
-        ag2r = AuditGroup2Result(group_result=gr, group_item=g)
+        ag2r = AuditGroup2Result.objects.get(group_result=group_result, group2_item=group2_item)
+      except:
+        ag2r = AuditGroup2Result(group_result=group_result, group2_item=group2_item, slug=group2_item.slug)
         ag2r.save()
 
-      return ag2r  
+      print("[AudtResult][init_results][get_audit_group2_result](ag2r): " + str(ag2r))
+      return ag2r
 
+    def get_website_result(website, group_result, group2_result):
+      print("[AudtResult][init_results][get_website_result] ================")
+
+      print("       slug: " + website.slug)
+      print("        url: " + website.url)
+      print("      title: " + website.title)
+      print("     follow: " + str(audit_result.follow))
+      print("      depth: " + str(audit_result.depth))
+      print("        max: " + str(audit_result.max_pages))
+      print("    ruleset: " + str(audit_result.ruleset))
+      print("    browser: " + str(audit_result.browser_emulation))
+      print("       wait: " + str(audit_result.wait_time))
+      print("sub domains: " + str(website.span_sub_domains))
+      print("    exclude: " + str(website.exclude_sub_domains))
+      print("    include: " + str(website.include_domains))
+      print("         ar: " + str(audit_result))
+      print("        agr: " + str(group_result))
+      print("       ag2r: " + str(group2_result))
+
+      try:
+        wsr = WebsiteResult.objects.get(slug=website.slug, audit_result=audit_result, group_result=group_result, group2_result=group2_result)
+      except:
+        try:
+          wsr = WebsiteResult(slug=website.slug,
+                            url=website.url,
+                            title=website.title,
+                            follow=audit_result.follow,
+                            depth=audit_result.depth,
+                            max_pages=audit_result.max_pages,
+                            ruleset=audit_result.ruleset,
+                            browser_emulation=audit_result.browser_emulation,
+                            wait_time=audit_result.wait_time,
+                            span_sub_domains=website.span_sub_domains,
+                            exclude_sub_domains=website.exclude_sub_domains,
+                            include_domains=website.include_domains,
+                            audit_result=audit_result,
+                            group_result=group_result,
+                            group2_result=group2_result)
+          wsr.save()
+        except:
+          print("Unexpected error:", str(sys.exc_info()))
+
+      print("[AudtResult][init_results][get_website_result](wsr): " + str(wsr))
+      return wsr
 
 
     audit = audit_result.audit
 
     print("[init_audit_results]: " + str(audit))
-  
+
     if audit:
 
       try:
 
         for ws in audit.websites.all():
 
-          print("[AudtResult][init_results] ------------- ")
-          print("[AudtResult][init_results]: " + str(ws))
-          print("[AudtResult][init_results]: " + str(ws.group_item))
-          print("[AudtResult][init_results]: " + str(ws.group2_item))
-
           if ws.group_item:
-            print("[AudtResult][init_results]: A")
             agr = get_audit_group_result(ws.group_item)
-            print("[AudtResult][init_results]: B")
 
             if ws.group2_item:
-              print("[AudtResult][init_results]: C")
               ag2r = get_audit_group2_result(agr, ws.group2_item)
-              print("[AudtResult][init_results]: D")
 
-              wsr = websiteResult(audit_result=self, group_result=agr, group2_result=ag2r)
-              print("[AudtResult][init_results]: E")
+              wsr = get_website_result(ws, agr, ag2r)
             else:
-              print("[AudtResult][init_results]: F")
-              wsr = websiteResult(audit_result=self, group_result=agr)
-              print("[AudtResult][init_results]: G")
+              wsr = get_website_result(ws, agr, None)
 
-          else:    
-            print("[AudtResult][init_results]: H")
-            wsr = websiteResult(audit_result=self)
-            print("[AudtResult][init_results]: I")
-          
-          print("[AudtResult][init_results]: " + str(wsr))
+          else:
+            wsr = get_website_result(ws, None, None)
 
-          wsr.save()    
+          print("[AudtResult][init_results][wsr]: " + str(wsr))
 
       except:
-        pass    
+        pass
 
+    audit_result.status = "I"
+    audit_result.save()
 
 def initWebsiteResult(ws_report):
 
-  data_dir       = ws_report.data_directory 
+  data_dir       = ws_report.data_directory
   data_prop_file = ws_report.data_property_file
   data_auth_file = ws_report.data_authorization_file
   data_urls_file = ws_report.data_multiple_urls_file
-  
+
   if os.path.exists(data_dir):
      shutil.rmtree(data_dir)
-          
+
   os.makedirs(data_dir)
-          
+
   file_prop = open(data_prop_file, 'w')
 
-  if len(data_urls_file) > 0:  
+  if len(data_urls_file) > 0:
     file_prop.write("multipleUrls=" + data_urls_file + '\n')
-  else:    
+  else:
     file_prop.write("url=" + ws_report.url + '\n')
 
-#  if len(data_auth_file) > 0:  
-#    file_prop.write("authorization=" +  data_auth_file + '\n')     
-  
+#  if len(data_auth_file) > 0:
+#    file_prop.write("authorization=" +  data_auth_file + '\n')
+
   file_prop.write('recommendedRules=true\n');
-  
+
   file_prop.write('depth='   + str(ws_report.depth) + '\n')
   file_prop.write('ruleset=' + ws_report.ruleset.ruleset_id + '\n')
   if ws_report.max_pages > 0:
@@ -217,8 +244,8 @@ def initWebsiteResult(ws_report):
 
   file_prop.write('wait='    + str(ws_report.wait_time) + '\n')
 
-  file_prop.write("spanDomains="    + ws_report.span_sub_domains    + '\n') 
-  file_prop.write("excludeDomains=" + ws_report.exclude_sub_domains + '\n') 
+  file_prop.write("spanDomains="    + ws_report.span_sub_domains    + '\n')
+  file_prop.write("excludeDomains=" + ws_report.exclude_sub_domains + '\n')
   file_prop.write("includeDomains=" + ws_report.include_domains     + '\n')
 
   file_prop.write("outputDirectory=" + ws_report.data_directory + '/data' + '\n')
@@ -231,21 +258,21 @@ def initWebsiteResult(ws_report):
   file_prop.write("exportOption=true\n")
 
   file_prop.close()
-  
-  if len(data_auth_file) > 0:  
+
+  if len(data_auth_file) > 0:
     file_auth = open(data_auth_file, 'w')
     file_auth.write('<?xml version="1.0" encoding="UTF-8"?>' + '\n')
-    file_auth.write('<authorizations>' + '\n') 
-    file_auth.write(ws_report.authorization.replace('\r', ''))    
-    file_auth.write('</authorizations>' + '\n') 
+    file_auth.write('<authorizations>' + '\n')
+    file_auth.write(ws_report.authorization.replace('\r', ''))
+    file_auth.write('</authorizations>' + '\n')
     file_auth.close()
 
-  if len(data_urls_file) > 0:  
+  if len(data_urls_file) > 0:
     file_ws_urls = open(data_urls_file, 'w')
     for ws_url in ws_report.ws_eval_urls.all():
       if ws_url.valid:
-        file_ws_urls.write(ws_url.url + '\n')    
-      
+        file_ws_urls.write(ws_url.url + '\n')
+
     file_ws_urls.close()
 
   return
@@ -257,10 +284,10 @@ def analyzeWebsiteResult(ws_report, log):
     try:
       with open(fname) as f:
         return len(f.readlines())
-      return 0      
+      return 0
     except:
       error("Error opening: " + fname)
-      return 0    
+      return 0
 
   start = time.time()
 
@@ -274,19 +301,19 @@ def analyzeWebsiteResult(ws_report, log):
     cmd.append('-a')
     cmd.append(ws_report.data_authorization_file)
 
-  proc = subprocess.call(cmd, stdout=log)      
-        
+  proc = subprocess.call(cmd, stdout=log)
+
   page_count = countResultFiles(ws_report.data_directory + '/data')
 
   ave_time = "{:10.4f}".format(time.time()-start) + " seconds (0 pages)"
   if page_count > 0:
     if page_count == 1:
       ave_time = "{:10.4f}".format(time.time()-start) + " seconds/page (1 page)"
-    else:  
+    else:
       ave_time = "{:10.4f}".format((time.time()-start)/page_count) + " seconds/page (" + str(page_count) + " pages)"
-  
+
   info("  Pages analyzed: " + str(page_count))
-  info('Average processing time per page: ' + ave_time) 
+  info('Average processing time per page: ' + ave_time)
 
 class faeUtilThread(threading.Thread):
 
@@ -323,24 +350,24 @@ def main(argv):
 
   loop = True
 
-  while loop:  
+  while loop:
 
     audit_result = AuditResult.objects.filter(status="-").first()
 
     if audit_result:
       init_audit_result(audit_result)
 
-    website_results = WebsiteResult.objects.filter(status="-")
+    ws_created = WebsiteResult.objects.filter(status="-")
 
-    init_count = len(website_results)
+    created_count = len(ws_created)
 
     ws_analyzing = WebsiteResult.objects.filter(status="A")
     ws_saving    = WebsiteResult.objects.filter(status="S")
 
     processing_count = len(ws_analyzing) + len(ws_saving)
 
-    if init_count and processing_count <= PROCESSING_THREADS:
-      ws_report = ws_reports[0]
+    if created_count and processing_count <= PROCESSING_THREADS:
+      ws_report = ws_created[0]
 
       # if no arguements use threading
       if len(argv) == 0:
@@ -363,20 +390,20 @@ def main(argv):
         ws_report.set_status_saving()
         saveResultsToDjango(ws_report, log)
 
-        log.close()         
+        log.close()
 
       message_flag = True
     else:
       if message_flag:
         info("No report requests pending... ")
-        info("Reports waiting: " + str(init_count))
+        info("Reports waiting: " + str(created_count))
         info("Reports running: " + str(processing_count))
         message_flag = False
 
       time.sleep(1)
 
     if len(argv):
-      loop = False  
-          
+      loop = False
+
 if __name__ == "__main__":
   main(sys.argv[1:])

@@ -42,9 +42,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'faeAuditor.settings')
 django.setup()
 
 
-from save_website_results_sql import saveResultsToDjango
-
-from websiteResults.models import WebsiteResult
+from auditResults.models import AuditResult
 
 from faeAuditor.settings import APP_DIR
 
@@ -52,33 +50,17 @@ from faeAuditor.settings import APP_DIR
 
 log = sys.stdout
 
-all = True
-
 def main():
 
-  message_flag = True
 
-  ws_reports = WebsiteResult.objects.all()
+  audit_results = AuditResult.objects.all()
 
-  for ws_report in ws_reports:
+  for audit_result in audit_results:
+    audit_result.status = 'A'
+    audit_result.save()
+    audit_result.audit_rule_results.all().delete()
+    audit_result.check_if_audit_result_complete()
 
-    # Removed any previous database relationships
-    ws_report.processed_urls.all().delete()
-    ws_report.unprocessed_urls.all().delete()
-    ws_report.filtered_urls.all().delete()
-    ws_report.filtered_urls.all().delete()
-
-    ws_report.page_all_results.all().delete()
-
-    ws_report.ws_gl_results.all().delete()
-    ws_report.ws_rc_results.all().delete()
-    ws_report.ws_rs_results.all().delete()
-    ws_report.ws_rule_results.all().delete()
-
-    if all or ws_report == ws_reports[0]:
-      saveResultsToDjango(ws_report, log)
-    else:
-      break
 
 if __name__ == "__main__":
   main()

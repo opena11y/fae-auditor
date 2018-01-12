@@ -50,6 +50,8 @@ public class URLProcessor {
 	private Vector<String> maxPageUrls = new Vector<String>();
 	public static Vector<String> m_loginSuccessURLs = new Vector<String>();
 	public static Vector<String> m_loginFailURLs = new Vector<String>();
+	public static String excludedURLParent;
+	public static boolean more_urls;
 
 	// ==========================================================================
 	// ==========================================================================
@@ -88,13 +90,29 @@ public class URLProcessor {
 		// }
 		// }
 		int maxPage = 0;
-		if(faeUtil.m_ctrl.MAX_PAGES.length() > 0){
+		if (faeUtil.m_ctrl.MAX_PAGES.length() > 0) {
 			maxPage = Integer.parseInt(faeUtil.m_ctrl.MAX_PAGES);
 		}
 		if (pageCount < maxPage && !maxPageUrls.contains(url)) {
+			if (faeUtil.m_ctrl.PATH != null
+					&& !faeUtil.m_ctrl.PATH.toString().isEmpty()) {
+				if (pageCount > 0
+						&& url.length() > urlFrom.length()
+						&& urlFrom.substring(0, urlFrom.length() - 1).equals(
+								url.substring(0, urlFrom.length() - 1))) {
+					subTraverseURL(faeUtil, urlFrom, url, depth, baseURL);
+				} else {
+					if (pageCount == 0) {
+						subTraverseURL(faeUtil, urlFrom, url, depth, baseURL);
+					}
+				}
+			} else {
 				subTraverseURL(faeUtil, urlFrom, url, depth, baseURL);
-		}else if(maxPage == 0){
+			}
+		} else if (maxPage == 0) {
 			subTraverseURL(faeUtil, urlFrom, url, depth, baseURL);
+		} else if (pageCount == maxPage) {
+			more_urls = true;
 		}
 	}
 
@@ -112,6 +130,10 @@ public class URLProcessor {
 
 		if (authorizationUrlMatch(faeUtil, 0, 0, url))
 			traverseURL(faeUtil, urlFrom, url, depth, baseURL);
+
+		// if (pageCount > 0 && baseURL.length() > urlFrom.length() &&
+		// urlFrom.substring(0, urlFrom.length() -
+		// 1).equals(baseURL.substring(0, urlFrom.length() - 1))){
 
 		URLProcessor processor = new URLProcessor();
 		// process the URL - read page, find events, evaluate script, find links
@@ -132,26 +154,71 @@ public class URLProcessor {
 				// transform the found link into a true URL and get newBase for
 				// URL
 				String newBase = baseURL;
-				if (link.startsWith("http")) {
-					faeUtil.debug(urlNum + ":" + cnt + ": depth:" + depth
-							+ ": found " + link);
-					newBase = link;
-				} else {
-					faeUtil.debug(urlNum + ":" + cnt + ": depth:" + depth
-							+ ": found1 " + link);
-					if (link.startsWith("/")) {
-						if (baseURL.endsWith("/"))
-							link = baseURL.toString() + link.substring(1);
-						else
-							link = baseURL.toString() + link;
-					} else {
-						if (baseURL.endsWith("/"))
-							link = baseURL.toString() + link;
-						else
-							link = baseURL.toString() + "/" + link;
+				if (faeUtil.m_ctrl.PATH != null
+						&& !faeUtil.m_ctrl.PATH.toString().isEmpty()) {
+					//TODO need to add starts with path logic, need to discuss with Jon first
+					
+					if (link.startsWith(baseURL + faeUtil.m_ctrl.PATH)) {
+						faeUtil.debug(urlNum + ":" + cnt + ": depth:" + depth
+								+ ": found " + link);
+						newBase = link;
+					} else if (!link.startsWith("http") && !link.contains("www")) {
+						faeUtil.debug(urlNum + ":" + cnt + ": depth:" + depth
+								+ ": found1 " + link);
+						if (link.startsWith("/")) {
+							if (baseURL.endsWith("/")){
+								if (link.contains(faeUtil.m_ctrl.PATH)) {
+									link = baseURL.toString() + link.substring(1);
+								}else {
+									link = baseURL.toString() + faeUtil.m_ctrl.PATH + link;
+								}
+							} else {
+								if (link.contains(faeUtil.m_ctrl.PATH)) {
+									link = baseURL.toString() + link;
+								}else {
+									link = baseURL.toString() + "/" + faeUtil.m_ctrl.PATH + link;
+								}								
+							}
+						} else {
+							if (baseURL.endsWith("/")) {
+								if (link.contains(faeUtil.m_ctrl.PATH)) {
+									link = baseURL.toString() + link;
+								}else {
+									link = baseURL.toString() + faeUtil.m_ctrl.PATH + "/" + link;
+								}
+							} else {								
+								if (link.contains(faeUtil.m_ctrl.PATH)) {
+									link = baseURL.toString() + "/" + link;
+								}else {
+									link = baseURL.toString() + "/" + faeUtil.m_ctrl.PATH + "/" + link;
+								}
+							}
+						}
+						faeUtil.debug(urlNum + ":" + cnt + ": depth:" + depth
+								+ ": found2 " + link);
 					}
-					faeUtil.debug(urlNum + ":" + cnt + ": depth:" + depth
-							+ ": found2 " + link);
+				} else {
+					if (link.startsWith("http")) {
+						faeUtil.debug(urlNum + ":" + cnt + ": depth:" + depth
+								+ ": found " + link);
+						newBase = link;
+					} else {
+						faeUtil.debug(urlNum + ":" + cnt + ": depth:" + depth
+								+ ": found1 " + link);
+						if (link.startsWith("/")) {
+							if (baseURL.endsWith("/"))
+								link = baseURL.toString() + link.substring(1);
+							else
+								link = baseURL.toString() + link;
+						} else {
+							if (baseURL.endsWith("/"))
+								link = baseURL.toString() + link;
+							else
+								link = baseURL.toString() + "/" + link;
+						}
+						faeUtil.debug(urlNum + ":" + cnt + ": depth:" + depth
+								+ ": found2 " + link);
+					}
 				}
 
 				// match URL and traverse
@@ -496,14 +563,19 @@ public class URLProcessor {
 					}
 					if (url.indexOf(tok + "/") != -1) {
 						URL t = new URL(url);
-						String prefix = t.getHost().substring(0,
-								t.getHost().indexOf(tok));
-						// System.out.println(prefix);
-						// count number of periods
-						int num = countOccurrences(prefix, '.');
-						// System.out.println(num);
-						if (num == 0 || num == 1) {
-							match = true;
+						if (t.getHost().indexOf(tok) != -1){
+							String prefix = t.getHost().substring(0,
+									t.getHost().indexOf(tok));
+							// System.out.println(prefix);
+							// count number of periods
+							int num = countOccurrences(prefix, '.');
+							// System.out.println(num);
+							if (num == 0 || num == 1) {
+								match = true;
+								break;
+							}
+						} else {
+							match = false;
 							break;
 						}
 					}
@@ -549,19 +621,21 @@ public class URLProcessor {
 			// check includeDomains
 			// System.out.println(Controller.INCLUDE_DOMAINS);
 			if (faeUtil.m_ctrl.INCLUDE_DOMAINS != null) {
-				StringTokenizer st = new StringTokenizer(
-						faeUtil.m_ctrl.INCLUDE_DOMAINS, ",");
-				while (st.hasMoreTokens()) {
-					String tok = st.nextToken();
-					// System.out.println(tok);
-					if (url.indexOf("/" + tok + "/") != -1) {
-						traverseIt = true;
-						faeUtil.m_filteredURLs.remove(url);
-						String timing = "\"" + url + "\",\"" + urlFrom + "\"";
-						faeUtil.m_filteredURLsCSV.remove(timing);
-						msg = urlNum + ":" + cnt + ": depth:" + depth + ": "
-								+ url + " MATCHES INCLUDE DOMAIN " + tok
-								+ ", PROCESSING";
+				if(count(url,"http") == 1) {
+					StringTokenizer st = new StringTokenizer(
+							faeUtil.m_ctrl.INCLUDE_DOMAINS, ",");
+					while (st.hasMoreTokens()) {
+						String tok = st.nextToken();
+						// System.out.println(tok);
+						if (url.indexOf("/" + tok + "/") != -1) {
+							traverseIt = true;
+							faeUtil.m_filteredURLs.remove(url);
+							String timing = "\"" + url + "\",\"" + urlFrom + "\"";
+							faeUtil.m_filteredURLsCSV.remove(timing);
+							msg = urlNum + ":" + cnt + ": depth:" + depth + ": "
+									+ url + " MATCHES INCLUDE DOMAIN " + tok
+									+ ", PROCESSING";
+						}
 					}
 				}
 			}
@@ -659,7 +733,7 @@ public class URLProcessor {
 						faeUtil.m_unprocessedURLsCSV.add(timing);
 						System.err.println("COULD NOT PROCESS URL: " + url
 								+ ". WAITED " + diff + "ms.");
-						th.stop();
+						th.interrupt();
 						Thread.sleep(3000); // give some time for resources to
 											// clean up
 						break;
@@ -1055,6 +1129,7 @@ public class URLProcessor {
 						m_faeUtil.verbose("\t" + m_urlNum
 								+ ": Looking for links... ");
 						startTime = System.currentTimeMillis();
+						excludedURLParent = m_url;
 						m_faeUtil.findLinks(page, "", m_linksFound);
 						endTime = System.currentTimeMillis();
 						// for (String link : m_linksFound) {
@@ -1094,8 +1169,10 @@ public class URLProcessor {
 							m_faeUtil.verbose("\t" + m_urlNum
 									+ ": Running evaluation scripts... ");
 							startTime = System.currentTimeMillis();
+
 							ScriptResult result = page
 									.executeJavaScript(m_faeUtil.m_evaluationScript);
+
 							// System.out.println("result=>" + result);
 							// System.out.println("result.getJavaScriptResult()=>"
 							// + result.getJavaScriptResult());
@@ -1150,5 +1227,26 @@ public class URLProcessor {
 			m_faeUtil.debug(m_urlNum + ": leaving Processor:run");
 		}
 	}
+	
+	/**
+	   * Count the number of instances of substring within a string.
+	   *
+	   * @param string     String to look for substring in.
+	   * @param substring  Sub-string to look for.
+	   * @return           Count of substrings in string.
+	   */
+	  public static int count(final String string, final String substring)
+	  {
+	     int count = 0;
+	     int idx = 0;
+
+	     while ((idx = string.indexOf(substring, idx)) != -1)
+	     {
+	        idx++;
+	        count++;
+	     }
+
+	     return count;
+	  }
 
 }

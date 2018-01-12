@@ -23,6 +23,11 @@ from __future__ import absolute_import
 
 from django.db import models
 
+from ruleCategories.models import RuleCategory
+from wcag20.models         import Guideline
+from rules.models          import RuleScope
+from rules.models          import Rule
+
 
 # Create your models here.
 
@@ -33,7 +38,7 @@ RESULT_VALUE = {
   'MANUAL_CHECK'   : 3,
   'WARNING'        : 4,
   'VIOLATION'      : 5
-}  
+}
 
 IMPLEMENTATION_STATUS_CHOICES = (
     ('U',   'Undefined'),
@@ -75,6 +80,130 @@ class RuleResult(models.Model):
   class Meta:
         abstract = True
 
+  def set_implementation_status(self, has_manual_checks):
+
+    def set_status(score, label):
+      if self.implementation_score >= 0:
+
+        if score <= self.implementation_score:
+          self.implementation_pass_fail_status = label
+
+        if has_manual_checks:
+          self.implementation_status = label + "-MC"
+
+      if self.implementation_pass_fail_score >= 0:
+
+        if score <= self.implementation_pass_fail_score:
+          self.implementation_pass_fail_status = label
+
+        if has_manual_checks:
+          self.implementation_status = label
+
+    self.implementation_pass_fail_status = 'NA'
+    self.implementation_status = 'NA'
+    set_status(   0, 'NI')
+    set_status(  50, 'PI')
+    set_status(  95, 'AC')
+    set_status( 100, 'C')
+
+# ---------------------------------------------------------------
+#
+# RuleElementResult
+#
+# ---------------------------------------------------------------
+
+class RuleElementResult(RuleResult):
+
+  rule  = models.ForeignKey(Rule, on_delete=models.SET_NULL, null=True, default=None)
+  rule_required  = models.BooleanField(default=False)
+
+  slug  = models.SlugField(max_length=32, default='', blank=True, editable=False)
+
+  elements_violation     = models.BigIntegerField(default=0)
+  elements_warning       = models.BigIntegerField(default=0)
+  elements_mc_identified = models.BigIntegerField(default=0)
+  elements_mc_passed     = models.BigIntegerField(default=0)
+  elements_mc_failed     = models.BigIntegerField(default=0)
+  elements_mc_na         = models.BigIntegerField(default=0)
+  elements_passed        = models.BigIntegerField(default=0)
+  elements_hidden        = models.BigIntegerField(default=0)
+
+  class Meta:
+        abstract = True
+
+  def has_unresolved_manual_checks(self):
+    return self.elements_mc_identified != (self.elements_mc_passed + self.elements_mc_failed + self.elements_mc_na)
+
+  def calculate_implementation(self):
+
+    self.implementation_pass_fail_score = -1
+    self.implementation_score           = -1
+
+    pass_fail_total = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
+    total = self.elements_mc_identified - self.elements_mc_passed - self.elements_mc_failed - self.elements_mc_na
+
+    passed = self.elements_passed+self.elements_mc_passed
+
+    if total > 0:
+      total = pass_fail_total + total
+    else:
+      total = pass_fail_total
+
+    if pass_fail_total:
+      self.implementation_pass_fail_score  =  (100 * passed) / pass_fail_total
+
+    if total:
+      self.implementation_score            =  (100 * passed) / total
+
+    self.set_implementation_status(self.has_unresolved_manual_checks())
+    self.save()
+
+# ---------------------------------------------------------------
+#
+# RuleElementResult
+#
+# ---------------------------------------------------------------
+
+class RuleElementPageResult(RuleElementResult):
+
+  pages_violation    = models.IntegerField(default=0)
+  pages_warning      = models.IntegerField(default=0)
+  pages_manual_check = models.IntegerField(default=0)
+  pages_passed       = models.IntegerField(default=0)
+  pages_na           = models.IntegerField(default=0)
+
+  pages_with_hidden_content  = models.BigIntegerField(default=0)
+
+  class Meta:
+        abstract = True
+
+  def get_page_count_with_results(self):
+    return self.pages_violation + self.pages_warning + self.pages_manual_check + self.pages_passed
+
+  def add_website_rule_result(self, ws_rule_result):
+
+    self.elements_violation     += ws_rule_result.elements_violation
+    self.elements_warning       += ws_rule_result.elements_warning
+    self.elements_mc_identified += ws_rule_result.elements_mc_identified
+    self.elements_mc_passed     += ws_rule_result.elements_mc_passed
+    self.elements_mc_failed     += ws_rule_result.elements_mc_failed
+    self.elements_mc_na         += ws_rule_result.elements_mc_na
+    self.elements_passed        += ws_rule_result.elements_passed
+    self.elements_hidden        += ws_rule_result.elements_hidden
+
+    self.pages_violation    += ws_rule_result.pages_violation
+    self.pages_warning      += ws_rule_result.pages_warning
+    self.pages_manual_check += ws_rule_result.pages_manual_check
+    self.pages_passed       += ws_rule_result.pages_passed
+    self.pages_na           += ws_rule_result.pages_na
+
+    self.pages_with_hidden_content += ws_rule_result.pages_with_hidden_content
+
+    self.calculate_implementation()
+    self.save()
+
+
+
 
 # ---------------------------------------------------------------
 #
@@ -89,9 +218,125 @@ class RuleGroupResult(RuleResult):
   rules_passed       = models.IntegerField(default=0)
   rules_na           = models.IntegerField(default=0)
 
+  has_manual_checks  = models.BooleanField(default=False)
+
   rules_with_hidden_content = models.IntegerField(default=0)
+
+  total_pages                   = models.IntegerField(default=0)
+  implementation_summ           = models.IntegerField(default=0)
+  implementation_pass_fail_summ = models.IntegerField(default=0)
+
 
   class Meta:
         abstract = True
 
+  def reset(self):
+    self.rules_violation    = 0
+    self.rules_warning      = 0
+    self.rules_manual_check = 0
+    self.rules_passed       = 0
+    self.rules_na           = 0
 
+    self.has_manual_checks = False
+
+    self.rules_with_hidden_content = 0
+
+    self.total_pages = 0
+    self.implementation_summ = 0
+    self.implementation_pass_fail_summ = 0
+
+    self.save()
+
+  def add_rule_result(self, rule_result):
+
+    if rule_result.pages_violation > 0:
+      self.rules_violation += 1
+    else:
+      if rule_result.pages_warning > 0:
+        self.rules_warning += 1
+      else:
+        if rule_result.pages_manual_check > 0:
+          self.rules_manual_check += 1
+        else:
+          if rule_result.pages_passed > 0:
+            self.rules_passed += 1
+          else:
+            self.rules_na += 1
+
+    if rule_result.pages_with_hidden_content > 0:
+      self.rules_with_hidden_content += 1
+
+    pc = rule_result.get_page_count_with_results()
+
+    if pc > 0:
+      self.total_pages += pc
+
+      self.implementation_pass_fail_summ += pc * rule_result.implementation_pass_fail_score
+      self.implementation_summ           += pc * rule_result.implementation_score
+
+      self.implementation_pass_fail_score = self.implementation_pass_fail_summ / self.total_pages
+      self.implementation_score           = self.implementation_summ / self.total_pages
+
+      self.has_manual_checks = self.has_manual_checks or rule_result.has_unresolved_manual_checks()
+
+      self.set_implementation_status(self.has_manual_checks)
+
+    self.save()
+
+# ---------------------------------------------------------------
+#
+# AllRuleGroupResult
+#
+# ---------------------------------------------------------------
+
+class AllRuleGroupResult(RuleGroupResult):
+
+  class Meta:
+        abstract = True
+
+  def compute_group_results(self):
+
+      rules = Rule.objects.all()
+      self.reset()
+
+      for rule in rules:
+        ws_results = self.ws_results.filter(status='C')
+
+        group_rule_result = self.get_group_rule_result(rule)
+
+        for ws_result in ws_results:
+#          print('[compute_group_results][ws_result]: ' + ws_result.title)
+
+          try:
+            ws_rule_result = ws_result.ws_rule_results.get(rule=rule)
+          except:
+            continue
+
+          if ws_rule_result:
+            self.add_website_result(ws_rule_result)
+            group_rule_result.add_website_rule_result(ws_rule_result)
+
+
+        self.add_rule_result(group_rule_result)
+
+      for rc in RuleCategory.objects.all():
+        group_rc_result   = self.get_group_rc_result(rc)
+        group_rc_result.reset()
+
+      for gl in Guideline.objects.all():
+        group_gl_result   = self.get_group_gl_result(gl)
+        group_gl_result.reset()
+
+      for scope in RuleScope.objects.all():
+        group_rs_result   = self.get_group_rs_result(scope)
+        group_rs_result.reset()
+
+      for arr in self.get_all_group_rule_results():
+        gr = self.get_group_rc_result(arr.rule.category)
+        gr.add_rule_result(arr)
+
+        gr = self.get_group_gl_result(arr.rule.wcag_primary.guideline)
+        gr.add_rule_result(arr)
+
+        rs = self.get_group_rs_result(arr.rule.scope)
+        rs.add_rule_result(arr)

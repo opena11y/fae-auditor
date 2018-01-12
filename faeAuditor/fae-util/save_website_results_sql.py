@@ -1,5 +1,5 @@
 """
-Copyright 2014-2016 University of Illinois
+Copyright 2014-2018 University of Illinois
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -97,7 +97,7 @@ class RULE_RESULT:
   PASS           = 2
   MANUAL_CHECK   = 3
   WARNING        = 4
-  VIOLATION      = 5    
+  VIOLATION      = 5
 
 DEBUG=False
 INFO=True
@@ -107,8 +107,8 @@ log = False
 
 def debug(s):
   if DEBUG and log:
-    log.write("[SAVE WEBSITE][debug  ]: " + str(s) + "\n")
-    log.flush()  
+#    log.write("[SAVE WEBSITE][debug  ]: " + str(s) + "\n")
+#    log.flush()
     print("[SAVE WEBSITE][debug  ]: " + str(s) + "\n")
 
 
@@ -120,28 +120,29 @@ def info(s):
       print("[SAVE WEBSITE][info   ]: " + str(s) + "\n")
 
 def error(s):
-  if ERROR and log:
-    log.write("[SAVE WEBSITE][**ERROR]: " + str(s) + "\n")
-    log.flush()
-    if DEBUG:
-      print("[SAVE WEBSITE][**ERROR]: " + str(s) + "\n")
+  if DEBUG:
+    print("[SAVE WEBSITE][**ERROR]: " + str(s) + "\n")
+  else:
+    if ERROR and log:
+      log.write("[SAVE WEBSITE][**ERROR]: " + str(s) + "\n")
+      log.flush()
 
 # ---------------------------------------------------------------
 #
 # General utilities for module
 #
 # ---------------------------------------------------------------
-          
+
 def escapeSingleQuotes(str):
-  str1 = str.replace("'", "''") 
-  return str1.replace("%", "XX_")    
+  str1 = str.replace("'", "''")
+  return str1.replace("%", "XX_")
 
 # ---------------------------------------------------------------
 #
 # Rule References
 #
 # ---------------------------------------------------------------
-          
+
 class RuleRef:
 
   def __init__(self, rule_id, rule):
@@ -152,9 +153,9 @@ class RuleRefs:
 
   def __init__(self):
     self.rule_refs = []
-    
+
     rules = Rule.objects.all()
-    
+
     for r in rules:
       rr = RuleRef(r.rule_id, r)
       self.rule_refs.append(rr)
@@ -163,17 +164,17 @@ class RuleRefs:
     for rr in self.rule_refs:
       if rr.rule_id == rule_id:
         return rr.rule
-    
-    return False  
-    
-rule_refs = RuleRefs()       
+
+    return False
+
+rule_refs = RuleRefs()
 
 # ---------------------------------------------------------------
 #
 # Rule Category References
 #
 # ---------------------------------------------------------------
-      
+
 class RuleCategoryRef:
 
   def __init__(self, code, rc):
@@ -184,9 +185,9 @@ class RuleCategoryRefs:
 
   def __init__(self):
     self.rc_refs = []
-    
+
     rule_categories = RuleCategory.objects.all()
-    
+
     for rc in rule_categories:
       rcr = RuleCategoryRef(rc.rule_category_code, rc)
       self.rc_refs.append(rcr)
@@ -195,17 +196,17 @@ class RuleCategoryRefs:
     for rcr in self.rc_refs:
       if rcr.rule_category_code == code:
         return rcr.rule_category
-    
-    return False    
 
-rule_category_refs = RuleCategoryRefs()    
+    return False
+
+rule_category_refs = RuleCategoryRefs()
 
 # ---------------------------------------------------------------
 #
 # Guideline References
 #
 # ---------------------------------------------------------------
-      
+
 class GuidelineRef:
 
   def __init__(self, n, g):
@@ -216,9 +217,9 @@ class GuidelineRefs:
 
   def __init__(self):
     self.guideline_refs = []
-    
+
     guidelines = Guideline.objects.all()
-    
+
     for g in guidelines:
       gr = GuidelineRef(g.number, g)
       self.guideline_refs.append(gr)
@@ -227,17 +228,17 @@ class GuidelineRefs:
     for gr in self.guideline_refs:
       if gr.number == num:
         return gr.guideline
-    
-    return False    
 
-guideline_refs = GuidelineRefs()    
+    return False
+
+guideline_refs = GuidelineRefs()
 
 # ---------------------------------------------------------------
 #
 # Rule Scope References
 #
 # ---------------------------------------------------------------
-      
+
 class RuleScopeRef:
 
   def __init__(self, c, rs):
@@ -248,9 +249,9 @@ class RuleScopeRefs:
 
   def __init__(self):
     self.rs_refs = []
-    
+
     rule_scopes = RuleScope.objects.all()
-    
+
     for rs in rule_scopes:
       rsr = RuleScopeRef(rs.rule_scope_code, rs)
       self.rs_refs.append(rsr)
@@ -259,11 +260,11 @@ class RuleScopeRefs:
     for rsr in self.rs_refs:
       if rsr.rule_scope_code == code:
         return rsr.rule_scope
-    
-    return False    
+
+    return False
 
 
-rule_scope_refs = RuleScopeRefs()      
+rule_scope_refs = RuleScopeRefs()
 
 # ---------------------------------------------------------------
 #
@@ -277,11 +278,11 @@ class DataResult(object):
 
     self.result_value = RULE_RESULT.NOT_APPLICABLE
 
-    self.implementation_pass_fail_score  = -1  
-    self.implementation_pass_fail_status = "U"      
+    self.implementation_pass_fail_score  = -1
+    self.implementation_pass_fail_status = "U"
 
-    self.implementation_score  = -1  
-    self.implementation_status = "U"  
+    self.implementation_score  = -1
+    self.implementation_status = "U"
 
     self.manual_check_status = "NC"
 
@@ -289,13 +290,13 @@ class DataResult(object):
     self.values = []
 
   def addColumnValue(self,c,v):
-#    debug("[DataResult][addColumnValue] " + c + " " + str(v)) 
+#    debug("[DataResult][addColumnValue] " + c + " " + str(v))
     self.cols.append(c)
     self.values.append(v)
 
   def saveToDjango(self, table):
 
-#    debug("[DataResult][saveToDjango] " + table + " " + str(len(self.cols)) + " " + str(len(self.values))) 
+#    debug("[DataResult][saveToDjango] " + table + " " + str(len(self.cols)) + " " + str(len(self.values)))
 
     insert_str = "INSERT INTO \"" + table + "\" ( "
     for col in self.cols:
@@ -309,7 +310,7 @@ class DataResult(object):
     insert_str += ") VALUES ( "
     for v in self.values:
       v = str(v)
-#      debug("[DataResult][saveToDjango] " +  v + " " + str(v.isdigit())) 
+#      debug("[DataResult][saveToDjango] " +  v + " " + str(v.isdigit()))
       if v.isdigit():
         insert_str += v + ", "
       else:
@@ -322,16 +323,16 @@ class DataResult(object):
     insert_str +=  "'" + self.manual_check_status + "'"
     insert_str +=  ")"
 
- #   debug("[DataResult][saveToDjango] " + insert_str) 
-    
+ #   debug("[DataResult][saveToDjango] " + insert_str)
+
     cursor = connection.cursor()
     try:
       cursor.execute(insert_str, [])
     except:
       error("[DataResult][saveToDjango] SQL insert error")
       error("[DataResult][saveToDjango] " + insert_str)
-   
-   
+
+
 
 # ---------------------------------------------------------------
 #
@@ -346,7 +347,7 @@ class DataRuleResult(DataResult):
     super(DataRuleResult,self).__init__()
 
     self.sql_id = False
-  
+
     self.rules_na           = 0
     self.rules_passed       = 0
     self.rules_manual_check = 0
@@ -359,13 +360,13 @@ class DataRuleResult(DataResult):
 
   def saveToDjango(self, table):
 
-#    debug("[DataRuleResult][saveToDjango] " + table + " " + str(len(self.cols)) + " " + str(len(self.values))) 
+#    debug("[DataRuleResult][saveToDjango] " + table + " " + str(len(self.cols)) + " " + str(len(self.values)))
 
-    self.addColumnValue('rules_na', self.rules_na)  
-    self.addColumnValue('rules_passed', self.rules_passed)  
-    self.addColumnValue('rules_manual_check', self.rules_manual_check)  
-    self.addColumnValue('rules_warning', self.rules_warning)  
-    self.addColumnValue('rules_violation', self.rules_violation)  
+    self.addColumnValue('rules_na', self.rules_na)
+    self.addColumnValue('rules_passed', self.rules_passed)
+    self.addColumnValue('rules_manual_check', self.rules_manual_check)
+    self.addColumnValue('rules_warning', self.rules_warning)
+    self.addColumnValue('rules_violation', self.rules_violation)
     self.addColumnValue('rules_with_hidden_content', self.rules_with_hidden_content)
 
     super(DataRuleResult, self).saveToDjango(table)
@@ -381,12 +382,12 @@ class DataRuleResult(DataResult):
     if prr.elements_hidden > 0:
       self.rules_with_hidden_content += 1
 
-    self.addResult(prr) 
+    self.addResult(prr)
 
   def addResult(self, r):
     self.addRuleResult(r)
     self.rule_results.append(r)
-    self.calculateImplementation()  
+    self.calculateImplementation()
 
   def addRuleResult(self, rr):
 
@@ -401,7 +402,7 @@ class DataRuleResult(DataResult):
     elif rr.result_value == RULE_RESULT.WARNING:
       self.rules_warning += 1
     elif rr.result_value == RULE_RESULT.VIOLATION:
-      self.rules_violation += 1   
+      self.rules_violation += 1
 
   def updateRuleResults(self):
 
@@ -417,15 +418,15 @@ class DataRuleResult(DataResult):
 
     self.result_value = RULE_RESULT.NOT_APPLICABLE
 
-    self.implementation_pass_fail_score  = -1  
-    self.implementation_score  = -1  
-    self.implementation_pass_fail_status = "U"      
-    self.implementation_status = "U"      
+    self.implementation_pass_fail_score  = -1
+    self.implementation_score  = -1
+    self.implementation_pass_fail_status = "U"
+    self.implementation_status = "U"
 
     for rr in self.rule_results:
       self.addRuleResult(rr)
 
-    self.calculateImplementation()  
+    self.calculateImplementation()
 
   def calculateImplementation(self):
 
@@ -435,11 +436,11 @@ class DataRuleResult(DataResult):
 
       if count and score <= self.implementation_score:
         if pass_fail_total == 0:
-          self.implementation_status = "MC"  
-        elif count == pass_fail_count:  
+          self.implementation_status = "MC"
+        elif count == pass_fail_count:
           self.implementation_status = label
-        else:    
-          self.implementation_status = label + "-MC"  
+        else:
+          self.implementation_status = label + "-MC"
 
     pass_fail_total = 0
     pass_fail_count = 0
@@ -467,11 +468,11 @@ class DataRuleResult(DataResult):
 
 #    debug("[DataRuleResult][calculateImplementation] 2")
     if pass_fail_count > 0:
-      self.implementation_pass_fail_score = int(round(pass_fail_total / pass_fail_count))   
+      self.implementation_pass_fail_score = int(round(pass_fail_total / pass_fail_count))
 
 #    debug("[DataRuleResult][calculateImplementation] 3")
     if count > 0:
-      self.implementation_score = int(round(total / count))   
+      self.implementation_score = int(round(total / count))
 
     set_status(  0, 'NI')
     set_status( 50, 'PI')
@@ -496,25 +497,25 @@ class DataRuleResult(DataResult):
 # DataPageRuleResult
 #
 # ---------------------------------------------------------------
-   
+
 class DataPageRuleResult(DataResult):
 
   def __init__(self, rr):
     super(DataPageRuleResult, self).__init__()
 
-#    debug("[DataPageRuleResult][__init__] " + rr["rule_id"]) 
-    
+#    debug("[DataPageRuleResult][__init__] " + rr["rule_id"])
+
     self.rule_id               = rr["rule_id"]
     self.slug                  = rule_refs.getRule(rr["rule_id"]).slug
 
-#    debug("[DataPageRuleResult][__init__] A") 
+#    debug("[DataPageRuleResult][__init__] A")
 
     self.rule_required         = rr["rule_required"]
-    
+
     self.rule_category_code    = rr["rule_category_code"]
     self.rule_scope_code       = rr["rule_scope_code"]
     self.guideline_number      = rr["guideline_code"]
-    
+
     self.result_value            = rr["result_value"]
     self.result_message          = rr["result_message"]
 
@@ -528,16 +529,16 @@ class DataPageRuleResult(DataResult):
     self.elements_passed         = rr["elements_passed"]
 
 
-#    debug("[DataPageRuleResult][__init__] B") 
+#    debug("[DataPageRuleResult][__init__] B")
 
     self.element_results_json  = ""
 
     try:
       self.element_results_json  = json.dumps(rr["element_results"])
-    except:   
+    except:
       pass
 
-#    debug("[DataPageRuleResult][__init__] C") 
+#    debug("[DataPageRuleResult][__init__] C")
 
   def __str__(self):
     return "Page Rule Result: " + self.result_value_nls + " (" + self.rule_id + ")"
@@ -550,17 +551,17 @@ class DataPageRuleResult(DataResult):
 
       if total and score <= self.implementation_score:
         if pass_fail_total == 0:
-          self.implementation_status = "MC"  
-        elif total == pass_fail_total:  
+          self.implementation_status = "MC"
+        elif total == pass_fail_total:
           self.implementation_status = label
-        else:    
-          self.implementation_status = label + "-MC"  
+        else:
+          self.implementation_status = label + "-MC"
 
-    self.implementation_pass_fail_score  = -1  
-    self.implementation_score            = -1  
+    self.implementation_pass_fail_score  = -1
+    self.implementation_score            = -1
 
-    self.implementation_pass_fail_status = "NA"  
-    self.implementation_status           = "NA"  
+    self.implementation_pass_fail_status = "NA"
+    self.implementation_status           = "NA"
 
     pass_fail_total = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
 
@@ -589,24 +590,24 @@ class DataPageRuleResult(DataResult):
       self.implementation_status = "C"
 
 
-#    debug("[DataPageRuleResult][calaculate_implementation]           score: " + str(self.implementation_score)) 
+#    debug("[DataPageRuleResult][calaculate_implementation]           score: " + str(self.implementation_score))
 
 
   def saveToDjango(self, data_page_result, page_result, website_rule_result):
-  
+
     r = rule_refs.getRule(self.rule_id)
-#    debug("[DataPageRuleResult][saveToDjango] " + str(r.rule_id)) 
+#    debug("[DataPageRuleResult][saveToDjango] " + str(r.rule_id))
 
     prcr = data_page_result.getPageRuleCategoryResult(self.rule_category_code)
-#    debug("[DataPageRuleResult][saveToDjango] " + str(prcr.sql_id)) 
-    
-    pglr  = data_page_result.getPageGuidelineResult(self.guideline_number)
-#    debug("[DataPageRuleResult][saveToDjango] " + str(pglr.sql_id)) 
-    
-    prsr = data_page_result.getPageRuleScopeResult(self.rule_scope_code)
-#    debug("[DataPageRuleResult][saveToDjango] " + str(prsr.sql_id)) 
+#    debug("[DataPageRuleResult][saveToDjango] " + str(prcr.sql_id))
 
-#    debug("[DataPageRuleResult][saveToDjango] A") 
+    pglr  = data_page_result.getPageGuidelineResult(self.guideline_number)
+#    debug("[DataPageRuleResult][saveToDjango] " + str(pglr.sql_id))
+
+    prsr = data_page_result.getPageRuleScopeResult(self.rule_scope_code)
+#    debug("[DataPageRuleResult][saveToDjango] " + str(prsr.sql_id))
+
+#    debug("[DataPageRuleResult][saveToDjango] A")
 
     self.addColumnValue("rule_id", r.id)
     self.addColumnValue("slug", self.slug)
@@ -617,37 +618,37 @@ class DataPageRuleResult(DataResult):
     self.addColumnValue("page_gl_result_id", pglr.sql_id)
     self.addColumnValue("page_rs_result_id", prsr.sql_id)
     self.addColumnValue("elements_passed", self.elements_passed)
-    self.addColumnValue("elements_violation", self.elements_violation) 
-    self.addColumnValue("elements_warning", self.elements_warning) 
-    self.addColumnValue("elements_mc_identified", self.elements_mc_identified) 
-    self.addColumnValue("elements_mc_failed", 0) 
-    self.addColumnValue("elements_mc_passed", 0) 
-    self.addColumnValue("elements_mc_na", 0) 
+    self.addColumnValue("elements_violation", self.elements_violation)
+    self.addColumnValue("elements_warning", self.elements_warning)
+    self.addColumnValue("elements_mc_identified", self.elements_mc_identified)
+    self.addColumnValue("elements_mc_failed", 0)
+    self.addColumnValue("elements_mc_passed", 0)
+    self.addColumnValue("elements_mc_na", 0)
     self.addColumnValue("elements_hidden", self.elements_hidden)
-    self.addColumnValue("element_results_json", escapeSingleQuotes(str(self.element_results_json))) 
+    self.addColumnValue("element_results_json", escapeSingleQuotes(str(self.element_results_json)))
     self.addColumnValue("result_message" , escapeSingleQuotes(self.result_message))
 
-#    debug("[DataPageRuleResult][saveToDjango] B") 
+#    debug("[DataPageRuleResult][saveToDjango] B")
 
     try:
       super(DataPageRuleResult, self).saveToDjango('pageResults_pageruleresult')
     except:
       error("[DataPageRuleResult][saveToDjango] SQL insert error")
 
-    # for testing only      
+    # for testing only
     try:
       page_rule_result = PageRuleResult.objects.get(page_result=page_result, rule=r)
     except:
       error("[DataPageRuleResult][saveToDjango] SQL select error " + str(r))
 
 #    debug("  found Page Evaluation Rule Result: " + str(page_eval_rule_result.id))
-  
+
 # ---------------------------------------------------------------
 #
 # DataPageRuleCategoryResult
 #
 # ---------------------------------------------------------------
-   
+
 class DataPageRuleCategoryResult(DataRuleResult):
 
   def __init__(self, code):
@@ -662,17 +663,24 @@ class DataPageRuleCategoryResult(DataRuleResult):
     s = "Page RC: "
     s += super(DataPageRuleCategoryResult, self).__str__()
     return s
-      
+
   def saveToDjango(self, page_result, sql_id):
 
-    rc = rule_category_refs.getRuleCategory(self.rule_category_code)  
+    rc = rule_category_refs.getRuleCategory(self.rule_category_code)
 
-#    debug("[DataPageRuleCategoryResult][saveToDjango] " + str(rc)) 
+#    debug("[DataPageRuleCategoryResult][saveToDjango][rc]: " + str(rc))
+#    debug("[DataPageRuleCategoryResult][saveToDjango][sql_id]: " + str(sql_id))
 
     self.addColumnValue("rule_category_id", rc.id)
     self.addColumnValue("page_result_id", page_result.id)
     self.addColumnValue("ws_rc_result_id", sql_id)
     self.addColumnValue("slug", self.slug)
+
+    self.addColumnValue("implementation_pass_fail_summ", "0")
+    self.addColumnValue("implementation_summ", "0")
+    self.addColumnValue("total_pages", "0")
+    self.addColumnValue("has_manual_checks", "false")
+
 
     try:
       super(DataPageRuleCategoryResult, self).saveToDjango('pageResults_pagerulecategoryresult')
@@ -691,7 +699,7 @@ class DataPageRuleCategoryResult(DataRuleResult):
 # DataPageRuleScopeResult
 #
 # ---------------------------------------------------------------
-   
+
 class DataPageRuleScopeResult(DataRuleResult):
 
   def __init__(self, rsc):
@@ -710,14 +718,19 @@ class DataPageRuleScopeResult(DataRuleResult):
 
   def saveToDjango(self, page_result, sql_id):
 
-    rs = rule_scope_refs.getRuleScope(self.rule_scope_code)  
+    rs = rule_scope_refs.getRuleScope(self.rule_scope_code)
 
-#    debug("DataPageRuleScopeResult][saveToDjango] " + str(rs)) 
+#    debug("DataPageRuleScopeResult][saveToDjango] " + str(rs))
 
     self.addColumnValue("rule_scope_id", rs.id)
     self.addColumnValue("page_result_id", page_result.id)
     self.addColumnValue("ws_rs_result_id", sql_id)
     self.addColumnValue("slug", self.slug)
+
+    self.addColumnValue("implementation_pass_fail_summ", "0")
+    self.addColumnValue("implementation_summ", "0")
+    self.addColumnValue("total_pages", "0")
+    self.addColumnValue("has_manual_checks", "false")
 
     try:
       super(DataPageRuleScopeResult, self).saveToDjango('pageResults_pagerulescoperesult')
@@ -737,7 +750,7 @@ class DataPageRuleScopeResult(DataRuleResult):
 # DataPageGuidelineResult
 #
 # ---------------------------------------------------------------
-   
+
 class DataPageGuidelineResult(DataRuleResult):
 
   def __init__(self, num):
@@ -756,14 +769,19 @@ class DataPageGuidelineResult(DataRuleResult):
 
   def saveToDjango(self, page_result, sql_id):
 
-    gl = guideline_refs.getGuideline(self.guideline_number)  
+    gl = guideline_refs.getGuideline(self.guideline_number)
 
-#    debug("[DataPageGuidelineResult][saveToDjango] " + str(gl)) 
+#    debug("[DataPageGuidelineResult][saveToDjango] " + str(gl))
 
     self.addColumnValue("guideline_id", gl.id)
     self.addColumnValue("page_result_id", page_result.id)
     self.addColumnValue("ws_gl_result_id", sql_id)
     self.addColumnValue("slug", self.slug)
+
+    self.addColumnValue("implementation_pass_fail_summ", "0")
+    self.addColumnValue("implementation_summ", "0")
+    self.addColumnValue("total_pages", "0")
+    self.addColumnValue("has_manual_checks", "false")
 
     try:
       super(DataPageGuidelineResult, self).saveToDjango('pageResults_pageguidelineresult')
@@ -775,7 +793,7 @@ class DataPageGuidelineResult(DataRuleResult):
       self.sql_id = str(page_gl_result.id)
     except:
       error("[DataPageGuidelineResult][saveToDjango] SQL select error " + str(gl))
-    
+
  #   debug("  found Page Evaluation Guideline Result: " + str(page_eval_g_result.id))
 
 # ---------------------------------------------------------------
@@ -783,40 +801,40 @@ class DataPageGuidelineResult(DataRuleResult):
 # DataPageResult
 #
 # ---------------------------------------------------------------
-   
+
 class DataPageResult(DataRuleResult):
 
   def __init__(self, wsr, num, url, url_encoded, title, mi):
 
     self.wsr = wsr
-    
+
     self.page_number = num + 1
 
     if len(url) > 4094:
-      self.url  = url[4090:]     
+      self.url  = url[4090:]
     else:
       self.url  = url
-      
+
     if len(url_encoded) > 8190:
-      self.url_encoded  = url[4090:]     
+      self.url_encoded  = url[4090:]
     else:
       self.url_encoded  = url_encoded
-      
+
     if len(title) > 510:
-      self.title = url[510:]     
+      self.title = url[510:]
     else:
       self.title = title
 
     self.page_rule_category_results = []
     self.page_guideline_results     = []
     self.page_rule_scope_results    = []
-    
+
     self.page_rule_results         = []
-    
+
     if mi:
       self.markup_info = PageMarkupInformation(mi, log)
     else:
-      self.markup_info = False   
+      self.markup_info = False
 
     super(DataPageResult, self).__init__()
 
@@ -837,19 +855,19 @@ class DataPageResult(DataRuleResult):
 
 #    debug("[DataPageResult][addPageRuleResult] 3")
 
-    prcr = self.getPageRuleCategoryResult(prr.rule_category_code)     
+    prcr = self.getPageRuleCategoryResult(prr.rule_category_code)
     if prcr:
       prcr.addPageRuleResult(prr)
 
 #    debug("[DataPageResult][addPageRuleResult] 4")
 
-    pgr =  self.getPageGuidelineResult(prr.guideline_number)     
+    pgr =  self.getPageGuidelineResult(prr.guideline_number)
     if pgr:
       pgr.addPageRuleResult(prr)
 
 #    debug("[DataPageResult][addPageRuleResult] 5")
 
-    prsr =  self.getPageRuleScopeResult(prr.rule_scope_code)     
+    prsr =  self.getPageRuleScopeResult(prr.rule_scope_code)
     if prsr:
       prsr.addPageRuleResult(prr)
 
@@ -861,18 +879,18 @@ class DataPageResult(DataRuleResult):
       if prcr.rule_category_code == code:
         return prcr
 
-    prcr = DataPageRuleCategoryResult(code)    
+    prcr = DataPageRuleCategoryResult(code)
     self.page_rule_category_results.append(prcr)
     return prcr
 
 
   def getPageGuidelineResult(self, num):
-  
+
     for pgr in self.page_guideline_results:
       if pgr.guideline_number == num:
         return pgr
 
-    pgr = DataPageGuidelineResult(num)    
+    pgr = DataPageGuidelineResult(num)
     self.page_guideline_results.append(pgr)
     return pgr
 
@@ -883,7 +901,7 @@ class DataPageResult(DataRuleResult):
       if prsr.rule_scope_code == code:
         return prsr
 
-    prsr = DataPageRuleScopeResult(code)    
+    prsr = DataPageRuleScopeResult(code)
     self.page_rule_scope_results.append(prsr)
     return prsr
 
@@ -899,6 +917,11 @@ class DataPageResult(DataRuleResult):
     self.addColumnValue("url_encoded", escapeSingleQuotes(self.url_encoded))
     self.addColumnValue("title", escapeSingleQuotes(self.title))
 
+    self.addColumnValue("implementation_pass_fail_summ", "0")
+    self.addColumnValue("implementation_summ", "0")
+    self.addColumnValue("total_pages", "0")
+    self.addColumnValue("has_manual_checks", "false")
+
 #    debug("[DataPageResult][saveToDango] A ")
 
     try:
@@ -909,34 +932,34 @@ class DataPageResult(DataRuleResult):
     try:
       page_result = PageResult.objects.get(ws_report=ws_report, page_number=self.page_number)
     except:
-      error("[DataPageResult][saveToDango] SQL select error " + self.url)
+      error("[DataPageResult][saveToDango] SQL select error " + str(self.page_number))
 
 #    debug("[DataPageResult][saveToDango] Saving Page Rule Category Results...")
     for prcr in self.page_rule_category_results:
       wsrcr = data_website_result.getWebsiteRuleCategoryResult(prcr.rule_category_code)
-      prcr.saveToDjango(page_result, wsrcr.sql_id) 
+      prcr.saveToDjango(page_result, wsrcr.sql_id)
 
 #    debug("[DataPageResult][saveToDango] Saving Page Guideline Results...")
     for pgr in self.page_guideline_results:
       wsgr = data_website_result.getWebsiteGuidelineResult(pgr.guideline_number)
-      pgr.saveToDjango(page_result, wsgr.sql_id) 
+      pgr.saveToDjango(page_result, wsgr.sql_id)
 
 #    debug("[DataPageResult][saveToDango] Saving Page Rule Scope Results...")
     for prsr in self.page_rule_scope_results:
       wsrsr = data_website_result.getWebsiteRuleScopeResult(prsr.rule_scope_code)
-      prsr.saveToDjango(page_result, wsrsr.sql_id) 
+      prsr.saveToDjango(page_result, wsrsr.sql_id)
 
-#    debug("[DataPageResult][saveToDango] Saving " + str(len(self.rule_results)) + "Page Rule Results..." )
+#    debug("[DataPageResult][saveToDango] Saving " + str(len(self.rule_results)) + " Page Rule Results..." )
     for prr in self.rule_results:
-#      debug("[DataPageResult][saveToDjango] " + str(prr.rule_id)) 
+      debug("[DataPageResult][saveToDjango][prr.rule_id][A]: " + str(prr.rule_id))
       wsrr = data_website_result.getWebsiteRuleResult(prr.rule_id, False)
-#      debug("[DataPageResult][saveToDjango] " + str(wsrr.rule_id)) 
-      prr.saveToDjango(self, page_result, wsrr) 
+      debug("[DataPageResult][saveToDjango][wsrr.rule_id][B]: " + str(wsrr.rule_id))
+      prr.saveToDjango(self, page_result, wsrr)
 
 #    debug("[DataPageResult][saveToDango] Saving Page Markup Information...")
     if self.markup_info:
       self.markup_info.saveToDjango(page_result)
-      
+
 
 
 # ---------------------------------------------------------------
@@ -944,7 +967,7 @@ class DataPageResult(DataRuleResult):
 # WebsiteRuleResult
 #
 # ---------------------------------------------------------------
-        
+
 class DataWebsiteRuleResult(DataResult):
 
   def __init__(self, prr):
@@ -953,17 +976,17 @@ class DataWebsiteRuleResult(DataResult):
 
     self.rule_id = prr.rule_id
     self.slug    = rule_refs.getRule(prr.rule_id).slug
-    
+
     self.rule_required = prr.rule_required
-    
+
     self.rule_category_code = prr.rule_category_code
     self.guideline_number   = prr.guideline_number
     self.rule_scope_code    = prr.rule_scope_code
 
     self.sql_id = False
-     
+
     self.page_count         = 0
-    
+
     self.pages_na           = 0
     self.pages_passed       = 0
     self.pages_manual_check = 0
@@ -981,11 +1004,11 @@ class DataWebsiteRuleResult(DataResult):
     self.elements_hidden         = 0
     self.elements_passed         = 0
 
-    self.page_rule_results = []    
+    self.page_rule_results = []
 
   def __str__(self):
     return "[DataWebsiteRuleResult] " + self.rule_id + " V: %6d W: %6d MC: %6d P: %6d MC: %6d" % (self.rules_violation, self.rules_warning, self.rules_manual_check, self.rules_passed, self.rules_na)
-  
+
   def addPageRuleResult(self, prr):
 
 #    debug("[WebsiteRuleResult][addPageRuleResult]: 1 ")
@@ -1001,9 +1024,9 @@ class DataWebsiteRuleResult(DataResult):
     elif prr.result_value == RULE_RESULT.WARNING:
       self.pages_warning += 1
     elif prr.result_value == RULE_RESULT.VIOLATION:
-      self.pages_violation += 1   
+      self.pages_violation += 1
     else:
-      self.pages_na += 1              
+      self.pages_na += 1
 
     if prr.elements_hidden > 0:
       self.pages_with_hidden_content += 1
@@ -1031,11 +1054,11 @@ class DataWebsiteRuleResult(DataResult):
 
       if total and score <= self.implementation_score:
         if pass_fail_total == 0:
-          self.implementation_status = "MC"  
-        elif total == pass_fail_total:  
+          self.implementation_status = "MC"
+        elif total == pass_fail_total:
           self.implementation_status = label
-        else:    
-          self.implementation_status = label + "-MC"  
+        else:
+          self.implementation_status = label + "-MC"
 
     if self.pages_violation > 0:
       self.result_value = RULE_RESULT.VIOLATION
@@ -1045,12 +1068,12 @@ class DataWebsiteRuleResult(DataResult):
       self.result_value = RULE_RESULT.MANUAL_CHECK
     elif self.pages_passed > 0:
       self.result_value = RULE_RESULT.PASS
-    else:  
+    else:
       self.result_value = RULE_RESULT.NOT_APPLICABLE
 
-    self.implementation_pass_fail_score  = -1  
-    self.implementation_score       = -1  
-    self.implementation_status      = "U"  
+    self.implementation_pass_fail_score  = -1
+    self.implementation_score       = -1
+    self.implementation_status      = "U"
 
     pass_fail_total = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
 
@@ -1059,7 +1082,7 @@ class DataWebsiteRuleResult(DataResult):
       total = pass_fail_total + total
     else:
       total = pass_fail_total
-      
+
     passed = self.elements_passed + self.elements_mc_passed
 
     if pass_fail_total:
@@ -1074,13 +1097,13 @@ class DataWebsiteRuleResult(DataResult):
 
     if (pass_fail_total == passed) and (pass_fail_total > 0):
       self.implementation_pass_fail_status = 'C'
-    elif self.implementation_pass_fail_score > 99: 
+    elif self.implementation_pass_fail_score > 99:
       self.implementation_pass_fail_score = 99
-      
+
     if (total == passed) and (total > 0):
       self.implementation_status = "C"
-    elif self.implementation_score > 99: 
-      self.implementation_score = 99 
+    elif self.implementation_score > 99:
+      self.implementation_score = 99
 
 
 #
@@ -1112,12 +1135,12 @@ class DataWebsiteRuleResult(DataResult):
     self.addColumnValue("pages_na", self.pages_na)
     self.addColumnValue("pages_with_hidden_content", self.pages_with_hidden_content)
 
-    self.addColumnValue("elements_violation", self.elements_violation) 
-    self.addColumnValue("elements_warning", self.elements_warning) 
-    self.addColumnValue("elements_mc_identified", self.elements_mc_identified) 
-    self.addColumnValue("elements_mc_failed", self.elements_mc_failed) 
-    self.addColumnValue("elements_mc_passed", self.elements_mc_passed) 
-    self.addColumnValue("elements_mc_na", self.elements_mc_na) 
+    self.addColumnValue("elements_violation", self.elements_violation)
+    self.addColumnValue("elements_warning", self.elements_warning)
+    self.addColumnValue("elements_mc_identified", self.elements_mc_identified)
+    self.addColumnValue("elements_mc_failed", self.elements_mc_failed)
+    self.addColumnValue("elements_mc_passed", self.elements_mc_passed)
+    self.addColumnValue("elements_mc_na", self.elements_mc_na)
     self.addColumnValue("elements_passed", self.elements_passed)
     self.addColumnValue("elements_hidden", self.elements_hidden)
 
@@ -1160,20 +1183,26 @@ class DataWebsiteRuleCategoryResult(DataRuleResult):
     self.page_rc_results.append(prcr)
 
   def saveToDjango(self, ws_report):
-  
-    rc = rule_category_refs.getRuleCategory(self.rule_category_code) 
+
+    rc = rule_category_refs.getRuleCategory(self.rule_category_code)
 
 
     self.addColumnValue("ws_report_id", ws_report.id)
     self.addColumnValue("rule_category_id", rc.id)
     self.addColumnValue("slug", self.slug)
+    self.addColumnValue("implementation_pass_fail_summ", "0")
+    self.addColumnValue("implementation_summ", "0")
+    self.addColumnValue("total_pages", "0")
+    self.addColumnValue("has_manual_checks", "false")
 
-#    debug("[DataWebsiteRuleCategoryResult][saveToDjango] " + str(rc.category_id)) 
+#    debug("[DataWebsiteRuleCategoryResult][saveToDjango][A][rc.category_id] " + str(rc.category_id))
 
     try:
       super(DataWebsiteRuleCategoryResult, self).saveToDjango("websiteResults_websiterulecategoryresult")
     except:
       error("[DataWebsiteRuleCategoryResult][saveToDjango] SQL insert error ")
+
+#    debug("[DataWebsiteRuleCategoryResult][saveToDjango][B] ")
 
     try:
       ws_rc_result = WebsiteRuleCategoryResult.objects.get(ws_report=ws_report, rule_category=rc)
@@ -1181,7 +1210,9 @@ class DataWebsiteRuleCategoryResult(DataRuleResult):
     except:
       error("[DataWebsiteRuleCategoryResult][saveToDjango] SQL select error")
 
-   
+#    debug("[DataWebsiteRuleCategoryResult][saveToDjango][C][sql_id] " + str(self.sql_id))
+
+
 # -----------------------------------------------------------------------------
 #
 # WebsiteGuidelineResult
@@ -1208,12 +1239,16 @@ class DataWebsiteGuidelineResult(DataRuleResult):
     self.page_gl_results.append(pglr)
 
   def saveToDjango(self, ws_report):
-  
-    gl = guideline_refs.getGuideline(self.guideline_number) 
+
+    gl = guideline_refs.getGuideline(self.guideline_number)
 
     self.addColumnValue("ws_report_id", ws_report.id)
     self.addColumnValue("guideline_id", gl.id)
     self.addColumnValue("slug", self.slug)
+    self.addColumnValue("implementation_pass_fail_summ", "0")
+    self.addColumnValue("implementation_summ", "0")
+    self.addColumnValue("total_pages", "0")
+    self.addColumnValue("has_manual_checks", "false")
 
     try:
       super(DataWebsiteGuidelineResult, self).saveToDjango("websiteResults_websiteguidelineresult")
@@ -1222,12 +1257,12 @@ class DataWebsiteGuidelineResult(DataRuleResult):
 
     try:
       ws_eval_gl_result = WebsiteGuidelineResult.objects.get(ws_report=ws_report, guideline=gl)
-      self.sql_id = str(ws_eval_gl_result.id) 
+      self.sql_id = str(ws_eval_gl_result.id)
     except:
       error("[DataWebsiteGuidelineResult][saveToDjango] SQL select error: " + str(guideline))
 
 #    debug("  Found Website Evaluation Guideline Result: " + str(ws_eval_g_result.id))
-   
+
 # ---------------------------------------------------------------
 #
 # WebsiteRuleScopeResult
@@ -1252,14 +1287,18 @@ class DataWebsiteRuleScopeResult(DataRuleResult):
 
   def addPageRuleScopeResult(self, prsr):
     self.page_rs_results.append(prsr)
-        
+
   def saveToDjango(self, ws_report):
 
-    rs = rule_scope_refs.getRuleScope(self.rule_scope_code) 
+    rs = rule_scope_refs.getRuleScope(self.rule_scope_code)
 
     self.addColumnValue("ws_report_id", ws_report.id)
     self.addColumnValue("rule_scope_id", rs.id)
     self.addColumnValue("slug", rs.slug)
+    self.addColumnValue("implementation_pass_fail_summ", "0")
+    self.addColumnValue("implementation_summ", "0")
+    self.addColumnValue("total_pages", "0")
+    self.addColumnValue("has_manual_checks", "false")
 
     try:
       super(DataWebsiteRuleScopeResult, self).saveToDjango("websiteResults_websiterulescoperesult")
@@ -1268,7 +1307,7 @@ class DataWebsiteRuleScopeResult(DataRuleResult):
 
     try:
       ws_eval_rs_result = WebsiteRuleScopeResult.objects.get(ws_report=ws_report, rule_scope=rs)
-      self.sql_id = str(ws_eval_rs_result.id) 
+      self.sql_id = str(ws_eval_rs_result.id)
     except:
       error("[DataWebsiteRuleScopeResult][saveToDjango] SQL select error: " + str(rs))
 
@@ -1279,18 +1318,18 @@ class DataWebsiteRuleScopeResult(DataRuleResult):
 # WebsiteResult
 #
 # ---------------------------------------------------------------
-   
+
 class DataWebsiteResult(DataRuleResult):
 
   def __init__(self, wsr):
     self.ws_report = wsr
 
     self.page_count         = 0
-    self.page_results = []    
-    
-    self.website_rule_category_results = []    
-    self.website_guideline_results     = []    
-    self.website_rule_scope_results    = []    
+    self.page_results = []
+
+    self.website_rule_category_results = []
+    self.website_guideline_results     = []
+    self.website_rule_scope_results    = []
 
     super(DataWebsiteResult, self).__init__()
 
@@ -1309,15 +1348,17 @@ class DataWebsiteResult(DataRuleResult):
 
       self.page_count  += 1
       self.page_results.append(pr)
-      
+
 #      debug("[DataWebsiteResult][addPageResult]: 1 ")
 
       for prr in pr.rule_results:
+#        debug("[DataWebsiteResult][addPageResult][prr]: "  + prr.rule_id)
         wsrr = self.getWebsiteRuleResult(prr.rule_id, prr)
+#        debug("[DataWebsiteResult][addPageResult][wsrr]: "  + wsrr.rule_id)
         wsrr.addPageRuleResult(prr)
 
 #      debug("[DataWebsiteResult][addPageResult]: 2 " + str(len(pr.page_rule_category_results)))
-        
+
       for prcr in pr.page_rule_category_results:
         wsrcr = self.getWebsiteRuleCategoryResult(prcr.rule_category_code)
         wsrcr.addPageRuleCategoryResult(prcr)
@@ -1331,73 +1372,65 @@ class DataWebsiteResult(DataRuleResult):
         wsglr.updateRuleResults()
 
 #      debug("[DataWebsiteResult][addPageResult]: 4 " + str(len(pr.page_rule_scope_results)))
-        
+
       for prsr in pr.page_rule_scope_results:
         wsrsr = self.getWebsiteRuleScopeResult(prsr.rule_scope_code)
         wsrsr.addPageRuleScopeResult(prsr)
         wsrsr.updateRuleResults()
-      
+
       self.updateRuleResults()
 
     else:
-      info("[DataWebsiteResult][saveToDjango] URL already included in page results: " + pr.url)    
-  
+      debug("[DataWebsiteResult][saveToDjango] URL already included in page results: " + pr.url)
+
 #    debug("[WebsiteResult][addPageResult]: done ")
 
     return
 
   def urlUnique(self, pr_test):
-  
+
     for pr in self.page_results:
       if pr.url == pr_test.url:
         return False
-    
-    return True    
+
+    return True
 
   def getWebsiteRuleResult(self, rule_id, page_rule_result):
- 
-#    debug("[WebsiteResult][getWebsiteRuleResult]: 1")
+
+#    debug("[DataWebsiteResult][getWebsiteRuleResult][page_rule_result]: " + str(rule_id))
 
     for wsrr in self.rule_results:
       if wsrr.rule_id == rule_id:
         return wsrr
 
     if not page_rule_result:
-      return False    
-    
-#    debug("[WebsiteResult][getWebsiteRuleResult]: 2 ")
-        
-    wsrr = DataWebsiteRuleResult(page_rule_result)    
+      return False
+
+    wsrr = DataWebsiteRuleResult(page_rule_result)
     self.rule_results.append(wsrr)
-    
-#    debug("[WebsiteResult][getWebsiteRuleResult]: 3 ")
 
     try:
       wsrcr = self.getWebsiteRuleCategoryResult(page_rule_result.rule_category_code)
       wsrcr.rule_results.append(wsrr)
     except:
-      error("[WebsiteResult][getWebsiteRuleResult]: getting website rule category result " + str(page_rule_result.rule_category_code))
-        
-#    debug("[WebsiteResult][getWebsiteRuleResult]: 4 ")
+      error("[DataWebsiteResult][getWebsiteRuleResult]: getting website rule category result " + str(page_rule_result.rule_category_code))
 
     try:
       wsgr = self.getWebsiteGuidelineResult(page_rule_result.guideline_number)
       wsgr.rule_results.append(wsrr)
     except:
-      error("[WebsiteResult][getWebsiteRuleResult]: getting website guideline result " + str(page_rule_result.guideline_number))
+      error("[DataWebsiteResult][getWebsiteRuleResult]: getting website guideline result " + str(page_rule_result.guideline_number))
 
-#    debug("[WebsiteResult][getWebsiteRuleResult]: 5 ")
-        
     try:
       wsrsr = self.getWebsiteRuleScopeResult(page_rule_result.rule_scope_code)
       wsrsr.rule_results.append(wsrr)
     except:
-      error("[WebsiteResult][getWebsiteRuleResult]: website rule scope result " + str(page_rule_result.rule_scope_code))
-            
-    return wsrr            
-    
+      error("[DataWebsiteResult][getWebsiteRuleResult]: website rule scope result " + str(page_rule_result.rule_scope_code))
+
+    return wsrr
+
   def getWebsiteRuleCategoryResult(self, code):
-  
+
 #    debug("[WebsiteResult][getWebsiteRuleCategoryResult]: 1 ")
 
     for wsrcr in self.website_rule_category_results:
@@ -1405,10 +1438,10 @@ class DataWebsiteResult(DataRuleResult):
         return wsrcr
 
 #    debug("[WebsiteResult][getWebsiteRuleCategoryResult]: 2 ")
-        
-    wsrcr = DataWebsiteRuleCategoryResult(code)    
+
+    wsrcr = DataWebsiteRuleCategoryResult(code)
     self.website_rule_category_results.append(wsrcr)
-    return wsrcr      
+    return wsrcr
 
   def getWebsiteGuidelineResult(self, num):
 
@@ -1419,13 +1452,13 @@ class DataWebsiteResult(DataRuleResult):
         return wsgr
 
 #    debug("[WebsiteResult][getWebsiteGuidelineResult]: 2 ")
-        
-    wsgr = DataWebsiteGuidelineResult(num)    
+
+    wsgr = DataWebsiteGuidelineResult(num)
     self.website_guideline_results.append(wsgr)
-    return wsgr      
+    return wsgr
 
   def getWebsiteRuleScopeResult(self, code):
-  
+
 #    debug("[WebsiteResult][getWebsiteRuleScopeResult]: 1 ")
 
     for wsrsr in self.website_rule_scope_results:
@@ -1433,23 +1466,22 @@ class DataWebsiteResult(DataRuleResult):
         return wsrsr
 
 #    debug("[WebsiteResult][getWebsiteRuleScopeResult]: 2 ")
-        
-    wsrsr = DataWebsiteRuleScopeResult(code)    
+
+    wsrsr = DataWebsiteRuleScopeResult(code)
     self.website_rule_scope_results.append(wsrsr)
-    return wsrsr      
+    return wsrsr
 
 
   def saveToDjango(self):
 
     if (self.ws_report):
       try:
-        
+
         start = time.time()
-        info("========================================================")
-        info("[WebsiteResult][saveToDjango] " + str(self.ws_report))
+        info("Report Title:  " + str(self.ws_report.title))
 
         wsr = self.ws_report
-           
+
         try:
           wsr.rules_violation     = self.rules_violation
           wsr.rules_warning       = self.rules_warning
@@ -1470,80 +1502,81 @@ class DataWebsiteResult(DataRuleResult):
           wsr.save()
 
         except:
-          error("[WebsiteResult][saveToDjango]: website result") 
+          error("[WebsiteResult][saveToDjango]: website result")
           exit()
 
-        info("[WebsiteResult][saveToDjango]: Saving Rule Category Results")
+        info("Saving Rule Category Results")
 
         for wsrcr in self.website_rule_category_results:
           try:
             wsrcr.saveToDjango(self.ws_report)
           except:
-            error("[WebsiteResult][saveToDjango]: website rc result") 
+            error("[WebsiteResult][saveToDjango]: website rc result")
 
-        info("[WebsiteResult][saveToDjango]: Saving Guideline Results")    
+        info("Saving Guideline Results")
 
         for wsgr in self.website_guideline_results:
           try:
-            wsgr.saveToDjango(self.ws_report)  
+            wsgr.saveToDjango(self.ws_report)
           except:
-            error("[WebsiteResult][saveToDjango]: website gl result") 
+            error("[WebsiteResult][saveToDjango]: website gl result")
 
-        info("[WebsiteResult][saveToDjango]: Saving Rule Scope Results")    
+        info("Saving Rule Scope Results")
 
         for wsrsr in self.website_rule_scope_results:
           try:
-            wsrsr.saveToDjango(self.ws_report)  
+            wsrsr.saveToDjango(self.ws_report)
           except:
-            error("[WebsiteResult][saveToDjango]: website rs result") 
+            error("[WebsiteResult][saveToDjango]: website rs result")
 
-        info("[WebsiteResult][saveToDjango]: Saving Rule Results")    
+        info("Saving Rule Results")
 
         for wsrr in self.rule_results:
           try:
-            wsrr.saveToDjango(self, wsr)  
+            wsrr.saveToDjango(self, wsr)
           except:
-            error("[WebsiteResult][saveToDjango]: website rule result ") 
+            error("[WebsiteResult][saveToDjango]: website rule result ")
 
-        info("[WebsiteResult][saveToDjango]: Saving Page Results") 
-   
+        info("Saving " + str(len(self.page_results)) + " Page Results")
+
         for pr in self.page_results:
           try:
             pr.saveToDjango(self, self.ws_report)
           except:
-            error("[WebsiteResult][saveToDjango]: page result") 
+            error("[WebsiteResult][saveToDjango]: page result")
 
-        info("[WebsiteResult][saveToDjango]: Done Saving Results") 
-     
+        info("Done Saving Results")
+
       except:
         self.ws_report.set_status_error()
-     
+
       ave_time = "no pages analyzed"
       page_count = len(self.page_results)
       if page_count > 0:
         ave_time = "{:10.4f}".format((time.time()-start)/page_count) + " seconds"
-        
-#      debug('Average time to save a page to the database: ' + ave_time) 
-        
+
+#      debug('Average time to save a page to the database: ' + ave_time)
+
     else:
-      error("Error Website Evaluation Result summary is not defined")    
+      error("Error Website Evaluation Result summary is not defined")
 
 # ---------------------------------------------------------------
 #
 # saveResultsToDjango
 #
 # ---------------------------------------------------------------
-        
+
 def saveResultsToDjango(ws_report, l):
 
-  global log 
+  global log
   log = l
+  first = True
 
   def getPageDataFromJSON(num, data):
-  
+
     pr = DataPageResult(wsr, num, data['eval_url'], data['eval_url_encoded'], data['eval_title'], data['markup_information'])
-    info("URL: " + pr.url_encoded)
-      
+    debug("URL: " + pr.url_encoded)
+
     for rr in data["rule_results"]:
 #      debug("[saveResultsToDjango][getPageDataFromJSON] --------------------------------------")
 
@@ -1553,26 +1586,27 @@ def saveResultsToDjango(ws_report, l):
         prr.calculate_implementation()
 #        debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " (" + str(prr.implementation_pass_fail_score) + ")")
       except:
-        error("Error creating data page rule result: " + rr["rule_id"]) 
-    
+        error("Error creating data page rule result: " + rr["rule_id"])
+
       try:
 #        debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " A(" + str(pr.implementation_pass_fail_score) + ")")
         pr.addPageRuleResult(prr)
 #        debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " B(" + str(pr.implementation_pass_fail_score) + ")")
       except:
-        error("[saveResultsToDjango][getPageDataFromJSON] Error adding page rule result: " + rr["rule_id"]) 
+        error("[saveResultsToDjango][getPageDataFromJSON] Error adding page rule result: " + rr["rule_id"])
 
-    wsr.addPageResult(pr)  
-#    debug("[saveResultsToDjango][getPageDataFromJSON] added to wsr")
+#    debug("[saveResultsToDjango][getPageDataFromJSON] C")
+    wsr.addPageResult(pr)
+#    debug("[saveResultsToDjango][getPageDataFromJSON] D")
 
     return
 
-        
+
 
   def process_file(dir_name, file_name):
     parts = file_name.split('.');
     if len(parts) == 2 and parts[1] == 'json':
-      info("Processing File: " + file_name)
+      debug("Processing File: " + file_name)
       file_json = open(dir_name + "/" + file_name, 'r')
       try:
         page_data = json.load(file_json)
@@ -1580,7 +1614,7 @@ def saveResultsToDjango(ws_report, l):
       except:
         error("[saveResultsToDjango][process_file] A " + dir_name + "/" + file_name + " is not a valid JSON formatted file")
         g = False
-      
+
       if g:
         try:
           num = int(parts[0][-4:])
@@ -1590,26 +1624,26 @@ def saveResultsToDjango(ws_report, l):
             error("[saveResultsToDjango][process_file] B " + dir_name + "/" + file_name + " getting data from JSON file (" + str(num) + ")")
         except:
           error("[saveResultsToDjango][process_file] C " + dir_name + "/" + file_name + " could not generate valid sequence number: " + parts[0])
-         
+
       file_json.close()
 
 
     if file_name == "processed_urls.csv":
-#      debug("[saveResultsToDjango][process_file] Retreiving processed urls information")    
+#      debug("[saveResultsToDjango][process_file] Retreiving processed urls information")
       processedUrlsToDatabase(ws_report, dir_name + "/" + file_name, 10)
 
     if file_name == "unprocessed_urls.csv":
 #      debug("[saveResultsToDjango][process_file] Retreiving unprocessed urls information")
       unprocessedUrlsToDatabase(ws_report, dir_name + "/" + file_name, 7)
-           
+
     if file_name == "filtered_urls.csv":
-#      debug("[saveResultsToDjango][process_file] Retreiving filtered urls")   
+#      debug("[saveResultsToDjango][process_file] Retreiving filtered urls")
       filteredUrlsToDatabase(ws_report, dir_name + "/" + file_name, 2)
 
     if file_name == "status.txt":
-#      debug("[saveResultsToDjango][process_file] Retreiving status information")  
+#      debug("[saveResultsToDjango][process_file] Retreiving status information")
       file_status = open(dir_name + "/" + file_name, 'r')
-# Need to update usage information      
+# Need to update usage information
 #      statusToDatabase(ws_report, file_status)
 
 # ---------------------------------------------------------------
@@ -1617,16 +1651,18 @@ def saveResultsToDjango(ws_report, l):
 # starting point for saving information to database
 #
 # ---------------------------------------------------------------
-  
+
   start = time.time()
 
   wsr = DataWebsiteResult(ws_report)
-    
-#  os.path.walk(ws_report.data_directory + "/data", lister, None)  
- 
+
+#  os.path.walk(ws_report.data_directory + "/data", lister, None)
+
   dir = ws_report.data_directory + "/data"
 #  debug("[saveResultsToDjango][main] DATA_DIR: " + dir)
 
+  info("===============================================================")
+  info("Processing data files in " + dir)
   for root, dirs, files in os.walk(dir):
     for file_name in files:
 #      debug('[saveResultsToDjango][main] ' + dir + '/' + file_name)
@@ -1636,7 +1672,8 @@ def saveResultsToDjango(ws_report, l):
     wsr.saveToDjango()
     info("Set status complete")
     ws_report.set_page_numbers()
-    ws_report.set_status_complete()
+    # save data for now
+    ws_report.set_status_complete(True)
 
     page_count = wsr.page_count
     total = "{:10.4f}".format(time.time()-start)
@@ -1644,14 +1681,14 @@ def saveResultsToDjango(ws_report, l):
     if page_count > 0:
       if page_count == 1:
         ave_time = "{:10.4f}".format(time.time()-start) + " seconds/page (1 page)"
-      else:  
+      else:
         ave_time = "{:10.4f}".format((time.time()-start)/page_count) + " seconds/page (" + str(page_count) + " pages)"
-  
+
     info("          Pages saved: " + str(page_count))
     info("           Total Time: " + total)
-    info('Average time per page: ' + ave_time) 
+    info('Average time per page: ' + ave_time)
 
   except:
     ws_report.set_status_error()
-    error("Error: saving to django")  
-  
+    error("Error: saving to django")
+
