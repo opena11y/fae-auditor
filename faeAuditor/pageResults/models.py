@@ -71,7 +71,10 @@ class PageResult(RuleGroupResult):
     return self.url
 
   def get_title(self):
-    return "Page Result: " + self.title
+    if len(self.title) > 0:
+      return self.title
+    else:
+      return "No Title: " + self.url
 
   def get_id(self):
     return 'pr_' + str(self.id)

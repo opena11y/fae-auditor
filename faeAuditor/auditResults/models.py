@@ -31,6 +31,7 @@ from django.contrib.auth.models import User
 
 from websiteResults.baseResults import RuleResult
 from websiteResults.baseResults import RuleElementPageResult
+from websiteResults.baseResults import RuleElementPageWebsiteResult
 from websiteResults.baseResults import RuleGroupResult
 from websiteResults.baseResults import AllRuleGroupResult
 
@@ -60,6 +61,21 @@ AUDIT_STATUS = (
     ('D', 'Marked for deletion'),
 )
 
+
+# ---------------------------------------------------------------
+#
+# SummaryRuleGroup
+#
+# ---------------------------------------------------------------
+
+class SummaryRuleGroup:
+
+  def __init__(self, summary, title, items):
+    self.summary = summary
+    self.title   = title
+    self.items   = items
+
+
 # ---------------------------------------------------------------
 #
 # AuditResult
@@ -74,7 +90,7 @@ class AuditResult(AllRuleGroupResult):
 
   title    = models.CharField('Audit Result Title', max_length=512, default="")
   audit    = models.ForeignKey(Audit, related_name="audit_results", blank=True, null=True)
-  slug     = models.SlugField(max_length=60, default="none", blank=True, editable=False)
+  slug     = models.SlugField(max_length=60, default="none", blank=True)
 
   ruleset           = models.ForeignKey(Ruleset, on_delete=models.SET_NULL, null=True, default=2, blank=False)
   depth             = models.IntegerField(choices=DEPTH_CHOICES, default=2)
@@ -93,14 +109,40 @@ class AuditResult(AllRuleGroupResult):
   class Meta:
     verbose_name        = "Audit Result"
     verbose_name_plural = "Audit Results"
+    ordering = ['-created']
 
   def __unicode__(self):
-    return 'Audit Results: ' + self.audit.title
+    return 'Audit: ' + self.audit.title
+
+  def __str__(self):
+    return 'Audit: ' + self.audit.title + ' (' + str(self.created.strftime("%Y-%m-%d")) + ')'
+
+  def group_title(self):
+    if self.audit.groups.all().count() > 0:
+      return self.audit.groups.all().first().title
+    return "Group"
+
+  def group_title_plural(self):
+    if self.audit.groups.all().count() > 0:
+      return self.audit.groups.all().first().title_plural
+    return "Group"
+
+
+  def group2_title(self):
+    if self.audit.group2s.all().count() > 0:
+      return self.audit.group2s.all().first().title
+    return "Group2"
+
+  def group2_title_plural(self):
+    if self.audit.group2s.all().count() > 0:
+      return self.audit.group2s.all().first().title_plural
+    return "Group"
 
   def save(self):
-    now = datetime.now()
-    self.slug = self.audit.slug + "-" + now.strftime('%Y-%m-%d')
-    self.audit_directory  = APP_DIR + "data/" + self.user.username  + "/" + self.audit.slug + "-" + now.strftime('%Y-%m-%d')
+    if self.slug == 'none':
+      self.slug = self.audit.slug + "-" + self.created.strftime('%Y-%m-%d')
+      self.audit_directory  = APP_DIR + "data/" + self.user.username  + "/" + self.audit.slug + "-" + self.created.strftime('%Y-%m-%d')
+
     super(AuditResult, self).save() # Call the "real" save() method
 
 
@@ -162,52 +204,107 @@ class AuditResult(AllRuleGroupResult):
       self.compute_group_results()
 
       for agr in self.group_results.all():
-        print('  ' + agr.slug  + ' (' + str(len(agr.group2_results.all())) + ')')
+
+        print('  ' + agr.slug + ' (' + str(len(agr.group2_results.all())) + ')')
         agr.compute_group_results()
 
         for ag2r in agr.group2_results.all():
           print('    ' + ag2r.slug)
           ag2r.compute_group_results()
 
+      self.status = 'C'
+      self.save()
+
+  # Following functions are used in populating evaluation results
 
   def get_group_rule_result(self, rule):
-      try:
-        arr = AuditRuleResult.objects.get(audit_result=self,rule=rule)
-      except:
-        arr = AuditRuleResult(audit_result=self,rule=rule,slug=rule.slug)
-        arr.save()
+    try:
+      arr = AuditRuleResult.objects.get(audit_result=self,rule=rule)
+    except:
+      arr = AuditRuleResult(audit_result=self,rule=rule,slug=rule.slug)
+      arr.save()
 
-      return arr
+    return arr
 
   def get_all_group_rule_results(self):
-      return self.audit_rule_results.all()
+    return self.audit_rule_results.all()
 
-  def get_group_rc_result(self, rule_category):
+  def get_group_rc_result(self, rule_category, rule_result=False):
+    try:
+      arcr = AuditRuleCategoryResult.objects.get(audit_result=self,rule_category=rule_category)
+    except:
+      arcr = AuditRuleCategoryResult(audit_result=self,rule_category=rule_category,slug=rule_category.slug)
+      arcr.save()
+
+    if rule_result:
+      arcr.audit_rule_results.add(rule_result)
+      arcr.save()
+
+    return arcr
+
+  def get_group_gl_result(self, guideline, rule_result=False):
+    try:
+      aglr = AuditGuidelineResult.objects.get(audit_result=self,guideline=guideline)
+    except:
+      aglr = AuditGuidelineResult(audit_result=self,guideline=guideline,slug=guideline.slug)
+      aglr.save()
+
+    if rule_result:
+      aglr.audit_rule_results.add(rule_result)
+      aglr.save()
+
+    return aglr
+
+  def get_group_rs_result(self, rule_scope, rule_result=False):
+    try:
+      arsr = AuditRuleScopeResult.objects.get(audit_result=self,rule_scope=rule_scope)
+    except:
+      arsr = AuditRuleScopeResult(audit_result=self,rule_scope=rule_scope,slug=rule_scope.slug)
+      arsr.save()
+
+    if rule_result:
+      arsr.audit_rule_results.add(rule_result)
+      arsr.save()
+
+    return arsr
+
+  # The following are used by View functions for HTML output
+
+  def results_by_rule_category(self):
+    return SummaryRuleGroup(self, "Rule Category", self.audit_rc_results.all())
+
+  def results_by_guideline(self):
+    return SummaryRuleGroup(self, "Guideline", self.audit_gl_results.all())
+
+  def results_by_rule_scope(self):
+    return SummaryRuleGroup(self, "Rule Scope", self.audit_rs_results.all())
+
+  def group_rule_results(self, rule_slug):
+    group_rule_results = []
+
+    for gr in self.group_results.all():
+      group_rule_results.append(gr.group_rule_results.get(slug=rule_slug))
+
+    return group_rule_results
+
+  def all_group2_rule_results(self, rule_slug):
+    group2_rule_results = []
+
+    for gr in self.group_results.all():
+      for g2r in gr.group2_results.all():
+        group2_rule_results.append(g2r.group2_rule_results.get(slug=rule_slug))
+
+    return group2_rule_results
+
+  def website_rule_results(self, rule_slug):
+    website_rule_results = []
+    for wsr in self.ws_results.all():
       try:
-        arcr = AuditRuleCategoryResult.objects.get(audit_result=self,rule_category=rule_category)
+        website_rule_results.append(wsr.ws_rule_results.get(slug=rule_slug))
       except:
-        arcr = AuditRuleCategoryResult(audit_result=self,rule_category=rule_category,slug=rule_category.slug)
-        arcr.save()
+        pass
 
-      return arcr
-
-  def get_group_gl_result(self, guideline):
-      try:
-        aglr = AuditGuidelineResult.objects.get(audit_result=self,guideline=guideline)
-      except:
-        aglr = AuditGuidelineResult(audit_result=self,guideline=guideline,slug=guideline.slug)
-        aglr.save()
-
-      return aglr
-
-  def get_group_rs_result(self, rule_scope):
-      try:
-        arsr = AuditRuleScopeResult.objects.get(audit_result=self,rule_scope=rule_scope)
-      except:
-        arsr = AuditRuleScopeResult(audit_result=self,rule_scope=rule_scope,slug=rule_scope.slug)
-        arsr.save()
-
-      return arsr
+    return website_rule_results
 
 
 
@@ -233,7 +330,11 @@ class AuditRuleCategoryResult(RuleGroupResult):
 
 
   def __unicode__(self):
-      return 'Audit RC Result: ' + self.rule_category.title_plural
+    return 'Audit RC: ' + self.audit_result.audit.title
+
+  def __str__(self):
+    return 'Audit RC: ' + self.audit_result.audit.title
+
 
   def save(self):
 
@@ -242,11 +343,16 @@ class AuditRuleCategoryResult(RuleGroupResult):
 
     super(AuditRuleCategoryResult, self).save() # Call the "real" save() method.
 
-  def get_title(self):
+  def title(self):
     return self.rule_category.title
 
-  def get_id(self):
+  def href(self):
+    return reverse('audit_result_group', args=[self.audit_result.slug,'rc',self.slug])
+
+  def id(self):
     return 'arcr_' + self.rule_category.id
+
+
 
 # ---------------------------------------------------------------
 #
@@ -268,7 +374,10 @@ class AuditGuidelineResult(RuleGroupResult):
     ordering = ['guideline']
 
   def __unicode__(self):
-    return 'Audit GL Result: ' + str(self.guideline)
+    return 'Audit GL: ' + self.audit_result.audit.title
+
+  def __str__(self):
+    return 'Audit GL: ' + self.audit_result.audit.title
 
   def save(self):
 
@@ -277,10 +386,13 @@ class AuditGuidelineResult(RuleGroupResult):
 
     super(AuditGuidelineResult, self).save() # Call the "real" save() method.
 
-  def get_title(self):
+  def title(self):
     return self.guideline.title
 
-  def get_id(self):
+  def href(self):
+    return reverse('audit_result_group', args=[self.audit_result.slug,'gl',self.slug])
+
+  def id(self):
     return 'aglr_' + self.guideline.id
 
 # ---------------------------------------------------------------
@@ -298,12 +410,15 @@ class AuditRuleScopeResult(RuleGroupResult):
   rule_scope   = models.ForeignKey(RuleScope, on_delete=models.SET_NULL, null=True, default=None)
 
   class Meta:
-    verbose_name        = "Website Rule Scope Result"
-    verbose_name_plural = "Website Rule Scope Results"
+    verbose_name        = "Audit Rule Scope Result"
+    verbose_name_plural = "Audit Rule Scope Results"
     ordering = ['-rule_scope']
 
   def __unicode__(self):
-    return 'Audit Rule RS Result: ' + self.rule_scope.title
+    return 'Audit RS: ' + self.audit_result.audit.title
+
+  def __str__(self):
+    return 'Audit RS: ' + self.audit_result.audit.title
 
   def save(self):
 
@@ -312,10 +427,13 @@ class AuditRuleScopeResult(RuleGroupResult):
 
     super(AuditRuleScopeResult, self).save() # Call the "real" save() method.
 
-  def get_title(self):
+  def title(self):
     return self.rule_scope.title
 
-  def get_id(self):
+  def href(self):
+    return reverse('audit_result_group', args=[self.audit_result.slug,'rs',self.slug])
+
+  def id(self):
     return 'arsr_' + self.rule_scope.id
 
 
@@ -325,7 +443,7 @@ class AuditRuleScopeResult(RuleGroupResult):
 #
 # ---------------------------------------------------------------
 
-class AuditRuleResult(RuleElementPageResult):
+class AuditRuleResult(RuleElementPageWebsiteResult):
   id          = models.AutoField(primary_key=True)
 
   audit_result = models.ForeignKey(AuditResult, on_delete=models.CASCADE, related_name="audit_rule_results")
@@ -334,10 +452,25 @@ class AuditRuleResult(RuleElementPageResult):
   audit_gl_result  = models.ForeignKey(AuditGuidelineResult,    on_delete=models.SET_NULL,  null=True, related_name="audit_rule_results")
   audit_rs_result  = models.ForeignKey(AuditRuleScopeResult,    on_delete=models.SET_NULL,  null=True, related_name="audit_rule_results")
 
+  class Meta:
+    verbose_name        = "Audit Rule Result"
+    verbose_name_plural = "Audit Rule Results"
+    ordering = ['implementation_score']
+
+  def __unicode__(self):
+    return 'Audit Rule: ' + self.audit_result.audit.title
+
+  def __str__(self):
+    return 'Audit Rule: ' + self.audit_result.audit.title
+
   def save(self):
 
     if self.slug == '':
         self.slug = self.rule.nls_rule_id
 
     super(AuditRuleResult, self).save() # Call the "real" save() method.
+
+  def title(self):
+    return self.rule.summary
+
 

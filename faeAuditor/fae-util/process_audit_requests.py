@@ -104,57 +104,33 @@ def error(s):
 
 def init_oaa_script_file():
   f = open(fae_util_path + '/openajax_a11y/scripts.txt', 'w')
-  f.write(fae_util_path + '/openajax_a11y/oaa_a11y_evaluation.js\n')
-  f.write(fae_util_path + '/openajax_a11y/oaa_a11y_rules.js\n')
-  f.write(fae_util_path + '/openajax_a11y/oaa_a11y_rulesets.js\n')
+  f.write(fae_util_path  + '/openajax_a11y/oaa_a11y_evaluation.js\n')
+  f.write(fae_util_path  + '/openajax_a11y/oaa_a11y_rules.js\n')
+  f.write(fae_util_path  + '/openajax_a11y/oaa_a11y_rulesets.js\n')
   f.close()
 
 
 def init_audit_result(audit_result):
 
     def get_audit_group_result(group_item):
-      print("[AudtResult][init_results][get_audit_group_result](group_item): " + str(group_item))
-
       try:
         agr = AuditGroupResult.objects.get(audit_result=audit_result, group_item=group_item)
       except:
         agr = AuditGroupResult(audit_result=audit_result, group_item=group_item, slug=group_item.slug)
         agr.save()
 
-      print("[AudtResult][init_results][get_audit_group_result](agr): " + str(agr))
       return agr
 
     def get_audit_group2_result(group_result, group2_item):
-      print("[AudtResult][init_results][get_audit_group2_result](group2_item): " + str(group2_item.title))
-
       try:
         ag2r = AuditGroup2Result.objects.get(group_result=group_result, group2_item=group2_item)
       except:
         ag2r = AuditGroup2Result(group_result=group_result, group2_item=group2_item, slug=group2_item.slug)
         ag2r.save()
 
-      print("[AudtResult][init_results][get_audit_group2_result](ag2r): " + str(ag2r))
       return ag2r
 
     def get_website_result(website, group_result, group2_result):
-      print("[AudtResult][init_results][get_website_result] ================")
-
-      print("       slug: " + website.slug)
-      print("        url: " + website.url)
-      print("      title: " + website.title)
-      print("     follow: " + str(audit_result.follow))
-      print("      depth: " + str(audit_result.depth))
-      print("        max: " + str(audit_result.max_pages))
-      print("    ruleset: " + str(audit_result.ruleset))
-      print("    browser: " + str(audit_result.browser_emulation))
-      print("       wait: " + str(audit_result.wait_time))
-      print("sub domains: " + str(website.span_sub_domains))
-      print("    exclude: " + str(website.exclude_sub_domains))
-      print("    include: " + str(website.include_domains))
-      print("         ar: " + str(audit_result))
-      print("        agr: " + str(group_result))
-      print("       ag2r: " + str(group2_result))
-
       try:
         wsr = WebsiteResult.objects.get(slug=website.slug, audit_result=audit_result, group_result=group_result, group2_result=group2_result)
       except:
@@ -178,13 +154,10 @@ def init_audit_result(audit_result):
         except:
           print("Unexpected error:", str(sys.exc_info()))
 
-      print("[AudtResult][init_results][get_website_result](wsr): " + str(wsr))
       return wsr
 
 
     audit = audit_result.audit
-
-    print("[init_audit_results]: " + str(audit))
 
     if audit:
 

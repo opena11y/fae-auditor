@@ -375,8 +375,6 @@ class WebsiteResult(RuleGroupResult):
     self.save()
 #    print('[LAST_VIEWED][' +  self.title + ']: ' + str(self.last_viewed))
 
-
-
   def get_pages_summary(self, view=False, group=False):
       ps = PagesSummary()
 

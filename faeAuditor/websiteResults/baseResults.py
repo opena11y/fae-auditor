@@ -160,7 +160,7 @@ class RuleElementResult(RuleResult):
 
 # ---------------------------------------------------------------
 #
-# RuleElementResult
+# RuleElementPageResult
 #
 # ---------------------------------------------------------------
 
@@ -180,7 +180,47 @@ class RuleElementPageResult(RuleElementResult):
   def get_page_count_with_results(self):
     return self.pages_violation + self.pages_warning + self.pages_manual_check + self.pages_passed
 
+
+# ---------------------------------------------------------------
+#
+# RuleElementPageWebsiteResult
+#
+# ---------------------------------------------------------------
+
+class RuleElementPageWebsiteResult(RuleElementPageResult):
+
+  websites_violation    = models.IntegerField(default=0)
+  websites_warning      = models.IntegerField(default=0)
+  websites_manual_check = models.IntegerField(default=0)
+  websites_passed       = models.IntegerField(default=0)
+  websites_na           = models.IntegerField(default=0)
+
+  websites_with_hidden_content  = models.BigIntegerField(default=0)
+
+  class Meta:
+        abstract = True
+
+  def get_page_count_with_results(self):
+    return self.pages_violation + self.pages_warning + self.pages_manual_check + self.pages_passed
+
   def add_website_rule_result(self, ws_rule_result):
+
+    if ws_rule_result.elements_violation > 0:
+      self.websites_violation += 1
+    else:
+      if ws_rule_result.elements_warning > 0:
+        self.websites_warning += 1
+      else:
+        if ws_rule_result.elements_mc_identified > 0:
+          self.websites_manual_check += 1
+        else:
+          if ws_rule_result.elements_passed > 0:
+            self.websites_passed += 1
+          else:
+            self.websites_na += 1
+
+    if ws_rule_result.elements_hidden > 0:
+      self.websites_with_hidden_content += 1
 
     self.elements_violation     += ws_rule_result.elements_violation
     self.elements_warning       += ws_rule_result.elements_warning
@@ -332,11 +372,13 @@ class AllRuleGroupResult(RuleGroupResult):
         group_rs_result.reset()
 
       for arr in self.get_all_group_rule_results():
-        gr = self.get_group_rc_result(arr.rule.category)
+        gr = self.get_group_rc_result(arr.rule.category, arr)
         gr.add_rule_result(arr)
 
-        gr = self.get_group_gl_result(arr.rule.wcag_primary.guideline)
+        gr = self.get_group_gl_result(arr.rule.wcag_primary.guideline, arr)
         gr.add_rule_result(arr)
 
-        rs = self.get_group_rs_result(arr.rule.scope)
+        rs = self.get_group_rs_result(arr.rule.scope, arr)
         rs.add_rule_result(arr)
+
+

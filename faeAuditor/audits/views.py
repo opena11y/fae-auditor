@@ -1,5 +1,5 @@
 """
-Copyright 2014-2016 University of Illinois
+Copyright 2014-2018 University of Illinois
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -90,7 +90,7 @@ class AuditView(LoginRequiredMixin, TemplateView):
 
         user_profile = UserProfile.objects.get(user=user)
 
-        audit = Audit.objects.get(user=user, id=kwargs['audit_id'])
+        audit = Audit.objects.get(user=user, slug=kwargs['audit_slug'])
 
         context['audit']         = audit
         context['user_profile']  = user_profile
@@ -125,8 +125,8 @@ class RunView(LoginRequiredMixin, CreateView):
 
     def form_invalid(self, form):
 
-        user     = self.request.user
-        audit_id = self.kwargs.get('audit_id', None)
+        user        = self.request.user
+        audit_slug  = self.kwargs.get('audit_slug', None)
 
         print("Invalid")
 
@@ -135,11 +135,11 @@ class RunView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super(RunView, self).get_context_data(**kwargs)
 
-        user     = self.request.user
-        audit_id = self.kwargs.get('audit_id', None)
+        user        = self.request.user
+        audit_slug  = self.kwargs.get('audit_slug', None)
 
         user_profile = UserProfile.objects.get(user=user)
-        audit = Audit.objects.get(user=user, id=audit_id)
+        audit = Audit.objects.get(user=user, slug=audit_slug)
 
         context['audit'] = audit
         context['user_profile'] = user_profile
@@ -159,4 +159,5 @@ class ProcessingView(LoginRequiredMixin, TemplateView):
         context['audit_results_complete']   = audit_results.filter(status='C').order_by('-created')[:2]
 
         return context
+
 

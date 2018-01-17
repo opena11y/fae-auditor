@@ -25,11 +25,22 @@
 {% endblock %}
 
 {% block title %}
-Audit Rule Result: {{group_result.title}}
+Audit Rule Result: {{rule.summary_html|safe}}
 {% endblock %}
 
 {% block content %}
 
-  {% include 'common/summary_group_rule_results.html' %}
+  {% if group_rule_results %}
+  <h2>{{audit_result.group_title_plural}}</h2>
+  {% include 'auditResults/table_result_group_rule_by_group.html' %}
+  {% endif %}
+
+  {% if all_group2_rule_results %}
+  <h2>All {{audit_result.group2_title_plural}}</h2>
+  {% include 'auditResults/table_result_group_rule_by_group2.html' with group2_rule_results=all_group2_rule_results %}
+  {% endif %}
+
+  <h2>All Wesbites</h2>
+  {% include 'auditResults/table_result_group_rule_by_website.html' %}
 
 {% endblock %}

@@ -31,25 +31,25 @@ from .models import AuditGroupRuleResult
 
 
 class AuditGroupResultAdmin(admin.ModelAdmin):
-    list_display = ('audit_result', 'slug', 'group_item', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
-    list_filter  = ('audit_result', 'group_item')
+    list_display = ('group_item', 'audit_result', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
+    list_filter  = ('group_item', 'audit_result')
 
 admin.site.register(AuditGroupResult, AuditGroupResultAdmin)
 
 class AuditGroupRuleCategoryResultAdmin(admin.ModelAdmin):
-    list_display = ('rule_category', 'slug', 'group_result', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
+    list_display = ('rule_category', 'group_result', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
     list_filter  = ('group_result', 'rule_category')
 
 admin.site.register(AuditGroupRuleCategoryResult, AuditGroupRuleCategoryResultAdmin)
 
 class AuditGroupGuidelineResultAdmin(admin.ModelAdmin):
-    list_display = ('guideline', 'slug', 'group_result', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
+    list_display = ('guideline', 'group_result', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
     list_filter  = ('group_result', 'guideline')
 
 admin.site.register(AuditGroupGuidelineResult, AuditGroupGuidelineResultAdmin)
 
 class AuditGroupRuleScopeResultAdmin(admin.ModelAdmin):
-    list_display = ('rule_scope', 'slug', 'group_result', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
+    list_display = ('rule_scope', 'group_result', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
     list_filter  = ('group_result', 'rule_scope')
 
 admin.site.register(AuditGroupRuleScopeResult, AuditGroupRuleScopeResultAdmin)

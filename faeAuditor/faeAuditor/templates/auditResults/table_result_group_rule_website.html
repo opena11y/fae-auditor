@@ -1,0 +1,56 @@
+
+
+<table class="details table table-striped table-hover sortable"  aria-label="Page results for {{rule.summary_text}}">
+  <thead>
+    <tr>
+      <tr>
+        <th id="id_num" class="text"  rowspan="2" aria-label="Page Number">#</th>
+        <th id="id_grp" class="text"  rowspan="2">Page</th>
+        <th id="id_nop" class="text"  colspan="5">Number of Elements</th>
+        <th rowspan="2">&nbsp;</th>
+        <th id="id_imp" class="text"  colspan="4" style="text-align: center">Implementation Level</th>
+      </tr>
+      <tr>
+        <th id="id_vio" class="num"   title="Violations">V</th>
+        <th id="id_war" class="num"   title="Warnings">W</th>
+        <th id="id_man" class="num"   title="Manual Checks">MC</th>
+        <th id="id_pas" class="num"   title="Passed">P</th>
+        <th id="id_hid" class="num"   title="Hidden">H</th>
+        <th id="id_scpf" class="num sep"   title="Implementation Score for rule results with Pass/Fail results">Pass/Fail Score</th>
+        <th id="id_stpf" class="text"      title="Implementation Status for rule results with Pass/Fail results">Pass/Fail Status</th>
+        <th id="id_scal" class="num sep"   title="Implementation Score for all rule results">All Results Score</th>
+        <th id="id_stal" class="text"      title="Implementation Status for all rule results">All Results Status</th>
+      </tr>
+  </thead>
+  <tbody>
+    {% for prr in website_rule_result.page_rule_results.all %}
+    <tr>
+      <td headers="id_num">{{prr.page_result.page_number}}</td>
+      <td headers="id_grp">
+        <a href="{% url 'audit_result_group_rule_website_page' audit_result.slug grouping group prr.slug prr.ws_rule_result.ws_report.slug prr.page_result.id %}">
+          {{prr.page_result.get_title}}
+        </a>
+      </td>
+      <td headers="id_vio id_nop">{{prr.elements_violation}}</td>
+      <td headers="id_war id_nop">{{prr.elements_warning}}</td>
+      <td headers="id_man id_nop">{{prr.elements_mc_identified}}</td>
+      <td headers="id_pas id_nop">{{prr.elements_passed}}</td>
+      <td headers="id_hid id_nop">{{prr.elements_hidden}}</td>
+
+      <td aria-label="empty cell"></td>
+
+      <td headers="id_scpf id_imp">{{prr.implementation_pass_fail_score}}</td>
+      <td headers="id_stpf id_imp">
+     {% include 'common/implementation_status.html' with impl_status=prr.implementation_pass_fail_status %}
+      </td>
+
+      <td headers="id_scal id_imp">{{prr.implementation_score}}</td>
+      <td headers="id_stal id_imp">
+      {% include 'common/implementation_status.html' with impl_status=prr.implementation_status %}
+      </td>
+
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>

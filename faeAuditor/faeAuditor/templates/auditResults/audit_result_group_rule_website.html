@@ -16,15 +16,26 @@
 
 {% block breadcrumb %}
 <li><a href="{% url 'audit' audit_result.audit.slug %}">Audit</a></li>
-<li>Audit Result</li>
+<li><a href="{% url 'audit_result' audit_result.slug grouping %}">Audit Result</a></li>
+<li>
+  <a href="{% url 'audit_result_group' audit_result.slug grouping group %}">
+    {{group_results.title}}
+  </a>
+</li>
+<li>
+  <a href="{% url 'audit_result_group_rule' audit_result.slug grouping group rule.slug %}">
+  {{rule.slug}}
+</a>
+</li>
+<li>{{website_result.slug}}</li>
 {% endblock %}
 
 {% block title %}
-AuditResult: {{audit_result.audit.title}} on {{audit_result.created}}
+Website Rule Result: {{rule.summary_html|safe}} for {{ws_result.title}}
 {% endblock %}
 
 {% block content %}
 
-  {% include 'auditResults/table_result.html' %}
+  {% include 'auditResults/table_result_group_rule_website.html' %}
 
 {% endblock %}

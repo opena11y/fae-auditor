@@ -148,11 +148,12 @@ def addAuditGroup2(audit, data):
   try:
     audit_group2 = AuditGroup2.objects.get(audit=audit, slug=data['id'])
     print("  Updating Audit Group2: " + data['title'])
-    audit_group2.title    = data['title']
+    audit_group2.title        = data['title']
+    audit_group2.title_plural = data['title_plural']
 
   except ObjectDoesNotExist:
     print("  Creating Audit Group2: " + data['title'])
-    audit_group2 = AuditGroup2(audit=audit, title=data['title'], slug=data['id'])
+    audit_group2 = AuditGroup2(audit=audit, title=data['title'], title_plural=data['title_plural'], slug=data['id'])
 
   print("  Saving Audit Group2: " + data['title'])
   audit_group2.save()
@@ -163,11 +164,12 @@ def addAuditGroup(audit, data):
   try:
     audit_group = AuditGroup.objects.get(audit=audit, slug=data['id'])
     print("  Updating Audit Group: " + data['title'])
-    audit_group.title    = data['title']
+    audit_group.title        = data['title']
+    audit_group.title_plural = data['title_plural']
 
   except ObjectDoesNotExist:
     print("  Creating Audit Group: " + data['title'])
-    audit_group = AuditGroup(audit=audit, title=data['title'], slug=data['id'])
+    audit_group = AuditGroup(audit=audit, title=data['title'], title_plural=data['title_plural'], slug=data['id'])
 
   print("  Saving Audit Group: " + data['title'])
   audit_group.save()

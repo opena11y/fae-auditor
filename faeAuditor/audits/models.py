@@ -167,7 +167,8 @@ class AuditGroup(models.Model):
 
   slug   = models.SlugField(max_length=50, blank=True)
 
-  title  = models.CharField('Group Title',  max_length=512, default="no group title")
+  title         = models.CharField('Group Title',  max_length=512, default="no group title")
+  title_plural  = models.CharField('Group Title Plural',  max_length=512, default="no group plural title")
 
   position  = models.IntegerField('Position', default=0)
 
@@ -208,7 +209,8 @@ class AuditGroup2(models.Model):
 
   slug   = models.SlugField(max_length=50, blank=True)
 
-  title  = models.CharField('Group 2 Title',  max_length=512, default="no group 2 title")
+  title  = models.CharField('Group 2 Title',  max_length=512, default="no group2 title")
+  title_plural  = models.CharField('Group 2 Title Plural',  max_length=512, default="no group2 plural title")
 
   position  = models.IntegerField('Position', default=0)
 
@@ -218,6 +220,9 @@ class AuditGroup2(models.Model):
     ordering = ['audit']
 
   def __unicode__(self):
+      return self.title
+
+  def __str__(self):
       return self.title
 
 class AuditGroup2Item(models.Model):
@@ -239,7 +244,7 @@ class AuditGroup2Item(models.Model):
   def __unicode__(self):
       return self.title
 
-  def __title__(self):
+  def __str__(self):
       return self.title
 
 
@@ -268,3 +273,5 @@ class Website(models.Model):
   def __unicode__(self):
       return self.title + ": " + self.url
 
+  def __str__(self):
+      return self.title + ": " + self.url

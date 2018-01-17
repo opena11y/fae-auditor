@@ -1,15 +1,20 @@
-{ "title"        : "Test Websites: 2 Groups",
-  "audit_slug"   : "test-websites-g2", 
+{
+  "title"        : "Test Websites: 2 Groups",
+  "audit_slug"   : "test-websites-g2",
   "depth"        : 2,
   "ruleset_id"   : "ARIA_STRICT",
   "wait_time"    : 90000,
   "max_pages"    : 200,
   "groups"       : [
-  { "id"       : "conference",
-    "title"    : "Conference"
+  {
+    "id"           : "conference",
+    "title"        : "Conference",
+    "title_plural" : "Conferences"
   },
-  { "id"       : "university",
-    "title"    : "University"
+  {
+    "id"           : "university",
+    "title"        : "University",
+    "title_plural" : "Universities"
   }
   ]
 }

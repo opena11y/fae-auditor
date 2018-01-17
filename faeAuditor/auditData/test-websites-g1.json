@@ -1,12 +1,13 @@
 { "title"        : "Test Websites: 1 Group",
-  "audit_slug"   : "test-websites-g1", 
+  "audit_slug"   : "test-websites-g1",
   "depth"        : 2,
   "ruleset_id"   : "ARIA_STRICT",
   "wait_time"    : 90000,
   "max_pages"    : 200,
   "groups"       : [
-  { "id"       : "conference",
-    "title"    : "Conference"
+  { "id"            : "conference",
+    "title"         : "Conference",
+    "title_plural"  : "Conferences"
   }
   ]
 }
