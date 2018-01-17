@@ -13,9 +13,96 @@ Audit: {{audit.title}}
 
 {% block content %}
 
-<div class="run"><a href="{% url 'audit_run' audit.id %}">Run Report</a></div>
+<div class="run"><a href="{% url 'audit_run' audit.slug %}">Run Report</a></div>
 
-<table class="details table table-striped table-hover sortable"  aria-labelledby="{{id_title}}">
+<h2 id="id_result">Audit Results</h2>
+<table class="details table table-striped table-hover sortable"  aria-labelledby="id_info">
+<thead>
+    <tr>
+        <th class="text">Date</th>
+    </tr>
+      <tr>
+        <th id="id_grp" class="text"  rowspan="2">Date</th>
+        <th id="id_nor" class="text"  colspan="5">Number of Rules</th>
+        <th id="id_imp" class="text"  colspan="2">Implementation Level</th>
+      </tr>
+      <tr>
+        <th id="id_vio" class="num"   title="Violations">V</th>
+        <th id="id_war" class="num"   title="Warnings">W</th>
+        <th id="id_man" class="num"   title="Manual Checks">MC</th>
+        <th id="id_pas" class="num"   title="Passed">P</th>
+        <th id="id_not" class="num"   title="Not Applicable">N/A</th>
+        <th id="id_ovr" class="num sep"   title="Pass/Fail/manual Checks Implementation Score">Score</th>
+        <th id="id_sta" class="text"   title="Implementation Status">Status</th>
+      </tr>
+</thead>
+<tbody>
+    {% for ar in audit.audit_results.all %}
+    <tr>
+        <td class="text"><a href="{% url 'audit_result' ar.slug 'rc' %}">{{ar.created | date:"Y-m-d"}}</a></td>
+
+        <td class="num"  headers="id_r{{forloop.counter}} id_vio">
+        {% if ar.rules_violation > 0 %}
+        {{ar.rules_violation}}
+        {% else %}
+        -
+        {% endif %}
+        </td>
+
+        <td class="num"  headers="id_r{{forloop.counter}} id_war">
+        {% if ar.rules_warning > 0 %}
+        {{ar.rules_warning}}
+        {% else %}
+        -
+        {% endif %}
+        </td>
+
+        <td class="num"  headers="id_r{{forloop.counter}} id_man">
+        {% if ar.rules_manual_check > 0 %}
+        {{ar.rules_manual_check}}
+        {% else %}
+        -
+        {% endif %}
+        </td>
+
+        <td class="num"  headers="id_r{{forloop.counter}} id_pas">
+        {% if ar.rules_passed > 0 %}
+        {{ar.rules_passed}}
+        {% else %}
+        -
+        {% endif %}
+        </td>
+
+        <td class="num"  headers="id_r{{forloop.counter}} id_not">
+        {% if ar.rules_na > 0 %}
+        {{ar.rules_na}}
+        {% else %}
+        -
+        {% endif %}
+
+       <td class="num"  headers="id_r{{forloop.counter}} id_ovr">
+        {% if ar.implementation_pass_fail_score >= 0 %}
+        {{ar.implementation_score}}
+        {% else %}
+        -
+        {% endif %}
+        </td>
+
+       <td class="text"  headers="id_r{{forloop.counter}} id_sta">
+        {% include 'common/implementation_status.html' with impl_status=ar.implementation_pass_fail_status %}
+        </td>
+
+    {% empty %}
+        <td>No websites defined</td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+
+
+<h2 id="id_info">Group and Website Information</h2>
+<table class="details table table-striped table-hover sortable"  aria-labelledby="id_info">
         <thead>
             <tr>
                 <th class="text">Group</th>
@@ -25,7 +112,6 @@ Audit: {{audit.title}}
             </tr>
         </thead>
         <tbody>
-            {% if audit.websites.count %}
             {% for ws in audit.websites.all %}
             <tr>
                 <td class="text">{% if ws.group_item %}{{ws.group_item.title}}{% else %}-{% endif %}</td>
@@ -33,13 +119,12 @@ Audit: {{audit.title}}
                 <td class="text"><a href="{{ws.url}}">{{ws.title}}</a></td>
                 <td class="text date">{{ ws.slug }}</td>
             </tr>
-            {% endfor %}
-            {% else %}
+            {% empty %}
             <tr>
                 <td>No websites defined</td>
             </tr>
-            {% endif %}
+            {% endfor %}
         </tbody>
     </table>
-    
+
 {% endblock %}

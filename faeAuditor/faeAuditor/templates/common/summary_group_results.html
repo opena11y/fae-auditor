@@ -1,0 +1,70 @@
+<h2 id="id_result">Audit Results</h2>
+<table class="details table table-striped table-hover sortable"  aria-labelledby="id_info">
+  <thead>
+    <tr>
+      <tr>
+        <th id="id_grp" class="text"  rowspan="2">{{group.title}}</th>
+        <th id="id_nor" class="text"  colspan="5">Number of Rules</th>
+        <th rowspan="2">&nbsp;</th>
+        <th id="id_imp" class="text"  colspan="4" style="text-align: center">Implementation Level</th>
+      </tr>
+      <tr>
+        <th id="id_vio" class="num"   title="Violations">V</th>
+        <th id="id_war" class="num"   title="Warnings">W</th>
+        <th id="id_man" class="num"   title="Manual Checks">MC</th>
+        <th id="id_pas" class="num"   title="Passed">P</th>
+        <th id="id_not" class="num"   title="Not Applicable">N/A</th>
+        <th id="id_scpf" class="num sep"   title="Implementation Score for rule results with Pass/Fail results">Pass/Fail Score</th>
+        <th id="id_stpf" class="text"   title="Implementation Status for rule results with Pass/Fail results">Pass/Fail Status</th>
+        <th id="id_scal" class="num sep"   title="Implementation Score for all rule results">All Results Score</th>
+        <th id="id_stal" class="text"   title="Implementation Status for all rule results">All Results Status</th>
+      </tr>
+  </thead>
+  <tbody>
+    {% for gi in group_results.items.all %}
+    <tr>
+      <td headers="id_grp"       ><a href="{{gi.href}}">{{gi.title}}</a></td>
+      <td headers="id_vio id_nor">{{gi.rules_violation}}</td>
+      <td headers="id_war id_nor">{{gi.rules_warning}}</td>
+      <td headers="id_man id_nor">{{gi.rules_manual_check}}</td>
+      <td headers="id_pas id_nor">{{gi.rules_passed}}</td>
+      <td headers="id_not id_nor">{{gi.rules_na}}</td>
+
+      <td aria-label="empty cell"></td>
+
+      <td headers="id_scpf id_imp">{{gi.implementation_pass_fail_score}}</td>
+      <td headers="id_stpf id_imp">
+     {% include 'common/implementation_status.html' with impl_status=gi.implementation_pass_fail_status %}
+      </td>
+
+      <td headers="id_scal id_imp">{{gi.implementation_score}}</td>
+      <td headers="id_stal id_imp">
+      {% include 'common/implementation_status.html' with impl_status=gi.implementation_status %}
+      </td>
+
+    </tr>
+    {% endfor %}
+    <tr>
+      <td headers="id_grp"       >Totals</td>
+      <td headers="id_vio id_nor">{{group_results.summary.rules_violation}}</td>
+      <td headers="id_war id_nor">{{group_results.summary.rules_warning}}</td>
+      <td headers="id_man id_nor">{{group_results.summary.rules_manual_check}}</td>
+      <td headers="id_pas id_nor">{{group_results.summary.rules_passed}}</td>
+      <td headers="id_not id_nor">{{group_results.summary.rules_na}}</td>
+
+      <td aria-label="empty cell"></td>
+
+      <td headers="id_scpf id_imp">{{group_results.summary.implementation_pass_fail_score}}</td>
+      <td headers="id_stpf id_imp">
+      {% include 'common/implementation_status.html' with impl_status=group_results.summary.implementation_pass_fail_status %}
+      </td>
+
+      <td headers="id_scal id_imp">{{group_results.summary.implementation_score}}</td>
+      <td headers="id_stal id_imp">
+      {% include 'common/implementation_status.html' with impl_status=group_results.summary.implementation_status %}
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>

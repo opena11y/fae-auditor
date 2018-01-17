@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% load staticfiles i18n %}
+
+{% block nav_reports %}
+<li><a href="{% url 'audit_result' audit_result.slug grouping %}">Summary</a></li>
+{% endblock nav_reports %}
+
+{% block nav_filters %}
+{% for gi in group_results.items.all %}
+<li><a href="{{gi.href}}">{{gi.title}}</a></li>
+{% endfor %}
+{% endblock nav_filters %}
+
+
+{% block breadcrumb %}
+<li><a href="{% url 'audit' audit_result.audit.slug %}">Audit</a></li>
+<li>Audit Result</li>
+{% endblock %}
+
+{% block title %}
+AuditResult: {{audit_result.audit.title}} on {{audit_result.created}}
+{% endblock %}
+
+{% block content %}
+
+  {% include 'common/summary_group_results.html' %}
+
+{% endblock %}

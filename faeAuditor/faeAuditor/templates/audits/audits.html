@@ -25,9 +25,9 @@ Audits
             {% for a in audits %}
             <tr>
                 <td class="text" style="min-width: 15em;">
-                <a href="{% url 'audit' a.id %}">{{a.title}}</a>
+                  <a href="{% url 'audit' a.slug %}">{{a.title}}</a>
                 </td>
-                
+
                 <td class="text date">
                     {{ a.created|date:"Y-m-d H:i" }}
                 </td>
@@ -38,10 +38,10 @@ Audits
                 <td>No audits defined</td>
             </tr>
             {% endif %}
-            
+
         </tbody>
-        
+
     </table>
 
-    
+
 {% endblock %}
