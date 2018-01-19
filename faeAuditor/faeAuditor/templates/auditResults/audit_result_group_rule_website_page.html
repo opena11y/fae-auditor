@@ -4,31 +4,27 @@
 {% load staticfiles i18n %}
 
 {% block nav_reports %}
-<li><a href="{% url 'audit_result' audit_result.slug grouping %}">Summary</a></li>
+<li><a href="{% url 'audit_result' result_slug rule_grouping %}">Summary</a></li>
 {% endblock nav_reports %}
 
 {% block nav_filters %}
-{% for gi in group_results.items.all %}
-<li><a href="{{gi.href}}">{{gi.title}}</a></li>
-{% endfor %}
+{% include 'auditResults/nav_audit_result_rule_group.html' %}
 {% endblock nav_filters %}
 
 
 {% block breadcrumb %}
 <li><a href="{% url 'audit' audit_result.audit.slug %}">Audit</a></li>
-<li><a href="{% url 'audit_result' audit_result.slug grouping %}">Audit Result</a></li>
+<li><a href="{% url 'audit_result' result_slug rule_grouping %}">Audit Result</a></li>
 <li>
-  <a href="{% url 'audit_result_group' audit_result.slug grouping group %}">
-    {{group_results.title}}
+  <a href="{% url 'audit_result_rule_group' audit_result.slug rule_grouping rule_group %}">{{rule_group_result.title}}
   </a>
 </li>
 <li>
-  <a href="{% url 'audit_result_group_rule' audit_result.slug grouping group rule.slug %}">
+  <a href="{% url 'audit_result_rule_group_rule_website' result_slug rule_grouping rule_group rule.slug  website_result.slug %}">
   {{rule.slug}}
   </a>
 </li>
-<li>
-  <a href="{% url 'audit_result_group_rule_website' audit_result.slug grouping group rule.slug website_result.slug %}">
+<li>  <a href="{% url 'audit_result_rule_group_rule_website' result_slug rule_grouping rule_group rule.slug  website_result.slug %}">
   {{website_result.slug}}
   </a>
 </li>

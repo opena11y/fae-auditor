@@ -3,6 +3,7 @@
     <tr>
       <tr>
         <th id="id_grp" class="text"  rowspan="2">{{audit_result.group2_title}}</th>
+        <th id="id_agr" class="text"  rowspan="2">Audit Group</th>
         <th id="id_nop" class="text"  colspan="5">Number of Websites</th>
         <th rowspan="2">&nbsp;</th>
         <th id="id_imp" class="text"  colspan="4" style="text-align: center">Implementation Level</th>
@@ -20,11 +21,14 @@
       </tr>
   </thead>
   <tbody>
-    {% for g2rr in group2_rule_results %}
+    {% for g2rr in audit_group2_rule_results %}
     <tr>
       <td headers="id_grp">
+        <a href="{% url 'audit_result_rule_group_rule_audit_group2' result_slug rule_grouping rule_group rule_slug g2rr.group2_result.slug %}">
           {{g2rr.group2_result.group2_item.title}}
+        </a>
       </td>
+      <td headers="id_vio id_grp">{{g2rr.group2_result.group_result.group_item.title}}</td>
       <td headers="id_vio id_nop">{{g2rr.websites_violation}}</td>
       <td headers="id_war id_nop">{{g2rr.websites_warning}}</td>
       <td headers="id_man id_nop">{{g2rr.websites_manual_check}}</td>

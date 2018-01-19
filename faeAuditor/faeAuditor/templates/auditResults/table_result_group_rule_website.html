@@ -27,7 +27,7 @@
     <tr>
       <td headers="id_num">{{prr.page_result.page_number}}</td>
       <td headers="id_grp">
-        <a href="{% url 'audit_result_group_rule_website_page' audit_result.slug grouping group prr.slug prr.ws_rule_result.ws_report.slug prr.page_result.id %}">
+        <a href="{% url 'audit_result_rule_group_rule_website_page' result_slug rule_grouping rule_group rule_slug website_slug prr.page_result.page_number %}">
           {{prr.page_result.get_title}}
         </a>
       </td>

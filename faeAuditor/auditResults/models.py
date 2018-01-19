@@ -270,16 +270,7 @@ class AuditResult(AllRuleGroupResult):
 
   # The following are used by View functions for HTML output
 
-  def results_by_rule_category(self):
-    return SummaryRuleGroup(self, "Rule Category", self.audit_rc_results.all())
-
-  def results_by_guideline(self):
-    return SummaryRuleGroup(self, "Guideline", self.audit_gl_results.all())
-
-  def results_by_rule_scope(self):
-    return SummaryRuleGroup(self, "Rule Scope", self.audit_rs_results.all())
-
-  def group_rule_results(self, rule_slug):
+  def audit_group_rule_results(self, rule_slug):
     group_rule_results = []
 
     for gr in self.group_results.all():
@@ -287,7 +278,7 @@ class AuditResult(AllRuleGroupResult):
 
     return group_rule_results
 
-  def all_group2_rule_results(self, rule_slug):
+  def all_audit_group2_rule_results(self, rule_slug):
     group2_rule_results = []
 
     for gr in self.group_results.all():
@@ -296,11 +287,15 @@ class AuditResult(AllRuleGroupResult):
 
     return group2_rule_results
 
-  def website_rule_results(self, rule_slug):
+  def website_rule_results(self, rule_slug, group=False, group2=False):
     website_rule_results = []
     for wsr in self.ws_results.all():
       try:
-        website_rule_results.append(wsr.ws_rule_results.get(slug=rule_slug))
+        if (not group and not group2) or \
+           (group  and wsr.group_result.slug  == group) or \
+           (group2 and wsr.group2_result.slug == group2):
+          website_rule_results.append(wsr.ws_rule_results.get(slug=rule_slug))
+
       except:
         pass
 
@@ -346,9 +341,6 @@ class AuditRuleCategoryResult(RuleGroupResult):
   def title(self):
     return self.rule_category.title
 
-  def href(self):
-    return reverse('audit_result_group', args=[self.audit_result.slug,'rc',self.slug])
-
   def id(self):
     return 'arcr_' + self.rule_category.id
 
@@ -389,9 +381,6 @@ class AuditGuidelineResult(RuleGroupResult):
   def title(self):
     return self.guideline.title
 
-  def href(self):
-    return reverse('audit_result_group', args=[self.audit_result.slug,'gl',self.slug])
-
   def id(self):
     return 'aglr_' + self.guideline.id
 
@@ -429,9 +418,6 @@ class AuditRuleScopeResult(RuleGroupResult):
 
   def title(self):
     return self.rule_scope.title
-
-  def href(self):
-    return reverse('audit_result_group', args=[self.audit_result.slug,'rs',self.slug])
 
   def id(self):
     return 'arsr_' + self.rule_scope.id

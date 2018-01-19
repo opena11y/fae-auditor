@@ -4,24 +4,22 @@
 {% load staticfiles i18n %}
 
 {% block nav_reports %}
-<li><a href="{% url 'audit_result' audit_result.slug grouping %}">Summary</a></li>
+<li><a href="{% url 'audit_result' result_slug rule_grouping %}">Summary</a></li>
 {% endblock nav_reports %}
 
 {% block nav_filters %}
-{% for gi in group_results.items.all %}
-<li><a href="{{gi.href}}">{{gi.title}}</a></li>
-{% endfor %}
+{% include 'auditResults/nav_audit_result_rule_group.html' %}
 {% endblock nav_filters %}
 
 
 {% block breadcrumb %}
 <li><a href="{% url 'audit' audit_result.audit.slug %}">Audit</a></li>
-<li><a href="{% url 'audit_result' audit_result.slug grouping %}">Audit Result</a></li>
-<li>{{group_results.title}}</li>
+<li><a href="{% url 'audit_result' result_slug rule_grouping %}">Audit Result</a></li>
+<li>{{rule_group_result.title}}</li>
 {% endblock %}
 
 {% block title %}
-Audit Group Result: {{group_result.title}}
+Audit Group Result: {{rule_group_result.title}}
 {% endblock %}
 
 {% block content %}

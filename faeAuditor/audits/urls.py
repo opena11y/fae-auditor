@@ -28,36 +28,9 @@ from .views import AuditView
 from .views import RunView
 from .views import ProcessingView
 
-from auditResults.views  import AuditResultView
-from auditResults.views  import AuditResultGroupView
-from auditResults.views  import AuditResultGroupRuleView
-from auditResults.views  import AuditResultGroupRuleWebsiteView
-from auditResults.views  import AuditResultGroupRuleWebsitePageView
-
 urlpatterns = [
     url(r'^$',                             AuditsView.as_view(),      name='audits'),
     url(r'^a/(?P<audit_slug>[\w-]+)/$',    AuditView.as_view(),       name='audit'),
     url(r'^run/(?P<audit_slug>[\w-]+)/$',  RunView.as_view(),         name='audit_run'),
-    url(r'^processing/$',                  ProcessingView.as_view(),  name='audit_processing'),
-
-    url(r'^ar/(?P<result_slug>[\w-]+)/(?P<grouping>[\w-]+)/$',
-      AuditResultView.as_view(),
-      name='audit_result'),
-
-    url(r'^ar/(?P<result_slug>[\w-]+)/(?P<grouping>[\w-]+)/(?P<group>[\w-]+)/$',
-      AuditResultGroupView.as_view(),
-      name='audit_result_group'),
-
-    url(r'^ar/(?P<result_slug>[\w-]+)/(?P<grouping>[\w-]+)/(?P<group>[\w-]+)/(?P<rule>[\w-]+)$',
-      AuditResultGroupRuleView.as_view(),
-      name='audit_result_group_rule'),
-
-    url(r'^ar/(?P<result_slug>[\w-]+)/(?P<grouping>[\w-]+)/(?P<group>[\w-]+)/(?P<rule>[\w-]+)/ws/(?P<ws>[\w-]+)$',
-      AuditResultGroupRuleWebsiteView.as_view(),
-      name='audit_result_group_rule_website'),
-
-    url(r'^ar/(?P<result_slug>[\w-]+)/(?P<grouping>[\w-]+)/(?P<group>[\w-]+)/(?P<rule>[\w-]+)/ws/(?P<ws>[\w-]+)/(?P<page>[\w-]+)$',
-      AuditResultGroupRuleWebsitePageView.as_view(),
-      name='audit_result_group_rule_website_page')
-
+    url(r'^processing/$',                  ProcessingView.as_view(),  name='audit_processing')
 ]

@@ -23,7 +23,7 @@
     {% for wsrr in website_rule_results %}
     <tr>
       <td headers="id_grp">
-        <a href="{% url 'audit_result_group_rule_website' audit_result.slug grouping group wsrr.slug wsrr.ws_report.slug %}">
+        <a href="{% url 'audit_result_rule_group_rule_website' audit_result.slug grouping group wsrr.slug wsrr.ws_report.slug %}">
           {{wsrr.ws_report.title}}
         </a>
       </td>

@@ -1,0 +1,3 @@
+{% for rgr in rule_group_results %}
+<li><a href="{% url 'audit_result_rule_group' result_slug rule_grouping rgr.slug %}">{{rgr.title}}</a></li>
+{% endfor %}

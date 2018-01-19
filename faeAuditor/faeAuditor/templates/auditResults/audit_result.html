@@ -4,13 +4,11 @@
 {% load staticfiles i18n %}
 
 {% block nav_reports %}
-<li><a href="{% url 'audit_result' audit_result.slug grouping %}">Summary</a></li>
+<li><a href="{% url 'audit_result' result_slug rule_grouping %}">Summary</a></li>
 {% endblock nav_reports %}
 
 {% block nav_filters %}
-{% for gi in group_results.items.all %}
-<li><a href="{{gi.href}}">{{gi.title}}</a></li>
-{% endfor %}
+{% include 'auditResults/nav_audit_result_rule_group.html' %}
 {% endblock nav_filters %}
 
 
