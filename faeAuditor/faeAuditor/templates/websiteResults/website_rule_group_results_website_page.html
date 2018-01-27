@@ -14,10 +14,10 @@
 
 {% block breadcrumb %}
 <li><a href="{% url 'audit'                   audit_result.audit.slug %}">Audit</a></li>
-<li><a href="{% url 'audit_result'            result_slug rule_grouping %}">Summary</a></li>
-<li><a href="{% url 'website_rule_group_results'         result_slug rule_grouping rule_group_slug %}">Website Results</a></li>
-<li><a href="{% url 'website_rule_group_results_website' result_slug rule_grouping rule_group_slug website_slug %}">Website Result</a></li>
-<li>Page Rule Results</li>
+<li><a href="{% url 'website_results' result_slug rule_grouping %}">Website Results</a></li>
+<li><a href="{% url 'website_rule_group_results' result_slug rule_grouping rule_group_slug %}">{{rule_group}}</a></li>
+<li><a href="{% url 'website_rule_group_results_website' result_slug rule_grouping rule_group_slug website_slug %}">{{website_slug}}</a></li>
+<li>Page {{page_num}}</li>
 {% endblock %}
 
 {% block title %}

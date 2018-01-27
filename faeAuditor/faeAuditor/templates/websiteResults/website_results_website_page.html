@@ -13,17 +13,18 @@
 
 
 {% block breadcrumb %}
-<li><a href="{% url 'audit' audit_result.audit.slug %}">Audit</a></li>
+<li><a href="{% url 'audit'                   audit_result.audit.slug %}">Audit</a></li>
 <li><a href="{% url 'website_results' result_slug rule_grouping %}">Website Results</a></li>
-<li>{{rule_group}}</li>
+<li><a href="{% url 'website_results_website' result_slug rule_grouping website_slug %}">{{website_slug}}</a></li>
+<li>Page {{page_num}}</li>
 {% endblock %}
 
 {% block title %}
-Website Results: {{rule_group.title}} Rules
+Page Rule Results: All Rules
 {% endblock %}
 
 {% block content %}
 
-  {% include 'common/table_website_results.html' %}
+  {% include 'common/table_page_result.html' %}
 
 {% endblock %}
