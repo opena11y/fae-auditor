@@ -14,13 +14,16 @@
 
 {% block breadcrumb %}
 <li><a href="{% url 'audit' audit_slug %}">Audit</a></li>
-<li>Rule Results</li>
+<li><a href="{% url 'audit_result' result_slug rule_grouping %}">Rule Results</a></li>
+<li>{{rule_group_label}}</li>
 {% endblock %}
 
 {% block title %}
-AuditResult: {{audit_result.audit.title}} on {{audit_result.created}}
+Audit Group Result: {{rule_group_result.title}}
 {% endblock %}
 
 {% block content %}
-  {% include 'auditResults/table_result.html' %}
+
+  {% include 'auditResults/table_result_rule_group.html' %}
+
 {% endblock %}

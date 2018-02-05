@@ -23,11 +23,11 @@
       </tr>
   </thead>
   <tbody>
-    {% for prr in website_rule_result.page_rule_results.all %}
+    {% for prr in page_rule_results %}
     <tr>
       <td headers="id_num">{{prr.page_result.page_number}}</td>
       <td headers="id_grp">
-        <a href="{% url 'audit_result_rule_group_rule_website_page' result_slug rule_grouping rule_group rule_slug website_slug prr.page_result.page_number %}">
+        <a href="{{prr.href}}">
           {{prr.page_result.get_title}}
         </a>
       </td>

@@ -139,11 +139,12 @@ class AuditResult(AllRuleGroupResult):
     return "Group"
 
   def save(self):
+    super(AuditResult, self).save() # Call the "real" save() method
+
     if self.slug == 'none':
       self.slug = self.audit.slug + "-" + self.created.strftime('%Y-%m-%d')
-      self.audit_directory  = APP_DIR + "data/" + self.user.username  + "/" + self.audit.slug + "-" + self.created.strftime('%Y-%m-%d')
-
-    super(AuditResult, self).save() # Call the "real" save() method
+      self.audit_directory  = APP_DIR + "data/" + self.user.username  + "/" + self.slug
+      self.save()
 
 
   def add_website_result(self, ws_result):
@@ -267,41 +268,6 @@ class AuditResult(AllRuleGroupResult):
       arsr.save()
 
     return arsr
-
-  # The following are used by View functions for HTML output
-
-  def audit_group_rule_results(self, rule_slug):
-    group_rule_results = []
-
-    for gr in self.group_results.all():
-      group_rule_results.append(gr.group_rule_results.get(slug=rule_slug))
-
-    return group_rule_results
-
-  def all_audit_group2_rule_results(self, rule_slug):
-    group2_rule_results = []
-
-    for gr in self.group_results.all():
-      for g2r in gr.group2_results.all():
-        group2_rule_results.append(g2r.group2_rule_results.get(slug=rule_slug))
-
-    return group2_rule_results
-
-  def website_rule_results(self, rule_slug, group=False, group2=False):
-    website_rule_results = []
-    for wsr in self.ws_results.all():
-      try:
-        if (not group and not group2) or \
-           (group  and wsr.group_result.slug  == group) or \
-           (group2 and wsr.group2_result.slug == group2):
-          website_rule_results.append(wsr.ws_rule_results.get(slug=rule_slug))
-
-      except:
-        pass
-
-    return website_rule_results
-
-
 
 
 # ---------------------------------------------------------------

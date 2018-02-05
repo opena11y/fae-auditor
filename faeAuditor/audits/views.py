@@ -87,11 +87,16 @@ class AuditView(LoginRequiredMixin, TemplateView):
         context = super(AuditView, self).get_context_data(**kwargs)
 
         user = self.request.user
-
         user_profile = UserProfile.objects.get(user=user)
 
-        audit = Audit.objects.get(user=user, slug=kwargs['audit_slug'])
+        audit_slug     = kwargs['audit_slug']
 
+        audit = Audit.objects.get(user=user, slug=audit_slug)
+
+        # slugs used for urls
+        context['audit_slug'] = audit_slug
+
+        # objects for rendering content
         context['audit']         = audit
         context['user_profile']  = user_profile
 
@@ -108,17 +113,17 @@ class RunView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('audit_processing')
 
     def form_valid(self, form):
-        user     = self.request.user
-        audit_id = self.kwargs.get('audit_id', None)
-        audit = Audit.objects.get(id=audit_id)
+        user       = self.request.user
+        audit_slug = self.kwargs.get('audit_slug', None)
+        print("AUDIT_SLUG: " + audit_slug)
+        audit      = Audit.objects.get(slug=audit_slug)
 
         form.instance.user = self.request.user
         if form.instance.depth == 1:
           form.instance.follow = 1
 
-        form.instance.user = user
-        form.instance.slug = generate()
-        form.instance.audit = audit
+        form.instance.user              = user
+        form.instance.audit             = audit
         form.instance.browser_emulation = audit.browser_emulation
 
         return super(RunView, self).form_valid(form)
@@ -139,9 +144,9 @@ class RunView(LoginRequiredMixin, CreateView):
         audit_slug  = self.kwargs.get('audit_slug', None)
 
         user_profile = UserProfile.objects.get(user=user)
-        audit = Audit.objects.get(user=user, slug=audit_slug)
+        audit        = Audit.objects.get(user=user, slug=audit_slug)
 
-        context['audit'] = audit
+        context['audit']        = audit
         context['user_profile'] = user_profile
 
         return context

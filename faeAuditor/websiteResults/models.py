@@ -166,8 +166,8 @@ class WebsiteResult(RuleGroupResult):
   id    = models.AutoField(primary_key=True)
 
   audit_result   = models.ForeignKey(AuditResult,       related_name="ws_results")
-  group_result   = models.ForeignKey(AuditGroupResult,  related_name="ws_results")
-  group2_result  = models.ForeignKey(AuditGroup2Result, related_name="ws_results")
+  group_result   = models.ForeignKey(AuditGroupResult,  related_name="ws_results", null=True)
+  group2_result  = models.ForeignKey(AuditGroup2Result, related_name="ws_results", null=True)
 
   slug  = models.SlugField(max_length=256, editable=False)
 
@@ -323,7 +323,7 @@ class WebsiteResult(RuleGroupResult):
         self.ttile = "no title"
       self.save()
 
-      self.audit_result.check_if_audit_result_complete()
+    self.audit_result.check_if_audit_result_complete()
 
   def is_complete(self):
     return self.status == 'C'
@@ -332,6 +332,8 @@ class WebsiteResult(RuleGroupResult):
     self.delete_data_files()
     self.status = 'E'
     self.save()
+
+    self.audit_result.check_if_audit_result_complete()
 
   def is_error(self):
     return self.status == 'E'
@@ -369,6 +371,12 @@ class WebsiteResult(RuleGroupResult):
       pr.page_number = num
       pr.save()
       num += 1
+
+  def get_title(self):
+    if len(self.title):
+      return self.title
+    else:
+      return "No title for: " + self.url
 
   def update_last_viewed(self):
     self.last_viewed = datetime.now()

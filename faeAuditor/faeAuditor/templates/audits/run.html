@@ -13,21 +13,21 @@ Run: {{audit.title}}
 
 {% block content %}
 
-<form id="id_run_report"  action="{% url 'audit_run' audit.id %}" method="post" >
+<form id="id_run_report"  action="{% url 'audit_run' audit.slug %}" method="post" >
     {% csrf_token %}
 
     {% include "forms/input_report_title.html" %}
-    
+
     {% include "forms/input_report_depth.html" %}
-    
+
     {% include "forms/input_report_domains.html" %}
-    
+
     {% include "forms/input_report_ruleset.html" %}
-    
+
     {% include "forms/input_report_max_pages.html" %}
 
     {% include "forms/input_report_wait_time.html" %}
-    
+
     <div class="fae_button">
         <input id="id_submit" name="submit" type="submit" value="Evaluate"  title="You must enter a valid URL and a title before you can request a report"/>
     </div>
@@ -48,9 +48,9 @@ Run: {{audit.title}}
         depth: {{audit.depth}},
         max_pages: {{audit.max_pages}},
         wait_time: {{audit.wait_time}},
-        follow: {{audit.follow}} 
+        follow: {{audit.follow}}
     };
- 
+
     document.getElementById("id_input_title").value    = audit.title;
     document.getElementById("max_pages_" + audit.max_pages).checked  = true;
 

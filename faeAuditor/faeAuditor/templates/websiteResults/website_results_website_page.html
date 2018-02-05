@@ -8,12 +8,12 @@
 {% endblock nav_reports %}
 
 {% block nav_filters %}
-{% include 'websiteResults/nav_websites_rule_group.html' %}
+{% include 'websiteResults/filter_websites_rule_group_website_page.html' %}
 {% endblock nav_filters %}
 
 
 {% block breadcrumb %}
-<li><a href="{% url 'audit'                   audit_result.audit.slug %}">Audit</a></li>
+<li><a href="{% url 'audit' audit_slug %}">Audit</a></li>
 <li><a href="{% url 'website_results' result_slug rule_grouping %}">Website Results</a></li>
 <li><a href="{% url 'website_results_website' result_slug rule_grouping website_slug %}">{{website_slug}}</a></li>
 <li>Page {{page_num}}</li>

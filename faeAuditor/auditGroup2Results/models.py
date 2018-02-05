@@ -137,6 +137,17 @@ class AuditGroup2Result(AllRuleGroupResult):
         ag2rsr.save()
       return ag2rsr
 
+  def website_rule_results(self, rule_slug):
+    website_rule_results = []
+    for wsr in self.ws_results.all():
+      try:
+          website_rule_results.append(wsr.ws_rule_results.get(slug=rule_slug))
+      except:
+        pass
+
+    return website_rule_results
+
+
 # ---------------------------------------------------------------
 #
 # AuditGroup2RuleCategoryResult

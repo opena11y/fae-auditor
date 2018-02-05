@@ -43,7 +43,8 @@ urlpatterns = [
     url(r'^admin/',   include(admin.site.urls)),
     # fae2 specific
     url(r'^',           include('audits.urls')),
-    url(r'^ar/',        include('auditResults.urls')),
+    url(r'^rules/',     include('auditResults.urls')),
+    url(r'^websites/',  include('websiteResults.urls')),
     url(r'^abouts/',    include('abouts.urls')),
     url(r'^contacts/',  include('contacts.urls')),
     url(r'^accounts/',  include('accounts.urls')),

@@ -1,0 +1,10 @@
+{% if audit_result.audit.group2s.count %}
+  {% include 'common/table_website_results_with_sub_audit_groups.html' %}
+{% else %}
+  {% if audit_result.audit.groups.count %}
+    {% include 'common/table_website_results_with_audit_group.html' %}
+  {% else %}
+    {% include 'common/table_website_results_with_no_audit_group.html' %}
+  {% endif %}
+{% endif %}
+

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% load staticfiles i18n %}
+
+{% block nav_reports %}
+  {% include 'common/nav_reports.html' %}
+{% endblock nav_reports %}
+
+{% block nav_filters %}
+{% include 'auditResults/filter_audit_result_rule_group.html' %}
+{% endblock nav_filters %}
+
+
+{% block breadcrumb %}
+<li><a href="{% url 'audit' audit_result.audit.slug %}">Audit</a></li>
+<li><a href="{% url 'audit_result' result_slug rule_grouping %}">Rule Results</a></li>
+<li>
+  <a href="{% url 'audit_result_rule_group' audit_result.slug rule_grouping rule_group_slug %}">{{rule_group_label}}
+  </a>
+</li>
+<li>
+  <a href="{% url 'audit_result_rule_group_rule' result_slug rule_grouping rule_group_slug rule_slug %}">{{rule.nls_rule_id}}
+  </a>
+</li>
+<li>
+  <a href="{% url 'audit_result_rule_group_rule_audit_group' result_slug rule_grouping rule_group_slug rule_slug audit_group_slug %}">{{audit_group2_result.group_result.group_item.title}}
+  </a>
+</li>
+<li>{{audit_group2_result.group2_item.title}}</li>
+{% endblock %}
+
+{% block title %}
+Sub-Group Rule Result: {{rule.summary_html|safe}} for {{audit_group2_result.group2_item.title}}
+{% endblock %}
+
+{% block content %}
+
+  {% include 'common/table_website_rule_results.html' %}
+
+{% endblock %}

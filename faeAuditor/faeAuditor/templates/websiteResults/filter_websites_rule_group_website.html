@@ -1,0 +1,4 @@
+<li><a href="{% url 'website_results_website' result_slug rule_grouping website_slug %}">All Rules</a></li>
+{% for rg in rule_groups %}
+<li><a href="{% url 'website_rule_group_results_website' result_slug rule_grouping rg.slug website_slug %}">{{rg.title}}</a></li>
+{% endfor %}
