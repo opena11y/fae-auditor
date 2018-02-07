@@ -17,6 +17,7 @@ eggs/
 .eggs/
 lib/
 !faeAuditor/fae-util/lib
+!faeAuditor/fae-util/lib/lib
 lib64/
 parts/
 sdist/
