@@ -33,7 +33,7 @@ path, filename = os.path.split(fp)
 fae2_path = path.split('/populate')[0]
 sys.path.append(fae2_path)
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'faeAuditor.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 from django.conf import settings
 
 django.setup()
