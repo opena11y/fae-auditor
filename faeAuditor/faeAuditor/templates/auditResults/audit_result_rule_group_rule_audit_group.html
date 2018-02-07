@@ -29,7 +29,9 @@ Audit Sub-Group Rule Result: {{rule.summary_html|safe}} for {{audit_group_result
 
 {% block content %}
 
+  {% if audit_result.group2_results %}
   {% include 'common/table_audit_group2_rule_results.html' %}
+  {% endif %}
 
   <h2>All Wesbites</h2>
   {% include 'common/table_website_rule_results.html' %}

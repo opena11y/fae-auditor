@@ -482,9 +482,9 @@ class WebsiteResultsView(TemplateView):
 
         for wsr in wsrs:
             wsr.href         = reverse('website_results_website', args=[result_slug, rule_grouping, wsr.slug])
-            if ar.audit.groups:
+            if wsr.group_result:
                 wsr.group_title  = wsr.group_result.group_item.title
-                if ar.audit.group2s:
+                if wsr.group2_result:
                     wsr.group2_title = wsr.group2_result.group2_item.title
 
         # slugs used for urls
