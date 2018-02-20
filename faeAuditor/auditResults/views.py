@@ -87,19 +87,18 @@ class AuditResultView(ResultNavigationMixin, TemplateView):
         ar = AuditResult.objects.get(slug=result_slug)
 
         if rule_grouping == 'gl':
-            rule_groups      = Guideline.objects.all()
-            rule_group_label   = "Guideline"
             rule_group_results = ar.audit_gl_results.all()
         else:
             if rule_grouping == 'rs':
-                rule_groups      = RuleScope.objects.all()
-                rule_group_label   = "Rule Scope"
                 rule_group_results = ar.audit_rs_results.all()
             else:
-                rule_groups        = RuleCategory.objects.all()
-                rule_group_label   = "Rule Category"
                 rule_grouping = 'rc'
                 rule_group_results = ar.audit_rc_results.all()
+
+        # Set result navigation links
+        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules')
+        self.result_nav.set_rule_grouping(rule_grouping, None)
+        self.result_nav.create_result_navigation()
 
         # slugs used for urls
         context['audit_slug']     = ar.audit.slug
@@ -110,9 +109,6 @@ class AuditResultView(ResultNavigationMixin, TemplateView):
         context['audit']         = ar.audit
         context['audit_result']  = ar
         context['user_profile']  = user_profile
-
-        context['rule_group_label'] = rule_group_label
-        context['rule_groups']      = rule_groups
 
         context['rule_group_results'] = rule_group_results
 
@@ -134,25 +130,20 @@ class AuditResultRuleGroupView(ResultNavigationMixin, TemplateView):
         ar = AuditResult.objects.get(slug=result_slug)
 
         if rule_grouping == 'gl':
-            rule_groups         = Guideline.objects.all()
-            rule_grouping_label = "Guideline"
-            rule_group_label    = Guideline.objects.get(slug=rule_group_slug).title
-
-            rule_group_result  = ar.audit_gl_results.get(slug=rule_group_slug)
+            rule_group_label  = Guideline.objects.get(slug=rule_group_slug).title
+            rule_group_result = ar.audit_gl_results.get(slug=rule_group_slug)
         else:
             if rule_grouping == 'rs':
-                rule_groups         = RuleScope.objects.all()
-                rule_grouping_label = "Rule Scope"
-                rule_group_label    = RuleScope.objects.get(slug=rule_group_slug).title
-
-                rule_group_result       = ar.audit_rs_results.get(slug=rule_group_slug)
+                rule_group_label  = RuleScope.objects.get(slug=rule_group_slug).title
+                rule_group_result = ar.audit_rs_results.get(slug=rule_group_slug)
             else:
-                rule_groups         = RuleCategory.objects.all()
-                rule_grouping_label = "Rule Category"
-                rule_group_label    = RuleCategory.objects.get(slug=rule_group_slug).title
-                rule_grouping    = 'rc'
+                rule_group_label  = RuleCategory.objects.get(slug=rule_group_slug).title
+                rule_group_result = ar.audit_rc_results.get(slug=rule_group_slug)
 
-                rule_group_result  = ar.audit_rc_results.get(slug=rule_group_slug)
+        # Set result navigation links
+        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules')
+        self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
+        self.result_nav.create_result_navigation()
 
         # slugs used for urls
         context['audit_slug']      = ar.audit.slug
@@ -161,13 +152,10 @@ class AuditResultRuleGroupView(ResultNavigationMixin, TemplateView):
         context['rule_group_slug'] = rule_group_slug
 
         # objects for rendering content
-        context['audit_result']  = ar
-        context['user_profile']  = user_profile
+        context['audit_result']       = ar
+        context['user_profile']       = user_profile
 
-        context['rule_grouping_label'] = rule_grouping_label
-        context['rule_group_label']    = rule_group_label
-        context['rule_groups']         = rule_groups
-
+        context['rule_group_label']   = rule_group_label
         context['rule_group_result']  = rule_group_result
 
         return context
@@ -224,6 +212,12 @@ class AuditResultRuleGroupRuleView(ResultNavigationMixin, TemplateView):
         else:
             ag2rrs = []
 
+        # Set result navigation links
+        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules')
+        self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
+        self.result_nav.set_rule(rule_slug)
+        self.result_nav.create_result_navigation()
+
         # slugs used for urls
         context['audit_slug']      = ar.audit.slug
         context['result_slug']     = result_slug
@@ -236,11 +230,8 @@ class AuditResultRuleGroupRuleView(ResultNavigationMixin, TemplateView):
         context['audit_result']  = ar
         context['user_profile']  = user_profile
 
-        context['rule_grouping_label'] = rule_grouping_label
-        context['rule_group_label']    = rule_group_label
-        context['rule_groups']         = rule_groups
-
-        context['rule']                    = Rule.objects.get(slug=rule_slug)
+        context['rule']                      = Rule.objects.get(slug=rule_slug)
+        context['rule_group_label']          = rule_group_label
         context['audit_group_rule_results']  = agrrs
         context['audit_group2_rule_results'] = ag2rrs
         context['website_rule_results']      = wsrrs

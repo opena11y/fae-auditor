@@ -352,15 +352,15 @@ class ResultNavigtionObject:
 
     def filter_audit_result(self, group, label):
         if group:
-            return reverse('audit_result_rule_group', args=[self.result_slug, self.rule_grouping, group])
+            return reverse('audit_result_rule_group', args=[self.audit_result_slug, self.rule_grouping, group])
         else:
-            return reverse('audit_result', args=[self.result_slug, self.rule_grouping])
+            return reverse('audit_result', args=[self.audit_result_slug, self.rule_grouping])
 
 
     def add_filter_item(self, group, label):
 
         if self.result_view == 'rules':
-            self.filter_audit_result(group, label)
+            url = self.filter_audit_result(group, label)
         # Assume 'website' result view
         else:
 
