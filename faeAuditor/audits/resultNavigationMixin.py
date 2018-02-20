@@ -301,7 +301,7 @@ class ResultNavigtionObject:
     def view_option_website_results_website_page_rule(self):
         self.view_options.add('Rule Category', reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'rc', self.website_slug, self.page_num, self.rule_slug]))
         self.view_options.add('Guidelines',    reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'gl', self.website_slug, self.page_num, self.rule_slug]))
-        self.view_options.add('Rule Scope',    reverse('', args=[self.audit_result_slug, 'rs', self.website_slug, self.page_num, self.rule_slug]))
+        self.view_options.add('Rule Scope',    reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'rs', self.website_slug, self.page_num, self.rule_slug]))
 
     def create_view_options(self):
 

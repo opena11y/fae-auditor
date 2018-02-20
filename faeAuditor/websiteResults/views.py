@@ -303,8 +303,6 @@ class WebsiteResultsWebsitePageRuleView(ResultNavigationMixin, TemplateView):
         context['audit_result']  = ar
         context['user_profile']  = user_profile
 
-        context['rule_grouping_label'] = rule_grouping_label
-        context['rule_groups']         = rule_groups
         context['website_result']      = wsr
         context['page_result']         = pr
         context['page_rule_result']    = prr
@@ -329,22 +327,15 @@ class WebsiteRuleGroupResultsView(ResultNavigationMixin, TemplateView):
         ar = AuditResult.objects.get(slug=result_slug)
 
         if rule_grouping == 'gl':
-            rule_groups       = Guideline.objects.all()
             wsrgrs            = WebsiteGuidelineResult.objects.filter(ws_report__audit_result=ar, slug=rule_group_slug)
-            rule_grouping_label  = "Guideline"
             rule_group        = Guideline.objects.get(slug=rule_group_slug)
         else:
             if rule_grouping == 'rs':
-                rule_groups      = RuleScope.objects.all()
                 wsrgrs           = WebsiteRuleScopeResult.objects.filter(ws_report__audit_result=ar, slug=rule_group_slug)
-                rule_grouping_label = "Rule Scope"
                 rule_group        = RuleScope.objects.get(slug=rule_group_slug)
             else:
-                rule_groups      = RuleCategory.objects.all()
                 wsrgrs           = WebsiteRuleCategoryResult.objects.filter(ws_report__audit_result=ar, slug=rule_group_slug)
-                rule_grouping_label = "Rule Category"
                 rule_group        = RuleCategory.objects.get(slug=rule_group_slug)
-                rule_grouping    = 'rc'
 
 
         for wsrgr in wsrgrs:
@@ -370,9 +361,6 @@ class WebsiteRuleGroupResultsView(ResultNavigationMixin, TemplateView):
         context['audit_result']  = ar
         context['user_profile']  = user_profile
 
-        context['rule_grouping_label'] = rule_grouping_label
-        context['rule_groups']         = rule_grouping
-        context['rule_group_slug']     = rule_group_slug
         context['rule_group']          = rule_group
         context['website_results']     = wsrgrs
 
@@ -396,25 +384,15 @@ class WebsiteRuleGroupResultsWebsiteView(ResultNavigationMixin, TemplateView):
         wsr = ar.ws_results.get(slug=website_slug)
 
         if rule_grouping == 'gl':
-            rule_groups       = Guideline.objects.all()
-            wsrgrs            = WebsiteGuidelineResult.objects.filter(ws_report__audit_result=ar, slug=rule_group_slug)
-            rule_grouping_label  = "Guideline"
             rule_group        = Guideline.objects.get(slug=rule_group_slug)
             page_results      = PageGuidelineResult.objects.filter(page_result__ws_report=wsr, slug=rule_group_slug)
         else:
             if rule_grouping == 'rs':
-                rule_groups      = RuleScope.objects.all()
-                wsrgrs           = WebsiteRuleScopeResult.objects.filter(ws_report__audit_result=ar, slug=rule_group_slug)
-                rule_grouping_label = "Rule Scope"
                 rule_group        = RuleScope.objects.get(slug=rule_group_slug)
                 page_results      = PageRuleScopeResult.objects.filter(page_result__ws_report=wsr, slug=rule_group_slug)
             else:
-                rule_groups      = RuleCategory.objects.all()
-                wsrgrs           = WebsiteRuleCategoryResult.objects.filter(ws_report__audit_result=ar, slug=rule_group_slug)
-                rule_grouping_label = "Rule Category"
                 rule_group        = RuleCategory.objects.get(slug=rule_group_slug)
                 page_results      = PageRuleCategoryResult.objects.filter(page_result__ws_report=wsr, slug=rule_group_slug)
-                rule_grouping    = 'rc'
 
 
         for pr in page_results:
@@ -439,8 +417,6 @@ class WebsiteRuleGroupResultsWebsiteView(ResultNavigationMixin, TemplateView):
         context['audit_result']  = ar
         context['user_profile']  = user_profile
 
-        context['rule_grouping_label'] = rule_grouping_label
-        context['rule_groups']         = rule_groups
         context['rule_group']          = rule_group
         context['website_result']      = wsr
         context['page_results']        = page_results
@@ -466,25 +442,18 @@ class WebsiteRuleGroupResultsWebsitePageView(ResultNavigationMixin, TemplateView
         wsr = ar.ws_results.get(slug=website_slug)
 
         if rule_grouping == 'gl':
-            rule_groups          = Guideline.objects.all()
-            rule_grouping_label  = "Guideline"
-            rule_group           = Guideline.objects.get(slug=rule_group_slug)
-            page_result          = PageGuidelineResult.objects.get(page_result__ws_report=wsr, page_result__page_number=page_num, slug=rule_group_slug)
+            rule_group = Guideline.objects.get(slug=rule_group_slug)
+            pr         = PageGuidelineResult.objects.get(page_result__ws_report=wsr, page_result__page_number=page_num, slug=rule_group_slug)
         else:
             if rule_grouping == 'rs':
-                rule_groups         = RuleScope.objects.all()
-                rule_grouping_label = "Rule Scope"
-                rule_group          = RuleScope.objects.get(slug=rule_group_slug)
-                page_result         = PageRuleScopeResult.objects.get(page_result__ws_report=wsr, page_result__page_number=page_num, slug=rule_group_slug)
+                rule_group = RuleScope.objects.get(slug=rule_group_slug)
+                pr         = PageRuleScopeResult.objects.get(page_result__ws_report=wsr, page_result__page_number=page_num, slug=rule_group_slug)
             else:
-                rule_groups         = RuleCategory.objects.all()
-                rule_grouping_label = "Rule Category"
-                rule_group          = RuleCategory.objects.get(slug=rule_group_slug)
-                page_result         = PageRuleCategoryResult.objects.get(page_result__ws_report=wsr, page_result__page_number=page_num, slug=rule_group_slug)
-                rule_grouping       = 'rc'
+                rule_group = RuleCategory.objects.get(slug=rule_group_slug)
+                pr         = PageRuleCategoryResult.objects.get(page_result__ws_report=wsr, page_result__page_number=page_num, slug=rule_group_slug)
 
 
-        prrs = page_result.page_rule_results.all()
+        prrs = pr.page_rule_results.all()
 
         for prr in prrs:
             prr.title = prr.rule.summary_html
@@ -508,11 +477,9 @@ class WebsiteRuleGroupResultsWebsitePageView(ResultNavigationMixin, TemplateView
         context['audit_result']  = ar
         context['user_profile']  = user_profile
 
-        context['rule_grouping_label'] = rule_grouping_label
-        context['rule_groups']         = rule_groups
         context['rule_group']          = rule_group
         context['website_result']      = wsr
-        context['page_result']         = page_result
+        context['page_result']         = pr
         context['page_rule_results']   = prrs
 
         return context
