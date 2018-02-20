@@ -25,9 +25,9 @@ from django.core.mail import send_mail
 from django.core.urlresolvers import reverse_lazy, reverse
 
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic       import CreateView 
-from django.views.generic       import UpdateView 
-from django.views.generic       import TemplateView 
+from django.views.generic       import CreateView
+from django.views.generic       import UpdateView
+from django.views.generic       import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.contrib.auth.models import User
@@ -35,13 +35,13 @@ from django.contrib.auth.models import User
 from .models import Contact
 from .models import Announcement
 
-from websiteResults.views import FAENavigationMixin
+from audits.resultNavigationMixin import ResultNavigationMixin
 
 from faeAuditor.settings import EMAIL_HOST_USER
 from faeAuditor.settings import ADMIN_EMAIL
 
 # Create your views here.
-class ContactFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixin, CreateView):
+class ContactFormView(LoginRequiredMixin, ResultNavigationMixin, SuccessMessageMixin, CreateView):
     model = Contact
     fields = ['topic', 'message']
     template_name = 'contact/contact_form.html'
@@ -57,13 +57,13 @@ class ContactFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixi
         user = self.request.user
         form.instance.user = user
 
-        message = "The following message was submitted to the FAE contact system" 
+        message = "The following message was submitted to the FAE contact system"
         message += "\n\nUser: " + user.first_name + " " + user.last_name
         message += "\nUsername: " + user.username
         message += "\nE-mail: " + user.email
-        message += "\n\nTopic: " + form.instance.topic 
+        message += "\n\nTopic: " + form.instance.topic
         message += "\n\nMessage:\n" + form.instance.message
-        
+
         contact_topic = "FAE: " + form.instance.topic
 
         send_mail(contact_topic, message, EMAIL_HOST_USER, [ADMIN_EMAIL], fail_silently=False)
@@ -72,7 +72,7 @@ class ContactFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixi
 
 
 # Create your views here.
-class ResponseFormView(LoginRequiredMixin, FAENavigationMixin, UpdateView):
+class ResponseFormView(LoginRequiredMixin, ResultNavigationMixin, UpdateView):
     model = Contact
     fields = ['topic', 'message', 'status', 'comments']
     template_name = 'contact/response_form.html'
@@ -86,15 +86,15 @@ class ResponseFormView(LoginRequiredMixin, FAENavigationMixin, UpdateView):
         user = contact.user
         form.instance.user = user
 
-        message = "The following message was submitted to the FAE contact system" 
+        message = "The following message was submitted to the FAE contact system"
         message += "\n\nUser: "      + user.first_name + " " + user.last_name
         message += "\nUsername: "    + user.username
         message += "\nE-mail: "      + user.email
-        message += "\n\nTopic: "     + form.instance.topic 
+        message += "\n\nTopic: "     + form.instance.topic
         message += "\n\nStatus:\n"   + form.instance.show_status()
         message += "\n\nMessage:\n"  + form.instance.message
         message += "\n\nResponse:\n" + form.instance.comments
-        
+
         contact_topic = "FAE: " + form.instance.topic
 
         send_mail(contact_topic, message, EMAIL_HOST_USER, [contact.user.email], fail_silently=False)
@@ -113,7 +113,7 @@ class ResponseFormView(LoginRequiredMixin, FAENavigationMixin, UpdateView):
         return context
 
 
-class ResponsesView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+class ResponsesView(LoginRequiredMixin, ResultNavigationMixin, TemplateView):
     template_name = 'contact/responses.html'
 
     def get_context_data(self, **kwargs):
@@ -121,11 +121,11 @@ class ResponsesView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
 
         context['new_contacts']  = Contact.objects.filter(status='NR')
         context['old_contacts']  = Contact.objects.exclude(status='NR')
-        
-        return context            
+
+        return context
 
 
-class AnnouncementFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixin, CreateView):
+class AnnouncementFormView(LoginRequiredMixin, ResultNavigationMixin, SuccessMessageMixin, CreateView):
     model = Announcement
     fields = ['topic', 'message_text', 'message_markdown', 'scope', 'email', 'web', 'end_date']
     template_name = 'contact/announcement_form.html'
@@ -143,7 +143,7 @@ class AnnouncementFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessag
 
 
 
-class AnnouncementsView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+class AnnouncementsView(LoginRequiredMixin, ResultNavigationMixin, TemplateView):
     template_name = 'contact/announcements.html'
 
     def get_context_data(self, **kwargs):
@@ -151,5 +151,5 @@ class AnnouncementsView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
 
         context['current']  = Announcement.objects.exclude(status='Arch')
         context['archived'] = Announcement.objects.filter(status='Arch')
-        
-        return context            
+
+        return context

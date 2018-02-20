@@ -26,35 +26,36 @@ from __future__ import absolute_import
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 
-from websiteResults.views  import FAENavigationMixin
+from audits.resultNavigationMixin import ResultNavigationMixin
+
 from ruleCategories.models import RuleCategory
 
 
-class Disclaimer(FAENavigationMixin, TemplateView):
+class Disclaimer(ResultNavigationMixin, TemplateView):
     template_name = 'abouts/disclaimer.html'
 
-class ConceptsTerms(FAENavigationMixin, TemplateView):
+class ConceptsTerms(ResultNavigationMixin, TemplateView):
     template_name = 'abouts/concepts_terms.html'
 
-class Overview(FAENavigationMixin, TemplateView):
+class Overview(ResultNavigationMixin, TemplateView):
     template_name = 'abouts/overview.html'
 
     def get_context_data(self, **kwargs):
         context = super(Overview, self).get_context_data(**kwargs)
 
         context['rule_categories'] = RuleCategory.objects.all()
-        
-        return context            
+
+        return context
 
 
-class Privacy(FAENavigationMixin, TemplateView):
+class Privacy(ResultNavigationMixin, TemplateView):
     template_name = 'abouts/privacy.html'
 
-class ReportIssues(FAENavigationMixin, TemplateView):
+class ReportIssues(ResultNavigationMixin, TemplateView):
     template_name = 'abouts/report_issues.html'
 
-class Versions(FAENavigationMixin, TemplateView):
+class Versions(ResultNavigationMixin, TemplateView):
     template_name = 'abouts/versions.html'
 
-class Sharing(FAENavigationMixin, TemplateView):
+class Sharing(ResultNavigationMixin, TemplateView):
     template_name = 'abouts/sharing.html'

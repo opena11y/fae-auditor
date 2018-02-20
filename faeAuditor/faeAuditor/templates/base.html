@@ -142,26 +142,27 @@
 
           <nav id="id_view_options" aria-labelledby="id_view_options_label" class="hidden-xs">
 
-            <h2 id="id_view_options_label">View Options</h2>
+            <h2 id="id_view_options_label">View Options {{result_nav.view_options.item_count}})</h2>
 
             <ul class="nav nav-pills nav-stacked">
-            {% block nav_options %}
-
-            {% endblock nav_options %}
+              {% for item in result_nav.view_options.items %}
+              <li><a href="{{item.url}}">{{item.label}}</a></li>
+              {% endfor %}
             </ul>
           </nav>
 
+          {% if result_nav.filters.item_count %}
           <nav id="id_view_filters" aria-labelledby="id_view_filters_label" class="hidden-xs">
 
-            <h2 id="id_view_filters_label">View Filters</h2>
+            <h2 id="id_view_filters_label">View Filters ({{result_nav.filters.item_count}})</h2>
 
             <ul class="nav nav-pills nav-stacked">
-            {% block nav_filters %}
-
-            {% endblock nav_filters %}
+              {% for item in result_nav.filters.items %}
+              <li><a href="{{item.url}}">{{item.label}}</a></li>
+              {% endfor %}
             </ul>
           </nav>
-
+          {% endif %}
         </div>
 
 

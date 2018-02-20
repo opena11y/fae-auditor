@@ -22,7 +22,7 @@ Author: Jon Gunderson
 from __future__ import absolute_import
 from django.shortcuts import render
 
-from django.http import HttpResponse 
+from django.http import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import redirect
 
@@ -43,11 +43,11 @@ from .models import StatsRegisteredUsers
 
 from websiteResultGroups.models  import WebsiteResultGroup
 
-from reports.views import FAENavigationMixin
+from audits.resultNavigationMixin import ResultNavigationMixin
 
 # Create your views here.
 
-class ShowUsageStatistics(FAENavigationMixin, TemplateView):
+class ShowUsageStatistics(ResultNavigationMixin, TemplateView):
     template_name = 'stats/summary.html'
 
     def get_context_data(self, **kwargs):
@@ -58,8 +58,8 @@ class ShowUsageStatistics(FAENavigationMixin, TemplateView):
         except:
           wsrg =  WebsiteResultGroup(title="Summary of all reports")
           wsrg.save()
-          stats_all = StatsAll(ws_report_group=wsrg) 
-          stats_all.save()  
+          stats_all = StatsAll(ws_report_group=wsrg)
+          stats_all.save()
 
         today= datetime.date.today()
 
@@ -88,7 +88,7 @@ class ShowUsageStatistics(FAENavigationMixin, TemplateView):
         except ObjectDoesNotExist:
             wsrg =  WebsiteResultGroup(title="Summary of results day: " + str(today.year) + "-" + str(today.month) + "-" + str(today.day))
             wsrg.save()
-            day = StatsDay(stats_month=month, day=today.day, date=today, ws_report_group=wsrg)  
+            day = StatsDay(stats_month=month, day=today.day, date=today, ws_report_group=wsrg)
             day.save()
 
         seven_days   = StatsDay.objects.all()[:7]
@@ -104,18 +104,18 @@ class ShowUsageStatistics(FAENavigationMixin, TemplateView):
         stats_reg_users = StatsRegisteredUsers.objects.all()
         if len(stats_reg_users) > 0:
             stats_reg_users = stats_reg_users[0]
-        else:                
+        else:
             wsrg =  WebsiteResultGroup(title="Summary of registered users")
             wsrg.save()
-            stats_reg_users = StatsRegisteredUsers(ws_report_group=wsrg)  
+            stats_reg_users = StatsRegisteredUsers(ws_report_group=wsrg)
             stats_reg_users.save()
 
-        stats_anonymous = StatsUser.objects.get(user__username='anonymous')     
+        stats_anonymous = StatsUser.objects.get(user__username='anonymous')
 
-        stats_rulesets = StatsRuleset.objects.all()    
+        stats_rulesets = StatsRuleset.objects.all()
 
         context['stats_all']        = stats_all
-        context['stats_year']       = year 
+        context['stats_year']       = year
         context['stats_month']      = month
         context['stats_day']        = day
         context['stats_seven_days'] = seven_days
@@ -124,6 +124,6 @@ class ShowUsageStatistics(FAENavigationMixin, TemplateView):
         context['stats_anonymous'] = stats_anonymous
 
         context['stats_rulesets'] = stats_rulesets
-        
-        return context            
+
+        return context
 

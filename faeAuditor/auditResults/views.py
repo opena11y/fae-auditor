@@ -38,6 +38,8 @@ from django.views.generic import CreateView
 from django.views.generic import FormView
 from django.views.generic import RedirectView
 
+from audits.resultNavigationMixin import ResultNavigationMixin
+
 from django.contrib.auth.models import User
 
 from rules.models  import Rule
@@ -70,7 +72,7 @@ from wcag20.models         import Guideline
 from rules.models          import RuleScope
 from contacts.models       import Announcement
 
-class AuditResultView(TemplateView):
+class AuditResultView(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result.html'
 
     def get_context_data(self, **kwargs):
@@ -116,7 +118,7 @@ class AuditResultView(TemplateView):
 
         return context
 
-class AuditResultRuleGroupView(TemplateView):
+class AuditResultRuleGroupView(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result_rule_group.html'
 
     def get_context_data(self, **kwargs):
@@ -170,7 +172,7 @@ class AuditResultRuleGroupView(TemplateView):
 
         return context
 
-class AuditResultRuleGroupRuleView(TemplateView):
+class AuditResultRuleGroupRuleView(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result_rule_group_rule.html'
 
     def get_context_data(self, **kwargs):
@@ -247,7 +249,7 @@ class AuditResultRuleGroupRuleView(TemplateView):
         return context
 
 
-class AuditResultRuleGroupRuleWebsiteView(TemplateView):
+class AuditResultRuleGroupRuleWebsiteView(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result_rule_group_rule_website.html'
 
     def get_context_data(self, **kwargs):
@@ -311,7 +313,7 @@ class AuditResultRuleGroupRuleWebsiteView(TemplateView):
 
         return context
 
-class AuditResultRuleGroupRuleWebsitePageView(TemplateView):
+class AuditResultRuleGroupRuleWebsitePageView(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result_rule_group_rule_website_page.html'
 
     def get_context_data(self, **kwargs):
@@ -376,7 +378,7 @@ class AuditResultRuleGroupRuleWebsitePageView(TemplateView):
 
         return context
 
-class AuditResultRuleGroupRuleAuditGroupView(TemplateView):
+class AuditResultRuleGroupRuleAuditGroupView(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result_rule_group_rule_audit_group.html'
 
     def get_context_data(self, **kwargs):
@@ -444,7 +446,7 @@ class AuditResultRuleGroupRuleAuditGroupView(TemplateView):
 
         return context
 
-class AuditResultRuleGroupRuleAuditGroupWebsiteView(TemplateView):
+class AuditResultRuleGroupRuleAuditGroupWebsiteView(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result_rule_group_rule_audit_group_website.html'
 
     def get_context_data(self, **kwargs):
@@ -509,7 +511,7 @@ class AuditResultRuleGroupRuleAuditGroupWebsiteView(TemplateView):
 
         return context
 
-class AuditResultRuleGroupRuleAuditGroupWebsitePageView(TemplateView):
+class AuditResultRuleGroupRuleAuditGroupWebsitePageView(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result_rule_group_rule_audit_group_website_page.html'
 
     def get_context_data(self, **kwargs):
@@ -572,7 +574,7 @@ class AuditResultRuleGroupRuleAuditGroupWebsitePageView(TemplateView):
 
         return context
 
-class AuditResultRuleGroupRuleAuditGroupAuditGroup2View(TemplateView):
+class AuditResultRuleGroupRuleAuditGroupAuditGroup2View(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result_rule_group_rule_audit_group_audit_group2.html'
 
     def get_context_data(self, **kwargs):
@@ -636,7 +638,7 @@ class AuditResultRuleGroupRuleAuditGroupAuditGroup2View(TemplateView):
 
         return context
 
-class AuditResultRuleGroupRuleAuditGroupAuditGroup2WebsiteView(TemplateView):
+class AuditResultRuleGroupRuleAuditGroupAuditGroup2WebsiteView(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result_rule_group_rule_audit_group_audit_group2_website.html'
 
     def get_context_data(self, **kwargs):
@@ -702,7 +704,7 @@ class AuditResultRuleGroupRuleAuditGroupAuditGroup2WebsiteView(TemplateView):
 
         return context
 
-class AuditResultRuleGroupRuleAuditGroupAuditGroup2WebsitePageView(TemplateView):
+class AuditResultRuleGroupRuleAuditGroupAuditGroup2WebsitePageView(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result_rule_group_rule_audit_group_audit_group2_website_page.html'
 
     def get_context_data(self, **kwargs):
@@ -767,7 +769,7 @@ class AuditResultRuleGroupRuleAuditGroupAuditGroup2WebsitePageView(TemplateView)
         return context
 
 
-class AuditResultRuleGroupRuleAuditGroup2View(TemplateView):
+class AuditResultRuleGroupRuleAuditGroup2View(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result_rule_group_rule_audit_group2.html'
 
     def get_context_data(self, **kwargs):
@@ -829,7 +831,7 @@ class AuditResultRuleGroupRuleAuditGroup2View(TemplateView):
 
         return context
 
-class AuditResultRuleGroupRuleAuditGroup2WebsiteView(TemplateView):
+class AuditResultRuleGroupRuleAuditGroup2WebsiteView(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result_rule_group_rule_audit_group2_website.html'
 
     def get_context_data(self, **kwargs):
@@ -895,7 +897,7 @@ class AuditResultRuleGroupRuleAuditGroup2WebsiteView(TemplateView):
 
         return context
 
-class AuditResultRuleGroupRuleAuditGroup2WebsitePageView(TemplateView):
+class AuditResultRuleGroupRuleAuditGroup2WebsitePageView(ResultNavigationMixin, TemplateView):
     template_name = 'auditResults/audit_result_rule_group_rule_audit_group2_website_page.html'
 
     def get_context_data(self, **kwargs):

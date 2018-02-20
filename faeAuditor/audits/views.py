@@ -34,6 +34,8 @@ from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .uid import generate
 
+from .resultNavigationMixin import ResultNavigationMixin
+
 from django.views.generic import TemplateView
 from django.views.generic import CreateView
 from django.views.generic import FormView
@@ -63,7 +65,7 @@ from auditResults.models import AuditResult
 #
 # ==============================================================
 
-class AuditsView(LoginRequiredMixin, TemplateView):
+class AuditsView(LoginRequiredMixin, ResultNavigationMixin, TemplateView):
     template_name = 'audits/audits.html'
 
     def get_context_data(self, **kwargs):
@@ -80,7 +82,7 @@ class AuditsView(LoginRequiredMixin, TemplateView):
 
         return context
 
-class AuditView(LoginRequiredMixin, TemplateView):
+class AuditView(LoginRequiredMixin, ResultNavigationMixin, TemplateView):
     template_name = 'audits/audit.html'
 
     def get_context_data(self, **kwargs):
@@ -102,7 +104,7 @@ class AuditView(LoginRequiredMixin, TemplateView):
 
         return context
 
-class RunView(LoginRequiredMixin, CreateView):
+class RunView(LoginRequiredMixin, ResultNavigationMixin, CreateView):
 
     model = AuditResult
     fields = ['title', 'ruleset', 'depth', 'follow', 'max_pages', 'wait_time']
@@ -151,7 +153,7 @@ class RunView(LoginRequiredMixin, CreateView):
 
         return context
 
-class ProcessingView(LoginRequiredMixin, TemplateView):
+class ProcessingView(LoginRequiredMixin, ResultNavigationMixin, TemplateView):
     template_name = 'audits/processing.html'
 
     def get_context_data(self, **kwargs):

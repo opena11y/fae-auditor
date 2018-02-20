@@ -77,7 +77,7 @@ SERVER_EMAIL             = get_secret('EMAIL_HOST_USER')
 
 if get_secret('SITE_URL').find('127.0.0.1') >= 0 or get_secret('SITE_URL').find('localhost') >= 0:
   EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-else:  
+else:
   EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 ACCOUNT_ACTIVATION_DAYS = get_secret('ACCOUNT_ACTIVATION_DAYS')
@@ -92,7 +92,7 @@ if SHIBBOLETH_ENABLED:
     SHIBBOLETH_URL            = get_secret('SHIBBOLETH_URL')
     SHIBBOLETH_NAME           = get_secret('SHIBBOLETH_NAME')
     SHIBBOLETH_SUPERUSER      = get_secret('SHIBBOLETH_SUPERUSER')
-else:    
+else:
     SHIBBOLETH_URL            = ''
     SHIBBOLETH_NAME           = ''
     SHIBBOLETH_SUPERUSER      = ''
@@ -168,7 +168,7 @@ else:
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
-        'django.contrib.auth.middleware.RemoteUserMiddleware',    
+        'django.contrib.auth.middleware.RemoteUserMiddleware',
         'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -237,15 +237,10 @@ LOGGING = {
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'America/Chicago'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
@@ -253,7 +248,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = join(BASE_DIR, 'static/')
 
-# print('STATIC ROOT: ' + STATIC_ROOT)
+print('STATIC ROOT: ' + STATIC_ROOT)
 
 STATICFILES_DIRS = (
   join(APP_DIR, "faeAuditor/static"),

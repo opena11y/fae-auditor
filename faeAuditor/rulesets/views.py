@@ -30,9 +30,9 @@ from rules.models   import RuleMapping
 from wcag20.models import Guideline
 from .models import Ruleset
 
-from websiteResults.views import FAENavigationMixin
+from audits.resultNavigationMixin import ResultNavigationMixin
 
-class RulesetsView(FAENavigationMixin, TemplateView):
+class RulesetsView(ResultNavigationMixin, TemplateView):
     template_name = 'rulesets/rulesets_view.html'
 
     def get_context_data(self, **kwargs):
@@ -40,10 +40,10 @@ class RulesetsView(FAENavigationMixin, TemplateView):
 
         context['rule_categories'] = RuleCategory.objects.all()
         context['rulesets']        = Ruleset.objects.all()
-        
+
         return context
 
-class RulesetsWCAGView(FAENavigationMixin, TemplateView):
+class RulesetsWCAGView(ResultNavigationMixin, TemplateView):
     template_name = 'rulesets/rulesets_wcag_view.html'
 
     def get_context_data(self, **kwargs):
@@ -52,10 +52,10 @@ class RulesetsWCAGView(FAENavigationMixin, TemplateView):
 
         context['guidelines'] = Guideline.objects.all()
         context['rulesets']   = Ruleset.objects.all()
-        
+
         return context
 
-class RulesetsRuleView(FAENavigationMixin, TemplateView):
+class RulesetsRuleView(ResultNavigationMixin, TemplateView):
     template_name = 'rulesets/rulesets_rule_view.html'
 
     def get_context_data(self, **kwargs):
@@ -67,7 +67,7 @@ class RulesetsRuleView(FAENavigationMixin, TemplateView):
 
         return context
 
-class RulesetsRuleWCAGView(FAENavigationMixin, TemplateView):
+class RulesetsRuleWCAGView(ResultNavigationMixin, TemplateView):
     template_name = 'rulesets/rulesets_rule_wcag_view.html'
 
     def get_context_data(self, **kwargs):
@@ -78,7 +78,7 @@ class RulesetsRuleWCAGView(FAENavigationMixin, TemplateView):
         context['rule']            = Rule.objects.get(rule_id=kwargs['rule_id'])
         return context
 
-class RulesetView(FAENavigationMixin, TemplateView):
+class RulesetView(ResultNavigationMixin, TemplateView):
     template_name = 'rulesets/ruleset_view.html'
 
     def get_context_data(self, **kwargs):
@@ -89,7 +89,7 @@ class RulesetView(FAENavigationMixin, TemplateView):
         return context
 
 
-class RulesetWCAGView(FAENavigationMixin, TemplateView):
+class RulesetWCAGView(ResultNavigationMixin, TemplateView):
     template_name = 'rulesets/ruleset_wcag_view.html'
 
     def get_context_data(self, **kwargs):
@@ -99,7 +99,7 @@ class RulesetWCAGView(FAENavigationMixin, TemplateView):
         context['ruleset']      = Ruleset.objects.get(slug=kwargs['slug'])
         return context
 
-class RulesetRuleView(FAENavigationMixin, TemplateView):
+class RulesetRuleView(ResultNavigationMixin, TemplateView):
     template_name = 'rulesets/ruleset_rule_view.html'
 
     def get_context_data(self, **kwargs):
@@ -113,7 +113,7 @@ class RulesetRuleView(FAENavigationMixin, TemplateView):
         context['rule_mapping']    = RuleMapping.objects.get(ruleset=ruleset, rule=rule)
         return context
 
-class RulesetRuleWCAGView(FAENavigationMixin, TemplateView):
+class RulesetRuleWCAGView(ResultNavigationMixin, TemplateView):
     template_name = 'rulesets/ruleset_rule_wcag_view.html'
 
     def get_context_data(self, **kwargs):

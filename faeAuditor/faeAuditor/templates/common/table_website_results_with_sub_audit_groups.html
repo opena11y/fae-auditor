@@ -6,6 +6,7 @@
         <th id="id_grp" class="text"  rowspan="2">Website</th>
         <th id="id_agr" class="text"  rowspan="2">Audit Group</th>
         <th id="id_ag2" class="text"  rowspan="2">Audit Sub-Group</th>
+        <th id="id_pgs" class="num"  rowspan="2">Pages</th>
         <th id="id_nop" class="text"  colspan="5">Number of Rules</th>
         <th rowspan="2">&nbsp;</th>
         <th id="id_imp" class="text"  colspan="4" style="text-align: center">Implementation Level</th>
@@ -32,6 +33,9 @@
       </td>
       <td headers="id_vio id_grp">{{wsr.group_title}}</td>
       <td headers="id_vio id_grp">{{wsr.group2_title}}</td>
+      <td headers="id_pgs">
+          {{wsr.page_count}}
+      </td>
       <td headers="id_vio id_nop">{{wsr.rules_violation}}</td>
       <td headers="id_war id_nop">{{wsr.rules_warning}}</td>
       <td headers="id_man id_nop">{{wsr.rules_manual_check}}</td>

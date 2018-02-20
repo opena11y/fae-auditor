@@ -28,18 +28,18 @@ BROWSER_CHOICES = (
 DEPTH_CHOICES = (
   (1, 'Start URL only'),
   (2, 'First level links'),
-  (3, 'Second level links')
+  (3, 'Second level links'),
+  (4, 'Third level links'),
+  (5, 'Fourth level links'),
+  (6, 'Fifth level links')
 )
 
 MAX_PAGES_CHOICES = (
   (   5, '   5 pages'),
-  (  10, '  10 pages'),
-  (  25, '  25 pages'),
   (  50, '  50 pages'),
-  ( 100, ' 100 pages'),
   ( 200, ' 200 pages'),
-  ( 400, ' 400 pages'),
-  ( 800, ' 800 pages')
+  (1000, '1000 pages'),
+  (4000, '4000 pages')
 )
 
 WAIT_TIME_CHOICES = (
