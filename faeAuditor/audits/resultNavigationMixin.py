@@ -97,6 +97,7 @@ class UrlItems:
 
 class ResultNavigtionObject:
 
+    current_url  = ''
     view_options = UrlItems('')
     filters      = UrlItems('')
 
@@ -106,6 +107,11 @@ class ResultNavigtionObject:
 
         a = None
         ar = None
+
+        try:
+            self.current_url = self.session['current_url']
+        except:
+            self.current_url = ''
 
         try:
             self.audit_slug = self.session['audit_slug']
@@ -189,20 +195,29 @@ class ResultNavigtionObject:
         self.create_view_options()
         self.create_filters()
 
+    def set_current_url(self, path):
 
-    def set_audit_result(self, audit_slug, audit_result_slug, result_view):
+        self.current_url            = path
+        self.session['current_url'] = path
+
+
+    def set_audit_result(self, audit_slug, audit_result_slug, result_view, path):
+
+        if path:
+            self.current_url            = path
+            self.session['current_url'] = path
 
         if audit_slug:
-          self.audit_slug            = audit_slug
-          self.session['audit_slug'] = audit_slug
+            self.audit_slug            = audit_slug
+            self.session['audit_slug'] = audit_slug
 
         if audit_result_slug:
-          self.audit_result_slug            = audit_result_slug
-          self.session['audit_result_slug'] = audit_result_slug
+            self.audit_result_slug            = audit_result_slug
+            self.session['audit_result_slug'] = audit_result_slug
 
         if result_view:
-          self.result_view            = result_view
-          self.session['result_view'] = result_view
+            self.result_view            = result_view
+            self.session['result_view'] = result_view
 
         # Reset group information
         self.audit_group_slug = ''
@@ -232,7 +247,7 @@ class ResultNavigtionObject:
         self.session['page_count'] = self.page_count
 
 
-    def set_audit_group(self, audit_group_slug, audit_group2_slug):
+    def set_audit_groups(self, audit_group_slug, audit_group2_slug):
 
         if audit_group_slug:
           self.audit_group_slug            = audit_group_slug
