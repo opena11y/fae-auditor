@@ -128,46 +128,46 @@
              </ul>
           </nav>
 
-          <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">
 
-            <h2 id="id_nav_reports_label">Reports</h2>
+          {% if result_nav.audit_result_slug %}
+            <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">
 
-            <ul class="nav nav-pills nav-stacked">
-            {% block nav_reports %}
+              <h2 id="id_nav_reports_label">Reports</h2>
 
-            {% endblock nav_reports %}
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="{% url 'audit_result'    result_nav.audit_result_slug result_nav.rule_grouping %}">Rule Results</a></li>
+                <li><a href="{% url 'website_results' result_nav.audit_result_slug result_nav.rule_grouping %}">Website Results</a></li>
+                <li><a id="CURRENT_URL" href="{{result_nav.current_url}}">Current Report</a></li>
+              </ul>
+            </nav>
 
-            {% if result_nav.current_url %}
-              <li><a href="{{result_nav.current_url}}">Current Report</a></li>
+            <nav id="id_view_options" aria-labelledby="id_view_options_label" class="hidden-xs">
+
+              <h2 id="id_view_options_label">View Options</h2>
+
+              <ul class="nav nav-pills nav-stacked">
+                {% for item in result_nav.view_options.items %}
+                <li {%if item.highlight %}class="highlight"{% endif %}>
+                  <a href="{{item.url}}" >{{item.label}}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </nav>
+
+            {% if result_nav.filters.item_count %}
+            <nav id="id_view_filters" aria-labelledby="id_view_filters_label" class="hidden-xs">
+
+              <h2 id="id_view_filters_label">View Filters</h2>
+
+              <ul class="nav nav-pills nav-stacked">
+                {% for item in result_nav.filters.items %}
+                <li><a href="{{item.url}}">{{item.label}}</a></li>
+                {% endfor %}
+              </ul>
+            </nav>
             {% endif %}
-            </ul>
-          </nav>
-
-          <nav id="id_view_options" aria-labelledby="id_view_options_label" class="hidden-xs">
-
-            <h2 id="id_view_options_label">View Options</h2>
-
-            <ul class="nav nav-pills nav-stacked">
-              {% for item in result_nav.view_options.items %}
-              <li><a href="{{item.url}}">{{item.label}}</a></li>
-              {% endfor %}
-            </ul>
-          </nav>
-
-          {% if result_nav.filters.item_count %}
-          <nav id="id_view_filters" aria-labelledby="id_view_filters_label" class="hidden-xs">
-
-            <h2 id="id_view_filters_label">View Filters</h2>
-
-            <ul class="nav nav-pills nav-stacked">
-              {% for item in result_nav.filters.items %}
-              <li><a href="{{item.url}}">{{item.label}}</a></li>
-              {% endfor %}
-            </ul>
-          </nav>
-          {% endif %}
-        </div>
-
+          </div>
+        {% endif %}
 
         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
           {% if user.is_authenticated %}
@@ -305,7 +305,7 @@
               var link = links[i];
               var href = cleanURL(link.href);
 
-              if (href == url) {
+              if (href == url && link.id !== 'CURRENT_URL') {
                 if (link.parentNode.className.indexOf('active') < 0) {
                   link.parentNode.className = style;
                 }
@@ -321,6 +321,7 @@
             checkLinks(url, document.querySelectorAll('#top-navbar       a[href]'), 'active');
             checkLinks(url, document.querySelectorAll('#id_report_manage a[href]'), 'active');
             flag_reports = checkLinks(url, document.querySelectorAll('#id_nav_reports   a[href]'), 'active');
+            flag_options = checkLinks(url, document.querySelectorAll('#id_view_options  a[href]'), 'active');
             flag_filters = checkLinks(url, document.querySelectorAll('#id_view_filters  a[href]'), 'active');
 
           }
@@ -330,6 +331,7 @@
           }
 
           var flag_report  = false;
+          var flag_options = false;
           var flag_filters = false;
           var flag_nav     = false;
 
@@ -343,17 +345,26 @@
 
           var breadcrumbs = document.querySelectorAll('#id_breadcrumbs a[href]')
 
+          // Highlight any links in the navigation if they are part of the breadcrumbs
           for (var i =(breadcrumbs.length-1); 0 < i; i--) {
             url = cleanURL(breadcrumbs[i].href);
 
             if (!flag_report)  flag_report  = checkLinks(url, document.querySelectorAll('#id_nav_reports   a[href]'), 'highlight');
+            if (!flag_options) flag_report  = checkLinks(url, document.querySelectorAll('#id_view_options  a[href]'), 'highlight');
             if (!flag_filters) flag_filters = checkLinks(url, document.querySelectorAll('#id_view_filters  a[href]'), 'highlight');
           }
 
-          if (!flag_reports && !flag_filters && !flag_nav && {% if report_nav.page_count %}({{report_nav.page_count}} > 1){% else %}false{% endif %}) {
+          if (!flag_reports && !flag_options && !flag_filters && !flag_nav && {% if report_nav.page_count %}({{report_nav.page_count}} > 1){% else %}false{% endif %}) {
             document.getElementById('id_view_current').className = 'highlight';
           }
 
+          // Highlight the current link if not in a report
+          if (!flag_reports && !flag_filters) {
+            var current_url = document.querySelector('a#CURRENT_URL');
+            if (current_url) {
+              current_url.parentNode.classList.add('highlight');
+            }
+          }
 
         });
 

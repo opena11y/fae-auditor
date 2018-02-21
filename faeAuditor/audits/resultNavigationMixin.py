@@ -71,9 +71,10 @@ from audits.uid import generate
 
 class UrlItem:
 
-    def __init__(self, label, url):
+    def __init__(self, label, url, highlight=False):
         self.label = label
         self.url   = url
+        self.highlight = highlight
 
 class UrlItems:
 
@@ -83,8 +84,8 @@ class UrlItems:
         self.label = label
         self.items = []
 
-    def add(self, label, url):
-        self.items.append(UrlItem(label, url))
+    def add(self, label, url, highlight=False):
+        self.items.append(UrlItem(label, url, highlight))
 
     def set_label(self, label):
         self.label = label
@@ -114,18 +115,16 @@ class ResultNavigtionObject:
             self.current_url = ''
 
         try:
-            self.audit_slug = self.session['audit_slug']
-
-            a = Audit.objects.get(slug=audit_slug)
+            try:
+                self.audit_slug = self.session['audit_slug']
+            except:
+                self.audit_slug = ''
 
             try:
                 self.audit_result_slug = self.session['audit_result_slug']
-                ar = AuditResult.objects.get(audit=a, slug=self.audit_result_slug)
+                self.rule_grouping = 'rc'
             except:
-                try:
-                    ar = a.audit_results().last()
-                except:
-                    ar = None
+                self.audit_result_slug = ''
 
             try:
                 self.result_view = self.session['result_view']
@@ -294,29 +293,29 @@ class ResultNavigtionObject:
 # ---------------------
 
     def view_option_audit_result(self):
-        self.view_options.add('Rule Category', reverse('audit_result', args=[self.audit_result_slug, 'rc']))
-        self.view_options.add('Guidelines',    reverse('audit_result', args=[self.audit_result_slug, 'gl']))
-        self.view_options.add('Rule Scope',    reverse('audit_result', args=[self.audit_result_slug, 'rs']))
+        self.view_options.add('Rule Category', reverse('audit_result', args=[self.audit_result_slug, 'rc']), 'rc' == self.rule_grouping)
+        self.view_options.add('Guidelines',    reverse('audit_result', args=[self.audit_result_slug, 'gl']), 'gl' == self.rule_grouping)
+        self.view_options.add('Rule Scope',    reverse('audit_result', args=[self.audit_result_slug, 'rs']), 'rs' == self.rule_grouping)
 
     def view_option_website_results(self):
-        self.view_options.add('Rule Category', reverse('website_results', args=[self.audit_result_slug, 'rc']))
-        self.view_options.add('Guidelines',    reverse('website_results', args=[self.audit_result_slug, 'gl']))
-        self.view_options.add('Rule Scope',    reverse('website_results', args=[self.audit_result_slug, 'rs']))
+        self.view_options.add('Rule Category', reverse('website_results', args=[self.audit_result_slug, 'rc']), 'rc' == self.rule_grouping)
+        self.view_options.add('Guidelines',    reverse('website_results', args=[self.audit_result_slug, 'gl']), 'gl' == self.rule_grouping)
+        self.view_options.add('Rule Scope',    reverse('website_results', args=[self.audit_result_slug, 'rs']), 'rs' == self.rule_grouping)
 
     def view_option_website_results_website(self):
-        self.view_options.add('Rule Category', reverse('website_results_website', args=[self.audit_result_slug, 'rc', self.website_slug]))
-        self.view_options.add('Guidelines',    reverse('website_results_website', args=[self.audit_result_slug, 'gl', self.website_slug]))
-        self.view_options.add('Rule Scope',    reverse('website_results_website', args=[self.audit_result_slug, 'rs', self.website_slug]))
+        self.view_options.add('Rule Category', reverse('website_results_website', args=[self.audit_result_slug, 'rc', self.website_slug]), 'rc' == self.rule_grouping)
+        self.view_options.add('Guidelines',    reverse('website_results_website', args=[self.audit_result_slug, 'gl', self.website_slug]), 'gl' == self.rule_grouping)
+        self.view_options.add('Rule Scope',    reverse('website_results_website', args=[self.audit_result_slug, 'rs', self.website_slug]), 'rs' == self.rule_grouping)
 
     def view_option_website_results_website_page(self):
-        self.view_options.add('Rule Category', reverse('website_results_website_page', args=[self.audit_result_slug, 'rc', self.website_slug, self.page_num]))
-        self.view_options.add('Guidelines',    reverse('website_results_website_page', args=[self.audit_result_slug, 'gl', self.website_slug, self.page_num]))
-        self.view_options.add('Rule Scope',    reverse('website_results_website_page', args=[self.audit_result_slug, 'rs', self.website_slug, self.page_num]))
+        self.view_options.add('Rule Category', reverse('website_results_website_page', args=[self.audit_result_slug, 'rc', self.website_slug, self.page_num]), 'rc' == self.rule_grouping)
+        self.view_options.add('Guidelines',    reverse('website_results_website_page', args=[self.audit_result_slug, 'gl', self.website_slug, self.page_num]), 'gl' == self.rule_grouping)
+        self.view_options.add('Rule Scope',    reverse('website_results_website_page', args=[self.audit_result_slug, 'rs', self.website_slug, self.page_num]), 'rs' == self.rule_grouping)
 
     def view_option_website_results_website_page_rule(self):
-        self.view_options.add('Rule Category', reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'rc', self.website_slug, self.page_num, self.rule_slug]))
-        self.view_options.add('Guidelines',    reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'gl', self.website_slug, self.page_num, self.rule_slug]))
-        self.view_options.add('Rule Scope',    reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'rs', self.website_slug, self.page_num, self.rule_slug]))
+        self.view_options.add('Rule Category', reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'rc', self.website_slug, self.page_num, self.rule_slug]), 'rc' == self.rule_grouping)
+        self.view_options.add('Guidelines',    reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'gl', self.website_slug, self.page_num, self.rule_slug]), 'gl' == self.rule_grouping)
+        self.view_options.add('Rule Scope',    reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'rs', self.website_slug, self.page_num, self.rule_slug]), 'rs' == self.rule_grouping)
 
     def create_view_options(self):
 
