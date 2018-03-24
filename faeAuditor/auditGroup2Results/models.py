@@ -79,6 +79,9 @@ class AuditGroup2Result(AllRuleGroupResult):
   def __str__(self):
       return 'Group2: ' + self.group2_item.title
 
+  def get_title(self):
+      return self.group2_item.title
+
   def add_website_result(self, ws_result):
     try:
       self.total_websites = self.total_websites + 1

@@ -135,9 +135,26 @@
               <h2 id="id_nav_reports_label">Reports</h2>
 
               <ul class="nav nav-pills nav-stacked">
-                <li><a href="{% url 'audit_result'    result_nav.audit_result_slug result_nav.rule_grouping %}">Rule Results</a></li>
-                <li><a href="{% url 'website_results' result_nav.audit_result_slug result_nav.rule_grouping %}">Website Results</a></li>
-                <li><a id="CURRENT_URL" href="{{result_nav.current_url}}">Current Report</a></li>
+
+                <li>
+                  <a href="{% url 'audit_result'    result_nav.audit_result_slug result_nav.rule_grouping %}">Rule Results</a>
+                </li>
+                {% if result_nav.audit_group_title %}
+                <li>
+                  <a href="{% url 'audit_groups_results' result_nav.audit_result_slug result_nav.rule_grouping %}">{{result_nav.audit_group_title}}</a>
+                </li>
+                {% endif %}
+                {% if result_nav.audit_group2_title %}
+                <li>
+                  <a href="{% url 'audit_groups_results'    result_nav.audit_result_slug result_nav.rule_grouping %}">{{result_nav.audit_group2_title}}</a>
+                </li>
+                {% endif %}
+                <li>
+                  <a href="{% url 'website_results' result_nav.audit_result_slug result_nav.rule_grouping %}">Website Results</a>
+                </li>
+                <li>
+                  <a id="CURRENT_URL" href="{{result_nav.current_url}}">Current Report</a>
+                </li>
               </ul>
             </nav>
 

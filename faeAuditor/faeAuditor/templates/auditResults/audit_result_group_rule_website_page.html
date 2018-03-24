@@ -3,10 +3,6 @@
 
 {% load staticfiles i18n %}
 
-{% block nav_reports %}
-  {% include 'common/nav_reports.html' %}
-{% endblock nav_reports %}
-
 {% block breadcrumb %}
 <li><a href="{% url 'audit' audit_slug %}">Audit</a></li>
 <li><a href="{% url 'audit_result' result_slug rule_grouping %}">Audit Result</a></li>

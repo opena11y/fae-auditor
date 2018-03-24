@@ -5,16 +5,13 @@
 
 {% block breadcrumb %}
 <li><a href="{% url 'audit' audit_slug %}">Audit</a></li>
-<li><a href="{% url 'website_results' result_slug rule_grouping %}">Website Results</a></li>
-<li>{{website_slug}}</li>
+<li>{{audit_result.group_title}}</li>
 {% endblock %}
 
 {% block title %}
-Page Results: All Rules
+AuditGroupResults: {{audit_result.group_title_plural}}
 {% endblock %}
 
 {% block content %}
-
-  {% include 'common/table_page_results.html' %}
-
+  {% include 'common/table_audit_groups_results.html' %}
 {% endblock %}

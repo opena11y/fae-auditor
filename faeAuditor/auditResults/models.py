@@ -120,23 +120,23 @@ class AuditResult(AllRuleGroupResult):
   def group_title(self):
     if self.audit.groups.all().count() > 0:
       return self.audit.groups.all().first().title
-    return "Group"
+    return ''
 
   def group_title_plural(self):
     if self.audit.groups.all().count() > 0:
       return self.audit.groups.all().first().title_plural
-    return "Group"
+    return ''
 
 
   def group2_title(self):
     if self.audit.group2s.all().count() > 0:
       return self.audit.group2s.all().first().title
-    return "Group2"
+    return ''
 
   def group2_title_plural(self):
     if self.audit.group2s.all().count() > 0:
       return self.audit.group2s.all().first().title_plural
-    return "Group"
+    return ''
 
   def save(self):
     super(AuditResult, self).save() # Call the "real" save() method

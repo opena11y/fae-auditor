@@ -78,6 +78,9 @@ class AuditGroupResult(AllRuleGroupResult):
   def __str__(self):
     return 'Group: ' + self.group_item.title + ' (' + str(self.audit_result.created.strftime("%Y-%m-%d")) + ')'
 
+  def get_title(self):
+    return self.group_item.title
+
   def add_website_result(self, ws_result):
     try:
       self.total_websites = self.total_websites + 1

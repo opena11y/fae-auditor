@@ -233,6 +233,17 @@ class WebsiteResult(RuleGroupResult):
   def __str__(self):
     return "Website Report: " + self.title
 
+  def group_title(self):
+    if self.group_result:
+      return self.group_result.group_item.title
+    return ''
+
+  def group2_title(self):
+    if self.group2_result:
+      return self.group2_result.group2_item.title
+    return ''
+
+
   def save(self):
 
     if len(self.data_dir_slug) == 0:

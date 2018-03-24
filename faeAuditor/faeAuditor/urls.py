@@ -44,6 +44,7 @@ urlpatterns = [
     # fae2 specific
     url(r'^',           include('audits.urls')),
     url(r'^rules/',     include('auditResults.urls')),
+    url(r'^group/',     include('auditGroupResults.urls')),
     url(r'^websites/',  include('websiteResults.urls')),
     url(r'^abouts/',    include('abouts.urls')),
     url(r'^contacts/',  include('contacts.urls')),

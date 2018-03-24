@@ -96,7 +96,7 @@ class AuditResultView(ResultNavigationMixin, TemplateView):
                 rule_group_results = ar.audit_rc_results.all()
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, None)
         self.result_nav.create_result_navigation()
 
@@ -141,7 +141,7 @@ class AuditResultRuleGroupView(ResultNavigationMixin, TemplateView):
                 rule_group_result = ar.audit_rc_results.get(slug=rule_group_slug)
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.create_result_navigation()
 
@@ -207,7 +207,7 @@ class AuditResultRuleGroupRuleView(ResultNavigationMixin, TemplateView):
             ag2rrs = []
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_rule(rule_slug)
         self.result_nav.create_result_navigation()
@@ -269,7 +269,7 @@ class AuditResultRuleGroupRuleWebsiteView(ResultNavigationMixin, TemplateView):
             prr.href = reverse('audit_result_rule_group_rule_website_page', args=[result_slug, rule_grouping, rule_group_slug, rule_slug, website_slug, prr.page_result.page_number])
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_website_page(website_slug)
         self.result_nav.set_rule(rule_slug)
@@ -329,7 +329,7 @@ class AuditResultRuleGroupRuleWebsitePageView(ResultNavigationMixin, TemplateVie
                 rule_grouping    = 'rc'
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_website_page(website_slug, page_num, wsr.page_count)
         self.result_nav.set_rule(rule_slug)
@@ -398,7 +398,7 @@ class AuditResultRuleGroupRuleAuditGroupView(ResultNavigationMixin, TemplateView
             wsrr.href = reverse('audit_result_rule_group_rule_audit_group_website', args=[result_slug, rule_grouping, rule_group_slug, rule_slug, audit_group_slug, wsrr.ws_report.slug])
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_audit_groups(audit_group_slug, None)
         self.result_nav.set_rule(rule_slug)
@@ -462,7 +462,7 @@ class AuditResultRuleGroupRuleAuditGroupWebsiteView(ResultNavigationMixin, Templ
             prr.href = reverse('audit_result_rule_group_rule_audit_group_website_page', args=[result_slug, rule_grouping, rule_group_slug, rule_slug, audit_group_slug, website_slug, prr.page_result.page_number])
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_audit_groups(audit_group_slug, None)
         self.result_nav.set_website_page(website_slug)
@@ -525,7 +525,7 @@ class AuditResultRuleGroupRuleAuditGroupWebsitePageView(ResultNavigationMixin, T
                 rule_grouping    = 'rc'
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_audit_groups(audit_group_slug, None)
         self.result_nav.set_website_page(website_slug, page_num, wsrr.ws_report.page_count)
@@ -589,7 +589,7 @@ class AuditResultRuleGroupRuleAuditGroupAuditGroup2View(ResultNavigationMixin, T
             wsrr.href = reverse('audit_result_rule_group_rule_audit_group_audit_group2_website', args=[result_slug, rule_grouping, rule_group_slug, rule_slug, audit_group_slug, audit_group2_slug, wsrr.ws_report.slug])
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_audit_groups(audit_group_slug, audit_group2_slug)
         self.result_nav.set_website_page(website_slug)
@@ -654,7 +654,7 @@ class AuditResultRuleGroupRuleAuditGroupAuditGroup2WebsiteView(ResultNavigationM
             prr.href = reverse('audit_result_rule_group_rule_audit_group_audit_group2_website_page', args=[result_slug, rule_grouping, rule_group_slug, rule_slug, audit_group_slug, audit_group2_slug, website_slug, prr.page_result.page_number])
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_audit_groups(audit_group_slug, audit_group2_slug)
         self.result_nav.set_website_page(website_slug)
@@ -717,7 +717,7 @@ class AuditResultRuleGroupRuleAuditGroupAuditGroup2WebsitePageView(ResultNavigat
                 rule_grouping    = 'rc'
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_audit_groups(None, audit_group2_slug)
         self.result_nav.set_website_page(website_slug, page_num, wsrr.ws_report.page_count)
@@ -782,7 +782,7 @@ class AuditResultRuleGroupRuleAuditGroup2View(ResultNavigationMixin, TemplateVie
             wsrr.href = reverse('audit_result_rule_group_rule_audit_group2_website', args=[result_slug, rule_grouping, rule_group_slug, rule_slug, audit_group2_slug, wsrr.ws_report.slug])
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_audit_groups(None, audit_group2_slug)
         self.result_nav.set_rule(rule_slug)
@@ -845,7 +845,7 @@ class AuditResultRuleGroupRuleAuditGroup2WebsiteView(ResultNavigationMixin, Temp
             prr.href = reverse('audit_result_rule_group_rule_audit_group2_website_page', args=[result_slug, rule_grouping, rule_group_slug, rule_slug, audit_group2_slug, website_slug, prr.page_result.page_number])
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_audit_groups(None, audit_group2_slug)
         self.result_nav.set_website_page(website_slug)
@@ -908,7 +908,7 @@ class AuditResultRuleGroupRuleAuditGroup2WebsitePageView(ResultNavigationMixin, 
                 rule_grouping    = 'rc'
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'rules', self.request.path)
+        self.result_nav.set_audit_result(ar, 'rules', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_audit_groups(None, audit_group2_slug)
         self.result_nav.set_website_page(website_slug, page_num, wsrr.ws_report.page_count)

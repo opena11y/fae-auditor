@@ -132,6 +132,17 @@ class ResultNavigtionObject:
                 self.result_view = 'rules'
 
             try:
+                self.audit_group_title = self.session['audit_group_title']
+            except:
+                self.audit_group_title = ''
+
+            try:
+                self.audit_group2_title = self.session['audit_group2_title']
+            except:
+                self.audit_group2_title = ''
+
+
+            try:
                 self.audit_group_slug = self.session['audit_group_slug']
             except:
                 self.audit_group_slug = ''
@@ -175,6 +186,8 @@ class ResultNavigtionObject:
             self.audit_slug        = False
             self.audit_result_slug = ''
             self.result_view       = 'rules'
+            self.audit_group_title = ''
+            self.audit_group2_title = ''
 
             self.audit_group_slug = ''
             self.audit_group2_slug = ''
@@ -200,51 +213,57 @@ class ResultNavigtionObject:
         self.session['current_url'] = path
 
 
-    def set_audit_result(self, audit_slug, audit_result_slug, result_view, path):
+    def set_audit_result(self, audit_result, result_view, path):
 
-        if path:
-            self.current_url            = path
-            self.session['current_url'] = path
+        self.audit_slug            = audit_result.audit.slug
+        self.session['audit_slug'] = audit_result.audit.slug
 
-        if audit_slug:
-            self.audit_slug            = audit_slug
-            self.session['audit_slug'] = audit_slug
+        self.audit_result_slug            = audit_result.slug
+        self.session['audit_result_slug'] = audit_result.slug
 
-        if audit_result_slug:
-            self.audit_result_slug            = audit_result_slug
-            self.session['audit_result_slug'] = audit_result_slug
+        self.audit_group_title = audit_result.group_title()
+        self.session['audit_group_title'] = self.audit_group_title
+
+        self.audit_group2_title = audit_result.group2_title()
+        self.session['audit_group2_title'] = self.audit_group2_title
 
         if result_view:
             self.result_view            = result_view
             self.session['result_view'] = result_view
 
+        if path:
+            self.current_url            = path
+            self.session['current_url'] = path
+
+
+
+
         # Reset group information
         self.audit_group_slug = ''
-        self.session['audit_group_slug'] = self.audit_group_slug
+        self.session['audit_group_slug'] = ''
 
         self.audit_group2_slug = ''
-        self.session['audit_group2_slug'] = self.audit_group2_slug
+        self.session['audit_group2_slug'] = ''
 
         # Reset rule information
         self.rule_grouping = 'rc'
         self.session['rule_grouping'] = self.rule_grouping
 
         self.rule_group = ''
-        self.session['rule_group'] = self.rule_group
+        self.session['rule_group'] = ''
 
         self.rule_slug = ''
-        self.session['rule_slug'] = self.rule_slug
+        self.session['rule_slug'] = ' '
 
         # Reset website/page information
         self.website_slug = ''
-        self.session['website_slug'] = self.website_slug
+        self.session['website_slug'] = ''
 
         self.page_num = ''
-        self.session['page_num'] = self.page_num
+        self.session['page_num'] = ''
 
         self.page_count = 0
-        self.session['page_count'] = self.page_count
-
+        self.session['page_count'] = 0
 
     def set_audit_groups(self, audit_group_slug, audit_group2_slug):
 
@@ -297,6 +316,11 @@ class ResultNavigtionObject:
         self.view_options.add('Guidelines',    reverse('audit_result', args=[self.audit_result_slug, 'gl']), 'gl' == self.rule_grouping)
         self.view_options.add('Rule Scope',    reverse('audit_result', args=[self.audit_result_slug, 'rs']), 'rs' == self.rule_grouping)
 
+    def view_option_audit_groups_results(self):
+        self.view_options.add('Rule Category', reverse('audit_groups_results', args=[self.audit_result_slug, 'rc']), 'rc' == self.rule_grouping)
+        self.view_options.add('Guidelines',    reverse('audit_groups_results', args=[self.audit_result_slug, 'gl']), 'gl' == self.rule_grouping)
+        self.view_options.add('Rule Scope',    reverse('audit_groups_results', args=[self.audit_result_slug, 'rs']), 'rs' == self.rule_grouping)
+
     def view_option_website_results(self):
         self.view_options.add('Rule Category', reverse('website_results', args=[self.audit_result_slug, 'rc']), 'rc' == self.rule_grouping)
         self.view_options.add('Guidelines',    reverse('website_results', args=[self.audit_result_slug, 'gl']), 'gl' == self.rule_grouping)
@@ -325,26 +349,35 @@ class ResultNavigtionObject:
             self.view_option_audit_result()
         # Assume 'website' result view
         else:
+            if self.result_view == 'group':
+                self.view_option_audit_groups_results()
+            else:
+                if self.audit_group_slug == '' and self.audit_group2_slug == '':
 
-            if self.audit_group_slug == '' and self.audit_group2_slug == '':
+                    if self.rule_slug:
+                        self.view_option_website_results_website_page_rule()
+                        return
 
-                if self.rule_slug:
-                    self.view_option_website_results_website_page_rule()
+                    if self.page_num:
+                        self.view_option_website_results_website_page()
+                        return
+
+                    if self.website_slug:
+                        self.view_option_website_results_website()
+                        return
+
+                    self.view_option_website_results()
                     return
-
-                if self.page_num:
-                    self.view_option_website_results_website_page()
-                    return
-
-                if self.website_slug:
-                    self.view_option_website_results_website()
-                    return
-
-                self.view_option_website_results()
-                return
 # ---------------------
 # Rule Grouping Filters
 # ---------------------
+
+    def filter_audit_group_results(self, group, label):
+        if group:
+            return reverse('audit_groups_rule_group_results', args=[self.audit_result_slug, self.rule_grouping, group])
+        else:
+            return reverse('audit_groups_results', args=[self.audit_result_slug, self.rule_grouping])
+
 
     def filter_website_results(self, group, label):
         if group:
@@ -377,16 +410,20 @@ class ResultNavigtionObject:
             url = self.filter_audit_result(group, label)
         # Assume 'website' result view
         else:
+            if self.result_view == 'group':
+                url = self.filter_audit_group_results(group, label)
 
-            if self.audit_group_slug == '' and self.audit_group2_slug == '':
+            else:
 
-                if self.page_num:
-                    url = self.filter_website_results_website_page(group, label)
-                else:
-                    if self.website_slug:
-                        url = self.filter_website_results_website(group, label)
+                if self.audit_group_slug == '' and self.audit_group2_slug == '':
+
+                    if self.page_num:
+                        url = self.filter_website_results_website_page(group, label)
                     else:
-                        url = self.filter_website_results(group, label)
+                        if self.website_slug:
+                            url = self.filter_website_results_website(group, label)
+                        else:
+                            url = self.filter_website_results(group, label)
 
         self.filters.add(label, url)
 

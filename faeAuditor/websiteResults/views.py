@@ -147,14 +147,10 @@ class WebsiteResultsView(ResultNavigationMixin, TemplateView):
         wsrs = ar.ws_results.all()
 
         for wsr in wsrs:
-            wsr.href         = reverse('website_results_website', args=[result_slug, rule_grouping, wsr.slug])
-            if wsr.group_result:
-                wsr.group_title  = wsr.group_result.group_item.title
-                if wsr.group2_result:
-                    wsr.group2_title = wsr.group2_result.group2_item.title
+            wsr.href = reverse('website_results_website', args=[result_slug, rule_grouping, wsr.slug])
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'website', self.request.path)
+        self.result_nav.set_audit_result(ar, 'website', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping)
         self.result_nav.create_result_navigation()
 
@@ -196,7 +192,7 @@ class WebsiteResultsWebsiteView(ResultNavigationMixin, TemplateView):
             pr.href      = reverse('website_results_website_page', args=[result_slug, rule_grouping, website_slug, pr.page_number])
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'website', self.request.path)
+        self.result_nav.set_audit_result(ar, 'website', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping)
         self.result_nav.set_website_page(website_slug)
         self.result_nav.create_result_navigation()
@@ -242,7 +238,7 @@ class WebsiteResultsWebsitePageView(ResultNavigationMixin, TemplateView):
             prr.href      = reverse('website_results_website_page_rule', args=[result_slug, rule_grouping, website_slug, page_num, prr.slug])
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'website', self.request.path)
+        self.result_nav.set_audit_result(ar, 'website', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping)
         self.result_nav.set_website_page(website_slug, page_num, wsr.page_count)
         self.result_nav.create_result_navigation()
@@ -287,7 +283,7 @@ class WebsiteResultsWebsitePageRuleView(ResultNavigationMixin, TemplateView):
         r   = prr.rule
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'website', self.request.path)
+        self.result_nav.set_audit_result(ar, 'website', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping)
         self.result_nav.set_website_page(website_slug, page_num, wsr.page_count)
         self.result_nav.set_rule(rule_slug)
@@ -350,7 +346,7 @@ class WebsiteRuleGroupResultsView(ResultNavigationMixin, TemplateView):
                     wsrgr.group2_title = wsrgr.ws_report.group2_result.group2_item.title
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'website', self.request.path)
+        self.result_nav.set_audit_result(ar, 'website', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.create_result_navigation()
 
@@ -405,7 +401,7 @@ class WebsiteRuleGroupResultsWebsiteView(ResultNavigationMixin, TemplateView):
             pr.href      = reverse('website_rule_group_results_website_page', args=[result_slug, rule_grouping, rule_group_slug, website_slug, pr.page_result.page_number])
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'website', self.request.path)
+        self.result_nav.set_audit_result(ar, 'website', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_website_page(website_slug)
         self.result_nav.create_result_navigation()
@@ -465,7 +461,7 @@ class WebsiteRuleGroupResultsWebsitePageView(ResultNavigationMixin, TemplateView
             prr.href = reverse('website_rule_group_results_website_page_rule', args=[result_slug, rule_grouping, rule_group_slug, website_slug, page_num, prr.slug])
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'website', self.request.path)
+        self.result_nav.set_audit_result(ar, 'website', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_website_page(website_slug, page_num, wsr.page_count)
         self.result_nav.create_result_navigation()
@@ -530,7 +526,7 @@ class WebsiteRuleGroupResultsWebsitePageRuleView(ResultNavigationMixin, Template
 
 
         # Setup report navigation
-        self.result_nav.set_audit_result(ar.slug, result_slug, 'website', self.request.path)
+        self.result_nav.set_audit_result(ar, 'website', self.request.path)
         self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_website_page(website_slug, page_num, wsr.page_count)
         self.result_nav.set_rule(rule_slug)
