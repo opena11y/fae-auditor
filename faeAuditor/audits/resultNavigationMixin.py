@@ -265,7 +265,7 @@ class ResultNavigtionObject:
         self.page_count = 0
         self.session['page_count'] = 0
 
-    def set_audit_groups(self, audit_group_slug, audit_group2_slug):
+    def set_audit_groups(self, audit_group_slug, audit_group2_slug=None):
 
         if audit_group_slug:
           self.audit_group_slug            = audit_group_slug

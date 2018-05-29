@@ -232,9 +232,9 @@ class AuditResult(AllRuleGroupResult):
 
   def get_group_rc_result(self, rule_category, rule_result=False):
     try:
-      arcr = AuditRuleCategoryResult.objects.get(audit_result=self,rule_category=rule_category)
+      arcr = AuditRuleCategoryResult.objects.get(audit_result=self, rule_category=rule_category)
     except:
-      arcr = AuditRuleCategoryResult(audit_result=self,rule_category=rule_category,slug=rule_category.slug)
+      arcr = AuditRuleCategoryResult(audit_result=self, rule_category=rule_category, slug=rule_category.slug)
       arcr.save()
 
     if rule_result:
@@ -245,9 +245,9 @@ class AuditResult(AllRuleGroupResult):
 
   def get_group_gl_result(self, guideline, rule_result=False):
     try:
-      aglr = AuditGuidelineResult.objects.get(audit_result=self,guideline=guideline)
+      aglr = AuditGuidelineResult.objects.get(audit_result=self, guideline=guideline)
     except:
-      aglr = AuditGuidelineResult(audit_result=self,guideline=guideline,slug=guideline.slug)
+      aglr = AuditGuidelineResult(audit_result=self, guideline=guideline, slug=guideline.slug)
       aglr.save()
 
     if rule_result:

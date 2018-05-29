@@ -52,14 +52,48 @@ log = sys.stdout
 
 def main():
 
+    audit_results = AuditResult.objects.all()
 
-  audit_results = AuditResult.objects.all()
+    for ar in audit_results:
+        ar.delete()
 
-  for audit_result in audit_results:
-    audit_result.status = 'A'
-    audit_result.save()
-    audit_result.audit_rule_results.all().delete()
-    audit_result.check_if_audit_result_complete()
+    for ar in audit_results:
+        ar.status = 'A'
+        ar.save()
+
+        print('Procssing audit result: ' + str(ar))
+
+        try:
+          print('  deleting group1 results...')
+          if ar.group_results:
+            for agr in ar.group_results.all():
+
+              agr.group_rs_results.all().delete()
+              agr.group_rc_results.all().delete()
+              agr.group_gl_results.all().delete()
+              agr.group_rule_results.all().delete()
+        except:
+            print('  no group results')
+
+        try:
+          if ar.group2_results:
+            print('  deleting group2 results...')
+            for ag2r in ar.group2_results.all():
+
+              ag2r.group2_rs_results.all().delete()
+              ag2r.group2_rc_results.all().delete()
+              ag2r.group2_gl_results.all().delete()
+              ag2r.group2_rule_results.all().delete()
+        except:
+            print('  no group2 results')
+
+            print('  deleting audit results...')
+        ar.audit_rs_results.all().delete()
+        ar.audit_rc_results.all().delete()
+        ar.audit_gl_results.all().delete()
+        ar.audit_rule_results.all().delete()
+
+        ar.check_if_audit_result_complete()
 
 
 if __name__ == "__main__":

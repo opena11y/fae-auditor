@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+<li><a href="{% url 'audit' audit_slug %}">Audit</a></li>
+<li><a href="{% url 'audit_groups_results' result_slug rule_grouping %}">{{audit_result.group_title}}</a></li>
+<li>
+  <a href="{% url 'audit_groups_audit_group_results' result_slug rule_grouping audit_group_slug %}">
+    {{audit_group_result.get_title}}
+  </a>
+</li>
+<li>{{website_result.slug}}</li>
+{% endblock %}
+
+{% block title %}
+Website Result: {{website_result.title}}
+{% endblock %}
+
+{% block content %}
+  <h2>Page Results</h2>
+  {% include 'common/table_page_results.html' %}
+{% endblock %}

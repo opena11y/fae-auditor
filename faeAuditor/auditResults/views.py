@@ -266,7 +266,7 @@ class AuditResultRuleGroupRuleWebsiteView(ResultNavigationMixin, TemplateView):
 
 
         for prr in prrs:
-            prr.href = reverse('audit_result_rule_group_rule_website_page', args=[result_slug, rule_grouping, rule_group_slug, rule_slug, website_slug, prr.page_result.page_number])
+            prr.href  = reverse('audit_result_rule_group_rule_website_page', args=[result_slug, rule_grouping, rule_group_slug, rule_slug, website_slug, prr.page_result.page_number])
 
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'rules', self.request.path)

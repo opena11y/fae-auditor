@@ -117,7 +117,7 @@ class AuditGroupResult(AllRuleGroupResult):
 
   def get_group_gl_result(self, guideline, rule_result=False):
       try:
-        agglr = AuditGroupGuidelineResult.objects.get(audit_result=self.audit_result, group_item=self.group_item,guideline=guideline)
+        agglr = AuditGroupGuidelineResult.objects.get(group_result=self, guideline=guideline)
       except:
         agglr = AuditGroupGuidelineResult(group_result=self, guideline=guideline, slug=guideline.slug)
         agglr.save()
@@ -157,7 +157,7 @@ class AuditGroupRuleCategoryResult(RuleGroupResult):
   class Meta:
     verbose_name        = "Group Rule Category Result"
     verbose_name_plural = "Group Rule Category Results"
-    ordering            = ['rule_category']
+    ordering            = ['group_result__group_item']
 
 
   def __unicode__(self):
@@ -197,7 +197,7 @@ class AuditGroupGuidelineResult(RuleGroupResult):
   class Meta:
     verbose_name        = "Group Guideline Result"
     verbose_name_plural = "Group Guideline Result"
-    ordering = ['guideline']
+    ordering = ['group_result__group_item']
 
   def __unicode__(self):
     return 'Group GL: ' + self.group_result.group_item.title
@@ -235,7 +235,7 @@ class AuditGroupRuleScopeResult(RuleGroupResult):
   class Meta:
     verbose_name        = "Group Rule Scope Result"
     verbose_name_plural = "Group Rule Scope Results"
-    ordering = ['-rule_scope']
+    ordering = ['group_result__group_item']
 
   def __unicode__(self):
     return 'Group RS: ' + self.group_result.group_item.title
