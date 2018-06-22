@@ -175,7 +175,7 @@ class AuditGroupRuleCategoryResult(RuleGroupResult):
     super(AuditGroupRuleCategoryResult, self).save() # Call the "real" save() method.
 
   def get_title(self):
-    return self.rule_category.title
+    return self.group_result.get_title()
 
   def get_id(self):
     return 'agrcr_' + self.rule_category.id
@@ -213,7 +213,7 @@ class AuditGroupGuidelineResult(RuleGroupResult):
     super(AuditGroupGuidelineResult, self).save() # Call the "real" save() method.
 
   def get_title(self):
-    return self.guideline.title
+    return self.group_result.get_title()
 
   def get_id(self):
     return 'agglr_' + self.guideline.id
@@ -252,7 +252,7 @@ class AuditGroupRuleScopeResult(RuleGroupResult):
     super(AuditGroupRuleScopeResult, self).save() # Call the "real" save() method.
 
   def get_title(self):
-    return self.rule_scope.title
+    return self.group_result.get_title()
 
   def get_id(self):
     return 'agrsr_' + self.rule_scope.id

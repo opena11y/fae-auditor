@@ -71,7 +71,7 @@ class PageResult(RuleGroupResult):
     return self.url
 
   def get_title(self):
-    if len(self.title) > 0:
+    if len(self.title):
       return self.title
     else:
       return "No Title: " + self.url
@@ -128,8 +128,11 @@ class PageRuleCategoryResult(RuleGroupResult):
   def __str__(self):
     return self.rule_category.title
 
+  def get_page_number(self):
+    return self.page_result.page_number
+
   def get_title(self):
-    return self.rule_category.title
+    return self.page_result.get_title()
 
   def get_id(self):
     return 'prcr_' + self.id
@@ -160,8 +163,11 @@ class PageGuidelineResult(RuleGroupResult):
   def __str__(self):
     return str(self.guideline)
 
+  def get_page_number(self):
+    return self.page_result.page_number
+
   def get_title(self):
-    return self.guideline.title
+    return self.page_result.get_title()
 
   def get_id(self):
     return 'pglr_' + self.id
@@ -190,10 +196,13 @@ class PageRuleScopeResult(RuleGroupResult):
     ordering = ['-rule_scope']
 
   def __str__(self):
-    return self.rule_scope.title
+    return self.page_result.get_title()
+
+  def get_page_number(self):
+    return self.page_result.page_number
 
   def get_title(self):
-    return self.rule_scope.title
+    return self.page_result.get_title()
 
   def get_id(self):
     return 'prsr_' + self.id

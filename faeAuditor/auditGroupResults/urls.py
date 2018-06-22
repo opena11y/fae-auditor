@@ -37,8 +37,15 @@ from  .views  import AuditGroupsAuditGroupWebsitePageRuleResultsView
 
 from  .views  import AuditGroupsRuleGroupResultsView
 from  .views  import AuditGroupsRuleGroupAuditGroupResultsView
+
 from  .views  import AuditGroupsRuleGroupAuditGroupAuditGroup2ResultsView
+from  .views  import AuditGroupsRuleGroupAuditGroupAuditGroup2WebsiteResultsView
+from  .views  import AuditGroupsRuleGroupAuditGroupAuditGroup2WebsitePageResultsView
+from  .views  import AuditGroupsRuleGroupAuditGroupAuditGroup2WebsitePageRuleResultsView
+
 from  .views  import AuditGroupsRuleGroupAuditGroupWebsiteResultsView
+from  .views  import AuditGroupsRuleGroupAuditGroupWebsitePageResultsView
+from  .views  import AuditGroupsRuleGroupAuditGroupWebsitePageRuleResultsView
 
 urlpatterns = [
 
@@ -83,7 +90,7 @@ urlpatterns = [
       name='audit_groups_audit_group_website_page_rule_results'),
 
 
-# Rule grouping views
+# Rule grouping result views
     url(r'^rg/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/$',
       AuditGroupsRuleGroupResultsView.as_view(),
       name='audit_groups_rule_group_results'),
@@ -92,13 +99,38 @@ urlpatterns = [
       AuditGroupsRuleGroupAuditGroupResultsView.as_view(),
       name='audit_groups_rule_group_audit_group_results'),
 
-    url(r'^all/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/g2/(?P<audit_group2_slug>[\w-]+)/$',
+
+# Rule grouping audit group 2 views (website grouping by audit group and audit group 2)
+
+    url(r'^all/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/g2/(?P<audit_group2_slug>[\w-]+)/$',
       AuditGroupsRuleGroupAuditGroupAuditGroup2ResultsView.as_view(),
       name='audit_groups_rule_group_audit_group_audit_group2_results'),
 
-    url(r'^all/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/$',
+    url(r'^all/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/g2/(?P<audit_group2_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/$',
+      AuditGroupsRuleGroupAuditGroupAuditGroup2WebsiteResultsView.as_view(),
+      name='audit_groups_rule_group_audit_group_audit_group2_website_results'),
+
+    url(r'^all/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/g2/(?P<audit_group2_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/pg/(?P<page_num>[\w-]+)$',
+      AuditGroupsRuleGroupAuditGroupAuditGroup2WebsitePageResultsView.as_view(),
+      name='audit_groups_rule_group_audit_group_audit_group2_website_page_results'),
+
+    url(r'^all/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/g2/(?P<audit_group2_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/pg/(?P<page_num>[\w-]+)/rule/(?P<rule_slug>[\w-]+)$',
+      AuditGroupsRuleGroupAuditGroupAuditGroup2WebsitePageRuleResultsView.as_view(),
+      name='audit_groups_rule_group_audit_group_audit_group2_website_page_results'),
+
+# Rule grouping website views
+
+    url(r'^all/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)g/(?P<audit_group_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/$',
       AuditGroupsRuleGroupAuditGroupWebsiteResultsView.as_view(),
-      name='audit_groups_rule_group_audit_group_website_results')
+      name='audit_groups_rule_group_audit_group_website_results'),
+
+    url(r'^all/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)g/(?P<audit_group_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/pg/(?P<page_num>[\w-]+)$',
+      AuditGroupsRuleGroupAuditGroupWebsitePageResultsView.as_view(),
+      name='audit_groups_rule_group_audit_group_website_page_results'),
+
+    url(r'^all/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)g/(?P<audit_group_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/pg/(?P<page_num>[\w-]+)/rule/(?P<rule_slug>[\w-]+)$',
+      AuditGroupsRuleGroupAuditGroupWebsitePageRuleResultsView.as_view(),
+      name='audit_groups_rule_group_audit_group_website_page_rule_results')
 
 
 ]

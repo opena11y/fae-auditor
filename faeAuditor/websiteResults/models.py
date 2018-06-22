@@ -683,7 +683,16 @@ class WebsiteRuleCategoryResult(RuleGroupResult):
     return self.rule_category.title_plural
 
   def get_title(self):
-    return self.rule_category.title
+    return self.ws_report.title
+
+  def get_group_title(self):
+    return self.ws_report.group_title()
+
+  def get_group2_title(self):
+    return self.ws_report.group2_title()
+
+  def get_page_count(self):
+    return self.ws_report.get_page_count()
 
   def get_id(self):
     return 'wsrcr_' + self.rule_category.id
@@ -714,7 +723,16 @@ class WebsiteGuidelineResult(RuleGroupResult):
     return str(self.guideline)
 
   def get_title(self):
-    return self.guideline.title
+    return self.ws_report.title
+
+  def get_group_title(self):
+    return self.ws_report.group_title()
+
+  def get_group2_title(self):
+    return self.ws_report.group2_title()
+
+  def get_page_count(self):
+    return self.ws_report.get_page_count()
 
   def get_id(self):
     return 'wsglr_' + self.guideline.id
@@ -746,11 +764,20 @@ class WebsiteRuleScopeResult(RuleGroupResult):
   def __unicode__(self):
     return self.rule_scope.title
 
+  def get_title(self):
+    return self.ws_report.title
+
+  def get_group_title(self):
+    return self.ws_report.group_title()
+
+  def get_group2_title(self):
+    return self.ws_report.group2_title()
+
+  def get_page_count(self):
+    return self.ws_report.get_page_count()
+
   def get_id(self):
     return 'wsrsr_' + self.rule_scope.id
-
-  def get_title(self):
-    return self.rule_scope.title
 
 
 # ---------------------------------------------------------------
