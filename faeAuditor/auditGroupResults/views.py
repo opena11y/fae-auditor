@@ -874,7 +874,10 @@ class AuditGroupsRuleGroupAuditGroupAuditGroup2WebsitePageResultsView(ResultNavi
                 rule_group = RuleCategory.objects.get(slug=rule_group_slug)
 
         for pgrr in pgrrs:
-            pgrr.href     = reverse('audit_groups_rule_group_audit_group_website_page_rule_results', args=[result_slug, rule_grouping, rule_group_slug, audit_group_slug, website_slug, page_num, pgrr.slug])
+            pgrr.title  = pgrr.rule.summary_html
+            pgrr.href   = reverse('audit_groups_rule_group_audit_group_website_page_rule_results', args=[result_slug, rule_grouping, rule_group_slug, audit_group_slug, website_slug, page_num, pgrr.slug])
+
+        print(len(pgrrs))
 
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'group', self.request.path)
@@ -903,7 +906,7 @@ class AuditGroupsRuleGroupAuditGroupAuditGroup2WebsitePageResultsView(ResultNavi
         context['audit_group2_result']  = ag2r
         context['website_result']       = wsr
         context['page_result']          = pgr
-        context['rule_results']         = pgrrs
+        context['page_rule_results']    = pgrrs
 
         return context
 
