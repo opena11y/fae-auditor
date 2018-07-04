@@ -25,11 +25,16 @@
 {% endblock %}
 
 {% block title %}
-Page Results: {{page_result.get_title}}
+Page {{page_num}}: {{page_result.get_title}}
 {% endblock %}
 
 {% block content %}
 
+  <div class="url">URL: <a href="{{page_result.url}}" title="URL for Page {{page_num}}">{{page_result.url}}</a></div>
+
+  {% include 'common/rules_summary.html' with summary=page_result %}
+
+  {% include 'common/view_options.html' %}
 
   {% include 'common/table_page_result.html' %}
 

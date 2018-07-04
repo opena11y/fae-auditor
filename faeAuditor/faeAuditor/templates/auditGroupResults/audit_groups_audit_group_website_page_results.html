@@ -24,7 +24,7 @@ Page {{page_num}}: {{page_result.get_title}}
 {% endblock %}
 
 {% block content %}
-  <p>URL: <a href="{{page_result.url}}" title="URL for Page {{page_num}}">{{page_result.url}}</a></p>
+  <div class="url">URL: <a href="{{page_result.url}}" title="URL for Page {{page_num}}">{{page_result.url}}</a></div>
 
   {% include 'common/rules_summary.html' with summary=page_result %}
 
