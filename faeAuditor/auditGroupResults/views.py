@@ -44,6 +44,12 @@ from .models  import AuditGroupGuidelineResult
 from .models  import AuditGroupRuleScopeResult
 from .models  import AuditGroupRuleResult
 
+from auditResults.models  import AuditResult
+from auditResults.models  import AuditRuleCategoryResult
+from auditResults.models  import AuditGuidelineResult
+from auditResults.models  import AuditRuleScopeResult
+from auditResults.models  import AuditRuleResult
+
 from auditGroup2Results.models  import AuditGroup2Result
 from auditGroup2Results.models  import AuditGroup2RuleCategoryResult
 from auditGroup2Results.models  import AuditGroup2GuidelineResult
@@ -585,13 +591,16 @@ class AuditGroupsRuleGroupResultsView(ResultNavigationMixin, TemplateView):
         ar  = AuditResult.objects.get(slug=result_slug)
 
         if rule_grouping == 'gl':
+            argr            = AuditGuidelineResult.objects.get(audit_result=ar, slug=rule_group_slug)
             agrs            = AuditGroupGuidelineResult.objects.filter(group_result__audit_result=ar, slug=rule_group_slug)
             rule_group      = Guideline.objects.get(slug=rule_group_slug)
         else:
             if rule_grouping == 'rs':
+                argr        = AuditRuleScopeResult.objects.get(audit_result=ar, slug=rule_group_slug)
                 agrs        = AuditGroupRuleScopeResult.objects.filter(group_result__audit_result=ar, slug=rule_group_slug)
                 rule_group  = RuleScope.objects.get(slug=rule_group_slug)
             else:
+                argr        = AuditRuleCategoryResult.objects.get(audit_result=ar, slug=rule_group_slug)
                 agrs        = AuditGroupRuleCategoryResult.objects.filter(group_result__audit_result=ar, slug=rule_group_slug)
                 rule_group  = RuleCategory.objects.get(slug=rule_group_slug)
 
@@ -617,6 +626,7 @@ class AuditGroupsRuleGroupResultsView(ResultNavigationMixin, TemplateView):
 
         context['audit_result']        = ar
         context['rule_group']          = rule_group
+        context['rule_group_result']   = argr
         context['audit_group_results'] = agrs
 
         return context
@@ -662,9 +672,10 @@ class AuditGroupsRuleGroupAuditGroupResultsView(ResultNavigationMixin, TemplateV
             ag2rgr.href  = reverse('audit_groups_rule_group_audit_group_audit_group2_results', args=[result_slug, rule_grouping, rule_group_slug, audit_group_slug, ag2rgr.group2_result.slug])
 
         for wsrgr in wsrgrs:
-            wsrgr.title = wsrgr.get_title()
+            wsrgr.title        = wsrgr.get_title()
             wsrgr.group_title  = wsrgr.get_group_title()
             wsrgr.group2_title = wsrgr.get_group2_title()
+            wsrgr.page_count   = wsrgr.get_page_count()
             wsrgr.href  = reverse('audit_groups_rule_group_audit_group_website_results', args=[result_slug, rule_grouping, rule_group_slug, audit_group_slug, wsrgr.ws_report.slug])
 
         # Setup report navigation
@@ -727,7 +738,8 @@ class AuditGroupsRuleGroupAuditGroupAuditGroup2ResultsView(ResultNavigationMixin
                 rule_group = RuleScope.objects.get(slug=rule_group_slug)
             else:
                 rule_grouping == 'rc'
-                ag2rgr     = AuditGroup2RuleCategoryResult.objects.filter(group2_result=ag2r, slug=rule_group_slug)
+                ag2rgr     = AuditGroup2RuleCategoryResult.objects.get(group2_result=ag2r, slug=rule_group_slug)
+                print(str(ag2rgr))
                 wsrgrs     = WebsiteRuleCategoryResult.objects.filter(ws_report__group2_result=ag2r, slug=rule_group_slug)
                 rule_group = RuleCategory.objects.get(slug=rule_group_slug)
 
@@ -814,12 +826,13 @@ class AuditGroupsRuleGroupAuditGroupAuditGroup2WebsiteResultsView(ResultNavigati
         self.result_nav.create_result_navigation()
 
         # slugs used for urls
-        context['audit_slug']       = ar.audit.slug
-        context['result_slug']      = result_slug
-        context['rule_grouping']    = rule_grouping
-        context['rule_group_slug']  = rule_group_slug
-        context['audit_group_slug'] = audit_group_slug
-        context['website_slug']     = website_slug
+        context['audit_slug']        = ar.audit.slug
+        context['result_slug']       = result_slug
+        context['rule_grouping']     = rule_grouping
+        context['rule_group_slug']   = rule_group_slug
+        context['audit_group_slug']  = audit_group_slug
+        context['audit_group2_slug'] = audit_group2_slug
+        context['website_slug']      = website_slug
 
         # objects for rendering content
         context['audit']         = ar.audit
@@ -875,7 +888,7 @@ class AuditGroupsRuleGroupAuditGroupAuditGroup2WebsitePageResultsView(ResultNavi
 
         for pgrr in pgrrs:
             pgrr.title  = pgrr.rule.summary_html
-            pgrr.href   = reverse('audit_groups_rule_group_audit_group_website_page_rule_results', args=[result_slug, rule_grouping, rule_group_slug, audit_group_slug, website_slug, page_num, pgrr.slug])
+            pgrr.href   = reverse('audit_groups_rule_group_audit_group_audit_group2_website_page_rule_results', args=[result_slug, rule_grouping, rule_group_slug, audit_group_slug, audit_group2_slug, website_slug, page_num, pgrr.slug])
 
         print(len(pgrrs))
 
@@ -887,13 +900,14 @@ class AuditGroupsRuleGroupAuditGroupAuditGroup2WebsitePageResultsView(ResultNavi
         self.result_nav.create_result_navigation()
 
         # slugs used for urls
-        context['audit_slug']       = ar.audit.slug
-        context['result_slug']      = result_slug
-        context['rule_grouping']    = rule_grouping
-        context['rule_group_slug']  = rule_group_slug
-        context['audit_group_slug'] = audit_group_slug
-        context['website_slug']     = website_slug
-        context['page_num']         = page_num
+        context['audit_slug']        = ar.audit.slug
+        context['result_slug']       = result_slug
+        context['rule_grouping']     = rule_grouping
+        context['rule_group_slug']   = rule_group_slug
+        context['audit_group_slug']  = audit_group_slug
+        context['audit_group2_slug'] = audit_group2_slug
+        context['website_slug']      = website_slug
+        context['page_num']          = page_num
 
         # objects for rendering content
         context['audit']         = ar.audit
@@ -921,6 +935,7 @@ class AuditGroupsRuleGroupAuditGroupAuditGroup2WebsitePageRuleResultsView(Result
 
         result_slug       = kwargs['result_slug']
         rule_grouping     = kwargs['rule_grouping']
+        rule_group_slug   = kwargs['rule_group_slug']
         audit_group_slug  = kwargs['audit_group_slug']
         audit_group2_slug = kwargs['audit_group2_slug']
         website_slug      = kwargs['website_slug']
@@ -936,9 +951,18 @@ class AuditGroupsRuleGroupAuditGroupAuditGroup2WebsitePageRuleResultsView(Result
         prr  = pr.page_rule_results.get(slug=rule_slug)
         r    = prr.rule
 
+        if rule_grouping == 'gl':
+            rule_group = Guideline.objects.get(slug=rule_group_slug)
+        else:
+            if rule_grouping == 'rs':
+                rule_group = RuleScope.objects.get(slug=rule_group_slug)
+            else:
+                rule_grouping == 'rc'
+                rule_group = RuleCategory.objects.get(slug=rule_group_slug)
+
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'group', self.request.path)
-        self.result_nav.set_rule_grouping(rule_grouping)
+        self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_audit_groups(audit_group_slug, audit_group2_slug)
         self.result_nav.set_website_page(website_slug, page_num, wsr.page_count)
         self.result_nav.set_rule(rule_slug)
@@ -956,6 +980,8 @@ class AuditGroupsRuleGroupAuditGroupAuditGroup2WebsitePageRuleResultsView(Result
         context['audit']         = ar.audit
         context['audit_result']  = ar
         context['user_profile']  = user_profile
+
+        context['rule_group']    = rule_group
 
         context['audit_result']        = ar
         context['audit_group_result']  = agr
@@ -979,55 +1005,69 @@ class AuditGroupsRuleGroupAuditGroupWebsiteResultsView(ResultNavigationMixin, Te
     def get_context_data(self, **kwargs):
         context = super(AuditGroupsRuleGroupAuditGroupWebsiteResultsView, self).get_context_data(**kwargs)
 
+        print('[AuditGroupsRuleGroupAuditGroupWebsiteResultsView][get_context_data]')
+
         user           = self.request.user
         user_profile = UserProfile.objects.get(user=user)
 
-        result_slug      = kwargs['result_slug']
-        rule_grouping    = kwargs['rule_grouping']
-        rule_group_slug  = kwargs['rule_group_slug']
-        audit_group_slug = kwargs['audit_group_slug']
-        website_slug     = kwargs['website_slug']
+        result_slug       = kwargs['result_slug']
+        rule_grouping     = kwargs['rule_grouping']
+        rule_group_slug   = kwargs['rule_group_slug']
+        audit_group_slug  = kwargs['audit_group_slug']
+        website_slug      = kwargs['website_slug']
 
-        ar  = AuditResult.objects.get(slug=result_slug)
-        agr = AuditGroupResult.objects.get(audit_result=ar, slug=audit_group_slug)
+        ar   = AuditResult.objects.get(slug=result_slug)
+        agr  = AuditGroupResult.objects.get(audit_result=ar, slug=audit_group_slug)
+        wsr  = WebsiteResult.objects.get(group_result=agr, slug=website_slug)
 
         if rule_grouping == 'gl':
-            agr         = AuditGroup2GuidelineResult.objects.get(group2_result__group_result=agr, slug=rule_group_slug)
-            rule_group  = Guideline.objects.get(slug=rule_group_slug)
+            wsrgr      = wsr.ws_gl_results.get(slug=rule_group_slug)
+            pgrgrs     = wsrgr.page_gl_results.all()
+            rule_group = Guideline.objects.get(slug=rule_group_slug)
         else:
             if rule_grouping == 'rs':
-                agr        = AuditGroup2RuleScopeResult.objects.filter(group2_result__group_result=agr, slug=rule_group_slug)
+                wsrgr     = wsr.ws_rs_results.get(slug=rule_group_slug)
+                pgrgrs     = wsrgr.page_rs_results.all()
                 rule_group = RuleScope.objects.get(slug=rule_group_slug)
             else:
-                agr        = AuditGroup2RuleCategoryResult.objects.filter(group2_result__group_result=agr, slug=rule_group_slug)
+                rule_grouping == 'rc'
+                wsrgr     = wsr.ws_rc_results.get(slug=rule_group_slug)
+                pgrgrs     = wsrgr.page_rc_results.all()
                 rule_group = RuleCategory.objects.get(slug=rule_group_slug)
 
-        wsrs = agr.ws_reports.all();
-
-        for wsr in wsrs:
-            wsr.title = agr2.get_title()
-            wsr.href  = reverse('audit_groups_rule_group_audit_group_website_results', args=[result_slug, rule_grouping, rule_group_slug, audit_group_slug, wsr.slug])
+        for pgrgr in pgrgrs:
+            pgrgr.title    = pgrgr.get_title()
+            pgrgr.page_num = pgrgr.get_page_number()
+            pgrgr.href     = reverse('audit_groups_rule_group_audit_group_website_page_results', args=[result_slug, rule_grouping, rule_group_slug, audit_group_slug, website_slug, pgrgr.get_page_number()])
 
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'group', self.request.path)
-        self.result_nav.set_rule_grouping(rule_grouping, rule_group)
+        self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
+        self.result_nav.set_audit_groups(audit_group_slug)
+        self.result_nav.set_website_page(website_slug)
         self.result_nav.create_result_navigation()
 
         # slugs used for urls
-        context['audit_slug']     = ar.audit.slug
-        context['result_slug']    = result_slug
-        context['rule_grouping']  = rule_grouping
-        context['rule_group']     = rule_group
-        context['audit_group']    = audit_group
+        context['audit_slug']       = ar.audit.slug
+        context['result_slug']      = result_slug
+        context['rule_grouping']    = rule_grouping
+        context['rule_group_slug']  = rule_group_slug
+        context['audit_group_slug'] = audit_group_slug
+        context['website_slug']     = website_slug
 
         # objects for rendering content
         context['audit']         = ar.audit
         context['audit_result']  = ar
         context['user_profile']  = user_profile
 
-        context['audit_group_results'] = agrs
+        context['rule_group']    = rule_group
+
+        context['audit_group_result']   = agr
+        context['website_result']       = wsr
+        context['page_results']         = pgrgrs
 
         return context
+
 
 class AuditGroupsRuleGroupAuditGroupWebsitePageResultsView(ResultNavigationMixin, TemplateView):
     template_name = 'auditGroupResults/audit_groups_rule_group_audit_group_website_page_results.html'
@@ -1038,49 +1078,64 @@ class AuditGroupsRuleGroupAuditGroupWebsitePageResultsView(ResultNavigationMixin
         user           = self.request.user
         user_profile = UserProfile.objects.get(user=user)
 
-        result_slug      = kwargs['result_slug']
-        rule_grouping    = kwargs['rule_grouping']
-        audit_group_slug = kwargs['audit_group_slug']
-        website_slug     = kwargs['website_slug']
-        page_num         = kwargs['page_num']
+        result_slug       = kwargs['result_slug']
+        rule_grouping     = kwargs['rule_grouping']
+        rule_group_slug   = kwargs['rule_group_slug']
+        audit_group_slug  = kwargs['audit_group_slug']
+        website_slug      = kwargs['website_slug']
+        page_num          = kwargs['page_num']
 
         ar   = AuditResult.objects.get(slug=result_slug)
-        agr  = ar.group_results.get(slug=audit_group_slug)
-        wsrs = agr.ws_results.all()
-        wsr  = wsrs.get(slug=website_slug)
-        pr   = wsr.page_all_results.get(page_number=page_num)
-        prrs = pr.page_rule_results.all()
+        agr  = AuditGroupResult.objects.get(audit_result=ar, slug=audit_group_slug)
+        wsr  = WebsiteResult.objects.get(group_result=agr, slug=website_slug)
+        pgr  = PageResult.objects.get(ws_report=wsr, page_number=page_num)
 
-        for prr in prrs:
-            prr.title     = prr.rule.summary_html
-            prr.href      = reverse('audit_groups_audit_group_website_page_rule_results', args=[result_slug, rule_grouping, audit_group_slug, website_slug, page_num, prr.slug])
+        if rule_grouping == 'gl':
+            pgrg       = pgr.page_gl_results.get(slug=rule_group_slug)
+            pgrrs      = pgrg.page_rule_results.all()
+            rule_group = Guideline.objects.get(slug=rule_group_slug)
+        else:
+            if rule_grouping == 'rs':
+                pgrg       = pgr.page_rs_results.get(slug=rule_group_slug)
+                pgrrs      = pgrg.page_rule_results.all()
+                rule_group = RuleScope.objects.get(slug=rule_group_slug)
+            else:
+                rule_grouping == 'rc'
+                pgrg       = pgr.page_rc_results.get(slug=rule_group_slug)
+                pgrrs      = pgrg.page_rule_results.all()
+                rule_group = RuleCategory.objects.get(slug=rule_group_slug)
+
+        for pgrr in pgrrs:
+            pgrr.title  = pgrr.rule.summary_html
+            pgrr.href   = reverse('audit_groups_rule_group_audit_group_website_page_rule_results', args=[result_slug, rule_grouping, rule_group_slug, audit_group_slug, website_slug, page_num, pgrr.slug])
 
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'group', self.request.path)
-        self.result_nav.set_rule_grouping(rule_grouping)
+        self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_audit_groups(audit_group_slug)
-        self.result_nav.set_website_page(website_slug, page_num, wsr.page_count)
+        self.result_nav.set_website_page(website_slug, page_num)
         self.result_nav.create_result_navigation()
 
         # slugs used for urls
-        context['audit_slug']        = ar.audit.slug
-        context['result_slug']       = result_slug
-        context['rule_grouping']     = rule_grouping
-        context['audit_group_slug']  = audit_group_slug
-        context['website_slug']      = website_slug
-        context['page_num']          = page_num
+        context['audit_slug']       = ar.audit.slug
+        context['result_slug']      = result_slug
+        context['rule_grouping']    = rule_grouping
+        context['rule_group_slug']  = rule_group_slug
+        context['audit_group_slug'] = audit_group_slug
+        context['website_slug']     = website_slug
+        context['page_num']         = page_num
 
         # objects for rendering content
         context['audit']         = ar.audit
         context['audit_result']  = ar
         context['user_profile']  = user_profile
 
-        context['audit_result']        = ar
-        context['audit_group_result']  = agr
-        context['website_results']     = wsrs
-        context['website_result']      = wsr
-        context['page_result']         = pr
-        context['page_rule_results']   = prrs
+        context['rule_group']    = rule_group
+
+        context['audit_group_result']   = agr
+        context['website_result']       = wsr
+        context['page_result']          = pgr
+        context['page_rule_results']    = pgrrs
 
         return context
 
@@ -1093,24 +1148,33 @@ class AuditGroupsRuleGroupAuditGroupWebsitePageRuleResultsView(ResultNavigationM
         user           = self.request.user
         user_profile = UserProfile.objects.get(user=user)
 
-        result_slug      = kwargs['result_slug']
-        rule_grouping    = kwargs['rule_grouping']
-        audit_group_slug = kwargs['audit_group_slug']
-        website_slug     = kwargs['website_slug']
-        page_num         = kwargs['page_num']
-        rule_slug        = kwargs['rule_slug']
+        result_slug       = kwargs['result_slug']
+        rule_grouping     = kwargs['rule_grouping']
+        rule_group_slug   = kwargs['rule_group_slug']
+        audit_group_slug  = kwargs['audit_group_slug']
+        website_slug      = kwargs['website_slug']
+        page_num          = kwargs['page_num']
+        rule_slug         = kwargs['rule_slug']
 
         ar   = AuditResult.objects.get(slug=result_slug)
         agr  = ar.group_results.get(slug=audit_group_slug)
-        wsrs = agr.ws_results.all()
-        wsr  = wsrs.get(slug=website_slug)
+        wsr  = WebsiteResult.objects.get(group_result=agr, slug=website_slug)
         pr   = wsr.page_all_results.get(page_number=page_num)
         prr  = pr.page_rule_results.get(slug=rule_slug)
         r    = prr.rule
 
+        if rule_grouping == 'gl':
+            rule_group = Guideline.objects.get(slug=rule_group_slug)
+        else:
+            if rule_grouping == 'rs':
+                rule_group = RuleScope.objects.get(slug=rule_group_slug)
+            else:
+                rule_grouping == 'rc'
+                rule_group = RuleCategory.objects.get(slug=rule_group_slug)
+
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'group', self.request.path)
-        self.result_nav.set_rule_grouping(rule_grouping)
+        self.result_nav.set_rule_grouping(rule_grouping, rule_group_slug)
         self.result_nav.set_audit_groups(audit_group_slug)
         self.result_nav.set_website_page(website_slug, page_num, wsr.page_count)
         self.result_nav.set_rule(rule_slug)
@@ -1122,15 +1186,18 @@ class AuditGroupsRuleGroupAuditGroupWebsitePageRuleResultsView(ResultNavigationM
         context['rule_grouping']     = rule_grouping
         context['audit_group_slug']  = audit_group_slug
         context['website_slug']      = website_slug
+        context['page_num']          = page_num
+        context['rule_slug']         = rule_slug
 
         # objects for rendering content
         context['audit']         = ar.audit
         context['audit_result']  = ar
         context['user_profile']  = user_profile
 
+        context['rule_group']    = rule_group
+
         context['audit_result']        = ar
         context['audit_group_result']  = agr
-        context['website_results']     = wsrs
         context['website_result']      = wsr
         context['page_result']         = pr
         context['page_rule_result']    = prr

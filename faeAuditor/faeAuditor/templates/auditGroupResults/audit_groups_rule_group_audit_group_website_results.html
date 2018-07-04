@@ -17,13 +17,8 @@
 </li>
 <li>
   <a href="{% url 'audit_groups_rule_group_audit_group_results' result_slug rule_grouping rule_group_slug audit_group_slug %}">
-  {{audit_group_result.get_title}}
-  </a>
-</li>
-<li>
-  <a href="{% url 'audit_groups_rule_group_audit_group_audit_group2_results' result_slug rule_grouping rule_group_slug audit_group_slug audit_group2_slug %}">
-{{audit_group2_result.get_title}}
-  </a>
+    {{audit_group_result.get_title}}
+</a>
 </li>
 <li>{{website_result.slug}}</li>
 {% endblock %}

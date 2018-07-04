@@ -82,6 +82,12 @@ class AuditGroup2Result(AllRuleGroupResult):
   def get_title(self):
       return self.group2_item.title
 
+  def page_count(self):
+    return self.total_pages
+
+  def website_count(self):
+    return self.total_websites
+
   def add_website_result(self, ws_result):
     try:
       self.total_websites = self.total_websites + 1
@@ -172,10 +178,10 @@ class AuditGroup2RuleCategoryResult(RuleGroupResult):
 
 
   def __unicode__(self):
-      return 'Group2 RC: ' + self.group2_result.group2_item.title
+      return 'Group2 RC: ' + self.group2_result.get_title()
 
   def __str__(self):
-      return 'Group2 RC: ' + self.group2_result.group2_item.title
+      return 'Group2 RC: ' + self.group2_result.get_title()
 
   def save(self):
 
@@ -189,6 +195,12 @@ class AuditGroup2RuleCategoryResult(RuleGroupResult):
 
   def get_id(self):
     return 'ag2rcr_' + self.rule_category.id
+
+  def page_count(self):
+    return self.group2_result.total_pages
+
+  def website_count(self):
+    return self.group2_result.total_websites
 
 # ---------------------------------------------------------------
 #
@@ -228,6 +240,12 @@ class AuditGroup2GuidelineResult(RuleGroupResult):
   def get_id(self):
     return 'ag2glr_' + self.guideline.id
 
+  def page_count(self):
+    return self.group2_result.total_pages
+
+  def website_count(self):
+    return self.group2_result.total_websites
+
 # ---------------------------------------------------------------
 #
 # AuditGroup2RuleScopeResult
@@ -266,6 +284,11 @@ class AuditGroup2RuleScopeResult(RuleGroupResult):
   def get_id(self):
     return 'ag2rsr_' + self.rule_scope.id
 
+  def page_count(self):
+    return self.group2_result.total_pages
+
+  def website_count(self):
+    return self.group2_result.total_websites
 
 # ---------------------------------------------------------------
 #

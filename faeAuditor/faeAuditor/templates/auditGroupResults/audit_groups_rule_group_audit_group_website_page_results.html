@@ -17,22 +17,24 @@
 </li>
 <li>
   <a href="{% url 'audit_groups_rule_group_audit_group_results' result_slug rule_grouping rule_group_slug audit_group_slug %}">
-  {{audit_group_result.get_title}}
+    {{audit_group_result.get_title}}
   </a>
 </li>
 <li>
-  <a href="{% url 'audit_groups_rule_group_audit_group_audit_group2_results' result_slug rule_grouping rule_group_slug audit_group_slug audit_group2_slug %}">
-{{audit_group2_result.get_title}}
+  <a href="{% url 'audit_groups_rule_group_audit_group_website_results' result_slug rule_grouping rule_group_slug audit_group_slug website_slug %}">
+    {{website_result.slug}}
   </a>
 </li>
-<li>{{website_result.slug}}</li>
+
+<li>Page {{page_num}}</li>
 {% endblock %}
 
 {% block title %}
-Website Results: {{website_result.get_title}}
+Page Results: {{page_result.get_title}}
 {% endblock %}
 
 {% block content %}
-  {% include 'common/table_page_results.html' %}
+
+  {% include 'common/table_page_result.html' %}
 
 {% endblock %}

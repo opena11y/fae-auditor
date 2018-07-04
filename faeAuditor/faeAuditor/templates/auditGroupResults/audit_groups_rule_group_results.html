@@ -10,9 +10,13 @@
 {% endblock %}
 
 {% block title %}
-AuditGroupRuleGroupResult: {{rule_group.title_plural}}
+{{audit_result.group_title_plural}}: {{rule_group.title}} Rules
 {% endblock %}
 
 {% block content %}
-  {% include 'common/table_audit_groups_results.html' %}
+  {% include 'common/rules_summary.html' with summary=rule_group_result %}
+
+  {% include 'common/view_options.html' %}
+
+  {% include 'common/table_audit_groups_results.html' with summary=rule_group_result %}
 {% endblock %}

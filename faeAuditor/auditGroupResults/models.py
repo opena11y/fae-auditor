@@ -81,6 +81,12 @@ class AuditGroupResult(AllRuleGroupResult):
   def get_title(self):
     return self.group_item.title
 
+  def page_count(self):
+    return self.total_pages
+
+  def website_count(self):
+    return self.total_websites
+
   def add_website_result(self, ws_result):
     try:
       self.total_websites = self.total_websites + 1
@@ -180,6 +186,12 @@ class AuditGroupRuleCategoryResult(RuleGroupResult):
   def get_id(self):
     return 'agrcr_' + self.rule_category.id
 
+  def page_count(self):
+    return self.group_result.total_pages
+
+  def website_count(self):
+    return self.group_result.total_websites
+
 # ---------------------------------------------------------------
 #
 # AuditGroupGuidelineResult
@@ -217,6 +229,12 @@ class AuditGroupGuidelineResult(RuleGroupResult):
 
   def get_id(self):
     return 'agglr_' + self.guideline.id
+
+  def page_count(self):
+    return self.group_result.total_pages
+
+  def website_count(self):
+    return self.group_result.total_websites
 
 # ---------------------------------------------------------------
 #
@@ -257,6 +275,11 @@ class AuditGroupRuleScopeResult(RuleGroupResult):
   def get_id(self):
     return 'agrsr_' + self.rule_scope.id
 
+  def page_count(self):
+    return self.group_result.total_pages
+
+  def website_count(self):
+    return self.group_result.total_websites
 
 # ---------------------------------------------------------------
 #

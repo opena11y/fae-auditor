@@ -1,0 +1,9 @@
+<nav id="view_options" aria-label="Result View Options">
+  <ul class="nav nav-tabs">
+    {% for item in result_nav.view_options.items %}
+    <li {%if item.highlight %}class="active"{% endif %}>
+      <a href="{{item.url}}" >{{item.label}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>

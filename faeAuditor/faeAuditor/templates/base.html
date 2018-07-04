@@ -158,19 +158,6 @@
               </ul>
             </nav>
 
-            <nav id="id_view_options" aria-labelledby="id_view_options_label" class="hidden-xs">
-
-              <h2 id="id_view_options_label">View Options</h2>
-
-              <ul class="nav nav-pills nav-stacked">
-                {% for item in result_nav.view_options.items %}
-                <li {%if item.highlight %}class="highlight"{% endif %}>
-                  <a href="{{item.url}}" >{{item.label}}</a>
-                </li>
-                {% endfor %}
-              </ul>
-            </nav>
-
             {% if result_nav.filters.item_count %}
             <nav id="id_view_filters" aria-labelledby="id_view_filters_label" class="hidden-xs">
 

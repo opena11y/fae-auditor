@@ -116,7 +116,7 @@ urlpatterns = [
 
     url(r'^all/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/g2/(?P<audit_group2_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/pg/(?P<page_num>[\w-]+)/rule/(?P<rule_slug>[\w-]+)$',
       AuditGroupsRuleGroupAuditGroupAuditGroup2WebsitePageRuleResultsView.as_view(),
-      name='audit_groups_rule_group_audit_group_audit_group2_website_page_results'),
+      name='audit_groups_rule_group_audit_group_audit_group2_website_page_rule_results'),
 
 # Rule grouping website views
 
