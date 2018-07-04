@@ -127,7 +127,6 @@ class AuditResult(AllRuleGroupResult):
       return self.audit.groups.all().first().title_plural
     return ''
 
-
   def group2_title(self):
     if self.audit.group2s.all().count() > 0:
       return self.audit.group2s.all().first().title

@@ -388,6 +388,39 @@ class ResultNavigtionObject:
         else:
             self.view_options.add('Rule Scope',    reverse('audit_groups_audit_group_results', args=[self.audit_result_slug, 'rs', self.audit_group_slug]), 'rs' == self.rule_grouping)
 
+    def view_option_audit_groups_audit_group_website_results(self):
+        if self.rule_group_slug and self.last_rc_slug:
+            self.view_options.add('Rule Category', reverse('audit_groups_rule_group_audit_group_website_results', args=[self.audit_result_slug, 'rc', self.last_rc_slug, self.audit_group_slug, self.website_slug]), 'rc' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Category', reverse('audit_groups_audit_group_website_results', args=[self.audit_result_slug, 'rc', self.audit_group_slug, self.website_slug]), 'rc' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_gl_slug:
+            self.view_options.add('Guidelines',    reverse('audit_groups_rule_group_audit_group_website_results', args=[self.audit_result_slug, 'gl', self.last_gl_slug, self.audit_group_slug, self.website_slug]), 'gl' == self.rule_grouping)
+        else:
+            self.view_options.add('Guidelines',    reverse('audit_groups_audit_group_website_results', args=[self.audit_result_slug, 'gl', self.audit_group_slug, self.website_slug]), 'gl' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_rs_slug:
+            self.view_options.add('Rule Scope',    reverse('audit_groups_rule_group_audit_group_website_results', args=[self.audit_result_slug, 'rs', self.last_rs_slug, self.audit_group_slug, self.website_slug]), 'rs' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Scope',    reverse('audit_groups_audit_group_website_results', args=[self.audit_result_slug, 'rs', self.audit_group_slug, self.website_slug]), 'rs' == self.rule_grouping)
+
+    def view_option_audit_groups_audit_group_website_page_results(self):
+        if self.rule_group_slug and self.last_rc_slug:
+            self.view_options.add('Rule Category', reverse('audit_groups_rule_group_audit_group_website_page_results', args=[self.audit_result_slug, 'rc', self.last_rc_slug, self.audit_group_slug, self.website_slug, self.page_num]), 'rc' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Category', reverse('audit_groups_audit_group_website_page_results', args=[self.audit_result_slug, 'rc', self.audit_group_slug, self.website_slug, self.page_num]), 'rc' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_gl_slug:
+            self.view_options.add('Guidelines',    reverse('audit_groups_rule_group_audit_group_website_page_results', args=[self.audit_result_slug, 'gl', self.last_gl_slug, self.audit_group_slug, self.website_slug, self.page_num]), 'gl' == self.rule_grouping)
+        else:
+            self.view_options.add('Guidelines',    reverse('audit_groups_audit_group_website_page_results', args=[self.audit_result_slug, 'gl', self.audit_group_slug, self.website_slug, self.page_num]), 'gl' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_rs_slug:
+            self.view_options.add('Rule Scope',    reverse('audit_groups_rule_group_audit_group_website_page_results', args=[self.audit_result_slug, 'rs', self.last_rs_slug, self.audit_group_slug, self.website_slug, self.page_num]), 'rs' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Scope',    reverse('audit_groups_audit_group_website_page_results', args=[self.audit_result_slug, 'rs', self.audit_group_slug, self.website_slug, self.page_num]), 'rs' == self.rule_grouping)
+
+
     def view_option_audit_groups_audit_group_audit_group2_results(self):
         if self.rule_group_slug and self.last_rc_slug:
             self.view_options.add('Rule Category', reverse('audit_groups_rule_group_audit_group_audit_group2_results', args=[self.audit_result_slug, 'rc', self.last_rc_slug, self.audit_group_slug, self.audit_group2_slug]), 'rc' == self.rule_grouping)
@@ -404,25 +437,102 @@ class ResultNavigtionObject:
         else:
             self.view_options.add('Rule Scope',    reverse('audit_groups_audit_group_audit_group2_results', args=[self.audit_result_slug, 'rs', self.audit_group_slug, self.audit_group2_slug]), 'rs' == self.rule_grouping)
 
+    def view_option_audit_groups_audit_group_audit_group2_website_results(self):
+        if self.rule_group_slug and self.last_rc_slug:
+            self.view_options.add('Rule Category', reverse('audit_groups_rule_group_audit_group_audit_group2_website_results', args=[self.audit_result_slug, 'rc', self.last_rc_slug, self.audit_group_slug, self.audit_group2_slug, self.website_slug]), 'rc' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Category', reverse('audit_groups_audit_group_audit_group2_website_results', args=[self.audit_result_slug, 'rc', self.audit_group_slug, self.audit_group2_slug, self.website_slug]), 'rc' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_gl_slug:
+            self.view_options.add('Guidelines',    reverse('audit_groups_rule_group_audit_group_audit_group2_website_results', args=[self.audit_result_slug, 'gl', self.last_gl_slug, self.audit_group_slug, self.audit_group2_slug, self.website_slug]), 'gl' == self.rule_grouping)
+        else:
+            self.view_options.add('Guidelines',    reverse('audit_groups_audit_group_audit_group2_website_results', args=[self.audit_result_slug, 'gl', self.audit_group_slug, self.audit_group2_slug, self.website_slug]), 'gl' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_rs_slug:
+            self.view_options.add('Rule Scope',    reverse('audit_groups_rule_group_audit_group_audit_group2_website_results', args=[self.audit_result_slug, 'rs', self.last_rs_slug, self.audit_group_slug, self.audit_group2_slug, self.website_slug]), 'rs' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Scope',    reverse('audit_groups_audit_group_audit_group2_website_results', args=[self.audit_result_slug, 'rs', self.audit_group_slug, self.audit_group2_slug, self.website_slug]), 'rs' == self.rule_grouping)
+
+    def view_option_audit_groups_audit_group_audit_group2_website_page_results(self):
+        if self.rule_group_slug and self.last_rc_slug:
+            self.view_options.add('Rule Category', reverse('audit_groups_rule_group_audit_group_audit_group2_website_page_results', args=[self.audit_result_slug, 'rc', self.last_rc_slug, self.audit_group_slug, self.audit_group2_slug, self.website_slug, self.page_num]), 'rc' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Category', reverse('audit_groups_audit_group_audit_group2_website_page_results', args=[self.audit_result_slug, 'rc', self.audit_group_slug, self.audit_group2_slug, self.website_slug, self.page_num]), 'rc' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_gl_slug:
+            self.view_options.add('Guidelines',    reverse('audit_groups_rule_group_audit_group_audit_group2_website_page_results', args=[self.audit_result_slug, 'gl', self.last_gl_slug, self.audit_group_slug, self.audit_group2_slug, self.website_slug, self.page_num]), 'gl' == self.rule_grouping)
+        else:
+            self.view_options.add('Guidelines',    reverse('audit_groups_audit_group_audit_group2_website_page_results', args=[self.audit_result_slug, 'gl', self.audit_group_slug, self.audit_group2_slug, self.website_slug, self.page_num]), 'gl' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_rs_slug:
+            self.view_options.add('Rule Scope',    reverse('audit_groups_rule_group_audit_group_audit_group2_website_page_results', args=[self.audit_result_slug, 'rs', self.last_rs_slug, self.audit_group_slug, self.audit_group2_slug, self.website_slug, self.page_num]), 'rs' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Scope',    reverse('audit_groups_audit_group_audit_group2_website_page_results', args=[self.audit_result_slug, 'rs', self.audit_group_slug, self.audit_group2_slug, self.website_slug, self.page_num]), 'rs' == self.rule_grouping)
+
+
     def view_option_website_results(self):
-        self.view_options.add('Rule Category', reverse('website_results', args=[self.audit_result_slug, 'rc']), 'rc' == self.rule_grouping)
-        self.view_options.add('Guidelines',    reverse('website_results', args=[self.audit_result_slug, 'gl']), 'gl' == self.rule_grouping)
-        self.view_options.add('Rule Scope',    reverse('website_results', args=[self.audit_result_slug, 'rs']), 'rs' == self.rule_grouping)
+        if self.rule_group_slug and self.last_rc_slug:
+            self.view_options.add('Rule Category', reverse('website_rule_group_results', args=[self.audit_result_slug, 'rc', self.rule_group_slug]), 'rc' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Category', reverse('website_results', args=[self.audit_result_slug, 'rc']), 'rc' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_gl_slug:
+            self.view_options.add('Guidelines',    reverse('website_rule_group_results', args=[self.audit_result_slug, 'gl', self.rule_group_slug]), 'gl' == self.rule_grouping)
+        else:
+            self.view_options.add('Guidelines',    reverse('website_results', args=[self.audit_result_slug, 'gl']), 'gl' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_rs_slug:
+            self.view_options.add('Rule Scope',    reverse('website_rule_group_results', args=[self.audit_result_slug, 'rs', self.rule_group_slug]), 'rs' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Scope',    reverse('website_results', args=[self.audit_result_slug, 'rs']), 'rs' == self.rule_grouping)
 
     def view_option_website_results_website(self):
-        self.view_options.add('Rule Category', reverse('website_results_website', args=[self.audit_result_slug, 'rc', self.website_slug]), 'rc' == self.rule_grouping)
-        self.view_options.add('Guidelines',    reverse('website_results_website', args=[self.audit_result_slug, 'gl', self.website_slug]), 'gl' == self.rule_grouping)
-        self.view_options.add('Rule Scope',    reverse('website_results_website', args=[self.audit_result_slug, 'rs', self.website_slug]), 'rs' == self.rule_grouping)
+        if self.rule_group_slug and self.last_rc_slug:
+            self.view_options.add('Rule Category', reverse('website_rule_group_results_website', args=[self.audit_result_slug, 'rc', self.rule_group_slug, self.website_slug]), 'rc' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Category', reverse('website_results_website', args=[self.audit_result_slug, 'rc', self.website_slug]), 'rc' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_gl_slug:
+            self.view_options.add('Guidelines',    reverse('website_rule_group_results_website', args=[self.audit_result_slug, 'gl', self.rule_group_slug, self.website_slug]), 'gl' == self.rule_grouping)
+        else:
+            self.view_options.add('Guidelines',    reverse('website_results_website', args=[self.audit_result_slug, 'gl', self.website_slug]), 'gl' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_rs_slug:
+            self.view_options.add('Rule Scope',    reverse('website_rule_group_results_website', args=[self.audit_result_slug, 'rs', self.rule_group_slug, self.website_slug]), 'rs' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Scope',    reverse('website_results_website', args=[self.audit_result_slug, 'rs', self.website_slug]), 'rs' == self.rule_grouping)
 
     def view_option_website_results_website_page(self):
-        self.view_options.add('Rule Category', reverse('website_results_website_page', args=[self.audit_result_slug, 'rc', self.website_slug, self.page_num]), 'rc' == self.rule_grouping)
-        self.view_options.add('Guidelines',    reverse('website_results_website_page', args=[self.audit_result_slug, 'gl', self.website_slug, self.page_num]), 'gl' == self.rule_grouping)
-        self.view_options.add('Rule Scope',    reverse('website_results_website_page', args=[self.audit_result_slug, 'rs', self.website_slug, self.page_num]), 'rs' == self.rule_grouping)
+        if self.rule_group_slug and self.last_rc_slug:
+            self.view_options.add('Rule Category', reverse('website_rule_group_results_website_page', args=[self.audit_result_slug, 'rc', self.rule_group_slug, self.website_slug, self.page_num]), 'rc' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Category', reverse('website_results_website_page', args=[self.audit_result_slug, 'rc', self.website_slug, self.page_num]), 'rc' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_gl_slug:
+            self.view_options.add('Guidelines',    reverse('website_rule_group_results_website_page', args=[self.audit_result_slug, 'gl', self.rule_group_slug, self.website_slug, self.page_num]), 'gl' == self.rule_grouping)
+        else:
+            self.view_options.add('Guidelines',    reverse('website_results_website_page', args=[self.audit_result_slug, 'gl', self.website_slug, self.page_num]), 'gl' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_rs_slug:
+            self.view_options.add('Rule Scope',    reverse('website_rule_group_results_website_page', args=[self.audit_result_slug, 'rs', self.rule_group_slug, self.website_slug, self.page_num]), 'rs' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Scope',    reverse('website_results_website_page', args=[self.audit_result_slug, 'rs', self.website_slug, self.page_num]), 'rs' == self.rule_grouping)
 
     def view_option_website_results_website_page_rule(self):
-        self.view_options.add('Rule Category', reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'rc', self.website_slug, self.page_num, self.rule_slug]), 'rc' == self.rule_grouping)
-        self.view_options.add('Guidelines',    reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'gl', self.website_slug, self.page_num, self.rule_slug]), 'gl' == self.rule_grouping)
-        self.view_options.add('Rule Scope',    reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'rs', self.website_slug, self.page_num, self.rule_slug]), 'rs' == self.rule_grouping)
+        if self.rule_group_slug and self.last_rc_slug:
+            self.view_options.add('Rule Category', reverse('website_rule_group_results_website_page_rule', args=[self.audit_result_slug, 'rc', self.rule_group_slug, self.website_slug, self.page_num, self.rule_slug]), 'rc' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Category', reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'rc', self.website_slug, self.page_num, self.rule_slug]), 'rc' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_gl_slug:
+            self.view_options.add('Guidelines',    reverse('website_rule_group_results_website_page_rule', args=[self.audit_result_slug, 'gl', self.rule_group_slug, self.website_slug, self.page_num, self.rule_slug]), 'gl' == self.rule_grouping)
+        else:
+            self.view_options.add('Guidelines',    reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'gl', self.website_slug, self.page_num, self.rule_slug]), 'gl' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_rs_slug:
+            self.view_options.add('Rule Scope',    reverse('website_rule_group_results_website_page_rule', args=[self.audit_result_slug, 'rs', self.rule_group_slug, self.website_slug, self.page_num, self.rule_slug]), 'rs' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Scope',    reverse('website_results_website_page_rule', args=[self.audit_result_slug, 'rs', self.website_slug, self.page_num, self.rule_slug]), 'rs' == self.rule_grouping)
 
     def create_view_options(self):
 
@@ -434,8 +544,23 @@ class ResultNavigtionObject:
         else:
             if self.result_view == 'group':
 
+                if self.page_num:
+                    if self.audit_group2_slug:
+                        self.view_option_audit_groups_audit_group_audit_group2_website_page_results()
+                        return
+                    else:
+                        self.view_option_audit_groups_audit_group_website_page_results()
+                        return
 
-                if self.audit_group_slug and self.audit_group2_slug:
+                if self.website_slug:
+                    if self.audit_group2_slug:
+                        self.view_option_audit_groups_audit_group_audit_group2_website_results()
+                        return
+                    else:
+                        self.view_option_audit_groups_audit_group_website_results()
+                        return
+
+                if self.audit_group2_slug:
                     self.view_option_audit_groups_audit_group_audit_group2_results()
                     return
 
@@ -445,7 +570,6 @@ class ResultNavigtionObject:
 
                 self.view_option_audit_groups_results()
                 return
-
 
             else:
                 if self.audit_group_slug == '' and self.audit_group2_slug == '':
