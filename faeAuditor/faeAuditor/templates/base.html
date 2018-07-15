@@ -141,12 +141,12 @@
                 </li>
                 {% if result_nav.audit_group_title %}
                 <li>
-                  <a href="{% url 'audit_groups_results' result_nav.audit_result_slug result_nav.rule_grouping %}">{{result_nav.audit_group_title}}</a>
+                  <a href="{% url 'group_results' result_nav.audit_result_slug result_nav.rule_grouping %}">{{result_nav.audit_group_title}}</a>
                 </li>
                 {% endif %}
                 {% if result_nav.audit_group2_title %}
                 <li>
-                  <a href="{% url 'audit_groups_results'    result_nav.audit_result_slug result_nav.rule_grouping %}">{{result_nav.audit_group2_title}}</a>
+                  <a href="{% url 'group2_results'    result_nav.audit_result_slug result_nav.rule_grouping %}">{{result_nav.audit_group2_title}}</a>
                 </li>
                 {% endif %}
                 <li>
