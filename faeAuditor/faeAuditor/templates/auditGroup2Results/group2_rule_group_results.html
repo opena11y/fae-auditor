@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+<li><a href="{% url 'audit' audit_slug %}">Audit</a></li>
+<li>
+  <a href="{% url 'audit' audit_slug %}">
+  {{audit_result.group2_title}}
+  </a>
+</li>
+<li>{{rule_group.title}}</li>
+{% endblock %}
+
+{% block title %}
+{{audit_result.group2_title_plural}}: {{rule_group.title}}
+{% endblock %}
+
+{% block content %}
+  {% include 'common/rules_summary.html' with summary=audit_result %}
+
+  {% include 'common/view_options.html' %}
+
+  {% include 'common/table_audit_groups_results.html' with audit_group_results=audit_group2_results %}
+{% endblock %}

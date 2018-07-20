@@ -315,7 +315,7 @@ class GroupResultsAuditGroupAuditGroup2WebsitePageView(ResultNavigationMixin, Te
 
         for prr in prrs:
             prr.title     = prr.rule.summary_html
-            prr.href      = reverse('group_results_audit_group_audit_group2_website_page', args=[result_slug, rule_grouping, audit_group_slug, audit_group2_slug, website_slug, page_num, prr.slug])
+            prr.href      = reverse('group_results_audit_group_audit_group2_website_page_rule', args=[result_slug, rule_grouping, audit_group_slug, audit_group2_slug, website_slug, page_num, prr.slug])
 
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'group', self.request.path)
@@ -739,7 +739,6 @@ class GroupRuleGroupResultsAuditGroupAuditGroup2View(ResultNavigationMixin, Temp
             else:
                 rule_grouping == 'rc'
                 ag2rgr     = AuditGroup2RuleCategoryResult.objects.get(group2_result=ag2r, slug=rule_group_slug)
-                print(str(ag2rgr))
                 wsrgrs     = WebsiteRuleCategoryResult.objects.filter(ws_report__group2_result=ag2r, slug=rule_group_slug)
                 rule_group = RuleCategory.objects.get(slug=rule_group_slug)
 
@@ -889,8 +888,6 @@ class GroupRuleGroupResultsAuditGroupAuditGroup2WebsitePageView(ResultNavigation
         for pgrr in pgrrs:
             pgrr.title  = pgrr.rule.summary_html
             pgrr.href   = reverse('group_rule_group_results_audit_group_audit_group2_website_page_rule', args=[result_slug, rule_grouping, rule_group_slug, audit_group_slug, audit_group2_slug, website_slug, page_num, pgrr.slug])
-
-        print(len(pgrrs))
 
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'group', self.request.path)

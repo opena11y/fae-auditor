@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+<li><a href="{% url 'audit' audit_slug %}">Audit</a></li>
+<li><a href="{% url 'group_results' result_slug rule_grouping %}">{{audit_result.group_title}}</a></li>
+<li>
+  <a href="{% url 'group_results_audit_group' result_slug rule_grouping audit_group_slug %}">
+    {{audit_group_result.get_title}}
+  </a>
+</li>
+<li>
+  <a href="{% url 'group_results_audit_group_audit_group2' result_slug rule_grouping audit_group_slug audit_group2_slug %}">
+{{audit_group2_result.get_title}}
+  </a>
+</li>
+<li>{{website_result.slug}}</li>
+{% endblock %}
+
+{% block title %}
+Website: {{website_result.get_title}}
+{% endblock %}
+
+{% block content %}
+  <div class="url">URL: <a href="website_result.url">{{website_result.url}}</a></div>
+
+  {% include 'common/rules_summary.html' with summary=website_result %}
+
+  {% include 'common/view_options.html' %}
+
+  {% include 'common/table_page_results.html' %}
+
+{% endblock %}
