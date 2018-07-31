@@ -15,6 +15,10 @@ Audit Group Result: {{rule_group_result.title}}
 
 {% block content %}
 
+  {% include 'common/rules_summary.html' with summary=audit_result %}
+
+  {% include 'common/view_options.html' %}
+
   {% include 'auditResults/table_result_rule_group.html' %}
 
 {% endblock %}

@@ -593,6 +593,7 @@ class ResultNavigtionObject:
 
         if self.result_view == 'rules':
             self.view_option_group_results()
+            return
 
         if self.result_view == 'group':
 

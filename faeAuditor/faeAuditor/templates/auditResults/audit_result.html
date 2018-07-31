@@ -9,9 +9,15 @@
 {% endblock %}
 
 {% block title %}
-AuditResult: {{audit_result.audit.title}} on {{audit_result.created}}
+All Rules: {{audit_result.audit.title}} on {{audit_result.created}}
 {% endblock %}
 
 {% block content %}
+
+  {% include 'common/rules_summary.html' with summary=audit_result %}
+
+  {% include 'common/view_options.html' %}
+
   {% include 'auditResults/table_result.html' %}
+
 {% endblock %}
