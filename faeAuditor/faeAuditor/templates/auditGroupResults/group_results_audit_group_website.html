@@ -15,14 +15,11 @@
 {% endblock %}
 
 {% block title %}
-Website Result: {{website_result.title}}
+Website: {{website_result.title}}
 {% endblock %}
 
 {% block content %}
 
-  {% include 'common/rules_summary.html' with summary=website_result %}
+  {% include 'common/website_result.html' %}
 
-  {% include 'common/view_options.html' %}
-
-  {% include 'common/table_page_results.html' with summary=website_result %}
 {% endblock %}

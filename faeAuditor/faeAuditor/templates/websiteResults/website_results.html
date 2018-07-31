@@ -14,6 +14,10 @@ Website Results: All Websites
 
 {% block content %}
 
+  {% include 'common/rules_summary.html' with summary=audit_result %}
+
+  {% include 'common/view_options.html' %}
+
   {% include 'common/table_website_results.html' %}
 
 {% endblock %}

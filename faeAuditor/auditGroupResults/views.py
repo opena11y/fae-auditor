@@ -147,7 +147,7 @@ class GroupResultsAuditGroupView(ResultNavigationMixin, TemplateView):
 
         agr = ar.group_results.get(slug=audit_group_slug)
 
-        agr2s = agr.group2_results.all()
+        ag2rs = agr.group2_results.all()
         wsrs  = agr.ws_results.all()
 
         # Setup report navigation
@@ -156,9 +156,11 @@ class GroupResultsAuditGroupView(ResultNavigationMixin, TemplateView):
         self.result_nav.set_audit_groups(audit_group_slug)
         self.result_nav.create_result_navigation()
 
-        for agr2 in agr2s:
-            agr2.title = agr2.get_title
-            agr2.href  = reverse('group_results_audit_group_audit_group2', args=[result_slug, rule_grouping, audit_group_slug, agr2.slug])
+        for ag2r in ag2rs:
+            ag2r.title         = ag2r.get_title
+            ag2r.website_count = ag2r.website_count()
+            ag2r.page_count    = ag2r.page_count()
+            ag2r.href          = reverse('group_results_audit_group_audit_group2', args=[result_slug, rule_grouping, audit_group_slug, ag2r.slug])
 
         for wsr in wsrs:
             wsr.title = wsr.title
@@ -176,7 +178,7 @@ class GroupResultsAuditGroupView(ResultNavigationMixin, TemplateView):
 
         context['audit_result']        = ar
         context['audit_group_result']  = agr
-        context['audit_group_results'] = agr2s
+        context['audit_group_results'] = ag2rs
         context['website_results']     = wsrs
 
         return context
@@ -372,7 +374,6 @@ class GroupResultsAuditGroupAuditGroup2WebsitePageRuleView(ResultNavigationMixin
         wsr  = wsrs.get(slug=website_slug)
         pr   = wsr.page_all_results.get(page_number=page_num)
         prr  = pr.page_rule_results.get(slug=rule_slug)
-        r    = prr.rule
 
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'group', self.request.path)
@@ -398,11 +399,11 @@ class GroupResultsAuditGroupAuditGroup2WebsitePageRuleView(ResultNavigationMixin
         context['audit_result']        = ar
         context['audit_group_result']  = agr
         context['audit_group2_result'] = ag2r
-        context['website_results']     = wsrs
         context['website_result']      = wsr
         context['page_result']         = pr
         context['page_rule_result']    = prr
-        context['rule']                = r
+        context['rule']                = prr.rule
+
 
         return context
 
@@ -668,7 +669,9 @@ class GroupRuleGroupResultsAuditGroupView(ResultNavigationMixin, TemplateView):
                 rule_group = RuleCategory.objects.get(slug=rule_group_slug)
 
         for ag2rgr in ag2rgrs:
-            ag2rgr.title = ag2rgr.get_title()
+            ag2rgr.title         = ag2rgr.get_title()
+            ag2rgr.website_count = ag2rgr.website_count()
+            ag2rgr.page_count    = ag2rgr.page_count()
             ag2rgr.href  = reverse('group_rule_group_results_audit_group_audit_group2', args=[result_slug, rule_grouping, rule_group_slug, audit_group_slug, ag2rgr.group2_result.slug])
 
         for wsrgr in wsrgrs:
@@ -698,9 +701,9 @@ class GroupRuleGroupResultsAuditGroupView(ResultNavigationMixin, TemplateView):
 
         context['rule_group']    = rule_group
 
-        context['audit_group_result']   = agrgr
         context['audit_group_results'] = ag2rgrs
-        context['website_results']      = wsrgrs
+        context['audit_group_result']  = agrgr
+        context['website_results']     = wsrgrs
 
         return context
 

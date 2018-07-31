@@ -25,18 +25,14 @@
 {% endblock %}
 
 {% block title %}
-{{rule.nls_rule_id}}: {{page_rule_result.rule.summary_html|safe}}
+{{rule.nls_rule_id}} Rule: {{page_rule_result.rule.summary_html|safe}}
 {% endblock %}
 
 {% block content %}
-  <div class="url">URL: <a href="{{page_result.url}}" title="URL for Page {{page_num}}">{{page_result.url}}</a></div>
 
-  {% include 'common/elements_summary.html' with summary=page_rule_result %}
-
-   {% include 'common/page_rule_result.html' %}
+{% include 'common/website_page_rule_result.html' %}
 
 {% endblock %}
-
 
 
 

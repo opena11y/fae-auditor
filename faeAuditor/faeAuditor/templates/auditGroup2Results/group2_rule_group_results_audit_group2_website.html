@@ -6,33 +6,21 @@
 {% block breadcrumb %}
 <li><a href="{% url 'audit' audit_slug %}">Audit</a></li>
 <li>
-  <a href="{% url 'group_results' result_slug rule_grouping %}">
-  {{audit_result.group_title}}
-  </a>
+  <a href="{% url 'group2_results' result_slug rule_grouping %}">{{audit_result.group2_title}}</a>
 </li>
 <li>
-  <a href="{% url 'group_rule_group_results' result_slug rule_grouping rule_group_slug%}">
-  {{rule_group.title}}
-  </a>
+  <a href="{% url 'group2_rule_group_results' result_slug rule_grouping rule_group_slug %}">{{rule_group.title}}</a>
 </li>
-<li>
-  <a href="{% url 'group_rule_group_results_audit_group' result_slug rule_grouping rule_group_slug audit_group_slug %}">
-  {{audit_group_result.get_title}}
-  </a>
-</li>
-<li>
-  <a href="{% url 'group_rule_group_results_audit_group_audit_group2' result_slug rule_grouping rule_group_slug audit_group_slug audit_group2_slug %}">
-{{audit_group2_result.get_title}}
-  </a>
-</li>
+<li><a href="{% url 'group2_rule_group_results_audit_group2' result_slug rule_grouping rule_group_slug audit_group2_slug %}">{{audit_group2_result.get_title}}</a></li>
 <li>{{website_result.slug}}</li>
 {% endblock %}
 
 {% block title %}
-Website Results: {{website_result.get_title}}
+Website: {{website_result.get_title}}
 {% endblock %}
 
 {% block content %}
-  {% include 'common/table_page_results.html' %}
+
+  {% include 'common/website_result.html' %}
 
 {% endblock %}

@@ -3,11 +3,11 @@
   <thead>
     <tr>
       <tr>
-        <th id="id_grp" class="text"  rowspan="2" aria-label="Page Number">#</th>
+        <th id="id_grp" class="num"  rowspan="2" aria-label="Page Number">#</th>
         <th id="id_grp" class="text"  rowspan="2">Page Title</th>
         <th id="id_nop" class="text"  colspan="5">Number of Rules</th>
         <th rowspan="2">&nbsp;</th>
-        <th id="id_imp" class="text"  colspan="4" style="text-align: center">Implementation Level</th>
+        <th id="id_imp" class="center"  colspan="4">Implementation Level</th>
       </tr>
       <tr>
         <th id="id_vio" class="num"   title="Violations">V</th>
@@ -24,27 +24,27 @@
   <tbody>
     {% for pr in page_results %}
     <tr>
-      <td headers="id_num">{{pr.page_num}}</td>
-      <td headers="id_grp" headers="id_title">
+      <td headers="id_num" class="num">{{pr.page_num}}</td>
+      <td headers="id_grp" headers="id_title" class="text">
         <a href="{{pr.href}}">
           {{pr.title}}
         </a>
       </td>
-      <td headers="id_vio id_nop">{{pr.rules_violation}}</td>
-      <td headers="id_war id_nop">{{pr.rules_warning}}</td>
-      <td headers="id_man id_nop">{{pr.rules_manual_check}}</td>
-      <td headers="id_pas id_nop">{{pr.rules_passed}}</td>
-      <td headers="id_not id_nop">{{pr.rules_na}}</td>
+      <td headers="id_vio id_nop" class="num">{{pr.rules_violation}}</td>
+      <td headers="id_war id_nop" class="num">{{pr.rules_warning}}</td>
+      <td headers="id_man id_nop" class="num">{{pr.rules_manual_check}}</td>
+      <td headers="id_pas id_nop" class="num">{{pr.rules_passed}}</td>
+      <td headers="id_not id_nop" class="num">{{pr.rules_na}}</td>
 
       <td aria-label="empty cell"></td>
 
-      <td headers="id_scpf id_imp">{{pr.implementation_pass_fail_score}}</td>
-      <td headers="id_stpf id_imp">
+      <td headers="id_scpf id_imp" class="num">{{pr.implementation_pass_fail_score}}</td>
+      <td headers="id_stpf id_imp" class="text">
      {% include 'common/implementation_status.html' with impl_status=pr.implementation_pass_fail_status %}
       </td>
 
-      <td headers="id_scal id_imp">{{pr.implementation_score}}</td>
-      <td headers="id_stal id_imp">
+      <td headers="id_scal id_imp" class="num">{{pr.implementation_score}}</td>
+      <td headers="id_stal id_imp" class="text">
       {% include 'common/implementation_status.html' with impl_status=pr.implementation_status %}
       </td>
 

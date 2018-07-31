@@ -5,11 +5,8 @@
 
 {% block breadcrumb %}
 <li><a href="{% url 'audit' audit_slug %}">Audit</a></li>
-<li><a href="{% url 'group_results' result_slug rule_grouping %}">{{audit_result.group_title}}</a></li>
 <li>
-  <a href="{% url 'group_results_audit_group' result_slug rule_grouping audit_group_slug %}">
-    {{audit_group_result.get_title}}
-  </a>
+  <a href="{% url 'group2_results' result_slug rule_grouping %}">{{audit_result.group2_title}}</a>
 </li>
 <li>{{audit_group2_result.get_title}}</li>
 {% endblock %}
@@ -24,6 +21,6 @@
 
   {% include 'common/view_options.html' %}
 
-  {% include 'common/table_website_results.html' %}
+  {% include 'common/table_website_results_with_no_audit_group.html' %}
 
 {% endblock %}

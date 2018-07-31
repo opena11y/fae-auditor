@@ -231,7 +231,7 @@ class WebsiteResult(RuleGroupResult):
     ordering = ['-archive', '-created']
 
   def __str__(self):
-    return "Website Report: " + self.title
+    return "Website Result: " + self.title
 
   def group_title(self):
     if self.group_result:

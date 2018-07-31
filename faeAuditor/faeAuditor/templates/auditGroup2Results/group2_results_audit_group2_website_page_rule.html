@@ -5,40 +5,27 @@
 
 {% block breadcrumb %}
 <li><a href="{% url 'audit' audit_slug %}">Audit</a></li>
-<li><a href="{% url 'group_results' result_slug rule_grouping %}">{{audit_result.group_title}}</a></li>
 <li>
-  <a href="{% url 'group_results_audit_group' result_slug rule_grouping audit_group_slug %}">
-    {{audit_group_result.get_title}}
-  </a>
+  <a href="{% url 'group2_results' result_slug rule_grouping %}">{{audit_result.group2_title}}</a></li>
+<li>
+  <a href="{% url 'group2_results_audit_group2' result_slug rule_grouping audit_group2_slug %}">{{audit_group2_result.get_title}}</a>
 </li>
 <li>
-  <a href="{% url 'group_results_audit_group_audit_group2' result_slug rule_grouping audit_group_slug audit_group2_slug %}">
-{{audit_group2_result.get_title}}
-  </a>
+  <a href="{% url 'group2_results_audit_group2_website' result_slug rule_grouping audit_group2_slug website_slug%}">{{website_slug}}</a>
 </li>
 <li>
-    <a href="{% url 'group_results_audit_group_audit_group2_website' result_slug rule_grouping audit_group_slug audit_group2_slug website_slug%}">
-      {{website_slug}}
-    </a>
-</li>
-<li>
-   <a href="{% url 'group_results_audit_group_audit_group2_website_page' result_slug rule_grouping audit_group_slug audit_group2_slug website_slug page_num%}">
-   Page {{page_num}}
-  </a>
+   <a href="{% url 'group2_results_audit_group2_website_page' result_slug rule_grouping audit_group2_slug website_slug page_num %}">Page {{page_num}}</a>
 </li>
 <li>{{rule.nls_rule_id}}</li>
 {% endblock %}
 
 {% block title %}
-{{rule.nls_rule_id}}: {{page_rule_result.rule.summary_html|safe}}
+{{rule.nls_rule_id}} Rule: {{page_rule_result.rule.summary_html|safe}}
 {% endblock %}
 
 {% block content %}
-  <div class="url">URL: <a href="{{page_result.url}}" title="URL for Page {{page_num}}">{{page_result.url}}</a></div>
 
-  {% include 'common/elements_summary.html' with summary=page_rule_result %}
-
-   {% include 'common/page_rule_result.html' %}
+{% include 'common/website_page_rule_result.html' %}
 
 {% endblock %}
 

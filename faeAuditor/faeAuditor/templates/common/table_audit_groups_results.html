@@ -2,10 +2,12 @@
   <thead>
     <tr>
       <tr>
-        <th id="id_grp" class="text"  rowspan="2">{{audit_result.group_title}}</th>
-        <th id="id_nop" class="text"  colspan="5">Number of Rules</th>
+        <th id="id_grp" class="text"  rowspan="2">{{ group_column_header|default:audit_result.group_title }}</th>
+        <th id="id_wsc" class="num"  rowspan="2" title="Number of Websites">Websites</th>
+        <th id="id_pgc" class="num pad_right"  rowspan="2" title="Number of Pages">Pages</th>
+        <th id="id_nop" class="center" colspan="5">Number of Rules</th>
         <th rowspan="2">&nbsp;</th>
-        <th id="id_imp" class="text"  colspan="4" style="text-align: center">Implementation Level</th>
+        <th id="id_imp" class="center"  colspan="4">Implementation Level</th>
       </tr>
       <tr>
         <th id="id_vio" class="num"   title="Violations">V</th>
@@ -13,6 +15,7 @@
         <th id="id_man" class="num"   title="Manual Checks">MC</th>
         <th id="id_pas" class="num"   title="Passed">P</th>
         <th id="id_not" class="num"   title="Not Applicable">N/A</th>
+
         <th id="id_scpf" class="num sep"   title="Implementation Score for rule results with Pass/Fail results">Pass/Fail Score</th>
         <th id="id_stpf" class="text"      title="Implementation Status for rule results with Pass/Fail results">Pass/Fail Status</th>
         <th id="id_scal" class="num sep"   title="Implementation Score for all rule results">All Results Score</th>
@@ -27,6 +30,8 @@
           {{agrr.title}}
         </a>
       </td>
+      <td class="num" headers="id_wsc">{{agrr.website_count}}</td>
+      <td class="num  pad_right" headers="id_pgc">{{agrr.page_count}}</td>
       <td class="num" headers="id_vio id_nop">{{agrr.rules_violation}}</td>
       <td class="num" headers="id_war id_nop">{{agrr.rules_warning}}</td>
       <td class="num" headers="id_man id_nop">{{agrr.rules_manual_check}}</td>

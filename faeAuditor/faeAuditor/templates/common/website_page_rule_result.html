@@ -1,0 +1,19 @@
+
+  <div class="url">Page {{page_num}} URL: <a href="{{page_result.url}}" title="URL for Page {{page_num}}">{{page_result.get_url}}</a></div>
+
+  {% include 'common/elements_summary.html' with summary=page_rule_result %}
+
+  <nav id="view_options" aria-label="Page view options">
+    <ul class="nav nav-tabs hide-show">
+      <li><a href="#id_rule_details">Rule Details</a></li>
+      <li class="active"><a href="#id_element_results">Element Results</a></li>
+    </ul>
+  </nav>
+
+  {% include "common/rule_details.html" with rule=page_rule_result.rule %}
+
+  {% include 'common/table_element_results.html' %}
+
+
+
+

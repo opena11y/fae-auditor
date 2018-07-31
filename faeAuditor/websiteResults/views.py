@@ -147,7 +147,8 @@ class WebsiteResultsView(ResultNavigationMixin, TemplateView):
         wsrs = ar.ws_results.all()
 
         for wsr in wsrs:
-            wsr.href = reverse('website_results_website', args=[result_slug, rule_grouping, wsr.slug])
+            wsr.title = wsr.get_title()
+            wsr.href  = reverse('website_results_website', args=[result_slug, rule_grouping, wsr.slug])
 
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'website', self.request.path)
@@ -338,8 +339,9 @@ class WebsiteRuleGroupResultsView(ResultNavigationMixin, TemplateView):
 
 
         for wsrgr in wsrgrs:
-            wsrgr.title = wsrgr.ws_report.get_title()
-            wsrgr.href  = reverse('website_rule_group_results_website', args=[result_slug, rule_grouping, rule_group_slug, wsrgr.ws_report.slug])
+            wsrgr.title      = wsrgr.ws_report.get_title()
+            wsrgr.page_count = wsrgr.ws_report.page_count
+            wsrgr.href       = reverse('website_rule_group_results_website', args=[result_slug, rule_grouping, rule_group_slug, wsrgr.ws_report.slug])
             if wsrgr.ws_report.group_result:
                 wsrgr.group_title  = wsrgr.ws_report.group_result.group_item.title
                 if wsrgr.ws_report.group2_result:

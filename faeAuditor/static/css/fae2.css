@@ -201,6 +201,14 @@ main ul {
     padding-bottom: 0.5em;
 }
 
+table .num {
+    text-align: right;
+}
+
+table .center {
+    text-align: center;
+}
+
 table tbody td ul {
     margin: 0;
     padding: 0;
@@ -281,6 +289,10 @@ main table th.sep {
     min-width: 6em;
 }
 
+main table th.pad_right,
+main table td.pad_right {
+    padding-right: 3em;
+}
 
 main table th.violation,
 main table td.violation,

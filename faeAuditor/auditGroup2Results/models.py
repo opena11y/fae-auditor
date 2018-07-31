@@ -83,10 +83,15 @@ class AuditGroup2Result(AllRuleGroupResult):
       return self.group2_item.title
 
   def page_count(self):
-    return self.total_pages
+    count = 0
+
+    for ws in self.ws_results.all():
+      count += ws.page_count
+
+    return count
 
   def website_count(self):
-    return self.total_websites
+    return self.ws_results.count
 
   def add_website_result(self, ws_result):
     try:
@@ -197,10 +202,10 @@ class AuditGroup2RuleCategoryResult(RuleGroupResult):
     return 'ag2rcr_' + self.rule_category.id
 
   def page_count(self):
-    return self.group2_result.total_pages
+    return self.group2_result.page_count()
 
   def website_count(self):
-    return self.group2_result.total_websites
+    return self.group2_result.website_count()
 
 # ---------------------------------------------------------------
 #
@@ -241,10 +246,10 @@ class AuditGroup2GuidelineResult(RuleGroupResult):
     return 'ag2glr_' + self.guideline.id
 
   def page_count(self):
-    return self.group2_result.total_pages
+    return self.group2_result.page_count()
 
   def website_count(self):
-    return self.group2_result.total_websites
+    return self.group2_result.website_count()
 
 # ---------------------------------------------------------------
 #
@@ -285,10 +290,10 @@ class AuditGroup2RuleScopeResult(RuleGroupResult):
     return 'ag2rsr_' + self.rule_scope.id
 
   def page_count(self):
-    return self.group2_result.total_pages
+    return self.group2_result.page_count()
 
   def website_count(self):
-    return self.group2_result.total_websites
+    return self.group2_result.website_count()
 
 # ---------------------------------------------------------------
 #
@@ -316,6 +321,17 @@ class AuditGroup2RuleResult(RuleElementPageWebsiteResult):
   def __str__(self):
     return 'Group2 Rule: ' + self.group2_result.group2_item.title
 
+  def get_title(self):
+    return self.group2_result.get_title()
+
+  def get_id(self):
+    return 'ag2rrr_' + self.rule.id
+
+  def page_count(self):
+    return self.group2_result.page_count()
+
+  def website_count(self):
+    return self.group2_result.website_count()
 
   def save(self):
 

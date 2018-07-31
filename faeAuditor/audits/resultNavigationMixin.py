@@ -710,9 +710,9 @@ class ResultNavigtionObject:
 
     def filter_group2_results_audit_group2_website(self, group, label):
         if group:
-            return reverse('group2_rule_group_results_audit_group2_audit_group2_website', args=[self.audit_result_slug, self.rule_grouping, group, self.audit_group2_slug, self.website_slug])
+            return reverse('group2_rule_group_results_audit_group2_website', args=[self.audit_result_slug, self.rule_grouping, group, self.audit_group2_slug, self.website_slug])
         else:
-            return reverse('group2_results_audit_group2_audit_group2_website', args=[self.audit_result_slug, self.rule_grouping, self.audit_group2_slug, self.website_slug])
+            return reverse('group2_results_audit_group2_website', args=[self.audit_result_slug, self.rule_grouping, self.audit_group2_slug, self.website_slug])
 
     def filter_group2_results_audit_group2_website_page(self, group, label):
         if group:

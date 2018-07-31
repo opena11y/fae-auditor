@@ -76,6 +76,9 @@ class PageResult(RuleGroupResult):
     else:
       return "No Title: " + self.url
 
+  def get_url(self):
+    return self.url
+
   def get_id(self):
     return 'pr_' + str(self.id)
 
@@ -134,6 +137,9 @@ class PageRuleCategoryResult(RuleGroupResult):
   def get_title(self):
     return self.page_result.get_title()
 
+  def get_url(self):
+    return self.page_result.get_url()
+
   def get_id(self):
     return 'prcr_' + self.id
 
@@ -168,6 +174,9 @@ class PageGuidelineResult(RuleGroupResult):
 
   def get_title(self):
     return self.page_result.get_title()
+
+  def get_url(self):
+    return self.page_result.get_url()
 
   def get_id(self):
     return 'pglr_' + self.id
@@ -204,6 +213,9 @@ class PageRuleScopeResult(RuleGroupResult):
   def get_title(self):
     return self.page_result.get_title()
 
+  def get_url(self):
+    return self.page_result.get_url()
+
   def get_id(self):
     return 'prsr_' + self.id
 
@@ -233,8 +245,6 @@ class PageRuleResult(RuleElementResult):
     verbose_name        = "Page Rule Result"
     verbose_name_plural = "Page Rule Results"
     ordering = ['-elements_violation', '-elements_warning', '-elements_mc_identified', '-elements_passed', '-elements_hidden' ]
-
-
 
 
   def __str__(self):
