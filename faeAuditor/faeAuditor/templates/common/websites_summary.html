@@ -1,0 +1,117 @@
+<div id="summary" role="region" aria-label="Websites Results Summary">
+
+    <table class="summary" aria-label="Websites Results Summary">
+        <thead>
+            <td></td>
+            <th>Violations</th>
+            <th>Warnings</th>
+            <th>Manual<br/>Checks</th>
+            <th>Passed</th>
+            <th>Not Applicable</th>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="first">Number of Websites</th>
+
+                {% if summary.websites_violation == 0 %}
+                <td class="violation" title="No websites with violations on this pages">-</td>
+                {% else %}
+                {% if summary.websites_violation == 1 %}
+                <td class="violation" title="One website with violations on at this page">1</td>
+                {% else %}
+                <td class="violation" title="{{summary.websites_violation}} websites with violations on this page">{{summary.websites_violation}}</td>
+                {% endif %}
+                {% endif %}
+
+                {% if summary.websites_warning == 0 %}
+                <td class="warning" title="No websites with warnings on this page">-</td>
+                {% else %}
+                {% if summary.websites_warning ==  1 %}
+                <td class="warning" title="One website with warnings on this page">1</td>
+                {% else %}
+                <td class="warning" title="{{summary.websites_warning}} websites with warnings on this page">{{summary.websites_warning}}</td>
+                {% endif %}
+                {% endif %}
+
+                {% if summary.websites_manual_check == 0 %}
+                <td class="manual_check" title="No websites with manual checks on this page">-</td>
+                {% else %}
+                {% if summary.websites_manual_check == 1 %}
+                <td class="manual_check" title="One website with manual checks on this page">1</td>
+                {% else %}
+                <td class="manual_check" title="{{summary.websites_manual_check}} websites with manual checks on this page">{{summary.websites_manual_check}}</td>
+                {% endif %}
+                {% endif %}
+
+                {% if summary.websites_passed == 0 %}
+                <td class="passed" title="No websites pass on this page">-</td>
+                {% else %}
+                {% if summary.websites_passed == 1 %}
+                <td class="passed" title="One website that passes on this page">1</td>
+                {% else %}
+                <td class="passed" title="{{summary.websites_passed}} websites that pass on this page">{{summary.websites_passed}}</td>
+                {% endif %}
+                {% endif %}
+
+                {% if summary.websites_na == 0 %}
+                <td class="not_applicable" title="No websites that are none applicable on this page">-</td>
+                {% else %}
+                {% if summary.websites_na == 1 %}
+                <td class="not_applicable" title="One website that is not applicable on this page">1</td>
+                {% else %}
+                <td class="not_applicable" title="{{summary.websites_passed}} websites that are not applicable on this page">{{summary.websites_na}}</td>
+                {% endif %}
+                {% endif %}
+
+            </tr>
+        </tbody>
+    </table>
+
+
+    <div id="id_result_description" class="sr-only">
+
+                {% if summary.websites_violation > 0 %}
+                {% if summary.websites_violation == 1 %}
+                1 website with violations;
+                {% else %}
+                {{ summary.websites_violation }} websites with violations;
+                {% endif %}
+                {% endif %}
+
+                {% if summary.websites_warning > 0 %}
+                {% if summary.websites_warning == 1 %}
+                1 website with warnings;
+                {% else %}
+                {{ summary.websites_warning }} websites with warnings;
+                {% endif %}
+                {% endif %}
+
+                {% if summary.websites_manual_check > 0 %}
+                {% if summary.websites_manual_check == 1 %}
+                1 website with manual checks;
+                {% else %}
+                {{ summary.websites_manual_check }} websites with manual checks;
+                {% endif %}
+                {% endif %}
+
+                {% if summary.websites_passed > 0 %}
+                {% if summary.websites_passed == 1 %}
+                1 website with all passed;
+                {% else %}
+                {{ summary.websites_passed }} websites with all passed;
+                {% endif %}
+                {% endif %}
+
+                {% if summary.websites_na > 0 %}
+                {% if summary.websites_na == 1 %}
+                1 website that is not applicable;
+                {% else %}
+                {{ summary.websites_passed }} websites that are not applicable;
+                {% endif %}
+                {% endif %}
+
+
+    </div>
+
+
+</div>

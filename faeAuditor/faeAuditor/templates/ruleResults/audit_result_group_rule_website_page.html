@@ -5,17 +5,17 @@
 
 {% block breadcrumb %}
 <li><a href="{% url 'audit' audit_slug %}">Audit</a></li>
-<li><a href="{% url 'audit_result' result_slug rule_grouping %}">Audit Result</a></li>
+<li><a href="{% url 'all_rules_result' result_slug rule_grouping %}">Audit Result</a></li>
 <li>
-  <a href="{% url 'audit_result_rule_group' audit_result.slug rule_grouping rule_group %}">{{rule_group_result.title}}
+  <a href="{% url 'rule_group_result' audit_result.slug rule_grouping rule_group %}">{{rule_group_result.title}}
   </a>
 </li>
 <li>
-  <a href="{% url 'audit_result_rule_group_rule_website' result_slug rule_grouping rule_group rule.slug  website_result.slug %}">
+  <a href="{% url 'rule_group_result_rule_website' result_slug rule_grouping rule_group rule.slug  website_result.slug %}">
   {{rule.slug}}
   </a>
 </li>
-<li>  <a href="{% url 'audit_result_rule_group_rule_website' result_slug rule_grouping rule_group rule.slug  website_result.slug %}">
+<li>  <a href="{% url 'rule_group_result_rule_website' result_slug rule_grouping rule_group rule.slug  website_result.slug %}">
   {{website_result.slug}}
   </a>
 </li>

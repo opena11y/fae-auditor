@@ -39,7 +39,7 @@ Audit: {{audit.title}}
 <tbody>
     {% for ar in audit.audit_results.all %}
     <tr>
-        <td class="text"><a href="{% url 'audit_result' ar.slug 'rc' %}">{{ar.created | date:"Y-m-d"}}</a></td>
+        <td class="text"><a href="{% url 'all_rules_result' ar.slug 'rc' %}">{{ar.created | date:"Y-m-d"}}</a></td>
 
         <td class="num"  headers="id_r{{forloop.counter}} id_vio">
         {% if ar.rules_violation > 0 %}

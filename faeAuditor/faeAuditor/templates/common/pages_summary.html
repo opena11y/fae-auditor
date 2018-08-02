@@ -1,0 +1,116 @@
+<div id="summary" role="region" aria-label="Pages Results Summary">
+
+    <table class="summary" aria-label="Pages Results Summary">
+        <thead>
+            <td></td>
+            <th>Violations</th>
+            <th>Warnings</th>
+            <th>Manual<br/>Checks</th>
+            <th>Passed</th>
+            <th>Not Applicable</th>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="first">Number of Pages</th>
+
+                {% if summary.pages_violation == 0 %}
+                <td class="violation" title="No pages with violations on this pages">-</td>
+                {% else %}
+                {% if summary.pages_violation == 1 %}
+                <td class="violation" title="One page with violations on at this page">1</td>
+                {% else %}
+                <td class="violation" title="{{summary.pages_violation}} pages with violations on this page">{{summary.pages_violation}}</td>
+                {% endif %}
+                {% endif %}
+
+                {% if summary.pages_warning == 0 %}
+                <td class="warning" title="No pages with warnings on this page">-</td>
+                {% else %}
+                {% if summary.pages_warning ==  1 %}
+                <td class="warning" title="One page with warnings on this page">1</td>
+                {% else %}
+                <td class="warning" title="{{summary.pages_warning}} pages with warnings on this page">{{summary.pages_warning}}</td>
+                {% endif %}
+                {% endif %}
+
+                {% if summary.pages_manual_check == 0 %}
+                <td class="manual_check" title="No pages with manual checks on this page">-</td>
+                {% else %}
+                {% if summary.pages_manual_check == 1 %}
+                <td class="manual_check" title="One page with manual checks on this page">1</td>
+                {% else %}
+                <td class="manual_check" title="{{summary.pages_manual_check}} pages with manual checks on this page">{{summary.pages_mc_identified}}</td>
+                {% endif %}
+                {% endif %}
+
+                {% if summary.pages_passed == 0 %}
+                <td class="passed" title="No pages pass on this page">-</td>
+                {% else %}
+                {% if summary.pages_passed == 1 %}
+                <td class="passed" title="One page that passes on this page">1</td>
+                {% else %}
+                <td class="passed" title="{{summary.pages_passed}} pages that pass on this page">{{summary.pages_passed}}</td>
+                {% endif %}
+                {% endif %}
+
+                {% if summary.pages_na == 0 %}
+                <td class="not_applicable" title="No pages that are not applicable on this website">-</td>
+                {% else %}
+                {% if summary.pages_na == 1 %}
+                <td class="not_applicable" title="One page that is not applicable on this website">1</td>
+                {% else %}
+                <td class="not_applicable" title="{{summary.pages_hidden}} pages that are not applicable on this website">{{summary.pages_na}}</td>
+                {% endif %}
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+
+
+    <div id="id_result_description" class="sr-only">
+
+                {% if summary.pages_violation > 0 %}
+                {% if summary.pages_violation == 1 %}
+                1 page with violations;
+                {% else %}
+                {{ summary.pages_violation }} pages with violations;
+                {% endif %}
+                {% endif %}
+
+                {% if summary.pages_warning > 0 %}
+                {% if summary.pages_warning == 1 %}
+                1 page with warnings;
+                {% else %}
+                {{ summary.pages_warning }} pages with warnings;
+                {% endif %}
+                {% endif %}
+
+                {% if summary.pages_mc_identified > 0 %}
+                {% if summary.pages_mc_identified == 1 %}
+                1 page with manual checks;
+                {% else %}
+                {{ summary.pages_mc_identified }} pages with manual checks;
+                {% endif %}
+                {% endif %}
+
+                {% if summary.pages_passed > 0 %}
+                {% if summary.pages_passed == 1 %}
+                1 page with all passed;
+                {% else %}
+                {{ summary.pages_passed }} pages with all passed;
+                {% endif %}
+                {% endif %}
+
+                {% if summary.pages_na > 0 %}
+                {% if summary.pages_na == 1 %}
+                1 page not applicable;
+                {% else %}
+                {{ summary.pages_na }} pages not applicable;
+                {% endif %}
+                {% endif %}
+
+
+    </div>
+
+
+</div>

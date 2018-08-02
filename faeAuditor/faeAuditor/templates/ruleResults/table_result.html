@@ -1,30 +1,28 @@
-<h2 id="id_result">Audit Results</h2>
-<table class="details table table-striped table-hover sortable"  aria-labelledby="id_info">
+<table class="details table table-striped table-hover sortable"  aria-label="Rule results by {{rule_grouping_label}}">
   <thead>
     <tr>
-      <tr>
-        <th id="id_grp" class="text"  rowspan="2">{{rule_grouping_label}}</th>
-        <th id="id_nor" class="text"  colspan="5">Number of Rules</th>
-        <th rowspan="2">&nbsp;</th>
-        <th id="id_imp" class="text"  colspan="4" style="text-align: center">Implementation Level</th>
-      </tr>
-      <tr>
-        <th id="id_vio" class="num"   title="Violations">V</th>
-        <th id="id_war" class="num"   title="Warnings">W</th>
-        <th id="id_man" class="num"   title="Manual Checks">MC</th>
-        <th id="id_pas" class="num"   title="Passed">P</th>
-        <th id="id_not" class="num"   title="Not Applicable">N/A</th>
-        <th id="id_scpf" class="num sep"   title="Implementation Score for rule results with Pass/Fail results">Pass/Fail Score</th>
-        <th id="id_stpf" class="text"   title="Implementation Status for rule results with Pass/Fail results">Pass/Fail Status</th>
-        <th id="id_scal" class="num sep"   title="Implementation Score for all rule results">All Results Score</th>
-        <th id="id_stal" class="text"   title="Implementation Status for all rule results">All Results Status</th>
-      </tr>
+      <th id="id_grp" class="text"  rowspan="2">{{rule_grouping_label}}</th>
+      <th id="id_nor" class="text"  colspan="5">Number of Rules</th>
+      <th rowspan="2">&nbsp;</th>
+      <th id="id_imp" class="text"  colspan="4" style="text-align: center">Implementation Level</th>
+    </tr>
+    <tr>
+      <th id="id_vio" class="num"   title="Violations">V</th>
+      <th id="id_war" class="num"   title="Warnings">W</th>
+      <th id="id_man" class="num"   title="Manual Checks">MC</th>
+      <th id="id_pas" class="num"   title="Passed">P</th>
+      <th id="id_not" class="num"   title="Not Applicable">N/A</th>
+      <th id="id_scpf" class="num sep"   title="Implementation Score for rule results with Pass/Fail results">Pass/Fail Score</th>
+      <th id="id_stpf" class="text"   title="Implementation Status for rule results with Pass/Fail results">Pass/Fail Status</th>
+      <th id="id_scal" class="num sep"   title="Implementation Score for all rule results">All Results Score</th>
+      <th id="id_stal" class="text"   title="Implementation Status for all rule results">All Results Status</th>
+    </tr>
   </thead>
   <tbody>
     {% for rgr in rule_group_results %}
     <tr>
       <td headers="id_grp">
-        <a href="{% url 'audit_result_rule_group' result_slug rule_grouping rgr.slug %}">
+        <a href="{% url 'rule_group_result' result_slug rule_grouping rgr.slug %}">
           {{rgr.title}}
         </a>
       </td>

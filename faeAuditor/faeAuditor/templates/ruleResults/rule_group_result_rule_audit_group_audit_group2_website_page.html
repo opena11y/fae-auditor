@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+<li><a href="{% url 'audit' audit_result.audit.slug %}">Audit</a></li>
+<li><a href="{% url 'all_rules_result' result_slug rule_grouping %}">Rule Results</a></li>
+<li>
+  <a href="{% url 'rule_group_result' audit_result.slug rule_grouping rule_group_slug %}">{{rule_group_label}}
+  </a>
+</li>
+<li>
+  <a href="{% url 'rule_group_result_rule' result_slug rule_grouping rule_group_slug rule_slug %}">{{rule.nls_rule_id}}
+  </a>
+</li>
+<li>
+  <a href="{% url 'rule_group_result_rule_audit_group' result_slug rule_grouping rule_group_slug rule_slug audit_group_slug %}">{{website_rule_result.ws_report.group2_result.group_result.group_item.title}}</a></li>
+<li><a href="{% url 'rule_group_result_rule_audit_group_audit_group2' result_slug rule_grouping rule_group_slug rule_slug audit_group_slug audit_group2_slug %}">{{website_rule_result.ws_report.group2_result.group2_item.title}}
+</a>
+</li>
+<li><a href="{% url 'rule_group_result_rule_audit_group_audit_group2_website' result_slug rule_grouping rule_group_slug rule_slug audit_group_slug audit_group2_slug website_slug %}">{{website_slug}}
+</a></li>
+<li>Page {{page_num}}</li>
+{% endblock %}
+
+{% block title %}
+Page {{page_num}}: {{page_result.get_title}}
+{% endblock %}
+
+{% block content %}
+
+  <div class="rule">{{rule.nls_rule_id}} Rule: {{rule.summary_html|safe}}</div>
+
+  {% include 'common/website_page_rule_result.html' %}
+
+
+{% endblock %}

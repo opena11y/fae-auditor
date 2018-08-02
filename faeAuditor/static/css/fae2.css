@@ -743,3 +743,21 @@ main a[href] code:hover {
   background-color: #DDDDDD;
 }
 
+main div.result_group {
+    clear: both;
+    margin-top: 3em;
+}
+
+main div.result_group h2 {
+    margin-top: 2em;
+}
+
+main details.rule_information {
+    margin-top: 1em;
+    border: 1px solid #DDD;
+    background-color: #EEE;
+}
+
+main details.rule_information summary {
+    font-size: 110%;
+}

@@ -409,15 +409,15 @@ class AuditRuleResult(RuleElementPageWebsiteResult):
     ordering = ['implementation_score']
 
   def __unicode__(self):
-    return 'Audit Rule: ' + self.audit_result.audit.title
+    return 'Audit Rule Result (' + self.slug + '): ' + self.audit_result.title
 
   def __str__(self):
-    return 'Audit Rule: ' + self.audit_result.audit.title
+    return 'Audit Rule Result (' + self.slug + '): ' + self.audit_result.title
 
   def save(self):
 
     if self.slug == '':
-        self.slug = self.rule.nls_rule_id
+        self.slug = self.rule.rule_id
 
     super(AuditRuleResult, self).save() # Call the "real" save() method.
 

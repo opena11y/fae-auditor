@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+<li><a href="{% url 'audit' audit_slug %}">Audit</a></li>
+<li><a href="{% url 'all_rules_result' result_slug rule_grouping %}">Rule Results</a></li>
+<li>
+  <a href="{% url 'rule_group_result' audit_result.slug rule_grouping rule_group_slug %}">{{rule_group_label}}
+  </a>
+</li>
+<li><a href="{% url 'rule_group_result_rule' result_slug rule_grouping rule_group_slug rule_slug %}">{{rule.nls_rule_id}}</a></li>
+<li>{{audit_group2_result.get_title}}</li>
+{% endblock %}
+
+{% block title %}
+Sub-Group: {{audit_group2_result.get_title}}
+{% endblock %}
+
+{% block content %}
+  <div class="rule">{{rule.nls_rule_id}} Rule: {{rule.summary_html|safe}}</div>
+
+  {% include 'common/websites_summary.html' with summary=audit_group2_rule_result %}
+
+  <nav id="view_options" aria-label="Page view options">
+    <ul class="nav nav-tabs hide-show">
+      <li><a href="#id_rule_details">Rule Details</a></li>
+      <li class="active"><a href="#id_rule_results">Rule Results</a></li>
+    </ul>
+  </nav>
+
+  {% include "common/rule_details.html" %}
+
+  <div id="id_rule_results" class="result_group">
+  {% include 'common/table_website_rule_results.html' %}
+  </div>
+
+{% endblock %}

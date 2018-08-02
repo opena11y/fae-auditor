@@ -352,10 +352,21 @@ class ResultNavigtionObject:
 # View options
 # ---------------------
 
-    def view_option_group_results(self):
-        self.view_options.add('Rule Category', reverse('audit_result', args=[self.audit_result_slug, 'rc']), 'rc' == self.rule_grouping)
-        self.view_options.add('Guidelines',    reverse('audit_result', args=[self.audit_result_slug, 'gl']), 'gl' == self.rule_grouping)
-        self.view_options.add('Rule Scope',    reverse('audit_result', args=[self.audit_result_slug, 'rs']), 'rs' == self.rule_grouping)
+    def view_option_all_rules_result(self):
+        if self.rule_group_slug and self.last_rc_slug:
+            self.view_options.add('Rule Category', reverse('rule_group_result', args=[self.audit_result_slug, 'rc', self.last_rc_slug]), 'rc' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Category', reverse('all_rules_result', args=[self.audit_result_slug, 'rc']), 'rc' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_gl_slug:
+            self.view_options.add('Guidelines',    reverse('rule_group_result', args=[self.audit_result_slug, 'gl', self.last_gl_slug]), 'gl' == self.rule_grouping)
+        else:
+            self.view_options.add('Guidelines',    reverse('all_rules_result', args=[self.audit_result_slug, 'gl']), 'gl' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_rs_slug:
+            self.view_options.add('Rule Scope',    reverse('rule_group_result', args=[self.audit_result_slug, 'rs', self.last_rs_slug]), 'rs' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Scope',    reverse('all_rules_result', args=[self.audit_result_slug, 'rs']), 'rs' == self.rule_grouping)
 
     def view_option_group_results_audit_group(self):
         if self.rule_group_slug and self.last_rc_slug:
@@ -592,7 +603,8 @@ class ResultNavigtionObject:
         self.view_options.remove_all()
 
         if self.result_view == 'rules':
-            self.view_option_group_results()
+
+            self.view_option_all_rules_result()
             return
 
         if self.result_view == 'group':
@@ -744,9 +756,9 @@ class ResultNavigtionObject:
 
     def filter_audit_result(self, group, label):
         if group:
-            return reverse('audit_result_rule_group', args=[self.audit_result_slug, self.rule_grouping, group])
+            return reverse('rule_group_result', args=[self.audit_result_slug, self.rule_grouping, group])
         else:
-            return reverse('audit_result', args=[self.audit_result_slug, self.rule_grouping])
+            return reverse('all_rules_result', args=[self.audit_result_slug, self.rule_grouping])
 
 
     def add_filter_item(self, group, label):

@@ -55,7 +55,7 @@ class AuditRuleScopeResultAdmin(admin.ModelAdmin):
 admin.site.register(AuditRuleScopeResult, AuditRuleScopeResultAdmin)
 
 class AuditRuleResultAdmin(admin.ModelAdmin):
-    list_display = ('rule', 'audit_result', 'result_value', 'pages_violation', 'pages_warning', 'pages_manual_check', 'pages_passed', 'pages_na', 'elements_violation', 'elements_warning', 'elements_mc_identified', 'elements_passed', 'elements_hidden', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
+    list_display = ('rule', 'audit_result', 'result_value', 'websites_violation', 'websites_warning', 'websites_manual_check', 'websites_passed', 'websites_na', 'pages_violation', 'pages_warning', 'pages_manual_check', 'pages_passed', 'pages_na', 'elements_violation', 'elements_warning', 'elements_mc_identified', 'elements_passed', 'elements_hidden', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
     list_filter  = ('audit_result', 'rule')
 
 admin.site.register(AuditRuleResult, AuditRuleResultAdmin)

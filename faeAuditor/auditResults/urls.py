@@ -23,83 +23,83 @@ Author: Jon Gunderson
 from __future__ import absolute_import
 from django.conf.urls import url
 
-from .views  import AuditResultView
-from .views  import AuditResultRuleGroupView
-from .views  import AuditResultRuleGroupRuleView
-from .views  import AuditResultRuleGroupRuleWebsiteView
-from .views  import AuditResultRuleGroupRuleWebsitePageView
-from .views  import AuditResultRuleGroupRuleAuditGroup2View
-from .views  import AuditResultRuleGroupRuleAuditGroup2WebsiteView
-from .views  import AuditResultRuleGroupRuleAuditGroup2WebsitePageView
-from .views  import AuditResultRuleGroupRuleAuditGroupView
-from .views  import AuditResultRuleGroupRuleAuditGroupWebsiteView
-from .views  import AuditResultRuleGroupRuleAuditGroupWebsitePageView
-from .views  import AuditResultRuleGroupRuleAuditGroupAuditGroup2View
-from .views  import AuditResultRuleGroupRuleAuditGroupAuditGroup2WebsiteView
-from .views  import AuditResultRuleGroupRuleAuditGroupAuditGroup2WebsitePageView
+from .views  import AllRulesResultView
+from .views  import RuleGroupResultView
+from .views  import RuleGroupResultRuleView
+from .views  import RuleGroupResultRuleWebsiteView
+from .views  import RuleGroupResultRuleWebsitePageView
+from .views  import RuleGroupResultRuleAuditGroup2View
+from .views  import RuleGroupResultRuleAuditGroup2WebsiteView
+from .views  import RuleGroupResultRuleAuditGroup2WebsitePageView
+from .views  import RuleGroupResultRuleAuditGroupView
+from .views  import RuleGroupResultRuleAuditGroupWebsiteView
+from .views  import RuleGroupResultRuleAuditGroupWebsitePageView
+from .views  import RuleGroupResultRuleAuditGroupAuditGroup2View
+from .views  import RuleGroupResultRuleAuditGroupAuditGroup2WebsiteView
+from .views  import RuleGroupResultRuleAuditGroupAuditGroup2WebsitePageView
 
 urlpatterns = [
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/$',
-      AuditResultView.as_view(),
-      name='audit_result'),
+      AllRulesResultView.as_view(),
+      name='all_rules_result'),
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/$',
-      AuditResultRuleGroupView.as_view(),
-      name='audit_result_rule_group'),
+      RuleGroupResultView.as_view(),
+      name='rule_group_result'),
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/$',
-      AuditResultRuleGroupRuleView.as_view(),
-      name='audit_result_rule_group_rule'),
+      RuleGroupResultRuleView.as_view(),
+      name='rule_group_result_rule'),
 
     # Website result views
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/$',
-      AuditResultRuleGroupRuleWebsiteView.as_view(),
-      name='audit_result_rule_group_rule_website'),
+      RuleGroupResultRuleWebsiteView.as_view(),
+      name='rule_group_result_rule_website'),
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/(?P<page_num>[\w-]+)/$',
-      AuditResultRuleGroupRuleWebsitePageView.as_view(),
-      name='audit_result_rule_group_rule_website_page'),
+      RuleGroupResultRuleWebsitePageView.as_view(),
+      name='rule_group_result_rule_website_page'),
 
     # Audit group result views
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/$',
-      AuditResultRuleGroupRuleAuditGroupView.as_view(),
-      name='audit_result_rule_group_rule_audit_group'),
+      RuleGroupResultRuleAuditGroupView.as_view(),
+      name='rule_group_result_rule_audit_group'),
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/g2/(?P<audit_group2_slug>[\w-]+)/$',
-      AuditResultRuleGroupRuleAuditGroupAuditGroup2View.as_view(),
-      name='audit_result_rule_group_rule_audit_group_audit_group2'),
+      RuleGroupResultRuleAuditGroupAuditGroup2View.as_view(),
+      name='rule_group_result_rule_audit_group_audit_group2'),
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/$',
-      AuditResultRuleGroupRuleAuditGroupWebsiteView.as_view(),
-      name='audit_result_rule_group_rule_audit_group_website'),
+      RuleGroupResultRuleAuditGroupWebsiteView.as_view(),
+      name='rule_group_result_rule_audit_group_website'),
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/pg/(?P<page_num>[\w-]+)/$',
-      AuditResultRuleGroupRuleAuditGroupWebsitePageView.as_view(),
-      name='audit_result_rule_group_rule_audit_group_website_page'),
+      RuleGroupResultRuleAuditGroupWebsitePageView.as_view(),
+      name='rule_group_result_rule_audit_group_website_page'),
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/g2/(?P<audit_group2_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/$',
-      AuditResultRuleGroupRuleAuditGroupAuditGroup2WebsiteView.as_view(),
-      name='audit_result_rule_group_rule_audit_group_audit_group2_website'),
+      RuleGroupResultRuleAuditGroupAuditGroup2WebsiteView.as_view(),
+      name='rule_group_result_rule_audit_group_audit_group2_website'),
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/g2/(?P<audit_group2_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/pg/(?P<page_num>[\w-]+)/$',
-      AuditResultRuleGroupRuleAuditGroupAuditGroup2WebsitePageView.as_view(),
-      name='audit_result_rule_group_rule_audit_group_audit_group2_website_page'),
+      RuleGroupResultRuleAuditGroupAuditGroup2WebsitePageView.as_view(),
+      name='rule_group_result_rule_audit_group_audit_group2_website_page'),
 
     # Audit group2 result views
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/g2/(?P<audit_group2_slug>[\w-]+)/$',
-      AuditResultRuleGroupRuleAuditGroup2View.as_view(),
-      name='audit_result_rule_group_rule_audit_group2'),
+      RuleGroupResultRuleAuditGroup2View.as_view(),
+      name='rule_group_result_rule_audit_group2'),
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/g2/(?P<audit_group2_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/$',
-      AuditResultRuleGroupRuleAuditGroup2WebsiteView.as_view(),
-      name='audit_result_rule_group_rule_audit_group2_website'),
+      RuleGroupResultRuleAuditGroup2WebsiteView.as_view(),
+      name='rule_group_result_rule_audit_group2_website'),
 
     url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/g2/(?P<audit_group2_slug>[\w-]+)/ws/(?P<website_slug>[\w-]+)/pg/(?P<page_num>[\w-]+)/$',
-      AuditResultRuleGroupRuleAuditGroup2WebsitePageView.as_view(),
-      name='audit_result_rule_group_rule_audit_group2_website_page')
+      RuleGroupResultRuleAuditGroup2WebsitePageView.as_view(),
+      name='rule_group_result_rule_audit_group2_website_page')
 
 ]
