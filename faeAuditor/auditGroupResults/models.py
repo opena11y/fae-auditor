@@ -81,6 +81,9 @@ class AuditGroupResult(AllRuleGroupResult):
   def get_title(self):
     return self.group_item.title
 
+  def get_abbrev(self):
+    return self.group_item.abbreviation
+
   def page_count(self):
     return self.total_pages
 
@@ -183,6 +186,9 @@ class AuditGroupRuleCategoryResult(RuleGroupResult):
   def get_title(self):
     return self.group_result.get_title()
 
+  def get_abbrev(self):
+    return self.group_result.get_abbrev()
+
   def get_id(self):
     return 'agrcr_' + self.rule_category.id
 
@@ -226,6 +232,9 @@ class AuditGroupGuidelineResult(RuleGroupResult):
 
   def get_title(self):
     return self.group_result.get_title()
+
+  def get_abbrev(self):
+    return self.group_result.get_abbrev()
 
   def get_id(self):
     return 'agglr_' + self.guideline.id
@@ -272,6 +281,9 @@ class AuditGroupRuleScopeResult(RuleGroupResult):
   def get_title(self):
     return self.group_result.get_title()
 
+  def get_abbrev(self):
+    return self.group_result.get_abbrev()
+
   def get_id(self):
     return 'agrsr_' + self.rule_scope.id
 
@@ -314,4 +326,10 @@ class AuditGroupRuleResult(RuleElementPageWebsiteResult):
         self.slug = self.rule.nls_rule_id
 
     super(AuditGroupRuleResult, self).save() # Call the "real" save() method.
+
+  def get_title(self):
+    return self.group_result.get_title()
+
+  def get_abbrev(self):
+    return self.group_result.get_abbrev()
 

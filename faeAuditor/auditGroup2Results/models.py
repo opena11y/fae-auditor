@@ -82,6 +82,9 @@ class AuditGroup2Result(AllRuleGroupResult):
   def get_title(self):
       return self.group2_item.title
 
+  def get_abbrev(self):
+    return self.group2_item.abbreviation
+
   def page_count(self):
     count = 0
 
@@ -198,6 +201,9 @@ class AuditGroup2RuleCategoryResult(RuleGroupResult):
   def get_title(self):
     return self.group2_result.get_title()
 
+  def get_abbrev(self):
+    return self.group2_result.get_abbrev()
+
   def get_id(self):
     return 'ag2rcr_' + self.rule_category.id
 
@@ -241,6 +247,9 @@ class AuditGroup2GuidelineResult(RuleGroupResult):
 
   def get_title(self):
     return self.group2_result.get_title()
+
+  def get_abbrev(self):
+    return self.group2_result.get_abbrev()
 
   def get_id(self):
     return 'ag2glr_' + self.guideline.id
@@ -286,6 +295,9 @@ class AuditGroup2RuleScopeResult(RuleGroupResult):
   def get_title(self):
     return self.group2_result.get_title()
 
+  def get_abbrev(self):
+    return self.group2_result.get_abbrev()
+
   def get_id(self):
     return 'ag2rsr_' + self.rule_scope.id
 
@@ -323,6 +335,9 @@ class AuditGroup2RuleResult(RuleElementPageWebsiteResult):
 
   def get_title(self):
     return self.group2_result.get_title()
+
+  def get_abbrev(self):
+    return self.group2_result.get_abbrev()
 
   def get_id(self):
     return 'ag2rrr_' + self.rule.id

@@ -343,9 +343,9 @@ class WebsiteRuleGroupResultsView(ResultNavigationMixin, TemplateView):
             wsrgr.page_count = wsrgr.ws_report.page_count
             wsrgr.href       = reverse('website_rule_group_results_website', args=[result_slug, rule_grouping, rule_group_slug, wsrgr.ws_report.slug])
             if wsrgr.ws_report.group_result:
-                wsrgr.group_title  = wsrgr.ws_report.group_result.group_item.title
+                wsrgr.group_title  = wsrgr.ws_report.group_result.group_item.abbreviation
                 if wsrgr.ws_report.group2_result:
-                    wsrgr.group2_title = wsrgr.ws_report.group2_result.group2_item.title
+                    wsrgr.group2_title = wsrgr.ws_report.group2_result.group2_item.abbreviation
 
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'website', self.request.path)

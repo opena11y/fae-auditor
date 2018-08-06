@@ -15,14 +15,14 @@
   </a>
 </li>
 <li>
-  <a href="{% url 'rule_group_result_rule_audit_group' result_slug rule_grouping rule_group_slug rule_slug audit_group_slug %}">{{audit_group2_result.group_result.group_item.title}}
+  <a href="{% url 'rule_group_result_rule_audit_group' result_slug rule_grouping rule_group_slug rule_slug audit_group_slug %}">{{audit_group2_result.group_result.get_abbrev}}
   </a>
 </li>
-<li>{{audit_group2_result.group2_item.title}}</li>
+<li>{{audit_group2_result.get_title}}</li>
 {% endblock %}
 
 {% block title %}
-Sub-Group: {{audit_group2_result.group2_item.title}} {{audit_result.group2_title}}
+Sub-Group: {{audit_group2_result.group2_item.title}}
 {% endblock %}
 
 {% block content %}

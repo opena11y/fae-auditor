@@ -13,7 +13,7 @@
 <li>
   <a href="{% url 'rule_group_result_rule' result_slug rule_grouping rule_group_slug rule_slug %}">{{rule.nls_rule_id}}</a></li>
 <li>
-  <a href="{% url 'rule_group_result_rule_audit_group' result_slug rule_grouping rule_group_slug rule_slug audit_group_slug %}">{{audit_group_result.group_item.title}}</a></li>
+  <a href="{% url 'rule_group_result_rule_audit_group' result_slug rule_grouping rule_group_slug rule_slug audit_group_slug %}">{{audit_group_result.group_item.abbreviation}}</a></li>
 <li>
   <a href="{% url 'rule_group_result_rule_audit_group_website' result_slug rule_grouping rule_group_slug rule_slug audit_group_slug website_slug %}">
   {{website_slug}}

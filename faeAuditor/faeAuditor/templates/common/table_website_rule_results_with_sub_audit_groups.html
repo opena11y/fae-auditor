@@ -4,9 +4,9 @@
       <th id="id_grp" class="text"  rowspan="2">Website</th>
       <th id="id_agr" class="text"  rowspan="2">Group</th>
       <th id="id_ag2" class="text"  rowspan="2">Sub-Group</th>
-      <th id="id_nop" class="text"  colspan="5">Number of Pages</th>
+      <th id="id_nop" class="center"  colspan="5">Number of Pages</th>
       <th rowspan="2">&nbsp;</th>
-      <th id="id_imp" class="text"  colspan="4" style="text-align: center">Implementation Level</th>
+      <th id="id_imp" class="center"  colspan="4" style="text-align: center">Implementation Level</th>
     </tr>
     <tr>
       <th id="id_vio" class="num"   title="Violations">V</th>
@@ -28,8 +28,8 @@
           {{wsrr.ws_report.title}}
         </a>
       </td>
-      <td headers="id_vio id_grp" class="text">{{wsrr.ws_report.group2_result.group_result.group_item.title}}</td>
-      <td headers="id_vio id_grp" class="text">{{wsrr.ws_report.group2_result.group2_item.title}}</td>
+      <td headers="id_vio id_grp" class="text">{{wsrr.ws_report.group2_result.group_result.group_item.abbreviation}}</td>
+      <td headers="id_vio id_grp" class="text">{{wsrr.ws_report.group2_result.group2_item.abbreviation}}</td>
       <td headers="id_vio id_nop" class="num">{{wsrr.pages_violation}}</td>
       <td headers="id_war id_nop" class="num">{{wsrr.pages_warning}}</td>
       <td headers="id_man id_nop" class="num">{{wsrr.pages_manual_check}}</td>

@@ -11,11 +11,11 @@
   </a>
 </li>
 <li><a href="{% url 'rule_group_result_rule' result_slug rule_grouping rule_group_slug rule_slug %}">{{rule.nls_rule_id}}</a></li>
-<li>{{audit_group_result.group_item.title}}</li>
+<li><abbr title="{{audit_group_result.group_item.title}}">{{audit_group_result.get_abbrev}}</abbr></li>
 {% endblock %}
 
 {% block title %}
-Group: {{audit_group_result.group_item.title}} {{audit_result.group_title}}
+Group: {{audit_group_result.get_title}}
 {% endblock %}
 
 {% block content %}
@@ -35,11 +35,11 @@ Group: {{audit_group_result.group_item.title}} {{audit_result.group_title}}
   <div id="id_rule_results" class="result_group">
 
   {% if audit_group2_rule_results %}
-  <h2>{{audit_group_result.group_item.title}} {{audit_result.group2_title_plural}}</h2>
+  <h2>{{audit_group_result.group_item.abbreviation}} {{audit_result.group2_title_plural}}</h2>
   {% include 'common/table_audit_group2_rule_results.html' %}
   {% endif %}
 
-  <h2>{{audit_group_result.group_item.title}} Websites</h2>
+  <h2>{{audit_group_result.group_item.abbreviation}} Websites</h2>
   {% include 'common/table_website_rule_results.html' %}
   </div>
 

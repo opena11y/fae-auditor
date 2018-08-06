@@ -11,11 +11,11 @@
   </a>
 </li>
 <li><a href="{% url 'rule_group_result_rule' result_slug rule_grouping rule_group_slug rule_slug %}">{{rule.nls_rule_id}}</a></li>
-<li>{{audit_group2_result.get_title}}</li>
+<li>{{audit_group2_result.get_abbrev}}</li>
 {% endblock %}
 
 {% block title %}
-Sub-Group: {{audit_group2_result.get_title}} {{audit_result.group2_title}}
+Sub-Group: {{audit_group2_result.get_title}}
 {% endblock %}
 
 {% block content %}

@@ -235,12 +235,12 @@ class WebsiteResult(RuleGroupResult):
 
   def group_title(self):
     if self.group_result:
-      return self.group_result.group_item.title
+      return self.group_result.group_item.abbreviation
     return ''
 
   def group2_title(self):
     if self.group2_result:
-      return self.group2_result.group2_item.title
+      return self.group2_result.group2_item.abbreviation
     return ''
 
 
