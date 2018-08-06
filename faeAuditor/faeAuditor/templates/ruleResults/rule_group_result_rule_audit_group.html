@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block title %}
-Audit Sub-Group Rule Result: {{rule.summary_html|safe}} for {{audit_group_result.group_item.title}}
+Group: {{audit_group_result.group_item.title}} {{audit_result.group_title}}
 {% endblock %}
 
 {% block content %}
@@ -35,11 +35,11 @@ Audit Sub-Group Rule Result: {{rule.summary_html|safe}} for {{audit_group_result
   <div id="id_rule_results" class="result_group">
 
   {% if audit_group2_rule_results %}
-  <h2>{{audit_result.group2_title_plural}}</h2>
+  <h2>{{audit_group_result.group_item.title}} {{audit_result.group2_title_plural}}</h2>
   {% include 'common/table_audit_group2_rule_results.html' %}
   {% endif %}
 
-  <h2>Websites</h2>
+  <h2>{{audit_group_result.group_item.title}} Websites</h2>
   {% include 'common/table_website_rule_results.html' %}
   </div>
 

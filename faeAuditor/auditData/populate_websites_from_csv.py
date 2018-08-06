@@ -91,7 +91,7 @@ audit_group2 = False
 
 website_count = 0
 
-def addWebsite(audit, title, url, groups):
+def addWebsite(audit, depth, max_pages, wait_time, title, url, groups):
 
   global website_count
 
@@ -104,12 +104,15 @@ def addWebsite(audit, title, url, groups):
   try:
     ws = Website.objects.get(audit=audit, url=url)
     print("  Updating Website: " + url)
-    ws.title = title
+    ws.title        = title
     ws.span_domains = sd
-    ws.slug = slug
+    ws.slug         = slug
+    ws.depth        = depth
+    ws.max_pages    = max_pages
+    ws.wait_time    = wait_time
 
   except:
-    ws = Website(audit=audit, url=url, span_sub_domains=sd, title=title, slug=slug)
+    ws = Website(audit=audit, url=url, span_sub_domains=sd, title=title, slug=slug, depth=depth, max_pages=max_pages, wait_time=wait_time)
     print("  Creating Website: " + url)
 
   ws.save()
@@ -119,47 +122,68 @@ def addWebsite(audit, title, url, groups):
       print(str(audit_group))
       try:
         agi = AuditGroupItem.objects.get(group=audit_group, slug=slug)
-        print("  Found Audit group Item: " + slug + " " + url)
+        print("  Found Audit group Item: '" + slug + "' " + url)
+        ws.group_item = agi
+        ws.save()
       except:
-        agi =  AuditGroupItem(group=audit_group, slug=slug, title=titleFromSlug(slug))
-        print("  Creating Audit Group Item: " +  slug + " " + url)
-        agi.save()
+        print("  ERROR: Cannot Find Group Item: " +  slug)
 
-      ws.group_item = agi
-      ws.save()
 
   if len(groups) > 1 and audit_group2:
       slug = removeQuotes(groups[1].strip())
       print(str(audit_group2))
       try:
         ag2i = AuditGroup2Item.objects.get(group2=audit_group2, group_item=agi, slug=slug)
-        print("  Found Audit group Item: " + slug + " " + url)
+        print("  Found Audit group Item: '" + slug + "' " + url)
+        ws.group2_item = ag2i
+        ws.save()
       except:
-        ag2i =  AuditGroup2Item(group2=audit_group2, group_item=agi, slug=slug, title=titleFromSlug(slug))
-        print("  Creating Audit Group Item: " +  slug + " " + url)
-        ag2i.save()
+        print("  ERROR: Cannot Find Group2 Item: " +  slug)
 
-      ws.group2_item = ag2i
-      ws.save()
 
 def addAuditGroup2(audit, data):
   global audit_group2
 
   try:
     audit_group2 = AuditGroup2.objects.get(audit=audit, slug=data['id'])
-    print("  Updating Audit Group2: " + data['title'])
+    print("\n  Updating Audit Group2: " + data['title'])
     audit_group2.title        = data['title']
     audit_group2.title_plural = data['title_plural']
 
   except ObjectDoesNotExist:
-    print("  Creating Audit Group2: " + data['title'])
+    print("\n  Creating Audit Group2: " + data['title'])
     audit_group2 = AuditGroup2(audit=audit, title=data['title'], title_plural=data['title_plural'], slug=data['id'])
 
   print("  Saving Audit Group2: " + data['title'])
   audit_group2.save()
 
+  print("\n  Members: " + str(len(data['members'])))
+
+  for member in data['members']:
+    print("\n      Member: " + member['slug'])
+    print("       Title: " + member['title'])
+    print("Abbreviation: " + member['abbrev'])
+    print("       Group: " + member['group'])
+
+    group_item = AuditGroupItem.objects.get(group__audit=audit, slug=member['group'])
+
+    print("  Group Item: " + str(group_item))
+
+    try:
+      ag2i = AuditGroup2Item.objects.get(group2=audit_group2, slug=member['slug'])
+      ag2i.title        = member['title']
+      ag2i.abbreviation = member['abbrev']
+      print("    Found Audit group Item: " + member['slug'] + " " + member['title'])
+    except:
+      print("    Creating Audit Group2 Item: " +  member['slug'] + " " + member['title'])
+      ag2i =  AuditGroup2Item(group2=audit_group2, group_item=group_item, slug=member['slug'], title=member['title'], abbreviation=member['abbrev'])
+
+    ag2i.save()
+
+
 def addAuditGroup(audit, data):
   global audit_group
+
 
   try:
     audit_group = AuditGroup.objects.get(audit=audit, slug=data['id'])
@@ -171,7 +195,25 @@ def addAuditGroup(audit, data):
     print("  Creating Audit Group: " + data['title'])
     audit_group = AuditGroup(audit=audit, title=data['title'], title_plural=data['title_plural'], slug=data['id'])
 
+  audit_group.save();
+
   print("  Saving Audit Group: " + data['title'])
+  print("\n  Members: " + str(len(data['members'])))
+
+  for member in data['members']:
+    print("\n    Member: " + str(member['slug']))
+    try:
+      agi = AuditGroupItem.objects.get(group=audit_group, slug=member['slug'])
+      agi.title        = member['title']
+      agi.abbreviation = member['abbrev']
+      print("    Found Audit group Item: " + member['slug'] + " " + member['title'])
+    except:
+      agi =  AuditGroupItem(group=audit_group, slug=member['slug'], title=member['title'], abbreviation=member['abbrev'])
+      print("    Creating Audit Group Item: " +  member['slug'] + " " + member['title'])
+      11111
+    agi.save()
+
+
   audit_group.save()
 
 def addAudit(data):
@@ -193,20 +235,20 @@ def addAudit(data):
   audit.save()
 
   groups = data['groups']
-  print("  Groups: " + str(groups))
 
   try:
 
     if len(groups) > 0:
-      print("Group: " + str(groups[0]))
+      print("Group: " + str(groups[0]['title']))
       addAuditGroup(audit, groups[0])
 
+    print("\n=== Audit Group: " + str(audit_group) + "===")
+
     if len(groups) > 1:
-      print("Group2: " + str(groups[1]))
+      print("Group2: " + str(groups[1]['title']))
       addAuditGroup2(audit, groups[1])
 
-    print("Audit Group: " + str(audit_group))
-    print("Audit Group2: " + str(audit_group2))
+    print("\n=== Audit Group2: " + str(audit_group2) + "===")
 
   except:
     print("No group information")
@@ -218,7 +260,7 @@ def addAudit(data):
 user = User.objects.get(username='jongund')
 date = time.strftime('%Y-%m-%d')
 
-if len(sys.argv) < 2:
+if len(sys.argv) < 3:
   print("python populate_websites_from_csv.py file1.json file2.csv")
   exit()
 
@@ -228,21 +270,30 @@ audit_data = json.load(file_json)
 
 audit = addAudit(audit_data)
 
-if len(sys.argv) < 3:
-  print("python populate_websites_from_csv.py file1.json file2.csv")
-  exit()
-
 # Read in the CSV of the urls
 
 file_csv  = open(sys.argv[2], 'rU')
 
 for line in file_csv:
+  print('\n----------------------------------\n')
   print('LINE: ' + line)
   parts = line.split('","')
   if len(parts) > 1:
-    title  = removeQuotes(parts[0]).strip()
-    url    = removeQuotes(parts[1]).strip()
-    print(str(len(parts)) + " " + title + " " + url)
-    addWebsite(audit, title, url, parts[2:])
+    depth = removeQuotes(parts[0]).strip()
+    if len(depth) == 0:
+      depth = audit.depth
+
+    max_pages = removeQuotes(parts[1]).strip()
+    if len(max_pages) == 0:
+      max_pages = audit.max_pages
+
+    wait_time = removeQuotes(parts[2]).strip()
+    if len(wait_time) == 0:
+      wait_time = audit.wait_time
+
+    title  = removeQuotes(parts[3]).strip()
+    url    = removeQuotes(parts[4]).strip()
+    print(str(parts[5:]) + " " + title + " " + url)
+    addWebsite(audit, depth, max_pages, wait_time, title, url, parts[5:])
   else:
     print("**** Error: " + line)

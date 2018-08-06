@@ -9,12 +9,114 @@
   {
     "id"           : "conference",
     "title"        : "Conference",
-    "title_plural" : "Conferences"
+    "title_plural" : "Conferences",
+    "members" : [
+      {
+        "slug" : "acc",
+        "title": "Atlantic Coast Conference",
+        "abbrev": "ACC"
+      },
+      {
+        "slug" : "atlantic10",
+        "title": "Atlantic 10 Conference",
+        "abbrev": "Atlantic 10"
+      },
+      {
+        "slug" : "big10",
+        "title": "Big Ten",
+        "abbrev": "Big Ten"
+      },
+      {
+        "slug" : "big12",
+        "title": "Big 12",
+        "abbrev": "Big 12"
+      }
+    ]
   },
   {
     "id"           : "university",
     "title"        : "University",
-    "title_plural" : "Universities"
+    "title_plural" : "Universities",
+    "members" : [
+      {
+        "slug"  : "bc",
+        "group" : "acc",
+        "title" : "Boston College",
+        "abbrev": "BC"
+      },
+      {
+        "slug"  : "clemson",
+        "group" : "acc",
+        "title" : "Clemson University",
+        "abbrev": "Clemson"
+      },
+      {
+        "slug"  : "duke",
+        "group" : "acc",
+        "title" : "Duke University",
+        "abbrev": "Duke"
+      },
+      {
+        "slug"  : "fsu",
+        "group" : "acc",
+        "title" : "Florida State University",
+        "abbrev": "FSU"
+      },
+      {
+        "slug"  : "udayton",
+        "group" : "atlantic10",
+        "title" : "University of Dayton",
+        "abbrev": "Dayton"
+      },
+      {
+        "slug"  : "duq",
+        "group" : "atlantic10",
+        "title" : "Duquesne University",
+        "abbrev": "Duquesne"
+      },
+      {
+        "slug"  : "fordham",
+        "group" : "atlantic10",
+        "title" : "Fordham University",
+        "abbrev": "Fordham"
+      },
+      {
+        "slug"  : "osu",
+        "group" : "big10",
+        "title" : "The Ohio State University",
+        "abbrev": "OSU"
+      },
+      {
+        "slug"  : "psu",
+        "group" : "big10",
+        "title" : "Penn State University",
+        "abbrev": "PSU"
+      },
+      {
+        "slug"  : "uiowa",
+        "group" : "big10",
+        "title" : "University of Iowa",
+        "abbrev": "Iowa"
+      },
+      {
+        "slug"  : "iastate",
+        "group" : "big12",
+        "title" : "Iowa State University",
+        "abbrev": "Iowa State"
+      },
+      {
+        "slug"  : "k-state",
+        "group" : "big12",
+        "title" : "Kansas State University",
+        "abbrev": "KSU"
+      },
+      {
+        "slug"  : "ou",
+        "group" : "big12",
+        "title" : "University of Oklahoma",
+        "abbrev": "Oklahoma"
+      }
+    ]
   }
   ]
 }

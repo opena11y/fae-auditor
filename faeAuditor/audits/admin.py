@@ -19,7 +19,7 @@ class AuditGroupAdmin(admin.ModelAdmin):
 admin.site.register(AuditGroup, AuditGroupAdmin)
 
 class AuditGroupItemAdmin(admin.ModelAdmin):
-    list_display = ('title', 'group', 'slug')
+    list_display = ('title', 'group', 'slug', 'abbreviation')
     list_filter = ('group',)
 
 admin.site.register(AuditGroupItem, AuditGroupItemAdmin)
@@ -31,7 +31,7 @@ class AuditGroup2Admin(admin.ModelAdmin):
 admin.site.register(AuditGroup2, AuditGroup2Admin)
 
 class AuditGroup2ItemAdmin(admin.ModelAdmin):
-    list_display = ('title', 'group2', 'group_item', 'slug')
+    list_display = ('title', 'group2', 'group_item', 'slug', 'abbreviation')
     list_filter = ('group2', 'group_item')
 
 admin.site.register(AuditGroup2Item, AuditGroup2ItemAdmin)

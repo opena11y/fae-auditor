@@ -77,6 +77,9 @@ class AuditsView(LoginRequiredMixin, ResultNavigationMixin, TemplateView):
 
         audits = Audit.objects.filter(user=user)
 
+        self.result_nav.set_audit_result(None, 'last', self.request.path)
+        self.result_nav.create_result_navigation()
+
         context['audits']       = audits
         context['user_profile']  = user_profile
 
@@ -94,6 +97,9 @@ class AuditView(LoginRequiredMixin, ResultNavigationMixin, TemplateView):
         audit_slug     = kwargs['audit_slug']
 
         audit = Audit.objects.get(user=user, slug=audit_slug)
+
+        self.result_nav.set_audit_result(None, 'last', self.request.path)
+        self.result_nav.create_result_navigation()
 
         # slugs used for urls
         context['audit_slug'] = audit_slug
@@ -117,7 +123,6 @@ class RunView(LoginRequiredMixin, ResultNavigationMixin, CreateView):
     def form_valid(self, form):
         user       = self.request.user
         audit_slug = self.kwargs.get('audit_slug', None)
-        print("AUDIT_SLUG: " + audit_slug)
         audit      = Audit.objects.get(slug=audit_slug)
 
         form.instance.user = self.request.user
@@ -135,8 +140,6 @@ class RunView(LoginRequiredMixin, ResultNavigationMixin, CreateView):
         user        = self.request.user
         audit_slug  = self.kwargs.get('audit_slug', None)
 
-        print("Invalid")
-
         return super(RunView, self).form_invalid(form)
 
     def get_context_data(self, **kwargs):
@@ -147,6 +150,9 @@ class RunView(LoginRequiredMixin, ResultNavigationMixin, CreateView):
 
         user_profile = UserProfile.objects.get(user=user)
         audit        = Audit.objects.get(user=user, slug=audit_slug)
+
+        self.result_nav.set_audit_result(None, 'last', self.request.path)
+        self.result_nav.create_result_navigation()
 
         context['audit']        = audit
         context['user_profile'] = user_profile
@@ -162,6 +168,9 @@ class ProcessingView(LoginRequiredMixin, ResultNavigationMixin, TemplateView):
         audit_results = AuditResult.objects.filter(user=self.request.user)
 
         user_profile = UserProfile.objects.get(user=self.request.user)
+
+        self.result_nav.create_result_navigation()
+
         context['audit_results_processing'] = audit_results.exclude(status='C').exclude(status='E').exclude(status='SUM').order_by('-created')
         context['audit_results_complete']   = audit_results.filter(status='C').order_by('-created')[:2]
 

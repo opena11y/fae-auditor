@@ -34,7 +34,7 @@ from .models import UnprocessedURL
 from .models import FilteredURL
 
 class WebsiteResultAdmin(admin.ModelAdmin):
-    list_display = ('url', 'audit_result', 'title', 'status', 'slug', 'archive', 'ruleset', 'depth', 'created', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_score', 'implementation_status')
+    list_display = ('url', 'audit_result', 'title', 'status', 'depth', 'page_count', 'max_pages', 'slug', 'archive', 'ruleset', 'depth', 'created', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_score', 'implementation_status')
     list_filter  = ('status', 'audit_result')
 
 admin.site.register(WebsiteResult, WebsiteResultAdmin)

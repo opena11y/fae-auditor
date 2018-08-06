@@ -69,11 +69,12 @@ class Audit(models.Model):
   title             = models.CharField('Audit Title', max_length=512)
 
   ruleset           = models.ForeignKey(Ruleset)
-  depth             = models.IntegerField(default=2, choices=DEPTH_CHOICES)
-  max_pages         = models.IntegerField("Maximum Pages", choices=MAX_PAGES_CHOICES, default=0, blank=False)
-  wait_time         = models.IntegerField(default=30000, choices=WAIT_TIME_CHOICES)
   browser_emulation = models.CharField("Browser Emulation", max_length=32, choices=BROWSER_CHOICES, default="Chrome")
-  follow            = models.IntegerField("Follow Links in", choices=FOLLOW_CHOICES, default=1, blank=False)
+
+  depth      = models.IntegerField(default=2, choices=DEPTH_CHOICES)
+  max_pages  = models.IntegerField("Maximum Pages", choices=MAX_PAGES_CHOICES, default=200, blank=False)
+  wait_time  = models.IntegerField(default=60000, choices=WAIT_TIME_CHOICES)
+  follow     = models.IntegerField("Follow Links in", choices=FOLLOW_CHOICES, default=1, blank=False)
 
   frequency         = models.CharField("Audit Frequency", max_length=32, choices=FREQUENCY_CHOICES, default="monthly")
   enable_audit      = models.BooleanField("Enable Auditing", default=True)
@@ -83,6 +84,8 @@ class Audit(models.Model):
     verbose_name_plural = "Audits"
     ordering = ['title']
 
+  def __str__(self):
+      return "Audit: " + self.title
 
   def __unicode__(self):
       return "Audit: " + self.title
@@ -187,7 +190,9 @@ class AuditGroupItem(models.Model):
   group  = models.ForeignKey(AuditGroup, related_name="group_items")
 
   slug   = models.SlugField(max_length=50, blank=True)
-  title = models.CharField('Group Item Title',  max_length=512, default="no group item title")
+
+  title        = models.CharField('Group Item Title',  max_length=512, default="no group item title")
+  abbreviation = models.CharField('Group Item Abbreviation',  max_length=32, default="no group item abbreviation")
 
   class Meta:
     verbose_name        = "Audit Group Item"
@@ -234,11 +239,12 @@ class AuditGroup2Item(models.Model):
 
   slug   = models.SlugField(max_length=50, blank=True)
 
-  title = models.CharField('Group2 Item Title',  max_length=512, default="no group group item title")
+  title        = models.CharField('Group2 Item Title',  max_length=512, default="no group group item title")
+  abbreviation = models.CharField('Group2 Item Abbreviation',  max_length=32, default="no group item abbreviation")
 
   class Meta:
     verbose_name        = "Audit Group2 Item"
-    verbose_name_plural = "Audit Groups2 Items"
+    verbose_name_plural = "Audit Groups2 Item"
     ordering = ['group2', 'group_item']
 
   def __unicode__(self):
@@ -259,6 +265,11 @@ class Website(models.Model):
   url    = models.URLField('Website URL',     max_length=1024)
   title  = models.CharField('Website Title',  max_length=512, default="no title")
   slug   = models.SlugField(max_length=128, blank=True)  # used as a slug
+
+  depth      = models.IntegerField(default=2, choices=DEPTH_CHOICES)
+  max_pages  = models.IntegerField("Maximum Pages", choices=MAX_PAGES_CHOICES, default=200, blank=False)
+  wait_time  = models.IntegerField(default=60000, choices=WAIT_TIME_CHOICES)
+  follow     = models.IntegerField("Follow Links in", choices=FOLLOW_CHOICES, default=1, blank=False)
 
   span_sub_domains      = models.CharField("Span Domains (space separated)",    max_length=1024, default="", blank=True)
   exclude_sub_domains   = models.CharField("Exclude Domains (space separated)", max_length=1024, default="", blank=True)

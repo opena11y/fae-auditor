@@ -2,25 +2,24 @@
 <table class="details table table-striped table-hover sortable"  aria-label="Website results for {{rule.summary_text}}">
   <thead>
     <tr>
-      <tr>
-        <th id="id_grp" class="text"  rowspan="2">Website</th>
-        <th id="id_agr" class="text"  rowspan="2">Group</th>
-        <th id="id_pgs" class="num"  rowspan="2">Pages</th>
-        <th id="id_nop" class="text"  colspan="5">Number of Rules</th>
-        <th rowspan="2">&nbsp;</th>
-        <th id="id_imp" class="text"  colspan="4" style="text-align: center">Implementation Level</th>
-      </tr>
-      <tr>
-        <th id="id_vio" class="num"   title="Violations">V</th>
-        <th id="id_war" class="num"   title="Warnings">W</th>
-        <th id="id_man" class="num"   title="Manual Checks">MC</th>
-        <th id="id_pas" class="num"   title="Passed">P</th>
-        <th id="id_not" class="num"   title="Not Applicable">N/A</th>
-        <th id="id_scpf" class="num sep"   title="Implementation Score for rule results with Pass/Fail results">Pass/Fail Score</th>
-        <th id="id_stpf" class="text"      title="Implementation Status for rule results with Pass/Fail results">Pass/Fail Status</th>
-        <th id="id_scal" class="num sep"   title="Implementation Score for all rule results">All Results Score</th>
-        <th id="id_stal" class="text"      title="Implementation Status for all rule results">All Results Status</th>
-      </tr>
+      <th id="id_grp" class="text"  rowspan="2">Website</th>
+      <th id="id_agr" class="text"  rowspan="2">Group</th>
+      <th id="id_pgs" class="num"  rowspan="2">Pages</th>
+      <th id="id_nop" class="text"  colspan="5">Number of Rules</th>
+      <th rowspan="2">&nbsp;</th>
+      <th id="id_imp" class="text"  colspan="4" style="text-align: center">Implementation Level</th>
+    </tr>
+    <tr>
+      <th id="id_vio" class="num"   title="Violations">V</th>
+      <th id="id_war" class="num"   title="Warnings">W</th>
+      <th id="id_man" class="num"   title="Manual Checks">MC</th>
+      <th id="id_pas" class="num"   title="Passed">P</th>
+      <th id="id_not" class="num"   title="Not Applicable">N/A</th>
+      <th id="id_scpf" class="num sep"   title="Implementation Score for rule results with Pass/Fail results">Pass/Fail Score</th>
+      <th id="id_stpf" class="text"      title="Implementation Status for rule results with Pass/Fail results">Pass/Fail Status</th>
+      <th id="id_scal" class="num sep"   title="Implementation Score for all rule results">All Results Score</th>
+      <th id="id_stal" class="text"      title="Implementation Status for all rule results">All Results Status</th>
+    </tr>
   </thead>
   <tbody>
     {% for wsr in website_results %}

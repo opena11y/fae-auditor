@@ -331,7 +331,7 @@ class WebsiteResult(RuleGroupResult):
       try:
         self.title = str(self.page_all_results.first().title).strip()
       except:
-        self.ttile = "no title"
+        self.title = "no title"
       self.save()
 
     self.audit_result.check_if_audit_result_complete()

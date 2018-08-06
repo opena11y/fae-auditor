@@ -235,17 +235,41 @@ class ResultNavigtionObject:
 
     def set_audit_result(self, audit_result, result_view, path):
 
-        self.audit_slug            = audit_result.audit.slug
-        self.session['audit_slug'] = audit_result.audit.slug
+        if audit_result:
+            self.audit_slug            = audit_result.audit.slug
+            self.session['audit_slug'] = audit_result.audit.slug
+        else:
+            try:
+                self.audit_slug = self.session['audit_slug']
+            except:
+                self.audit_slug = ''
 
-        self.audit_result_slug            = audit_result.slug
-        self.session['audit_result_slug'] = audit_result.slug
+        if audit_result:
+            self.audit_result_slug            = audit_result.slug
+            self.session['audit_result_slug'] = audit_result.slug
+        else:
+            try:
+                self.audit_result_slug = self.session['audit_result_slug']
+            except:
+                self.audit_result_slug = ''
 
-        self.audit_group_title = audit_result.group_title_plural()
-        self.session['audit_group_title'] = self.audit_group_title
+        if audit_result:
+            self.audit_group_title = audit_result.group_title_plural()
+            self.session['audit_group_title'] = self.audit_group_title
+        else:
+            try:
+                self.audit_group_title = self.session['audit_group_title']
+            except:
+                self.audit_group_title = ''
 
-        self.audit_group2_title = audit_result.group2_title_plural()
-        self.session['audit_group2_title'] = self.audit_group2_title
+        if audit_result:
+            self.audit_group2_title = audit_result.group2_title_plural()
+            self.session['audit_group2_title'] = self.audit_group2_title
+        else:
+            try:
+                self.audit_group2_title = self.session['audit_group2_title']
+            except:
+                self.audit_group2_title = ''
 
         if result_view:
             self.result_view            = result_view
@@ -367,6 +391,22 @@ class ResultNavigtionObject:
             self.view_options.add('Rule Scope',    reverse('rule_group_result', args=[self.audit_result_slug, 'rs', self.last_rs_slug]), 'rs' == self.rule_grouping)
         else:
             self.view_options.add('Rule Scope',    reverse('all_rules_result', args=[self.audit_result_slug, 'rs']), 'rs' == self.rule_grouping)
+
+    def view_option_group_results(self):
+        if self.rule_group_slug and self.last_rc_slug:
+            self.view_options.add('Rule Category', reverse('group_rule_group_results', args=[self.audit_result_slug, 'rc', self.last_rc_slug]), 'rc' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Category', reverse('group_results', args=[self.audit_result_slug, 'rc']), 'rc' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_gl_slug:
+            self.view_options.add('Guidelines',    reverse('group_rule_group_results', args=[self.audit_result_slug, 'gl', self.last_gl_slug]), 'gl' == self.rule_grouping)
+        else:
+            self.view_options.add('Guidelines',    reverse('group_results', args=[self.audit_result_slug, 'gl']), 'gl' == self.rule_grouping)
+
+        if self.rule_group_slug and self.last_rs_slug:
+            self.view_options.add('Rule Scope',    reverse('group_rule_group_results', args=[self.audit_result_slug, 'rs', self.last_rs_slug]), 'rs' == self.rule_grouping)
+        else:
+            self.view_options.add('Rule Scope',    reverse('group_results', args=[self.audit_result_slug, 'rs']), 'rs' == self.rule_grouping)
 
     def view_option_group_results_audit_group(self):
         if self.rule_group_slug and self.last_rc_slug:
@@ -602,6 +642,9 @@ class ResultNavigtionObject:
 
         self.view_options.remove_all()
 
+        if self.result_view == 'last':
+            return
+
         if self.result_view == 'rules':
 
             self.view_option_all_rules_result()
@@ -832,6 +875,9 @@ class ResultNavigtionObject:
     def create_filters(self):
 
         self.filters.remove_all()
+
+        if self.result_view == 'last':
+            return
 
         if self.rule_grouping == 'rs':
             self.filters.set_label('Rule Scope')

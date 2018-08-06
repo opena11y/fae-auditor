@@ -109,15 +109,21 @@ Audit: {{audit.title}}
                 <th class="text">Sub Group</th>
                 <th class="text">Title</th>
                 <th class="text">Slug</th>
+                <th class="num">Depth</th>
+                <th class="num">Max Pages</th>
+                <th class="num">Wait Time</th>
             </tr>
         </thead>
         <tbody>
             {% for ws in audit.websites.all %}
             <tr>
-                <td class="text">{% if ws.group_item %}{{ws.group_item.title}}{% else %}-{% endif %}</td>
-                <td class="text">{% if ws.group2_item %}{{ws.group2_item.title}}{% else %}-{% endif %}</td>
+                <td class="text">{% if ws.group_item %}{{ws.group_item.abbreviation}}{% else %}-{% endif %}</td>
+                <td class="text">{% if ws.group2_item %}{{ws.group2_item.abbreviation}}{% else %}-{% endif %}</td>
                 <td class="text"><a href="{{ws.url}}">{{ws.title}}</a></td>
                 <td class="text date">{{ ws.slug }}</td>
+                <td class="num">{{ ws.depth }}</td>
+                <td class="num">{{ ws.max_pages }}</td>
+                <td class="num">{{ ws.wait_time }}</td>
             </tr>
             {% empty %}
             <tr>

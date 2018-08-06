@@ -24,10 +24,14 @@
 {% endblock %}
 
 {% block title %}
-{{audit_group2_result.get_title}} Websites: All Rules
+{{audit_group2_result.get_title}} Websites: {{rule_group.title}}
 {% endblock %}
 
 {% block content %}
+
+  {% include 'common/rules_summary.html' with summary=audit_group2_result %}
+
+  {% include 'common/view_options.html' %}
 
   {% include 'common/table_website_results.html' %}
 
