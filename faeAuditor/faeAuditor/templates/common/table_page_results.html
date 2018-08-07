@@ -21,6 +21,7 @@
     </tr>
   </thead>
   <tbody>
+    {% if page_results|length %}
     {% for pr in page_results %}
     <tr>
       <td headers="id_num" class="num">{{pr.page_num}}</td>
@@ -75,5 +76,11 @@
 
     </tr>
     {% endif %}
+    {% else %}
+    <tr>
+      <td class="none" colspan="12">No results found</td>
+    </tr>
+    {% endif %}
+
   </tbody>
 </table>

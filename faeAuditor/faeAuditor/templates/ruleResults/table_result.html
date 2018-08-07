@@ -19,6 +19,7 @@
     </tr>
   </thead>
   <tbody>
+    {% if rule_group_results|length %}
     {% for rgr in rule_group_results %}
     <tr>
       <td headers="id_grp">
@@ -59,14 +60,17 @@
       <td headers="id_scpf id_imp">{{audit_result.implementation_pass_fail_score}}</td>
       <td headers="id_stpf id_imp">
       {% include 'common/implementation_status.html' with impl_status=audit_result.implementation_pass_fail_status %}
-    </td>
+      </td>
 
       <td headers="id_scal id_imp">{{group_results.summary.implementation_score}}</td>
       <td headers="id_stal id_imp">
       {% include 'common/implementation_status.html' with impl_status=group_results.summary.implementation_status %}
       </td>
-
     </tr>
-
+    {% else %}
+    <tr>
+      <td class="text" colspan="11">no results found</td>
+    </tr>
+    {% endif %}
   </tbody>
 </table>

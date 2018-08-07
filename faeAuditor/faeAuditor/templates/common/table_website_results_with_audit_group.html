@@ -22,6 +22,7 @@
     </tr>
   </thead>
   <tbody>
+    {% if website_results|length %}
     {% for wsr in website_results %}
     <tr>
       <td headers="id_grp" class="text">
@@ -81,5 +82,12 @@
       </td>
     </tr>
     {% endif %}
+
+    {% else %}
+    <tr>
+      <td class="none" colspan="12">No results found</td>
+    </tr>
+    {% endif %}
+
   </tbody>
 </table>

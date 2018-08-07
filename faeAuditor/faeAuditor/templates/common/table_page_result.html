@@ -20,6 +20,7 @@
     </tr>
   </thead>
   <tbody>
+    {% page_rule_results|length %}
     {% for prr in page_rule_results %}
     <tr>
       <td headers="id_grp" headers="id_title" class="text">
@@ -47,6 +48,11 @@
 
     </tr>
     {% endfor %}
+    {% else %}
+    <tr>
+      <td class="none" colspan="11">No results found</td>
+    </tr>
+    {% endif %}
 
   </tbody>
 </table>
