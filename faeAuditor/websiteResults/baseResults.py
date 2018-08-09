@@ -117,6 +117,8 @@ class RuleResult(models.Model):
     set_status(  95, 'AC')
     set_status( 100, 'C')
 
+    self.save()
+
 # ---------------------------------------------------------------
 #
 # RuleElementResult

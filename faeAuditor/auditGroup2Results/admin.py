@@ -31,7 +31,7 @@ from .models import AuditGroup2RuleResult
 
 
 class AuditGroup2ResultAdmin(admin.ModelAdmin):
-    list_display = ('group2_item', 'group_result', 'website_count', 'page_count', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
+    list_display = ('group2_item', 'group_result', 'website_count', 'page_count', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_pass_fail_status', 'implementation_score', 'implementation_status')
     list_filter  = ('group2_item', 'group_result')
 
 admin.site.register(AuditGroup2Result, AuditGroup2ResultAdmin)

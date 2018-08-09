@@ -110,7 +110,7 @@ class GroupResultsView(ResultNavigationMixin, TemplateView):
         self.result_nav.create_result_navigation()
 
         for agr in agrs:
-            agr.title = agr.get_title
+            agr.title = agr.get_title()
             agr.href  = reverse('group_results_audit_group', args=[result_slug, rule_grouping, agr.slug])
 
         # slugs used for urls

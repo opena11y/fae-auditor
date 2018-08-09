@@ -19,6 +19,6 @@ Website Results: {{rule_group.title}} Rules
 
   {% include 'common/view_options.html' %}
 
-  {% include 'common/table_website_results.html' %}
+  {% include 'common/table_website_results.html' with summary=audit_result %}
 
 {% endblock %}

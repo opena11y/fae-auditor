@@ -20,5 +20,5 @@
 
   {% include 'common/view_options.html' %}
 
-  {% include 'common/table_audit_groups_results.html' with group_column_header=audit_result.group2_title_plural audit_group_results=audit_group2_results   %}
+  {% include 'common/table_audit_groups_results.html' with audit_group_results=audit_group2_results summary=audit_result group_column_header=audit_result.group2_title_plural   %}
 {% endblock %}

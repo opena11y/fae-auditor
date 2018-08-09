@@ -48,14 +48,14 @@
       {% include 'common/implementation_score.html' with impl_score=wsr.implementation_pass_fail_score %}
       </td>
       <td headers="id_stpf id_imp" class="text">
-     {% include 'common/implementation_status.html' with impl_status=wsrgr.implementation_pass_fail_status %}
+     {% include 'common/implementation_status.html' with impl_status=wsr.implementation_pass_fail_status %}
       </td>
 
       <td headers="id_scal id_imp" class="num">
       {% include 'common/implementation_score.html' with impl_score=wsr.implementation_score %}
       </td>
       <td headers="id_stal id_imp" class="text">
-      {% include 'common/implementation_status.html' with impl_status=wsrgr.implementation_status %}
+      {% include 'common/implementation_status.html' with impl_status=wsr.implementation_status %}
       </td>
 
     </tr>
@@ -66,8 +66,8 @@
       <td class="text" headers="id_grp" colspan="3">
         Totals
       </td>
-      <td headers="id_pgs">
-          {{summary.page_count}}
+      <td class="num pad_right" headers="id_pgs">
+          {{summary.get_page_count}}
       </td>
       <td class="num" headers="id_vio id_nop">{{summary.rules_violation}}</td>
       <td class="num" headers="id_war id_nop">{{summary.rules_warning}}</td>

@@ -29,8 +29,9 @@
           {{agrr.title}}
         </a>
       </td>
-      <td class="num" headers="id_wsc">{{agrr.website_count}}</td>
-      <td class="num  pad_right" headers="id_pgc">{{agrr.page_count}}</td>
+      <td class="num" headers="id_wsc">{{agrr.get_website_count}}</td>
+      <td class="num  pad_right" headers="id_pgc">{{agrr.get_page_count}}</td>
+
       <td class="num" headers="id_vio id_nop">{{agrr.rules_violation}}</td>
       <td class="num" headers="id_war id_nop">{{agrr.rules_warning}}</td>
       <td class="num" headers="id_man id_nop">{{agrr.rules_manual_check}}</td>
@@ -60,8 +61,9 @@
       <td class="text" headers="id_grp">
         Totals
       </td>
-      <td class="num" headers="id_wsc">{{agrr.website_count}}</td>
-      <td class="num" headers="id_wsc">{{agrr.page_count}}</td>
+      <td class="num" headers="id_wsc">{{summary.get_website_count}}</td>
+      <td class="num pad_right" headers="id_pgc">{{summary.get_page_count}}</td>
+
       <td class="num" headers="id_vio id_nop">{{summary.rules_violation}}</td>
       <td class="num" headers="id_war id_nop">{{summary.rules_warning}}</td>
       <td class="num" headers="id_man id_nop">{{summary.rules_manual_check}}</td>

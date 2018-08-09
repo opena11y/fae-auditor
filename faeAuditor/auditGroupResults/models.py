@@ -84,9 +84,25 @@ class AuditGroupResult(AllRuleGroupResult):
     super(AuditGroupResult, self).reset()
 
   def get_page_count(self):
+    if self.page_count == 0:
+      self.website_count = 0
+      for wsr in self.ws_results.all():
+        self.website_count += 1
+        self.page_count += wsr.get_page_count()
+
+      self.save()
+
     return self.page_count
 
   def get_website_count(self):
+    if self.website_count == 0:
+      self.page_count = 0
+      for wsr in self.ws_results.all():
+        self.website_count += 1
+        self.page_count += wsr.get_page_count()
+
+      self.save()
+
     return self.website_count
 
   def compute_counts(self):
