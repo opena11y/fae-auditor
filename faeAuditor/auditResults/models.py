@@ -99,12 +99,12 @@ class AuditResult(AllRuleGroupResult):
   browser_emulation = models.CharField("Browser Emulation", max_length=32, choices=BROWSER_CHOICES, default="Chrome")
   follow            = models.IntegerField("Follow Links in", choices=FOLLOW_CHOICES, default=1, blank=False)
 
-  total_pages    = models.IntegerField(default=0)
-  total_websites = models.IntegerField(default=0)
-
   status       = models.CharField('Status',  max_length=10, choices=AUDIT_STATUS, default='-')
 
   audit_directory = models.CharField('Data Directory', max_length=1024, default="")
+
+  page_count    = models.IntegerField(default=0)
+  website_count = models.IntegerField(default=0)
 
   class Meta:
     verbose_name        = "Audit Result"
@@ -116,6 +116,28 @@ class AuditResult(AllRuleGroupResult):
 
   def __str__(self):
     return 'Audit: ' + self.audit.title + ' (' + str(self.created.strftime("%Y-%m-%d")) + ')'
+
+  def reset(self):
+    self.total_pages = 0
+    self.total_websites = 0
+    super(AuditResult, self).reset()
+
+  def get_page_count(self):
+    return self.page_count
+
+  def get_website_count(self):
+    return self.website_count
+
+  def compute_counts(self):
+
+      self.page_count = 0
+      self.website_count = 0
+
+      for wsr in self.ws_results.all():
+        self.website_count = self.website_count + 1
+        self.page_count    = self.page_count + wsr.page_count
+
+      self.save()
 
   def group_title(self):
     if self.audit.groups.all().count() > 0:
@@ -145,17 +167,10 @@ class AuditResult(AllRuleGroupResult):
       self.audit_directory  = APP_DIR + "data/" + self.user.username  + "/" + self.slug
       self.save()
 
-
   def add_website_result(self, ws_result):
-#    print('[AuditResult][add_website_report] ws_result: ' + str(ws_result))
-    try:
-      self.total_websites = self.total_websites + 1
-      self.total_pages    = self.total_pages + ws_result.page_count
-
-      self.ws_results.add(ws_result)
-      self.save()
-    except:
-      pass
+    self.ws_results.add(ws_result)
+    self.save()
+    self.compute_counts()
 
   def get_websiteresults_initialized(self):
     count  = self.ws_results.filter(status='-').count()
@@ -195,9 +210,9 @@ class AuditResult(AllRuleGroupResult):
       if self.status == 'S':
         self.compute_audit_results()
 
-  def compute_audit_results(self):
+  def compute_audit_results(self, force=False):
 
-    if self.status == 'S':
+    if self.status == 'S' or force:
 
       print(self.slug + ' (' + str(len(self.group_results.all())) + ')')
 

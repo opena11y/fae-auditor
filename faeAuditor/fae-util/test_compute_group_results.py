@@ -50,50 +50,59 @@ from faeAuditor.settings import APP_DIR
 
 log = sys.stdout
 
+def reset_group_items(group):
+
+  for item in group:
+    item.reset()
+
 def main():
 
     audit_results = AuditResult.objects.all()
 
     for ar in audit_results:
-        ar.delete()
+        print('Recomputing audit result: ' + str(ar))
 
-    for ar in audit_results:
         ar.status = 'A'
         ar.save()
 
-        print('Procssing audit result: ' + str(ar))
+        ar.reset();
+        reset_group_items(ar.audit_rs_results.all())
+        reset_group_items(ar.audit_rc_results.all())
+        reset_group_items(ar.audit_gl_results.all())
+        reset_group_items(ar.audit_rule_results.all())
 
-        try:
-          print('  deleting group1 results...')
-          if ar.group_results:
+
+        if ar.group_results:
+          print('  reseting group results... (' + str(len(ar.group_results.all())) + ')')
+          if len(ar.group_results.all()):
             for agr in ar.group_results.all():
+              print('     reseting a group result: ' + str(agr))
+              agr.reset()
+              reset_group_items(agr.group_rs_results.all())
+              reset_group_items(agr.group_rc_results.all())
+              reset_group_items(agr.group_gl_results.all())
+              reset_group_items(agr.group_rule_results.all())
 
-              agr.group_rs_results.all().delete()
-              agr.group_rc_results.all().delete()
-              agr.group_gl_results.all().delete()
-              agr.group_rule_results.all().delete()
-        except:
+              if agr.group2_results:
+                print('      reseting group 2 results... (' + str(len(agr.group2_results.all())) + ')')
+                if len(agr.group2_results.all()):
+                  for ag2r in agr.group2_results.all():
+                    print('         reseting a group 2 result: ' + str(ag2r))
+                    ag2r.reset()
+                    reset_group_items(ag2r.group2_rs_results.all())
+                    reset_group_items(ag2r.group2_rc_results.all())
+                    reset_group_items(ag2r.group2_gl_results.all())
+                    reset_group_items(ag2r.group2_rule_results.all())
+                else:
+                    print('      no group 2 results')
+
+          else:
             print('  no group results')
 
-        try:
-          if ar.group2_results:
-            print('  deleting group2 results...')
-            for ag2r in ar.group2_results.all():
 
-              ag2r.group2_rs_results.all().delete()
-              ag2r.group2_rc_results.all().delete()
-              ag2r.group2_gl_results.all().delete()
-              ag2r.group2_rule_results.all().delete()
-        except:
-            print('  no group2 results')
+        print('  computing audit results...')
 
-            print('  deleting audit results...')
-        ar.audit_rs_results.all().delete()
-        ar.audit_rc_results.all().delete()
-        ar.audit_gl_results.all().delete()
-        ar.audit_rule_results.all().delete()
-
-        ar.check_if_audit_result_complete()
+        ar.compute_audit_results(True)
 
 
 if __name__ == "__main__":

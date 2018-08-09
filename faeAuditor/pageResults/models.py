@@ -74,7 +74,10 @@ class PageResult(RuleGroupResult):
     if len(self.title):
       return self.title
     else:
-      return "No Title: " + self.url
+      url = self.url
+      if len(url) > 65:
+        url = url[:42] + '....' + url[-22:]
+      return "NO TITLE: " + url
 
   def get_url(self):
     return self.url

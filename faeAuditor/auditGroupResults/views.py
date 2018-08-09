@@ -158,8 +158,8 @@ class GroupResultsAuditGroupView(ResultNavigationMixin, TemplateView):
 
         for ag2r in ag2rs:
             ag2r.title         = ag2r.get_title
-            ag2r.website_count = ag2r.website_count()
-            ag2r.page_count    = ag2r.page_count()
+            ag2r.website_count = ag2r.get_website_count()
+            ag2r.page_count    = ag2r.get_page_count()
             ag2r.href          = reverse('group_results_audit_group_audit_group2', args=[result_slug, rule_grouping, audit_group_slug, ag2r.slug])
 
         for wsr in wsrs:
@@ -670,8 +670,8 @@ class GroupRuleGroupResultsAuditGroupView(ResultNavigationMixin, TemplateView):
 
         for ag2rgr in ag2rgrs:
             ag2rgr.title         = ag2rgr.get_title()
-            ag2rgr.website_count = ag2rgr.website_count()
-            ag2rgr.page_count    = ag2rgr.page_count()
+            ag2rgr.website_count = ag2rgr.get_website_count()
+            ag2rgr.page_count    = ag2rgr.get_page_count()
             ag2rgr.href  = reverse('group_rule_group_results_audit_group_audit_group2', args=[result_slug, rule_grouping, rule_group_slug, audit_group_slug, ag2rgr.group2_result.slug])
 
         for wsrgr in wsrgrs:

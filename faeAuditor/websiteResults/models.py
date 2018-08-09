@@ -230,8 +230,12 @@ class WebsiteResult(RuleGroupResult):
     verbose_name_plural = "Website Results"
     ordering = ['-archive', '-created']
 
+  def __unicode__(self):
+    return "Website Result: " + self.get_title()
+
+
   def __str__(self):
-    return "Website Result: " + self.title
+    return "Website Result: " + self.get_title()
 
   def group_title(self):
     if self.group_result:
@@ -387,7 +391,10 @@ class WebsiteResult(RuleGroupResult):
     if len(self.title):
       return self.title
     else:
-      return "No title for: " + self.url
+      url = self.url
+      if len(url) > 65:
+        url = url[0:42] + '....' + url[-20:]
+      return "NO TITLE: " + url
 
   def update_last_viewed(self):
     self.last_viewed = datetime.now()
@@ -682,6 +689,9 @@ class WebsiteRuleCategoryResult(RuleGroupResult):
   def __unicode__(self):
     return self.rule_category.title_plural
 
+  def __str__(self):
+    return 'Website Rule Category Object: ' + str(self.rule_category.title_plural)
+
   def get_title(self):
     return self.ws_report.title
 
@@ -721,6 +731,9 @@ class WebsiteGuidelineResult(RuleGroupResult):
 
   def __unicode__(self):
     return str(self.guideline)
+
+  def __str__(self):
+    return 'Website Guideline Object: ' + str(self.guideline)
 
   def get_title(self):
     return self.ws_report.title
@@ -764,6 +777,9 @@ class WebsiteRuleScopeResult(RuleGroupResult):
   def __unicode__(self):
     return self.rule_scope.title
 
+  def __str__(self):
+    return 'Website Rule Scope: ' + self.rule_scope.title
+
   def get_title(self):
     return self.ws_report.title
 
@@ -803,6 +819,9 @@ class WebsiteRuleResult(RuleElementPageResult):
     ordering = ['-pages_violation', '-pages_warning', '-pages_manual_check', '-pages_passed', '-pages_with_hidden_content', '-rule__scope']
 
   def __unicode__(self):
+    return "Website Rule Result: " + self.rule.summary_text
+
+  def __str__(self):
     return "Website Rule Result: " + self.rule.summary_text
 
   def get_id(self):

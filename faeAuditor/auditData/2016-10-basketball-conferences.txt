@@ -1,8 +1,8 @@
-acc boston_college home http://www.bc.edu
-acc boston_college admissions http://www.bc.edu/content/bc/admission.html
-acc boston_college business http://www.bc.edu/content/bc/schools/csom.html
-acc boston_college education http://www.bc.edu/schools/lsoe/
-acc boston_college las http://www.bc.edu/schools/cas/
+acc bc home http://www.bc.edu
+acc bc admissions http://www.bc.edu/content/bc/admission.html
+acc bc business http://www.bc.edu/content/bc/schools/csom.html
+acc bc education http://www.bc.edu/schools/lsoe/
+acc bc las http://www.bc.edu/schools/cas/
 
 acc clemson home http://www.clemson.edu
 acc clemson admissions http://www.clemson.edu/admissions/
@@ -16,981 +16,981 @@ acc duke admissions http://admit.duke.edu
 acc duke business http://www.fuqua.duke.edu
 acc duke engineering http://www.pratt.duke.edu
 acc duke las http://trinity.duke.edu
- 
-acc florida_state home http://www.fsu.edu
-acc florida_state admissions http://admissions.fsu.edu
-acc florida_state business http://www.cob.fsu.edu
-acc florida_state education http://www.coe.fsu.edu
-acc florida_state engineering http://www.eng.fsu.edu
-acc florida_state las http://artsandsciences.fsu.edu
- 
+
+acc fsu home http://www.fsu.edu
+acc fsu admissions http://admissions.fsu.edu
+acc fsu business http://www.cob.fsu.edu
+acc fsu education http://www.coe.fsu.edu
+acc fsu engineering http://www.eng.fsu.edu
+acc fsu las http://artsandsciences.fsu.edu
+
 acc georgia_tech home http://www.gatech.edu
 acc georgia_tech admissions http://www.admission.gatech.edu
 acc georgia_tech business http://scheller.gatech.edu
 acc georgia_tech engineering http://www.coe.gatech.edu
 acc georgia_tech las http://www.iac.gatech.edu
- 
+
 acc miami_of_florida home http://www.miami.edu
 acc miami_of_florida admissions http://www.miami.edu/admission/index.php/undergraduate_admission/
 acc miami_of_florida business http://www.bus.miami.edu
 acc miami_of_florida education http://www.education.miami.edu
 acc miami_of_florida engineering http://www.miami.edu/coe/index.php/coe/
 acc miami_of_florida las http://www.as.miami.edu
- 
+
 acc north_carolina home http://www.unc.edu
 acc north_carolina admissions http://admissions.unc.edu
 acc north_carolina business http://www.kenan-flagler.unc.edu
 acc north_carolina education http://soe.unc.edu
 acc north_carolina las http://college.unc.edu
- 
+
 acc north_carolina_state home http://www.ncsu.edu
 acc north_carolina_state admissions http://admissions.ncsu.edu
 acc north_carolina_state business http://poole.ncsu.edu
 acc north_carolina_state education http://ced.ncsu.edu
 acc north_carolina_state engineering http://www.engr.ncsu.edu
 acc north_carolina_state las http://www.chass.ncsu.edu
- 
+
 acc virginia home http://www.virginia.edu
 acc virginia admissions http://www.admission.virginia.edu
 acc virginia business http://www.commerce.virginia.edu
 acc virginia education http://curry.virginia.edu
 acc virginia engineering http://www.seas.virginia.edu
 acc virginia las http://artsandsciences.virginia.edu
- 
+
 acc virginia_tech home http://www.vt.edu
 acc virginia_tech admissions http://www.admiss.vt.edu
 acc virginia_tech business http://www.pamplin.vt.edu
 acc virginia_tech engineering http://www.eng.vt.edu
 acc virginia_tech las http://www.clahs.vt.edu
- 
+
 acc wakeforest home http://www.wfu.edu
 acc wakeforest admissions http://admissions.wfu.edu
 acc wakeforest business http://business.wfu.edu
 acc wakeforest las http://business.wfu.edu
- 
+
 acc louisville home http://louisville.edu
 acc louisville admissions http://louisville.edu/admissions/
 acc louisville business http://business.louisville.edu
 acc louisville education http://louisville.edu/education/
 acc louisville engineering http://louisville.edu/speed/
 acc louisville las http://louisville.edu/artsandsciences/
- 
+
 acc pittsburgh home http://www.pitt.edu
 acc pittsburgh admissions http://www.oafa.pitt.edu
 acc pittsburgh business http://www.business.pitt.edu
 acc pittsburgh education http://www.education.pitt.edu
 acc pittsburgh engineering http://www.engineering.pitt.edu
 acc pittsburgh las http://www.as.pitt.edu
- 
+
 acc syracuse home http://www.syracuse.edu
 acc syracuse admissions http://www.syracuse.edu/admissions/
 acc syracuse business http://whitman.syr.edu
 acc syracuse education http://soeweb.syr.edu
 acc syracuse engineering http://eng-cs.syr.edu
 acc syracuse las http://thecollege.syr.edu
- 
+
 acc notre_dame home http://nd.edu
 acc notre_dame admissions http://admissions.nd.edu
 acc notre_dame business http://mendoza.nd.edu/
 acc notre_dame engineering http://engineering.nd.edu
 acc notre_dame las http://al.nd.edu
- 
+
 atlantic10 dayton home http://www.udayton.edu
 atlantic10 dayton admissions http://www.udayton.edu/apply/
 atlantic10 dayton business http://www.udayton.edu/learn/undergraduate/business/
 atlantic10 dayton education http://www.udayton.edu/learn/undergraduate/education/
 atlantic10 dayton engineering http://www.udayton.edu/learn/undergraduate/engineering/
 atlantic10 dayton las http://www.udayton.edu/learn/undergraduate/artssciences/
- 
+
 atlantic10 duquesne home http://www.duq.edu
 atlantic10 duquesne admissions http://www.duq.edu/admissions-and-aid
 atlantic10 duquesne business http://www.duq.edu/academics/schools/business/
 atlantic10 duquesne education http://www.duq.edu/academics/schools/education
 atlantic10 duquesne las http://www.duq.edu/academics/schools/liberal-arts
- 
+
 atlantic10 fordham home http://www.fordham.edu
 atlantic10 fordham admissions http://www.fordham.edu/admissions/
 atlantic10 fordham business http://www.fordham.edu/info/20447/gabelli_school_of_business
 atlantic10 fordham education http://www.fordham.edu/academics/colleges__graduate_s/graduate__profession/education/
 atlantic10 fordham las http://www.fordham.edu/academics/colleges__graduate_s/graduate__profession/arts__sciences/
- 
+
 atlantic10 george_washington home http://www.gwu.edu
 atlantic10 george_washington admissions http://undergraduate.admissions.gwu.edu/
 atlantic10 george_washington business http://business.gwu.edu
 atlantic10 george_washington engineering http://www.seas.gwu.edu
 atlantic10 george_washington las http://columbian.gwu.edu
- 
+
 atlantic10 la_salle home http://www.lasalle.edu
 atlantic10 la_salle admissions http://www.lasalle.edu/admission/
 atlantic10 la_salle business http://www.lasalle.edu/schoolofbusiness/
 atlantic10 la_salle las http://www.lasalle.edu/schools/sas/
- 
+
 atlantic10 massachusetts home http://www.umass.edu
 atlantic10 massachusetts admissions http://www.umass.edu/admissions
 atlantic10 massachusetts business http://www.isenberg.umass.edu
 atlantic10 massachusetts education http://www.umass.edu/education
 atlantic10 massachusetts engineering http://www.engineering.umass.edu
 atlantic10 massachusetts las http://www.umass.edu/hfa
- 
+
 atlantic10 rhode_island home http://ww2.uri.edu
 atlantic10 rhode_island admissions http://web.uri.edu/admission
 atlantic10 rhode_island business http://web.uri.edu/business
 atlantic10 rhode_island education http://web.uri.edu/ceps
 atlantic10 rhode_island engineering http://egr.uri.edu
 atlantic10 rhode_island las http://web.uri.edu/artsci
- 
+
 atlantic10 richmond home http://www.richmond.edu
 atlantic10 richmond admissions http://www.richmond.edu/admission
 atlantic10 richmond business http://robins.richmond.edu
 atlantic10 richmond las http://as.richmond.edu
- 
+
 atlantic10 saint_josephs home http://www.sju.edu
 atlantic10 saint_josephs admissions http://www.sju.edu/information/contact-admissions
 atlantic10 saint_josephs business http://www.sju.edu/int/academics/hsb/grad/
 atlantic10 saint_josephs education http://www.sju.edu/majors-programs/adult-learner/bachelor-degrees/education
 atlantic10 saint_josephs las http://www.sju.edu/majors-programs
- 
+
 atlantic10 st_bonaventure home http://www.sbu.edu
 atlantic10 st_bonaventure admissions http://www.sbu.edu/admissions.aspx
 atlantic10 st_bonaventure business http://www.sbu.edu/business.aspx?id=5954
 atlantic10 st_bonaventure education http://www.sbu.edu/education.aspx?id=2304
 atlantic10 st_bonaventure las http://www.sbu.edu/artsandsciences.aspx?id=1728
- 
+
 atlantic10 virginia_commonwealth home http://www.vcu.edu
 atlantic10 virginia_commonwealth admissions http://www.ugrad.vcu.edu
 atlantic10 virginia_commonwealth business http://www.ugrad.vcu.edu/academics/programs.html#business
 atlantic10 virginia_commonwealth education http://www.ugrad.vcu.edu/academics/programs.html#soe
 atlantic10 virginia_commonwealth engineering http://www.ugrad.vcu.edu/academics/programs.html#egr
 atlantic10 virginia_commonwealth las http://www.ugrad.vcu.edu/academics/programs.html#has
- 
+
 atlantic10 st_louis home http://www.slu.edu
 atlantic10 st_louis admissions http://www.slu.edu/admission/
 atlantic10 st_louis business http://business.slu.edu/
 atlantic10 st_louis education http://www.slu.edu/school-of-education-home
 atlantic10 st_louis engineering http://parks.slu.edu/
 atlantic10 st_louis las http://www.slu.edu/college-of-arts-and-sciences-home
- 
+
 atlantic10 george_mason home http://www2.gmu.edu/
 atlantic10 george_mason admissions http://www2.gmu.edu/admissions-aid
 atlantic10 george_mason business http://business.gmu.edu/
 atlantic10 george_mason education http://cehd.gmu.edu/
 atlantic10 george_mason engineering http://volgenau.gmu.edu/
 atlantic10 george_mason las http://chss.gmu.edu/
- 
+
 atlantic10 davidson_college home http://www.davidson.edu/
 atlantic10 davidson_college admissions http://www.davidson.edu/admission-and-financial-aid
 atlantic10 davidson_college econ http://www.davidson.edu/academics/economics
 atlantic10 davidson_college education http://www.davidson.edu/academics/educational-studies
 atlantic10 davidson_college math_cs http://www.davidson.edu/academics/mathematics-and-computer-science
 atlantic10 davidson_college cis http://www.davidson.edu/academics/cis
- 
+
 big10 illinois home http://illinois.edu
 big10 illinois admissions http://admissions.illinois.edu
 big10 illinois business http://business.illinois.edu
 big10 illinois education http://education.illinois.edu
 big10 illinois engineering http://engineering.illinois.edu
 big10 illinois las http://www.las.illinois.edu
- 
+
 big10 indiana home http://www.indiana.edu
 big10 indiana admissions http://admit.indiana.edu
 big10 indiana business http://kelley.iu.edu
 big10 indiana education http://education.indiana.edu
 big10 indiana engineering http://www.soic.indiana.edu
 big10 indiana las http://college.indiana.edu
- 
+
 big10 minnesota home http://www1.umn.edu/twincities/index.html
 big10 minnesota admissions http://admissions.tc.umn.edu
 big10 minnesota business http://www.csom.umn.edu
 big10 minnesota education http://www.cehd.umn.edu
 big10 minnesota engineering http://cse.umn.edu
 big10 minnesota las http://www.cla.umn.edu
- 
+
 big10 northwestern home http://www.northwestern.edu
 big10 northwestern admissions http://www.ugadm.northwestern.edu
 big10 northwestern business http://www.kellogg.northwestern.edu
 big10 northwestern education http://www.sesp.northwestern.edu
 big10 northwestern engineering http://www.mccormick.northwestern.edu
 big10 northwestern las http://www.weinberg.northwestern.edu
- 
+
 big10 purdue home http://www.purdue.edu
 big10 purdue admissions http://www.admissions.purdue.edu
 big10 purdue business http://www.krannert.purdue.edu
 big10 purdue education http://www.education.purdue.edu
 big10 purdue engineering http://engineering.purdue.edu
 big10 purdue las http://www.cla.purdue.edu
- 
+
 big10 msu home http://www.msu.edu
 big10 msu admissions http://admissions.msu.edu
 big10 msu business http://broad.msu.edu
 big10 msu education http://www.educ.msu.edu
 big10 msu engineering http://www.egr.msu.edu
 big10 msu las http://www.cal.msu.edu
- 
- 
+
+
 big10 osu home http://www.osu.edu
 big10 osu admissions http://undergrad.osu.edu
 big10 osu business https://business.osu.edu
 big10 osu education http://ehe.osu.edu
 big10 osu engineering http://engineering.osu.edu
 big10 osu las http://artsandsciences.osu.edu
- 
+
 big10 psu home http://www.psu.edu
 big10 psu admissions http://admissions.psu.edu
 big10 psu business http://www.smeal.psu.edu
 big10 psu education http://www.ed.psu.edu/
 big10 psu engineering http://www.engr.psu.edu
 big10 psu las http://www.la.psu.edu
- 
+
 big10 umich home http://www.umich.edu
 big10 umich admissions http://www.admissions.umich.edu
 big10 umich business http://www.bus.umich.edu
 big10 umich education http://www.soe.umich.edu
 big10 umich engineering http://www.engin.umich.edu
 big10 umich las http://www.lsa.umich.edu
- 
+
 big10 iowa home http://www.uiowa.edu
 big10 iowa admissions http://admissions.uiowa.edu
 big10 iowa business http://tippie.uiowa.edu
 big10 iowa las http://clas.uiowa.edu
 big10 iowa education http://www.education.uiowa.edu
 big10 iowa engineering http://www.engineering.uiowa.edu
- 
+
 big10 nebraska home http://www.unl.edu
 big10 nebraska admissions http://admissions.unl.edu
 big10 nebraska business http://cba.unl.edu
 big10 nebraska education http://cehs.unl.edu
 big10 nebraska engineering http://engineering.unl.edu
 big10 nebraska las http://cas.unl.edu
- 
+
 big10 wisconsin home http://www.wisc.edu
 big10 wisconsin admissions http://www.admissions.wisc.edu
 big10 wisconsin business http://bus.wisc.edu
 big10 wisconsin education http://www.education.wisc.edu
 big10 wisconsin engineering http://www.engr.wisc.edu
 big10 wisconsin las http://www.ls.wisc.edu
- 
+
 big10 maryland home http://www.umd.edu
 big10 maryland admissions http://www.admissions.umd.edu
 big10 maryland business http://www.rhsmith.umd.edu
 big10 maryland education http://www.education.umd.edu
 big10 maryland engineering http://www.eng.umd.edu
 big10 maryland las http://www.arhu.umd.edu
- 
+
 big10 rutgers home http://www.rutgers.edu
 big10 rutgers admissions http://www.rutgers.edu/admissions/
 big10 rutgers business http://business.rutgers.edu
 big10 rutgers education http://gse.rutgers.edu
 big10 rutgers engineering http://www.soe.rutgers.edu
 big10 rutgers las http://sas.rutgers.edu
- 
+
 big12 baylor home http://www.baylor.edu
 big12 baylor admissions http://www.baylor.edu/admissions
 big12 baylor business http://www.baylor.edu/business
 big12 baylor education http://www.baylor.edu/soe
 big12 baylor engineering http://www.ecs.baylor.edu
 big12 baylor las http://www.baylor.edu/artsandsciences
- 
+
 big12 iowa_state home http://www.iastate.edu
 big12 iowa_state admissions http://www.admissions.iastate.edu
 big12 iowa_state business http://www.business.iastate.edu
 big12 iowa_state engineering http://www.engineering.iastate.edu
 big12 iowa_state las http://www.las.iastate.edu
- 
+
 big12 kansas home http://www.ku.edu
 big12 kansas admissions http://admissions.ku.edu
 big12 kansas business http://www.business.ku.edu
 big12 kansas education http://www.soe.ku.edu
 big12 kansas engineering http://www.engr.ku.edu
 big12 kansas las http://www.clas.ku.edu
- 
+
 big12 kansas_state home http://www.k-state.edu
 big12 kansas_state admissions http://www.k-state.edu/admissions/
 big12 kansas_state business http://cba.k-state.edu
 big12 kansas_state education http://coe.k-state.edu
 big12 kansas_state engineering http://www.engg.ksu.edu
 big12 kansas_state las http://www.k-state.edu/artsci/
- 
+
 big12 oklahoma home http://www.ou.edu/
 big12 oklahoma admissions http://www.ou.edu/web/admissions_aid.html
 big12 oklahoma business http://www.ou.edu/price
 big12 oklahoma education http://www.ou.edu/education.html
 big12 oklahoma engineering http://www.ou.edu/coe/
 big12 oklahoma las http://cas.ou.edu
- 
+
 big12 oklahoma_state home http://go.okstate.edu
 big12 oklahoma_state admissions http://admissions.okstate.edu
 big12 oklahoma_state business http://spears.okstate.edu
 big12 oklahoma_state education http://education.okstate.edu
 big12 oklahoma_state engineering http://www.ceat.okstate.edu
 big12 oklahoma_state las http://cas.okstate.edu
- 
+
 big12 u_texas home http://www.utexas.edu
 big12 u_texas admissions http://bealonghorn.utexas.edu
 big12 u_texas business http://www.mccombs.utexas.edu
 big12 u_texas education http://www.edb.utexas.edu/education/
 big12 u_texas engineering http://www.engr.utexas.edu
 big12 u_texas las http://www.utexas.edu/cola/
- 
+
 big12 texas_tech home http://www.ttu.edu
 big12 texas_tech admissions http://www.depts.ttu.edu/admissions/
 big12 texas_tech business http://www.depts.ttu.edu/rawlsbusiness/
 big12 texas_tech education http://www.depts.ttu.edu/education/
 big12 texas_tech engineering http://www.depts.ttu.edu/coe/
 big12 texas_tech las http://www.depts.ttu.edu/artsandsciences/
- 
+
 big12 west_virgina home http://www.wvu.edu
 big12 west_virgina admissions http://admissions.wvu.edu
 big12 west_virgina business http://www.be.wvu.edu/students/
 big12 west_virgina engineering http://www.statler.wvu.edu
 big12 west_virgina las http://eberly.wvu.edu
- 
+
 big12 tcu home http://tcu.edu
 big12 tcu admissions http://admissions.tcu.edu
 big12 tcu business http://neeley.tcu.edu
 big12 tcu education http://coe.tcu.edu
 big12 tcu engineering http:/cse.tcu.edu
 big12 tcu las http://addran.tcu.edu
- 
+
 bigwest cal_poly home http://www.calpoly.edu
 bigwest cal_poly admissions http://admissions.calpoly.edu
 bigwest cal_poly business http://www.cob.calpoly.edu
 bigwest cal_poly engineering http://ceng.calpoly.edu
 bigwest cal_poly las http://cla.calpoly.edu
- 
+
 bigwest cal_state_fullerton home http://www.fullerton.edu
 bigwest cal_state_fullerton admissions http://www.fullerton.edu/admissions/
 bigwest cal_state_fullerton business http://business.fullerton.edu
 bigwest cal_state_fullerton education http://ed.fullerton.edu
 bigwest cal_state_fullerton engineering http://www.fullerton.edu/ecs/
 bigwest cal_state_fullerton las http://hss.fullerton.edu/hss/
- 
+
 bigwest cal_state_northridge home http://www.csun.edu
 bigwest cal_state_northridge admissions http://www.csun.edu/anr/
 bigwest cal_state_northridge business http://www.csun.edu/busecon/
 bigwest cal_state_northridge education http://www.csun.edu/education/
 bigwest cal_state_northridge engineering http://www.ecs.csun.edu/ecsdean/
 bigwest cal_state_northridge las http://www.csun.edu/humanities/
- 
+
 bigwest hawaii home http://manoa.hawaii.edu
 bigwest hawaii admissions http://manoa.hawaii.edu/admissions/
 bigwest hawaii business http://shidler.hawaii.edu
 bigwest hawaii education http://coe.hawaii.edu/
 bigwest hawaii engineering http://www.eng.hawaii.edu
 bigwest hawaii las http://artsci.manoa.hawaii.edu
- 
+
 bigwest longbeach_state home http://www.csulb.edu
 bigwest longbeach_state admissions http://www.csulb.edu/depts/enrollment/
 bigwest longbeach_state business http://www.csulb.edu/colleges/cba/
 bigwest longbeach_state education http://www.ced.csulb.edu
 bigwest longbeach_state engineering http://www.csulb.edu/colleges/coe/
 bigwest longbeach_state las http://www.csulb.edu/colleges/cota/
- 
+
 bigwest uc_davis home http://www.ucdavis.edu/
 bigwest uc_davis admissions http://admissions.ucdavis.edu/
 bigwest uc_davis business http://gsm.ucdavis.edu/
 bigwest uc_davis education http://education.ucdavis.edu/
 bigwest uc_davis engineering http://engineering.ucdavis.edu/
 bigwest uc_davis las http://www.ls.ucdavis.edu/
- 
+
 bigwest uc_irvine home http://uci.edu
 bigwest uc_irvine admissions http://www.admissions.uci.edu/
 bigwest uc_irvine business http://merage.uci.edu/
 bigwest uc_irvine education http://www.gse.uci.edu/
 bigwest uc_irvine engineering http://www.eng.uci.edu/
 bigwest uc_irvine las http://www.humanities.uci.edu/SOH/
- 
+
 bigwest uc_riverside home http://www.ucr.edu
 bigwest uc_riverside admissions http://my.ucr.edu/admissions/
 bigwest uc_riverside business http://soba.ucr.edu
 bigwest uc_riverside education http://education.ucr.edu
 bigwest uc_riverside engineering http://www.engr.ucr.edu
 bigwest uc_riverside las http://chass.ucr.edu
- 
+
 bigwest uc_santa_barbara home http://www.ucsb.edu
 bigwest uc_santa_barbara admissions http://admissions.sa.ucsb.edu
 bigwest uc_santa_barbara education http://education.ucsb.edu
 bigwest uc_santa_barbara engineering http://engineering.ucsb.edu
 bigwest uc_santa_barbara las http://www.ltsc.ucsb.edu
- 
+
 bigeast depaul home http://www.depaul.edu
 bigeast depaul admissions http://www.depaul.edu/admission-and-aid/
 bigeast depaul business http://commerce.depaul.edu
 bigeast depaul education http://education.depaul.edu
 bigeast depaul engineering http://www.cdm.depaul.edu
 bigeast depaul las http://las.depaul.edu
- 
+
 bigeast georgetown home http://www.georgetown.edu
 bigeast georgetown admissions http://www.georgetown.edu/admissions/
 bigeast georgetown business http://msb.georgetown.edu/mba/
 bigeast georgetown las http://college.georgetown.edu
- 
+
 bigeast marquette home http://www.marquette.edu
 bigeast marquette admissions http://www.marquette.edu/explore/
 bigeast marquette business http://business.marquette.edu
 bigeast marquette education http://www.marquette.edu/education/
 bigeast marquette engineering http://www.marquette.edu/engineering/
 bigeast marquette las http://www.marquette.edu/as/
- 
+
 bigeast providence home http://www.providence.edu
 bigeast providence admissions http://www.providence.edu/admission/
 bigeast providence business http://www.providence.edu/business/
 bigeast providence las http://www.providence.edu/arts-sciences/
- 
+
 bigeast setonhall home http://www.shu.edu
 bigeast setonhall admissions http://www.shu.edu/applying/
 bigeast setonhall business http://www.shu.edu/academics/business/
 bigeast setonhall education http://www.shu.edu/academics/education/
 bigeast setonhall las http://www.shu.edu/academics/artsci/index.cfm
- 
+
 bigeast st_johns home http://www.stjohns.edu
 bigeast st_johns admissions http://www.stjohns.edu/admission-aid/undergraduate-admission
 bigeast st_johns business http://www.stjohns.edu/academics/schools-and-colleges/peter-j-tobin-college-business
 bigeast st_johns education http://www.stjohns.edu/academics/schools-and-colleges/school-education
 bigeast st_johns las http://www.stjohns.edu/academics/schools-and-colleges/st-johns-college-liberal-arts-and-sciences
- 
+
 bigeast villanova home http://www.villanova.edu
 bigeast villanova admissions http://www1.villanova.edu/villanova/admission
 bigeast villanova business http://www1.villanova.edu/villanova/business
 bigeast villanova engineering http://www1.villanova.edu/villanova/engineering
 bigeast villanova las http://www1.villanova.edu/villanova/artsci
- 
+
 bigeast butler home https://www.butler.edu
 bigeast butler admissions https://www.butler.edu/admission/
 bigeast butler business https://www.butler.edu/cob/
 bigeast butler education https://www.butler.edu/coe/
 bigeast butler las https://www.butler.edu/las/
- 
+
 bigeast creighton home http://www.creighton.edu/
 bigeast creighton admissions http://www.creighton.edu/admissions/
 bigeast creighton business http://business.creighton.edu/
 bigeast creighton education http://www.creighton.edu/ccas/
 bigeast creighton las http://www.creighton.edu/ccas/
- 
+
 bigeast xavier home http://www.xavier.edu
 bigeast xavier admissions http://www.xavier.edu/admission/
 bigeast xavier business http://www.xavier.edu/williams/
 bigeast xavier education http://www.xavier.edu/csshe/
 bigeast xavier las http://www.xavier.edu/cas/
- 
+
 conferenceusa marshall home http://www.marshall.edu
 conferenceusa marshall admissions http://www.marshall.edu/admissions/
 conferenceusa marshall business http://muwww-new.marshall.edu/cob/
 conferenceusa marshall education http://www.marshall.edu/wpmu/peu/
 conferenceusa marshall engineering http://www.marshall.edu/cite/
 conferenceusa marshall las http://www.marshall.edu/wpmu/cola/
- 
+
 conferenceusa rice home http://www.rice.edu
 conferenceusa rice admissions http://futureowls.rice.edu/
 conferenceusa rice business http://business.rice.edu
 conferenceusa rice engineering http://engr.rice.edu
 conferenceusa rice las http://humanities.rice.edu
- 
+
 conferenceusa southern_miss home http://www.usm.edu
 conferenceusa southern_miss admissions http://www.usm.edu/admissions
 conferenceusa southern_miss business http://www.usm.edu/business
 conferenceusa southern_miss education http://www.usm.edu/education-psychology
 conferenceusa southern_miss engineering http://www.usm.edu/science-technology
 conferenceusa southern_miss las http://www.usm.edu/arts-letters
- 
+
 conferenceusa uab home http://www.uab.edu
 conferenceusa uab admissions http://www.uab.edu/students/undergraduate-admissions/
 conferenceusa uab business http://www.uab.edu/business/
 conferenceusa uab education http://www.uab.edu/education/
 conferenceusa uab engineering http://www.uab.edu/engineering/
 conferenceusa uab las http://www.uab.edu/cas/
- 
+
 conferenceusa utep home http://utep.edu
 conferenceusa utep admissions http://academics.utep.edu/Default.aspx?tabid=69423
 conferenceusa utep business http://business.utep.edu
 conferenceusa utep education http://coe.utep.edu
 conferenceusa utep engineering http://engineering.utep.edu
 conferenceusa utep las http://academics.utep.edu/Default.aspx?alias=academics.utep.edu/libarts
- 
+
 conferenceusa charlotte home http://www.uncc.edu
 conferenceusa charlotte admissions http://www.uncc.edu/landing/admissions
 conferenceusa charlotte business http://belkcollege.uncc.edu
 conferenceusa charlotte education http://education.uncc.edu
 conferenceusa charlotte engineering http://coe.uncc.edu
 conferenceusa charlotte las http://clas.uncc.edu
- 
+
 conferenceusa florida_int home http://www.fiu.edu/
 conferenceusa florida_int admissions http://admissions.fiu.edu/
 conferenceusa florida_int las http://cas.fiu.edu/
 conferenceusa florida_int education http://education.fiu.edu/
- 
+
 conferenceusa florida_atl home http://www.fau.edu/
 conferenceusa florida_atl admissions http://www.fau.edu/admissions/
 conferenceusa florida_atl las http://www.fau.edu/artsandletters/
 conferenceusa florida_atl education http://www.coe.fau.edu/default.aspx
- 
+
 conferenceusa louisiana_tech home http://www.latech.edu/
 conferenceusa louisiana_tech admissions http://admissions.latech.edu
 conferenceusa louisiana_tech business http://business.latech.edu/
 conferenceusa louisiana_tech education http://www.latech.edu/education/
 conferenceusa louisiana_tech engineering http://www.latech.edu/coes/
 conferenceusa louisiana_tech las http://www.latech.edu/liberalarts/
- 
+
 conferenceusa middle_tn_u home http://www.mtsu.edu
 conferenceusa middle_tn_u admissions http://www.mtsu.edu/how-to-apply
 conferenceusa middle_tn_u las http://www.mtsu.edu/liberalarts
 conferenceusa middle_tn_u education http://www.mtsu.edu/education
 conferenceusa middle_tn_u business http://www.mtsu.edu/business
- 
+
 conferenceusa north_tx home http://www.unt.edu/
 conferenceusa north_tx admissions http://www.unt.edu/admissions.htm
 conferenceusa north_tx las http://www.cas.unt.edu/
 conferenceusa north_tx education http://www.coe.unt.edu/
- 
+
 conferenceusa old_dominion home http://odu.edu/#prospective
 conferenceusa old_dominion admissions http://odu.edu/admission
 conferenceusa old_dominion business http://odu.edu/business
 conferenceusa old_dominion education http://odu.edu/education
 conferenceusa old_dominion engineering http://odu.edu/eng
 conferenceusa old_dominion las http://odu.edu/al
- 
+
 conferenceusa u_tx_san_antonio home http://www.utsa.edu/
 conferenceusa old_dominion admissions http://www.utsa.edu/admissions/
 conferenceusa old_dominion business http://business.utsa.edu/
 conferenceusa old_dominion education http://education.utsa.edu/
 conferenceusa old_dominion engineering http://engineering.utsa.edu/
 conferenceusa old_dominion las http://colfa.utsa.edu/
- 
+
 ivy brown home http://www.brown.edu
 ivy brown admissions http://www.brown.edu/admission
 ivy brown engineering http://brown.edu/academics/engineering/
 ivy brown las http://www.brown.edu/academics/college
- 
+
 ivy columbia home http://www.columbia.edu
 ivy columbia admissions http://www.columbia.edu/content/admissions.html
 ivy columbia business http://www4.gsb.columbia.edu
 ivy columbia engineering http://www.engineering.columbia.edu
 ivy columbia las http://www.college.columbia.edu
- 
+
 ivy cornell home http://www.cornell.edu
 ivy cornell admissions http://www.cornell.edu/admissions/
 ivy cornell business http://www.johnson.cornell.edu
 ivy cornell education http://www.human.cornell.edu
 ivy cornell engineering http://www.engineering.cornell.edu
 ivy cornell las http://as.cornell.edu
- 
+
 ivy dartmouth home http://www.dartmouth.edu
 ivy dartmouth admissions http://www.dartmouth.edu/admissions/
 ivy dartmouth business http://www.tuck.dartmouth.edu
 ivy dartmouth engineering http://engineering.dartmouth.edu
 ivy dartmouth las http://www.dartmouth.edu/home/academics/undergraduate_departments.html
- 
+
 ivy harvard home http://www.harvard.edu
 ivy harvard admissions http://www.admissions.college.harvard.edu
 ivy harvard business http://www.hbs.edu
 ivy harvard education http://www.gse.harvard.edu
 ivy harvard engineering http://www.seas.harvard.edu
 ivy harvard las http://www.gsas.harvard.edu
- 
+
 ivy pennsylvania home http://www.upenn.edu
 ivy pennsylvania admissions http://www.upenn.edu/admissions/
 ivy pennsylvania business https://www.wharton.upenn.edu
 ivy pennsylvania engineering http://www.seas.upenn.edu
 ivy pennsylvania las http://www.college.upenn.edu
- 
+
 ivy princeton home http://www.princeton.edu/
 ivy princeton admissions http://www.princeton.edu/main/
 ivy princeton engineering http://www.princeton.edu/engineering/
 ivy princeton las http://www.princeton.edu/main/academics/departments/
- 
+
 ivy yale home http://www.yale.edu
 ivy yale admissions http://www.yale.edu/admissions/
 ivy yale business http://som.yale.edu/
 ivy yale engineering http://seas.yale.edu
 ivy yale las http://yalecollege.yale.edu
- 
-midamerican akron home 
-midamerican akron admissions 
-midamerican akron business 
-midamerican akron education 
-midamerican akron engineering 
-midamerican akron las 
- 
-midamerican bowling_green home 
-midamerican bowling_green admissions 
-midamerican bowling_green business 
-midamerican bowling_green education 
-midamerican bowling_green engineering 
-midamerican bowling_green las 
- 
-midamerican buffalo home 
-midamerican buffalo admissions 
-midamerican buffalo business 
-midamerican buffalo education 
-midamerican buffalo engineering 
-midamerican buffalo las 
- 
-midamerican kent_state home 
-midamerican kent_state admissions 
-midamerican kent_state business 
-midamerican kent_state education 
-midamerican kent_state engineering 
-midamerican kent_state las 
- 
-midamerican miami_of_ohio home 
-midamerican miami_of_ohio admissions 
-midamerican miami_of_ohio business 
-midamerican miami_of_ohio education 
-midamerican miami_of_ohio engineering 
-midamerican miami_of_ohio las 
- 
-midamerican ball_state home 
-midamerican ball_state admissions 
-midamerican ball_state business 
-midamerican ball_state education 
-midamerican ball_state engineering 
-midamerican ball_state las 
- 
-midamerican central_michigan home 
-midamerican central_michigan admissions 
-midamerican central_michigan business 
-midamerican central_michigan education 
-midamerican central_michigan engineering 
-midamerican central_michigan las 
- 
-midamerican eastern_michigan home 
-midamerican eastern_michigan admissions 
-midamerican eastern_michigan business 
-midamerican eastern_michigan education 
-midamerican eastern_michigan engineering 
-midamerican eastern_michigan las 
- 
-midamerican northern_illinois home 
-midamerican northern_illinois admissions 
-midamerican northern_illinois business 
-midamerican northern_illinois education 
-midamerican northern_illinois engineering 
-midamerican northern_illinois las 
- 
-midamerican toledo home 
-midamerican toledo admissions 
-midamerican toledo business 
-midamerican toledo education 
-midamerican toledo engineering 
-midamerican toledo las 
- 
-midamerican western_michigan home 
-midamerican western_michigan admissions 
-midamerican western_michigan business 
-midamerican western_michigan education 
-midamerican western_michigan engineering 
-midamerican western_michigan las 
- 
+
+midamerican akron home
+midamerican akron admissions
+midamerican akron business
+midamerican akron education
+midamerican akron engineering
+midamerican akron las
+
+midamerican bowling_green home
+midamerican bowling_green admissions
+midamerican bowling_green business
+midamerican bowling_green education
+midamerican bowling_green engineering
+midamerican bowling_green las
+
+midamerican buffalo home
+midamerican buffalo admissions
+midamerican buffalo business
+midamerican buffalo education
+midamerican buffalo engineering
+midamerican buffalo las
+
+midamerican kent_state home
+midamerican kent_state admissions
+midamerican kent_state business
+midamerican kent_state education
+midamerican kent_state engineering
+midamerican kent_state las
+
+midamerican miami_of_ohio home
+midamerican miami_of_ohio admissions
+midamerican miami_of_ohio business
+midamerican miami_of_ohio education
+midamerican miami_of_ohio engineering
+midamerican miami_of_ohio las
+
+midamerican ball_state home
+midamerican ball_state admissions
+midamerican ball_state business
+midamerican ball_state education
+midamerican ball_state engineering
+midamerican ball_state las
+
+midamerican central_michigan home
+midamerican central_michigan admissions
+midamerican central_michigan business
+midamerican central_michigan education
+midamerican central_michigan engineering
+midamerican central_michigan las
+
+midamerican eastern_michigan home
+midamerican eastern_michigan admissions
+midamerican eastern_michigan business
+midamerican eastern_michigan education
+midamerican eastern_michigan engineering
+midamerican eastern_michigan las
+
+midamerican northern_illinois home
+midamerican northern_illinois admissions
+midamerican northern_illinois business
+midamerican northern_illinois education
+midamerican northern_illinois engineering
+midamerican northern_illinois las
+
+midamerican toledo home
+midamerican toledo admissions
+midamerican toledo business
+midamerican toledo education
+midamerican toledo engineering
+midamerican toledo las
+
+midamerican western_michigan home
+midamerican western_michigan admissions
+midamerican western_michigan business
+midamerican western_michigan education
+midamerican western_michigan engineering
+midamerican western_michigan las
+
 midamerican ohio home http://www.ohio.edu/
 midamerican ohio admissions http://www.ohio.edu/admissions/
 midamerican ohio business http://www.cas.ohiou.edu/
 midamerican ohio education http://www.cehs.ohio.edu/
- 
+
 missourivalley bradley home http://www.bradley.edu/
 missourivalley bradley admissions http://www.bradley.edu/admissions/freshman/apply/
 missourivalley bradley business http://www.bradley.edu/academic/colleges/fcba/
 missourivalley bradley education http://www.bradley.edu/academic/colleges/ehs/
 missourivalley bradley engineering http://www.bradley.edu/academic/colleges/egt/
 missourivalley bradley las http://www.bradley.edu/academic/colleges/las/
- 
+
 missourivalley drake home http://drake.edu
 missourivalley drake admissions http://www.drake.edu/admission
 missourivalley drake business http://www.drake.edu/cbpa
 missourivalley drake education http://www.drake.edu/soe/
 missourivalley drake las http://www.drake.edu/artsci/
- 
+
 missourivalley evansville home http://www.evansville.edu/
 missourivalley evansville admissions http://www.evansville.edu/guidelines/freshman.cfm
 missourivalley evansville business http://www.evansville.edu/schools/business.cfm
 missourivalley evansville education http://www.evansville.edu/schools/educationHealth.cfm
 missourivalley evansville engineering http://www.evansville.edu/schools/engineering.cfm
 missourivalley evansville las http://www.evansville.edu/schools/artsSciences.cfm
- 
+
 missourivalley illinois_state home http://illinoisstate.edu/
 missourivalley illinois_state admissions http://admissions.illinoisstate.edu/apply/
 missourivalley illinois_state business http://www.cob.ilstu.edu/
 missourivalley illinois_state education http://www.coe.ilstu.edu/
 missourivalley illinois_state engineering http://www.cast.ilstu.edu/
 missourivalley illinois_state las http://www.cas.ilstu.edu/
- 
+
 missourivalley indiana_state home http://www.indstate.edu/
 missourivalley indiana_state admissions http://www.indstate.edu/admissions/
 missourivalley indiana_state business http://www.indstate.edu/business/
 missourivalley indiana_state education http://coe.indstate.edu/
 missourivalley indiana_state engineering http://technology.indstate.edu/
 missourivalley indiana_state las http://www.indstate.edu/cas/
- 
+
 missourivalley missouri_state home http://www.missouristate.edu/
 missourivalley missouri_state admissions http://www.missouristate.edu/futurestudents/
 missourivalley missouri_state business http://business.missouristate.edu/
 missourivalley missouri_state education http://education.missouristate.edu/
 missourivalley missouri_state engineering http://cnas.missouristate.edu/
 missourivalley missouri_state las http://coal.missouristate.edu/
- 
+
 missourivalley northern_iowa home http://www.uni.edu/
 missourivalley northern_iowa admissions http://www.uni.edu/admissions/apply
 missourivalley northern_iowa business http://business.uni.edu/
 missourivalley northern_iowa education http://www.uni.edu/coe/
 missourivalley northern_iowa las http://www.uni.edu/chas/
- 
+
 missourivalley southern_illinois home http://siu.edu
 missourivalley southern_illinois admissions http://admissions.siu.edu
 missourivalley southern_illinois business http://www.business.siu.edu
 missourivalley southern_illinois education http://ehs.siu.edu
 missourivalley southern_illinois engineering http://www.science.siu.edu
 missourivalley southern_illinois las http://cola.siu.edu
- 
+
 missourivalley wichita_state home http://www.wichita.edu/thisis/
 missourivalley wichita_state admissions http://www.wichita.edu/thisis/admissions/admissions.asp
 missourivalley wichita_state business http://webs.wichita.edu/?u=bartonbusiness&p=/homepage/
 missourivalley wichita_state education http://www.wichita.edu/thisis/academics/education/
 missourivalley wichita_state engineering http://www.wichita.edu/thisis/academics/engineering/
 missourivalley wichita_state las http://www.wichita.edu/thisis/academics/las/
- 
+
 missourivalley loyola home http://www.luc.edu/
 missourivalley loyola admissions http://www.luc.edu/admission.shtml
 missourivalley loyola business http://www.luc.edu/quinlan/
 missourivalley loyola education http://www.luc.edu/education/index.shtml
 missourivalley loyola las http://www.luc.edu/cas/index.shtml
- 
+
 noconference u_chicago home http://www.uchicago.edu
 noconference u_chicago admissions http://collegeadmissions.uchicago.edu
 noconference u_chicago business http://www.chicagobooth.edu
 noconference u_chicago engineering http://psd.uchicago.edu
 noconference u_chicago las http://college.uchicago.edu
- 
+
 noconference mit home http://www.mit.edu
 noconference mit admissions http://mitadmissions.org
 noconference mit business http://mitsloan.mit.edu
 noconference mit engineering http://engineering.mit.edu
 noconference mit las http://shass.mit.edu
- 
+
 pac12 arizona home http://www.arizona.edu
 pac12 arizona admissions http://admissions.arizona.edu/freshmen
 pac12 arizona business http://www.eller.arizona.edu
 pac12 arizona education http://www.coe.arizona.edu/about
 pac12 arizona engineering http://www.engineering.arizona.edu
 pac12 arizona las http://las.arizona.edu
- 
+
 pac12 arizona_state home http://www.asu.edu
 pac12 arizona_state admissions http://students.asu.edu/admission
 pac12 arizona_state business https://wpcarey.asu.edu
 pac12 arizona_state education https://education.asu.edu
 pac12 arizona_state engineering http://engineer.asu.edu
 pac12 arizona_state las http://artsandsciences.asu.edu/
- 
+
 pac12 california_berkeley home http://berkeley.edu
 pac12 california_berkeley admissions http://admissions.berkeley.edu
 pac12 california_berkeley buisness http://haas.berkeley.edu
 pac12 california_berkeley education https://gse.berkeley.edu
 pac12 california_berkeley engineering http://coe.berkeley.edu
 pac12 california_berkeley las https://ls.berkeley.edu
- 
+
 pac12 colorado home http://www.colorado.edu
 pac12 colorado admissions http://www.colorado.edu/admissions/undergraduate/
 pac12 colorado business http://leeds.colorado.edu
 pac12 colorado education http://www.colorado.edu/education/
 pac12 colorado engineering http://www.colorado.edu/engineering/
 pac12 colorado las http://www.colorado.edu/artssciences/
- 
+
 pac12 u_oregon home http://uoregon.edu
 pac12 u_oregon admissions http://admissions.uoregon.edu
 pac12 u_oregon business http://lcb.uoregon.edu
 pac12 u_oregon education http://education.uoregon.edu
 pac12 u_oregon las http://cas.uoregon.edu
- 
+
 pac12 oregon_state home http://oregonstate.edu
 pac12 oregon_state admissions http://oregonstate.edu/admissions/
 pac12 oregon_state business http://business.oregonstate.edu
 pac12 oregon_state education http://education.oregonstate.edu
 pac12 oregon_state engineering http://engineering.oregonstate.edu
 pac12 oregon_state las http://liberalarts.oregonstate.edu
- 
+
 pac12 stanford home http://www.stanford.edu
 pac12 stanford admissions http://www.stanford.edu/admission
 pac12 stanford business http://www.gsb.stanford.edu
 pac12 stanford education http://ed.stanford.edu
 pac12 stanford engineering http://engineering.stanford.edu
 pac12 stanford las http://humsci.stanford.edu
- 
+
 pac12 ucla home http://www.ucla.edu
 pac12 ucla admissions http://www.admissions.ucla.edu
 pac12 ucla business http://www.anderson.ucla.edu
 pac12 ucla education http://www.ugeducation.ucla.edu
 pac12 ucla engineering http://www.engineer.ucla.edu
 pac12 ucla las http://www.college.ucla.edu
- 
+
 pac12 usc home http://www.usc.edu
 pac12 usc admissions http://www.usc.edu/admission/undergraduate/
 pac12 usc business http://www.marshall.usc.edu
 pac12 usc education http://rossier.usc.edu
 pac12 usc engineering http://viterbi.usc.edu
 pac12 usc las http://dornsife.usc.edu
- 
+
 pac12 utah home http://www.utah.edu
 pac12 utah admissions http://admissions.utah.edu
 pac12 utah business http://www.business.utah.edu
 pac12 utah education http://education.utah.edu
 pac12 utah engineering http://www.coe.utah.edu
 pac12 utah las http://www.hum.utah.edu
- 
+
 pac12 washington home http://www.washington.edu
 pac12 washington admissions http://admit.washington.edu
 pac12 washington business http://www.foster.washington.edu
 pac12 washington education http://education.washington.edu
 pac12 washington engineering http://www.engr.washington.edu
 pac12 washington las http://www.artsci.washington.edu
- 
+
 pac12 washington_state home http://wsu.edu
 pac12 washington_state admissions https://admission.wsu.edu
 pac12 washington_state business http://www.business.wsu.edu
 pac12 washington_state education http://education.wsu.edu
 pac12 washington_state engineering http://www.cea.wsu.edu
 pac12 washington_state las http://cas.wsu.edu
- 
+
 sec alabama home http://ua.edu
 sec alabama admissions http://gobama.ua.edu
 sec alabama business http://cba.ua.edu
 sec alabama education http://education.ua.edu
 sec alabama engineering http://eng.ua.edu
 sec alabama las http://as.ua.edu
- 
+
 sec arkansas home http://www.uark.edu/
 sec arkansas admissions http://admissions.uark.edu
 sec arkansas business http://waltoncollege.uark.edu
 sec arkansas education http://coehp.uark.edu
 sec arkansas engineering http://www.engr.uark.edu
 sec arkansas las http://fulbright.uark.edu
- 
+
 sec auburn home http://auburn.edu
 sec auburn admissions http://www.auburn.edu/admissions/
 sec auburn business http://business.auburn.edu
 sec auburn education http://www.education.auburn.edu
 sec auburn engineering http://www.eng.auburn.edu
 sec auburn las http://www.cla.auburn.edu/cla/
- 
+
 sec florida home http://www.ufl.edu
 sec florida admissions http://www.admissions.ufl.edu
 sec florida business http://warrington.ufl.edu
 sec florida education http://education.ufl.edu
 sec florida engineering http://www.eng.ufl.edu
 sec florida las http://www.clas.ufl.edu
- 
+
 sec georgia home http://www.uga.edu
 sec georgia admissions http://www.admissions.uga.edu/
 sec georgia business http://www.terry.uga.edu
 sec georgia education http://coe.uga.edu
 sec georgia engineering http://engineering.uga.edu
 sec georgia las http://www.franklin.uga.edu
- 
+
 sec kentucky home http://www.uky.edu
 sec kentucky admissions http://www.uky.edu/Admission/
 sec kentucky business http://gatton.uky.edu
 sec kentucky education http://education.uky.edu
 sec kentucky engineering http://www.engr.uky.edu
 sec kentucky las http://www.as.uky.edu
- 
+
 sec lsu home http://www.lsu.edu
 sec lsu admissions http://www.lsu.edu/departments/admissions
 sec lsu business http://business.lsu.edu/
 sec lsu education http://chse.lsu.edu
 sec lsu engineering http://www.eng.lsu.edu
 sec lsu las http://hss.lsu.edu
- 
+
 sec mississippi_state home http://www.msstate.edu
 sec mississippi_state admissions http://www.statement.msstate.edu
 sec mississippi_state business http://www.business.msstate.edu
 sec mississippi_state education http://www.cise.msstate.edu
 sec mississippi_state engineering http://www.engr.msstate.edu
 sec mississippi_state las http://www.cas.msstate.edu
- 
+
 sec missouri home http://www.missouri.edu
 sec missouri admissions http://admissions.missouri.edu
 sec missouri business http://business.missouri.edu
 sec missouri education http://education.missouri.edu
 sec missouri engineering http://engineering.missouri.edu
 sec missouri las http://coas.missouri.edu
- 
+
 sec ole_miss home http://www.olemiss.edu
 sec ole_miss admissions http://www.olemiss.edu/admissions/
 sec ole_miss business http://www.olemissbusiness.com
 sec ole_miss education http://education.olemiss.edu
 sec ole_miss engineering http://www.engineering.olemiss.edu
 sec ole_miss las http://www.olemiss.edu/libarts
- 
+
 sec south_carolina home http://www.sc.edu
 sec south_carolina admissions http://www.sc.edu/admissions/
 sec south_carolina business http://www.moore.sc.edu
 sec south_carolina education http://www.ed.sc.edu
 sec south_carolina engineering http://www.engr.sc.edu
 sec south_carolina las http://artsandsciences.sc.edu
- 
+
 sec tennessee home http://www.utk.edu
 sec tennessee admissions http://www.utk.edu/admissions/
 sec tennessee business http://haslam.utk.edu/
 sec tennessee education http://cehhs.utk.edu
 sec tennessee engineering http://www.engr.utk.edu
 sec tennessee las http://artsci.utk.edu
- 
+
 sec texas_a_and_m home http://www.tamu.edu
 sec texas_a_and_m admissions http://www.tamu.edu/admissions/
 sec texas_a_and_m business http://mays.tamu.edu
 sec texas_a_and_m education http://education.tamu.edu
 sec texas_a_and_m engineering http://engineering.tamu.edu
 sec texas_a_and_m las http://liberalarts.tamu.edu
- 
+
 sec vanderbilt home http://www.vanderbilt.edu
 sec vanderbilt admissions http://admissions.vanderbilt.edu
 sec vanderbilt business http://www.owen.vanderbilt.edu/vanderbilt/
 sec vanderbilt education http://peabody.vanderbilt.edu
 sec vanderbilt engineering http://engineering.vanderbilt.edu
 sec vanderbilt las http://as.vanderbilt.edu
- 
+
 wac new_mexico_state home http://www.nmsu.edu
 wac new_mexico_state admissions http://prospective.nmsu.edu/apply
 wac new_mexico_state business http://business.nmsu.edu
 wac new_mexico_state education http://education.nmsu.edu
 wac new_mexico_state engineering http://engr.nmsu.edu
 wac new_mexico_state las http://artsci.nmsu.edu
- 
+
 wac seattle home http://www.seattleu.edu
 wac seattle admissions https://www.seattleu.edu/admissions
 wac seattle business http://www.seattleu.edu/albers
 wac seattle education http://www.seattleu.edu/coe
 wac seattle engineering https://www.seattleu.edu/scieng/
 wac seattle las https://www.seattleu.edu/artsci/
- 
+
 wac csu_bakersfield home http://www.csub.edu/
 wac csu_bakersfield admissions http://www.csub.edu/admissionsandaid
 wac csu_bakersfield las http://www.csub.edu/ah/
 wac csu_bakersfield business http://www.csub.edu/bpa
- 
+
 wac chicago_state home http://www.csu.edu/
 wac chicago_state admissions http://www.csu.edu/admissions/
 wac chicago_state business http://www.csu.edu/business/
 wac chicago_state education http://www.csu.edu/collegeofeducation/
 wac chicago_state las http://www.csu.edu/collegeofartsandsciences/
- 
+
 wac u_mo_kc home http://www.umkc.edu/
 wac u_mo_kc admissions http://www.umkc.edu/admissions/
 wac u_mo_kc business http://bloch.umkc.edu/
 wac u_mo_kc education http://education.umkc.edu/
 wac u_mo_kc engineering http://www.sce.umkc.edu/
 wac u_mo_kc las http://cas.umkc.edu/
- 
+
 wac u_tx_rio_grande home http://www.utrgv.edu/en-us/
 wac u_tx_rio_grande admissions http://www.utrgv.edu/undergraduate-admissions/index.htm
 wac u_tx_rio_grande business http://www.utrgv.edu/cobe/index.htm
 wac u_tx_rio_grande education http://www.utrgv.edu/cep/index.htm
 wac u_tx_rio_grande engineering http://www.utrgv.edu/coec/index.htm
 wac u_tx_rio_grande las http://www.utrgv.edu/en-us/academics/colleges/liberal-arts/index.htm
- 
+
 wac utah_valley home http://www.uvu.edu/
 wac utah_valley admissions http://www.uvu.edu/futurestudents/gettingstarted/
 wac utah_valley business http://www.uvu.edu/woodbury/
 wac utah_valley education http://www.uvu.edu/education/
 wac utah_valley tech http://www.uvu.edu/tc/
 wac utah_valley las http://www.uvu.edu/chss/index.html
- 
+
 wac grand_canyon home http://www.gcu.edu/
 wac grand_canyon admissions http://www.gcu.edu/admissions/requirements.php
 wac grand_canyon business http://www.gcu.edu/colangelo-college-of-business.php

@@ -1,5 +1,13 @@
 
-  <div class="url">Page {{page_num}} URL: <a href="{{page_result.url}}" title="URL for Page {{page_num}}">{{page_result.get_url}}</a></div>
+  <div class="url">
+    Page {{page_num}} Title: {{page_result.get_title|truncatechars:100}}
+  </div>
+  <div class="url">
+    Page {{page_num}} URL:
+    <a href="{{page_result.url}}" title="URL for Page {{page_num}}">
+    {{page_result.get_url|truncatechars:100}}
+    </a>
+  </div>
 
   {% include 'common/elements_summary.html' with summary=page_rule_result %}
 

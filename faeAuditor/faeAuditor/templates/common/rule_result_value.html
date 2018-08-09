@@ -1,0 +1,19 @@
+
+{% if value == 5 %}
+<td id="id_res" class="text violation">Violation</td>
+{% else %}
+{% if value == 4 %}
+<td id="id_res" class="text warning">Warning</td>
+{% else %}
+{% if value == 3 %}
+<td id="id_res" class="text manual_check">Manual Check</td>
+{% else %}
+{% if value == 2 %}
+<td id="id_res" class="text passed">Passed</td>
+{% else %}
+<td id="id_res" class="text not_applicable"><abbr title="Not Applicable">na</abbr></td>
+{% endif %}
+{% endif %}
+{% endif %}
+{% endif %}
+

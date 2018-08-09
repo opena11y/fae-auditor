@@ -65,8 +65,8 @@ class AuditGroup2Result(AllRuleGroupResult):
 
   slug           = models.SlugField(max_length=16, default="none", blank=True, editable=False)
 
-  total_pages    = models.IntegerField(default=0)
-  total_websites = models.IntegerField(default=0)
+  page_count    = models.IntegerField(default=0)
+  website_count = models.IntegerField(default=0)
 
   class Meta:
     verbose_name        = "Group2 Result"
@@ -79,32 +79,39 @@ class AuditGroup2Result(AllRuleGroupResult):
   def __str__(self):
       return 'Group2: ' + self.group2_item.title
 
+  def reset(self):
+    self.total_pages = 0
+    self.total_websites = 0
+    super(AuditGroup2Result, self).reset()
+
+  def get_page_count(self):
+    return self.page_count
+
+  def get_website_count(self):
+    return self.website_count
+
+  def compute_counts(self):
+
+      self.page_count = 0
+      self.website_count = 0
+
+      for wsr in self.ws_results.all():
+        self.website_count = self.website_count + 1
+        self.page_count    = self.page_count + wsr.page_count
+
+      self.save()
+
   def get_title(self):
       return self.group2_item.title
 
   def get_abbrev(self):
     return self.group2_item.abbreviation
 
-  def page_count(self):
-    count = 0
-
-    for ws in self.ws_results.all():
-      count += ws.page_count
-
-    return count
-
-  def website_count(self):
-    return self.ws_results.count
-
   def add_website_result(self, ws_result):
-    try:
-      self.total_websites = self.total_websites + 1
-      self.total_pages    = self.total_pages + ws_result.page_count
+    self.ws_results.add(ws_result)
+    self.save()
 
-      self.ws_results.add(ws_result)
-      self.save()
-    except:
-      pass
+    self.compute_counts()
 
   def get_group_rule_result(self, rule):
       try:
@@ -207,11 +214,11 @@ class AuditGroup2RuleCategoryResult(RuleGroupResult):
   def get_id(self):
     return 'ag2rcr_' + self.rule_category.id
 
-  def page_count(self):
-    return self.group2_result.page_count()
+  def get_page_count(self):
+    return self.group2_result.get_page_count()
 
-  def website_count(self):
-    return self.group2_result.website_count()
+  def get_website_count(self):
+    return self.group2_result.get_website_count()
 
 # ---------------------------------------------------------------
 #
@@ -254,11 +261,11 @@ class AuditGroup2GuidelineResult(RuleGroupResult):
   def get_id(self):
     return 'ag2glr_' + self.guideline.id
 
-  def page_count(self):
-    return self.group2_result.page_count()
+  def get_page_count(self):
+    return self.group2_result.get_page_count()
 
-  def website_count(self):
-    return self.group2_result.website_count()
+  def get_website_count(self):
+    return self.group2_result.get_website_count()
 
 # ---------------------------------------------------------------
 #
@@ -301,11 +308,11 @@ class AuditGroup2RuleScopeResult(RuleGroupResult):
   def get_id(self):
     return 'ag2rsr_' + self.rule_scope.id
 
-  def page_count(self):
-    return self.group2_result.page_count()
+  def get_page_count(self):
+    return self.group2_result.get_page_count()
 
-  def website_count(self):
-    return self.group2_result.website_count()
+  def get_website_count(self):
+    return self.group2_result.get_website_count()
 
 # ---------------------------------------------------------------
 #
@@ -342,11 +349,11 @@ class AuditGroup2RuleResult(RuleElementPageWebsiteResult):
   def get_id(self):
     return 'ag2rrr_' + self.rule.id
 
-  def page_count(self):
-    return self.group2_result.page_count()
+  def get_page_count(self):
+    return self.group2_result.get_page_count()
 
-  def website_count(self):
-    return self.group2_result.website_count()
+  def get_website_count(self):
+    return self.group2_result.get_website_count()
 
   def save(self):
 

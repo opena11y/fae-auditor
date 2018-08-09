@@ -105,8 +105,8 @@ class Group2ResultsView(ResultNavigationMixin, TemplateView):
 
         for ag2r in ag2rs:
             ag2r.title         = ag2r.get_title()
-            ag2r.website_count = ag2r.website_count()
-            ag2r.page_count    = ag2r.page_count()
+            ag2r.website_count = ag2r.get_website_count()
+            ag2r.page_count    = ag2r.get_page_count()
             ag2r.href          = reverse('group2_results_audit_group2', args=[result_slug, rule_grouping, ag2r.slug])
 
         # slugs used for urls
@@ -372,8 +372,8 @@ class Group2RuleGroupResultsView(ResultNavigationMixin, TemplateView):
 
         for ag2r in ag2rs:
             ag2r.title         = ag2r.get_title
-            ag2r.website_count = ag2r.website_count()
-            ag2r.page_count    = ag2r.page_count()
+            ag2r.website_count = ag2r.get_website_count()
+            ag2r.page_count    = ag2r.get_page_count()
 
             ag2r.href  = reverse('group2_rule_group_results_audit_group2', args=[result_slug, rule_grouping, rule_group_slug, ag2r.group2_result.slug])
 

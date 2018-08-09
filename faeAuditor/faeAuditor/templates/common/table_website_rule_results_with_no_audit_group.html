@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th id="id_grp" class="text"  rowspan="2">Website</th>
+      <th id="id_res" class="text"  rowspan="2">Result</th>
       <th id="id_nop" class="center"   colspan="5">Number of Pages</th>
       <th rowspan="2">&nbsp;</th>
       <th id="id_imp" class="center"  colspan="4" style="text-align: center">Implementation Level</th>
@@ -26,6 +27,7 @@
           {{wsrr.ws_report.title}}
         </a>
       </td>
+      {% include 'common/rule_result_value.html' with value=prr.result_value %}
       <td headers="id_vio id_nop" class="num">{{wsrr.pages_violation}}</td>
       <td headers="id_war id_nop" class="num">{{wsrr.pages_warning}}</td>
       <td headers="id_man id_nop" class="num">{{wsrr.pages_manual_check}}</td>
@@ -34,12 +36,16 @@
 
       <td aria-label="empty cell"></td>
 
-      <td headers="id_scpf id_imp" class="num">{{wsrr.implementation_pass_fail_score}}</td>
+      <td headers="id_scpf id_imp" class="num">
+      {% include 'common/implementation_score.html' with impl_score=wsrr.implementation_pass_fail_score %}
+      </td>
       <td headers="id_stpf id_imp" class="text">
      {% include 'common/implementation_status.html' with impl_status=wsrr.implementation_pass_fail_status %}
       </td>
 
-      <td headers="id_scal id_imp" class="num">{{wsrr.implementation_score}}</td>
+      <td headers="id_scal id_imp" class="num">
+      {% include 'common/implementation_score.html' with impl_score=wsrr.implementation_score %}
+      </td>
       <td headers="id_stal id_imp" class="text">
       {% include 'common/implementation_status.html' with impl_status=wsrr.implementation_status %}
       </td>

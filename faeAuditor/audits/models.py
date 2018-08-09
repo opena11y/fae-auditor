@@ -98,7 +98,7 @@ class Audit(models.Model):
   def get_audit_start_url(self):
     return ('audit_start', [self.id])
 
-  def get_website_count(self):
+  def get_get_website_count(self):
     count = len(this.websites.all())
     return count
 

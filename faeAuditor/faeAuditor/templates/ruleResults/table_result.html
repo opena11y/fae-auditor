@@ -22,26 +22,26 @@
     {% if rule_group_results|length %}
     {% for rgr in rule_group_results %}
     <tr>
-      <td headers="id_grp">
+      <td headers="id_grp" class="text">
         <a href="{% url 'rule_group_result' result_slug rule_grouping rgr.slug %}">
           {{rgr.title}}
         </a>
       </td>
-      <td headers="id_vio id_nor">{{rgr.rules_violation}}</td>
-      <td headers="id_war id_nor">{{rgr.rules_warning}}</td>
-      <td headers="id_man id_nor">{{rgr.rules_manual_check}}</td>
-      <td headers="id_pas id_nor">{{rgr.rules_passed}}</td>
-      <td headers="id_not id_nor">{{rgr.rules_na}}</td>
+      <td headers="id_vio id_nor" class="num">{{rgr.rules_violation}}</td>
+      <td headers="id_war id_nor" class="num">{{rgr.rules_warning}}</td>
+      <td headers="id_man id_nor" class="num">{{rgr.rules_manual_check}}</td>
+      <td headers="id_pas id_nor" class="num">{{rgr.rules_passed}}</td>
+      <td headers="id_not id_nor" class="num">{{rgr.rules_na}}</td>
 
       <td aria-label="empty cell"></td>
 
-      <td headers="id_scpf id_imp">{{rgr.implementation_pass_fail_score}}</td>
-      <td headers="id_stpf id_imp">
+      <td headers="id_scpf id_imp" class="num">{{rgr.implementation_pass_fail_score}}</td>
+      <td headers="id_stpf id_imp" class="text">
      {% include 'common/implementation_status.html' with impl_status=rgr.implementation_pass_fail_status %}
       </td>
 
-      <td headers="id_scal id_imp">{{rgr.implementation_score}}</td>
-      <td headers="id_stal id_imp">
+      <td headers="id_scal id_imp" class="num">{{rgr.implementation_score}}</td>
+      <td headers="id_stal id_imp" class="text">
       {% include 'common/implementation_status.html' with impl_status=rgr.implementation_status %}
       </td>
 
@@ -49,21 +49,21 @@
     {% endfor %}
     <tr>
       <td headers="id_grp"       >Totals</td>
-      <td headers="id_vio id_nor">{{audit_result.rules_violation}}</td>
-      <td headers="id_war id_nor">{{audit_result.rules_warning}}</td>
-      <td headers="id_man id_nor">{{audit_result.rules_manual_check}}</td>
-      <td headers="id_pas id_nor">{{audit_result.rules_passed}}</td>
-      <td headers="id_not id_nor">{{audit_result.rules_na}}</td>
+      <td headers="id_vio id_nor" class="num">{{audit_result.rules_violation}}</td>
+      <td headers="id_war id_nor" class="num">{{audit_result.rules_warning}}</td>
+      <td headers="id_man id_nor" class="num">{{audit_result.rules_manual_check}}</td>
+      <td headers="id_pas id_nor" class="num">{{audit_result.rules_passed}}</td>
+      <td headers="id_not id_nor" class="num">{{audit_result.rules_na}}</td>
 
       <td aria-label="empty cell"></td>
 
-      <td headers="id_scpf id_imp">{{audit_result.implementation_pass_fail_score}}</td>
-      <td headers="id_stpf id_imp">
+      <td headers="id_scpf id_imp" class="num">{{audit_result.implementation_pass_fail_score}}</td>
+      <td headers="id_stpf id_imp" class="text">
       {% include 'common/implementation_status.html' with impl_status=audit_result.implementation_pass_fail_status %}
       </td>
 
-      <td headers="id_scal id_imp">{{group_results.summary.implementation_score}}</td>
-      <td headers="id_stal id_imp">
+      <td headers="id_scal id_imp" class="num">{{group_results.summary.implementation_score}}</td>
+      <td headers="id_stal id_imp" class="text">
       {% include 'common/implementation_status.html' with impl_status=group_results.summary.implementation_status %}
       </td>
     </tr>

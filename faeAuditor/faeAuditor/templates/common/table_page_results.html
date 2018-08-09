@@ -38,12 +38,16 @@
 
       <td aria-label="empty cell"></td>
 
-      <td headers="id_scpf id_imp" class="num">{{pr.implementation_pass_fail_score}}</td>
+      <td headers="id_scpf id_imp" class="num">
+      {% include 'common/implementation_score.html' with impl_score=pr.implementation_pass_fail_score %}
+      </td>
       <td headers="id_stpf id_imp" class="text">
      {% include 'common/implementation_status.html' with impl_status=pr.implementation_pass_fail_status %}
       </td>
 
-      <td headers="id_scal id_imp" class="num">{{pr.implementation_score}}</td>
+      <td headers="id_scal id_imp" class="num">
+      {% include 'common/implementation_score.html' with impl_score=pr.implementation_score %}
+      </td>
       <td headers="id_stal id_imp" class="text">
       {% include 'common/implementation_status.html' with impl_status=pr.implementation_status %}
       </td>

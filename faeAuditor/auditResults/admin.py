@@ -31,7 +31,7 @@ from .models import AuditRuleResult
 
 
 class AuditResultAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'ruleset', 'depth', 'created', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status', 'has_manual_checks', 'implementation_pass_fail_summ', 'implementation_summ', 'total_pages')
+    list_display = ('title', 'slug', 'ruleset', 'depth', 'created', 'website_count', 'page_count', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status', 'has_manual_checks', 'implementation_pass_fail_summ', 'implementation_summ', 'total_pages')
     list_filter  = ('audit', )
 
 admin.site.register(AuditResult, AuditResultAdmin)

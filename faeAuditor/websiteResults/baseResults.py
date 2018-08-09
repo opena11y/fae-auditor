@@ -80,13 +80,27 @@ class RuleResult(models.Model):
   class Meta:
         abstract = True
 
+  def reset(self):
+    self.result_value = 0
+
+    self.implementation_pass_fail_score  = -1
+    self.implementation_score            = -1
+
+    self.implementation_pass_fail_status  = 'U'
+    self.implementation_status            = 'U'
+
+    self.manual_check_status    = 'NC'
+
+    self.save()
+
+
   def set_implementation_status(self, has_manual_checks):
 
     def set_status(score, label):
       if self.implementation_score >= 0:
 
         if score <= self.implementation_score:
-          self.implementation_pass_fail_status = label
+          self.implementation_status = label
 
         if has_manual_checks:
           self.implementation_status = label + "-MC"
@@ -95,9 +109,6 @@ class RuleResult(models.Model):
 
         if score <= self.implementation_pass_fail_score:
           self.implementation_pass_fail_status = label
-
-        if has_manual_checks:
-          self.implementation_status = label
 
     self.implementation_pass_fail_status = 'NA'
     self.implementation_status = 'NA'
@@ -131,6 +142,19 @@ class RuleElementResult(RuleResult):
   class Meta:
         abstract = True
 
+  def reset(self):
+
+    self.elements_violation     = 0
+    self.elements_warning       = 0
+    self.elements_mc_identified = 0
+    self.elements_mc_passed     = 0
+    self.elements_mc_failed     = 0
+    self.elements_mc_na         = 0
+    self.elements_passed        = 0
+    self.elements_hidden        = 0
+
+    super(RuleElementResult, self).reset()
+
   def has_unresolved_manual_checks(self):
     return self.elements_mc_identified != (self.elements_mc_passed + self.elements_mc_failed + self.elements_mc_na)
 
@@ -140,12 +164,12 @@ class RuleElementResult(RuleResult):
     self.implementation_score           = -1
 
     pass_fail_total = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
-    total = self.elements_mc_identified - self.elements_mc_passed - self.elements_mc_failed - self.elements_mc_na
+    mc_total = self.elements_mc_identified - self.elements_mc_passed - self.elements_mc_failed - self.elements_mc_na
 
     passed = self.elements_passed+self.elements_mc_passed
 
-    if total > 0:
-      total = pass_fail_total + total
+    if mc_total > 0:
+      total = pass_fail_total + mc_total
     else:
       total = pass_fail_total
 
@@ -154,6 +178,20 @@ class RuleElementResult(RuleResult):
 
     if total:
       self.implementation_score            =  (100 * passed) / total
+
+    if total > 0:
+      if self.elements_violation:
+        self.result_value = RESULT_VALUE['VIOLATION']
+      else:
+        if self.elements_warning:
+          self.result_value = RESULT_VALUE['WARNING']
+        else:
+          if mc_total:
+            self.result_value = RESULT_VALUE['MANUAL_CHECK']
+          else:
+            self.result_value = RESULT_VALUE['PASS']
+    else:
+      self.result_value = RESULT_VALUE['NOT_APPLICABLE']
 
     self.set_implementation_status(self.has_unresolved_manual_checks())
     self.save()
@@ -177,6 +215,17 @@ class RuleElementPageResult(RuleElementResult):
   class Meta:
         abstract = True
 
+  def reset(self):
+
+    self.pages_violation    = 0
+    self.pages_warning      = 0
+    self.pages_manual_check = 0
+    self.pages_passed       = 0
+    self.pages_na           = 0
+
+    super(RuleElementPageResult, self).reset()
+
+
   def get_page_count_with_results(self):
     return self.pages_violation + self.pages_warning + self.pages_manual_check + self.pages_passed
 
@@ -199,6 +248,18 @@ class RuleElementPageWebsiteResult(RuleElementPageResult):
 
   class Meta:
         abstract = True
+
+  def reset(self):
+
+    self.websites_violation    = 0
+    self.websites_warning      = 0
+    self.websites_manual_check = 0
+    self.websites_passed       = 0
+    self.websites_na           = 0
+
+    self.websites_with_hidden_content = 0
+
+    super(RuleElementPageWebsiteResult, self).reset()
 
   def get_page_count_with_results(self):
     return self.pages_violation + self.pages_warning + self.pages_manual_check + self.pages_passed
@@ -285,7 +346,7 @@ class RuleGroupResult(RuleResult):
     self.implementation_summ = 0
     self.implementation_pass_fail_summ = 0
 
-    self.save()
+    super(RuleGroupResult, self).reset()
 
   def add_rule_result(self, rule_result):
 
@@ -319,7 +380,7 @@ class RuleGroupResult(RuleResult):
 
       self.has_manual_checks = self.has_manual_checks or rule_result.has_unresolved_manual_checks()
 
-      self.set_implementation_status(self.has_manual_checks)
+    self.set_implementation_status(self.has_manual_checks)
 
     self.save()
 
@@ -339,23 +400,24 @@ class AllRuleGroupResult(RuleGroupResult):
       rules = Rule.objects.all()
       self.reset()
 
+      print('      computing results for group: ' + str(self))
+
       for rule in rules:
+#        print('        Rule: ' + str(rule))
+
         ws_results = self.ws_results.filter(status='C')
 
         group_rule_result = self.get_group_rule_result(rule)
 
         for ws_result in ws_results:
-#          print('[compute_group_results][ws_result]: ' + ws_result.title)
+#          print('          Website: ' + str(ws_result)  + ' ' + str(rule) + ' ' + str(group_rule_result))
 
           try:
             ws_rule_result = ws_result.ws_rule_results.get(rule=rule)
           except:
             continue
 
-          if ws_rule_result:
-            self.add_website_result(ws_rule_result)
-            group_rule_result.add_website_rule_result(ws_rule_result)
-
+          group_rule_result.add_website_rule_result(ws_rule_result)
 
         self.add_rule_result(group_rule_result)
 
@@ -380,5 +442,4 @@ class AllRuleGroupResult(RuleGroupResult):
 
         rs = self.get_group_rs_result(arr.rule.scope, arr)
         rs.add_rule_result(arr)
-
 
