@@ -20,7 +20,7 @@
   {% include 'common/view_options.html' %}
 
   <div class="result_group">
-  {% include 'ruleResults/table_result_rule_group.html' %}
+  {% include 'ruleResults/table_result_rule_group.html' with summary=rule_group_result %}
   </div>
 
 {% endblock %}

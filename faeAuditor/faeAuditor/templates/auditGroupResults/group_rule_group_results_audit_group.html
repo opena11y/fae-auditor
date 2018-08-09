@@ -24,11 +24,11 @@
   <section class="group">
   {% if audit_group_results %}
     <h2>{{audit_group_result.get_title}} {{audit_result.group2_title_plural}}</h2>
-    {% include 'common/table_audit_groups_results.html' %}
+    {% include 'common/table_audit_groups_results.html' with summary=rule_group_result %}
     {% endif %}
 
     <h2>{{audit_group_result.get_title}} Websites</h2>
-    {% include 'common/table_website_results.html' %}
+    {% include 'common/table_website_results.html' with summary=rule_group_result %}
   </section>
 
 {% endblock %}

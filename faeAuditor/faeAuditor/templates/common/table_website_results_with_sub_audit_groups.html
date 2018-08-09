@@ -77,15 +77,22 @@
 
       <td aria-label="empty cell"></td>
 
-      <td class="num" headers="id_scpf id_imp">{{summary.implementation_pass_fail_score}}</td>
-      <td class="text" headers="id_stpf id_imp">
-     {% include 'common/implementation_status.html' with impl_status=summary.implementation_pass_fail_status %}
+      <td class="num" headers="id_scpf id_imp">
+      {% include 'common/implementation_score.html' with impl_score=summary.implementation_pass_fail_score %}
       </td>
 
-      <td class="num" headers="id_scal id_imp">{{summary.implementation_score}}</td>
+      <td class="text" headers="id_stpf id_imp">
+      {% include 'common/implementation_status.html' with impl_status=summary.implementation_pass_fail_status %}
+      </td>
+
+      <td class="num" headers="id_scal id_imp">
+      {% include 'common/implementation_score.html' with impl_score=summary.implementation_score %}
+      </td>
+
       <td class="text" headers="id_stal id_imp">
       {% include 'common/implementation_status.html' with impl_status=summary.implementation_status %}
       </td>
+
 
     </tr>
     {% endif %}
