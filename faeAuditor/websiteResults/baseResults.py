@@ -100,10 +100,10 @@ class RuleResult(models.Model):
       if self.implementation_score >= 0:
 
         if score <= self.implementation_score:
-          self.implementation_status = label
-
-        if has_manual_checks:
-          self.implementation_status = label + "-MC"
+          if has_manual_checks:
+            self.implementation_status = label + "-MC"
+          else:
+            self.implementation_status = label
 
       if self.implementation_pass_fail_score >= 0:
 
