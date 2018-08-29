@@ -58,6 +58,7 @@ faeAuditor/faeAuditor/static/
 faeAuditor/fae-util/test/
 !faeAuditor/fae-util/test.properties
 faeAuditor/fae-util/*.properties
+faeAuditor/fae-util/openajax_a11y/scripts.txt
 *.class
 
 # Flask stuff:
