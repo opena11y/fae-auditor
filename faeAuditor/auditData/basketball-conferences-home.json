@@ -1,0 +1,71 @@
+{ "title"        : "Basketball Athletic Conferences",
+  "audit_slug"   : "basketball-home",
+  "depth"        : 5,
+  "ruleset_id"   : "ARIA_STRICT",
+  "wait_time"    : 90000,
+  "groups"       : [
+  {
+    "id"           : "conference",
+    "title"        : "Conference",
+    "title_plural" : "Conferences",
+    "members" : {
+      "acc" : {
+        "title": "Atlantic Coast Conference",
+        "abbrev": "ACC"
+      },
+      "atlantic10" : {
+        "title": "Atlantic 10 Conference",
+        "abbrev": "Atlantic 10"
+      },
+      "big10" : {
+        "title": "Big Ten",
+        "abbrev": "Big Ten"
+      },
+      "big12" : {
+        "title": "Big 12",
+        "abbrev": "Big 12"
+      },
+      "bigwest" : {
+        "title": "Big West",
+        "abbrev": "Big West"
+      },
+      "bigeast" : {
+        "title": "Big East",
+        "abbrev": "Big East"
+      },
+      "conferenceusa" : {
+        "title": "Conference USA",
+        "abbrev": "USA"
+      },
+      "ivy" : {
+        "title": "Ivy",
+        "abbrev": "Ivy"
+      },
+      "midamerican" : {
+        "title": "Mid American",
+        "abbrev": "MidAm"
+      },
+      "missourivalley" : {
+        "title": "Missouri Valley",
+        "abbrev": "MV"
+      },
+      "noconference" : {
+        "title": "No Conference",
+        "abbrev": "NC"
+      },
+      "pac12" : {
+        "title": "Pacific 12",
+        "abbrev": "pac12"
+      },
+      "sec" : {
+        "title": "Southeastern Conference",
+        "abbrev": "SEC"
+      },
+      "wac" : {
+        "title": "Western Athletic Conference",
+        "abbrev": "WAC"
+      }
+    }
+  }
+  ]
+}
