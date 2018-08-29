@@ -466,7 +466,7 @@ class FaeUtil {
       BROWSER_VERSION = BrowserVersion.INTERNET_EXPLORER;
     }
     else {
-      BROWSER_VERSION = BrowserVersion.FIREFOX_52;
+      BROWSER_VERSION = BrowserVersion.FIREFOX_60;
     }
     //System.out.println("browser version: " + BROWSER_VERSION.getNickname());
 
@@ -576,11 +576,11 @@ class FaeUtil {
           //Updating url if path is provided
         	if (m_ctrl.PATH != null
 					&& !m_ctrl.PATH.toString().isEmpty()) {
-        		String path = "";
-        		if (m_ctrl.PATH.startsWith("/")) {
-        			path = m_ctrl.PATH.substring(1);
+        		String path = m_ctrl.PATH;
+        		if (path.startsWith("/")) {
+        			path = path.substring(1);
         		}
-        		if (m_ctrl.PATH.endsWith("/")) {
+        		if (path.endsWith("/")) {
         			path = path.substring(0, path.length() - 1);
         		}
 	        	if (url_str.endsWith("/")) {
@@ -1198,7 +1198,7 @@ class FaeUtil {
   public Properties m_props = null;
   public static Controller m_ctrl = new Controller("java org.fae.util.FaeUtil <options>");
   
-  public static BrowserVersion BROWSER_VERSION = BrowserVersion.FIREFOX_52;
+  public static BrowserVersion BROWSER_VERSION = BrowserVersion.FIREFOX_60;
   public boolean DEBUG = false;
   public int DEPTH = 1;
   public String OUTPUT_DIRECTORY;
