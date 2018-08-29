@@ -118,7 +118,7 @@ def addWebsite(audit, depth, max_pages, wait_time, title, url, groups):
   ws.save()
 
   if len(groups) > 0 and audit_group:
-      slug = removeQuotes(groups[0].strip())
+      slug = removeQuotes(groups[0].strip()).strip()
       print(str(audit_group))
       try:
         agi = AuditGroupItem.objects.get(group=audit_group, slug=slug)
@@ -130,7 +130,7 @@ def addWebsite(audit, depth, max_pages, wait_time, title, url, groups):
 
 
   if len(groups) > 1 and audit_group2:
-      slug = removeQuotes(groups[1].strip())
+      slug = removeQuotes(groups[1].strip()).strip()
       print(str(audit_group2))
       try:
         ag2i = AuditGroup2Item.objects.get(group2=audit_group2, group_item=agi, slug=slug)
@@ -210,7 +210,6 @@ def addAuditGroup(audit, data):
     except:
       agi =  AuditGroupItem(group=audit_group, slug=member['slug'], title=member['title'], abbreviation=member['abbrev'])
       print("    Creating Audit Group Item: " +  member['slug'] + " " + member['title'])
-      11111
     agi.save()
 
 
@@ -219,14 +218,13 @@ def addAuditGroup(audit, data):
 def addAudit(data):
 
   try:
-    audit = Audit.objects.get(title=data['title'])
+    audit = Audit.objects.get(slug=data['audit_slug'])
     print("  Updating Audit: " + data['title'])
 
   except ObjectDoesNotExist:
     print("  Creating Audit: " + data['title'])
-    audit = Audit(title=data['title'], user=user)
+    audit = Audit(slug=data['audit_slug'], title=data['title'], user=user)
 
-  audit.slug      = data['audit_slug']
   audit.depth     = data['depth']
   audit.max_pages = data['max_pages']
 
@@ -235,6 +233,8 @@ def addAudit(data):
   audit.save()
 
   groups = data['groups']
+
+  print("Groups: " + str(len(groups)))
 
   try:
 
@@ -293,6 +293,12 @@ for line in file_csv:
 
     title  = removeQuotes(parts[3]).strip()
     url    = removeQuotes(parts[4]).strip()
+    if len(parts) > 5:
+      parts[5] = removeQuotes(parts[5]).strip()
+    if len(parts) > 6:
+      parts[6] = removeQuotes(parts[6]).strip()
+    if len(parts) > 7:
+      parts[7] = removeQuotes(parts[7]).strip()
     print(str(parts[5:]) + " " + title + " " + url)
     addWebsite(audit, depth, max_pages, wait_time, title, url, parts[5:])
   else:

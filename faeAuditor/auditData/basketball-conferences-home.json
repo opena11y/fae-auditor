@@ -3,69 +3,84 @@
   "depth"        : 5,
   "ruleset_id"   : "ARIA_STRICT",
   "wait_time"    : 90000,
+  "max_pages"    : 2000,
   "groups"       : [
   {
     "id"           : "conference",
     "title"        : "Conference",
     "title_plural" : "Conferences",
-    "members" : {
-      "acc" : {
+    "members" : [
+      {
+        "slug": "acc",
         "title": "Atlantic Coast Conference",
         "abbrev": "ACC"
       },
-      "atlantic10" : {
+      {
+        "slug": "atlantic10",
         "title": "Atlantic 10 Conference",
         "abbrev": "Atlantic 10"
       },
-      "big10" : {
+      {
+        "slug": "big10",
         "title": "Big Ten",
         "abbrev": "Big Ten"
       },
-      "big12" : {
+      {
+        "slug": "big12",
         "title": "Big 12",
         "abbrev": "Big 12"
       },
-      "bigwest" : {
+      {
+        "slug": "bigwest",
         "title": "Big West",
         "abbrev": "Big West"
       },
-      "bigeast" : {
+      {
+        "slug": "bigeast",
         "title": "Big East",
         "abbrev": "Big East"
       },
-      "conferenceusa" : {
+      {
+        "slug": "conferenceusa",
         "title": "Conference USA",
         "abbrev": "USA"
       },
-      "ivy" : {
+      {
+        "slug": "ivy",
         "title": "Ivy",
         "abbrev": "Ivy"
       },
-      "midamerican" : {
+      {
+        "slug": "midamerican",
         "title": "Mid American",
         "abbrev": "MidAm"
       },
-      "missourivalley" : {
+      {
+        "slug": "missourivalley",
         "title": "Missouri Valley",
         "abbrev": "MV"
       },
-      "noconference" : {
+      {
+        "slug": "noconference",
         "title": "No Conference",
         "abbrev": "NC"
       },
-      "pac12" : {
+      {
+        "slug": "pac12",
         "title": "Pacific 12",
-        "abbrev": "pac12"
+        "abbrev": "Pac 12"
       },
-      "sec" : {
+      {
+        "slug": "sec",
         "title": "Southeastern Conference",
         "abbrev": "SEC"
       },
-      "wac" : {
+      {
+        "slug": "wac",
         "title": "Western Athletic Conference",
         "abbrev": "WAC"
       }
-    }
+    ]
   }
   ]
 }

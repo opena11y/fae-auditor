@@ -5,28 +5,32 @@
   "wait_time"    : 90000,
   "max_pages"    : 200,
   "groups"       : [
-  {
-    "id"           : "conference",
-    "title"        : "Conference",
-    "title_plural" : "Conferences",
-    "members" : {
-      "acc" : {
-        "title": "Atlantic Coast Conference",
-        "abbrev": "ACC"
-      },
-      "atlantic10" : {
-        "title": "Atlantic 10 Conference",
-        "abbrev": "Atlantic 10"
-      },
-      "big10" : {
-        "title": "Big Ten",
-        "abbrev": "Big Ten"
-      },
-      "big12" : {
-        "title": "Big 12",
-        "abbrev": "Big 12"
-      }
+    {
+      "id"           : "conference",
+      "title"        : "Conference",
+      "title_plural" : "Conferences",
+      "members" : [
+        {
+          "slug" : "acc",
+          "title": "Atlantic Coast Conference",
+          "abbrev": "ACC"
+        },
+        {
+          "slug" : "atlantic10",
+          "title": "Atlantic 10 Conference",
+          "abbrev": "Atlantic 10"
+        },
+        {
+          "slug" : "big10",
+          "title": "Big Ten",
+          "abbrev": "Big Ten"
+        },
+        {
+          "slug" : "big12",
+          "title": "Big 12",
+          "abbrev": "Big 12"
+        }
+      ]
     }
-  }
   ]
 }
