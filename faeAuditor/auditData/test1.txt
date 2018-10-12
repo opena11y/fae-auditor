@@ -1,0 +1,8 @@
+acc bc home http://www.bc.edu
+acc bc admissions http://www.bc.edu/bc-web/admission.html
+
+acc clemson home http://www.clemson.edu
+acc clemson admissions http://www.clemson.edu/admissions/
+
+acc duke home http://www.duke.edu
+acc duke admissions http://admissions.duke.edu
