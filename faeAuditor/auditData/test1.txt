@@ -6,3 +6,8 @@ acc clemson admissions http://www.clemson.edu/admissions/
 
 acc duke home http://www.duke.edu
 acc duke admissions http://admissions.duke.edu
+
+acc miami business http://www.bus.miami.edu
+
+acc clemson education http://www.clemson.edu/education/
+

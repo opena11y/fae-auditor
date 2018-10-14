@@ -119,7 +119,7 @@ acc north_carolina_state business http://poole.ncsu.edu
 acc north_carolina_state education http://ced.ncsu.edu
 acc north_carolina_state engineering http://www.engr.ncsu.edu
 acc north_carolina_state las http://www.chass.ncsu.edu
-acc north_carolina_state sciences http://sciences.nscu.edu
+acc north_carolina_state sciences http://sciences.ncsu.edu
 acc north_carolina_state textiles http://textiles.ncsu.edu
 acc north_carolina_state veterinary_med http://cvm.ncsu.edu
 acc north_carolina_state grad_school http://grad.ncsu.edu
@@ -157,7 +157,7 @@ acc virginia_tech engineering http://www.eng.vt.edu
 acc virginia_tech las https://liberalarts.vt.edu/
 acc virginia_tech agriculture https://www.cals.vt.edu
 acc virginia_tech architecture https://www.caus.vt.edu
-acc virginia_tech graduate school https://graduateschool.vt.edu/
+acc virginia_tech graduate_school https://graduateschool.vt.edu/
 acc virginia_tech vet_school http://www.vetmed.vt.edu/
 acc virginia_tech natural_resources https://www.cnre.vt.edu/
 acc virginia_tech science https://www.science.vt.edu/
@@ -228,7 +228,7 @@ acc syracuse law https://law.syr.edu/
 acc syracuse public_affairs https://www.maxwell.syr.edu/deans/
 acc syracuse communication http://newhouse.syr.edu/
 acc syracuse fine_arts http://newhouse.syr.edu/
-acc syracuse  part_time https://parttime.syr.edu/
+acc syracuse part_time https://parttime.syr.edu/
 acc syracuse graduate_school http://graduateschool.syr.edu/
 acc syracuse disability http://disabilityservices.syr.edu
 acc syracuse architecture https://soa.syr.edu/
@@ -247,7 +247,7 @@ acc notre_dame law http://law.nd.edu/
 acc notre_dame disability https://sarabeadisabilityservices.nd.edu/
 acc notre_dame financial_aid https://admissions.nd.edu/discover/cost-financial-aid
 
-atlantic10 dayton home http://dayton.edu
+atlantic10 dayton home http://udayton.edu
 atlantic10 dayton admissions https://udayton.edu/apply
 atlantic10 dayton financial_aid https://udayton.edu/apply/undergraduate/affordability.php
 atlantic10 dayton las https://udayton.edu/artssciences
@@ -411,7 +411,7 @@ atlantic10 st_louis education https://www.slu.edu/education
 atlantic10 st_louis engineering https://www.slu.edu/parks/
 atlantic10 st_louis las https://www.slu.edu/arts-and-sciences
 atlantic10 st_louis philosophy https://www.slu.edu/philosophy-and-letters/
-atlantic10 st_louis community_health  https://www.slu.edu/public-health-social-justice
+atlantic10 st_louis community_health https://www.slu.edu/public-health-social-justice
 atlantic10 st_louis health_sciences https://www.slu.edu/doisy
 atlantic10 st_louis business https://www.slu.edu/business
 atlantic10 st_louis law http://law.slu.edu/
@@ -886,7 +886,7 @@ big12 texas_tech education http://www.depts.ttu.edu/education/
 big12 texas_tech engineering http://www.depts.ttu.edu/coe/
 big12 texas_tech honors http://www.depts.ttu.edu/honors/
 big12 texas_tech law http://www.depts.ttu.edu/law/
-big12 texas_tech human_sciences ://www.depts.ttu.edu/hs/
+big12 texas_tech human_sciences http://www.depts.ttu.edu/hs/
 big12 texas_tech communication http://www.depts.ttu.edu/comc/
 big12 texas_tech fine_arts http://www.depts.ttu.edu/cvpa/
 big12 texas_tech graduate_schools http://www.depts.ttu.edu/gradschool/
@@ -923,7 +923,6 @@ big12 tcu liberal_arts https://addran.tcu.edu/
 big12 tcu nursing https://harriscollege.tcu.edu/
 big12 tcu science_engineering https://cse.tcu.edu/
 big12 tcu financial_aid https://financialaid.tcu.edu
-big12 tcu disability http://www.acs.tcu.edu/disability_services.asp
 
 bigwest cal_poly home http://www.calpoly.edu
 bigwest cal_poly admissions https://admissions.calpoly.edu/
@@ -1059,7 +1058,7 @@ bigwest uc_santa_barbara admissions http://admissions.sa.ucsb.edu
 bigwest uc_santa_barbara education http://education.ucsb.edu
 bigwest uc_santa_barbara engineering https://engineering.ucsb.edu/
 bigwest uc_santa_barbara las http://college.ucsb.edu/
-bigwest uc_santa_barbara creative studies https://www.ccs.ucsb.edu/
+bigwest uc_santa_barbara creative_studies https://www.ccs.ucsb.edu/
 bigwest uc_santa_barbara graduate_school http://www.graddiv.ucsb.edu/
 bigwest uc_santa_barbara business http://bren.ucsb.edu/
 bigwest uc_santa_barbara graduate_school_education https://education.ucsb.edu/
@@ -1429,7 +1428,7 @@ ivy columbia law https://www.law.columbia.edu/
 ivy columbia dentistry https://www.dental.columbia.edu/
 ivy columbia general_studies https://gs.columbia.edu/
 ivy columbia school_international_public_affairs https://sipa.columbia.edu/
-ivy columbia Jewish Theological Seminary http://www.jtsa.edu/
+ivy columbia jewish_theological_seminary http://www.jtsa.edu/
 ivy columbia nursing http://nursing.columbia.edu/
 ivy columbia college_of_physicians_surgeons https://www.ps.columbia.edu/education/
 ivy columbia professional_studies http://sps.columbia.edu/
@@ -1574,7 +1573,7 @@ midamerican buffalo home https://www.buffalo.edu/
 midamerican buffalo admissions https://www.buffalo.edu/ub_admissions.html
 midamerican buffalo architecture https://ap.buffalo.edu/
 midamerican buffalo las https://arts-sciences.buffalo.edu/
-midamerican buffalo dentistry https://dental.buffalo.edu 
+midamerican buffalo dentistry https://dental.buffalo.edu
 midamerican buffalo graduate_education http://ed.buffalo.edu/
 midamerican buffalo engineering http://engineering.buffalo.edu/
 midamerican buffalo law http://www.law.buffalo.edu/
@@ -1600,7 +1599,7 @@ midamerican kent_state public_health https://www.kent.edu/publichealth
 midamerican kent_state honors_college https://www.kent.edu/honors
 midamerican kent_state regional_college https://www.kent.edu/regional-college
 midamerican kent_state university_college https://www.kent.edu/universitycollege
-midamerican kent_state graduate_studies https://www.kent.edu/graduatestudies 
+midamerican kent_state graduate_studies https://www.kent.edu/graduatestudies
 midamerican kent_state arts https://www.kent.edu/artscollege
 midamerican kent_state architecture https://www.kent.edu/caed
 midamerican kent_state financial_aid https://www.kent.edu/financialaid
@@ -1623,7 +1622,7 @@ midamerican ball_state admissions https://www.bsu.edu/admissions
 midamerican ball_state financial_aid https://www.bsu.edu/admissions/financial-aid-and-scholarships
 midamerican ball_state disability https://www.bsu.edu/about/administrativeoffices/disability-services
 midamerican ball_state architecture https://www.bsu.edu/academics/collegesanddepartments/cap
-midamerican ball_state business https://www.bsu.edu/academics/collegesanddepartments/mcob 
+midamerican ball_state business https://www.bsu.edu/academics/collegesanddepartments/mcob
 midamerican ball_state communication https://www.bsu.edu/academics/collegesanddepartments/ccim
 midamerican ball_state fine_arts https://www.bsu.edu/academics/collegesanddepartments/cfa
 midamerican ball_state health https://www.bsu.edu/academics/collegesanddepartments/health
@@ -1832,7 +1831,7 @@ missourivalley wichita_state honors_college https://www.wichita.edu/academics/ho
 
 missourivalley loyola home http://www.luc.edu/
 missourivalley loyola admissions https://www.loyola.edu/admission
-missourivalley loyola financial_aid https://www.loyola.edu/department/financial-aid 
+missourivalley loyola financial_aid https://www.loyola.edu/department/financial-aid
 missourivalley loyola disability https://www.loyola.edu/department/dss
 missourivalley loyola business https://www.loyola.edu/sellinger-business
 missourivalley loyola education https://www.loyola.edu/school-education
@@ -1948,7 +1947,7 @@ pac12 u_oregon financial_aid https://financialaid.uoregon.edu/
 pac12 u_oregon disability https://aec.uoregon.edu/
 pac12 u_oregon graduate_school https://gradschool.uoregon.edu/
 pac12 u_oregon law https://law.uoregon.edu/
-pac12 u_oregon music https://music.uoregon.edu/ 
+pac12 u_oregon music https://music.uoregon.edu/
 pac12 u_oregon journalism http://journalism.uoregon.edu/
 pac12 u_oregon honors https://honors.uoregon.edu/
 pac12 u_oregon education https://education.uoregon.edu/
@@ -2078,7 +2077,7 @@ pac12 washington_state home http://wsu.edu
 pac12 washington_state admissions https://wsu.edu/admission/
 pac12 washington_state financial_aid https://financialaid.wsu.edu/
 pac12 washington_state disability https://drc.wsu.edu/
-pac12 washington_state business https://business.wsu.edu/ 
+pac12 washington_state business https://business.wsu.edu/
 pac12 washington_state communication https://murrow.wsu.edu/
 pac12 washington_state education https://education.wsu.edu/
 pac12 washington_state engineering https://vcea.wsu.edu/

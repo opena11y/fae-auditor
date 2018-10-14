@@ -31,7 +31,38 @@ class Domain:
     self.url    = u.strip('\n\t')
 
 def clean(s):
-  return "".join([i for i in s if 31 < ord(i) < 127])
+  s1 = ""
+
+  s = s.replace('\\n', '')
+  s = s.replace('\\r', '')
+  s = s.replace('\\t', '')
+  s = s.replace('          ', ' ')
+  s = s.replace('         ', ' ')
+  s = s.replace('        ', ' ')
+  s = s.replace('       ', ' ')
+  s = s.replace('      ', ' ')
+  s = s.replace('     ', ' ')
+  s = s.replace('    ', ' ')
+  s = s.replace('   ', ' ')
+  s = s.replace('  ', ' ')
+
+  return s.strip()
+
+def makeTitle(s):
+
+  s = s.replace('_', ' ')
+  words = s.split(' ')
+
+  title = []
+
+  for w in words:
+    if len(w) < 4:
+      title.append(w.upper())
+    else:
+      title.append(w.capitalize())
+
+  return ' '.join(title)
+
 
 def getDomain(s):
 
@@ -62,6 +93,8 @@ urls = []
 domains    = []
 error_urls = []
 
+count = 0
+
 for line in file_urls:
   parts = line.split(' ')
   if len(parts) > 3:
@@ -71,7 +104,8 @@ for line in file_urls:
       index = index + 1
 
     d =  Domain(parts[0],parts[1],parts[2],parts[index])
-    print(str(d.url))
+    count += 1
+    print(str(count) + ": " + str(d.url))
 
     dup = False
     # check if domain is unique
@@ -83,6 +117,8 @@ for line in file_urls:
     if not dup:
       domains.append(d)
 
+print('\n-------------\n')
+
 for index, item in enumerate(domains):
 
   ctx                = ssl.create_default_context()
@@ -91,7 +127,7 @@ for index, item in enumerate(domains):
 
   hdr = { 'User-Agent' : 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)' }
 
-  title = item.group2.capitalize() + ': ' + item.group3.capitalize()
+  title = makeTitle(item.group2) + ': ' + item.group3.capitalize()
 
   try:
     request  = Request(item.url, headers=hdr)
@@ -121,22 +157,21 @@ for index, item in enumerate(domains):
           if start != -1 and end != -1:
             title = html[(start+7):end]
             if title:
-              print('TITLE: ' + str(title) + ' ' + str(start) + ' ' + str(end))
-              title = clean(title.strip())
+              title = clean(title)
         else:
-          print("*** Error no title or body tag found: " + str(index) + ": " + item)
+          print("\nError no title or body tag found: " + str(index) + ": " + item + "\n")
       except:
-        print("Title Parsing Error: " + str(index) + ": " + item.url)
+        print("\nTitle Parsing Error: " + str(index) + ": " + item.url + "\n")
         error_urls.append(item)
     except:
-      print("Reading HTML Error: " + str(index) + ": " + item.url)
+      print("\nReading HTML Error: " + str(index) + ": " + item.url + "\n")
       error_urls.append(item)
   except HTTPError as e:
-    print("HTTP Error: " + str(e.code) + " for " + str(index) + ": " + item.url)
+    print("\nHTTP Error: " + str(e.code) + " for " + str(index) + ": " + item.url + "\n")
     item.error = str(e.code)
     error_urls.append(item)
   except URLError as e:
-    print("URL Error:  " + str(e.reason) + " for " + str(index) + ": " + item.url)
+    print("\nURL Error:  " + str(e.reason) + " for " + str(index) + ": " + item.url + "\n")
     item.error = str(e.reason)
     error_urls.append(item)
 
