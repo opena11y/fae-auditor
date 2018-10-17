@@ -6,6 +6,7 @@ from django.db import models
 
 from rulesets.models   import Ruleset
 
+
 from django.contrib.auth.models import User
 
 
@@ -64,7 +65,7 @@ class Audit(models.Model):
   user     = models.ForeignKey(User)
   created  = models.DateTimeField(auto_now_add=True, editable=False)
 
-  slug   = models.SlugField(max_length=50, blank=True)
+  slug   = models.SlugField(max_length=64, blank=True)
 
   title             = models.CharField('Audit Title', max_length=512)
 
@@ -168,7 +169,7 @@ class AuditGroup(models.Model):
 
   audit  = models.ForeignKey(Audit, related_name="groups")
 
-  slug   = models.SlugField(max_length=50, blank=True)
+  slug   = models.SlugField(max_length=64, blank=True)
 
   title         = models.CharField('Group Title',  max_length=512, default="no group title")
   title_plural  = models.CharField('Group Title Plural',  max_length=512, default="no group plural title")
@@ -189,7 +190,7 @@ class AuditGroupItem(models.Model):
 
   group  = models.ForeignKey(AuditGroup, related_name="group_items")
 
-  slug   = models.SlugField(max_length=50, blank=True)
+  slug   = models.SlugField(max_length=64, blank=True)
 
   title        = models.CharField('Group Item Title',  max_length=512, default="no group item title")
   abbreviation = models.CharField('Group Item Abbreviation',  max_length=32, default="no group item abbreviation")
@@ -212,7 +213,7 @@ class AuditGroup2(models.Model):
 
   audit  = models.ForeignKey(Audit, related_name="group2s")
 
-  slug   = models.SlugField(max_length=50, blank=True)
+  slug   = models.SlugField(max_length=64, blank=True)
 
   title  = models.CharField('Group 2 Title',  max_length=512, default="no group2 title")
   title_plural  = models.CharField('Group 2 Title Plural',  max_length=512, default="no group2 plural title")
@@ -237,7 +238,7 @@ class AuditGroup2Item(models.Model):
   group2     = models.ForeignKey(AuditGroup2,    related_name="group2_items")
   group_item = models.ForeignKey(AuditGroupItem, related_name="group2_items")
 
-  slug   = models.SlugField(max_length=50, blank=True)
+  slug   = models.SlugField(max_length=64, blank=True)
 
   title        = models.CharField('Group2 Item Title',  max_length=512, default="no group group item title")
   abbreviation = models.CharField('Group2 Item Abbreviation',  max_length=32, default="no group item abbreviation")

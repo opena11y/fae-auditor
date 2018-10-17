@@ -62,7 +62,7 @@ class AuditGroupResult(AllRuleGroupResult):
 
   group_item     = models.ForeignKey(AuditGroupItem)
 
-  slug           = models.SlugField(max_length=16, default="none", blank=True, editable=False)
+  slug           = models.SlugField(max_length=64, default="none", blank=True, editable=False)
 
   page_count    = models.IntegerField(default=0)
   website_count = models.IntegerField(default=0)
@@ -187,7 +187,7 @@ class AuditGroupRuleCategoryResult(RuleGroupResult):
 
   group_result   = models.ForeignKey(AuditGroupResult, on_delete=models.CASCADE, related_name="group_rc_results")
 
-  slug           = models.SlugField(max_length=16, default="", blank=True, editable=False)
+  slug           = models.SlugField(max_length=64, default="", blank=True, editable=False)
   rule_category  = models.ForeignKey(RuleCategory, on_delete=models.SET_NULL, null=True, default=None)
 
   class Meta:
@@ -237,7 +237,7 @@ class AuditGroupGuidelineResult(RuleGroupResult):
 
   group_result = models.ForeignKey(AuditGroupResult, on_delete=models.CASCADE, related_name="group_gl_results")
 
-  slug         = models.SlugField(max_length=16, default="", blank=True, editable=False)
+  slug         = models.SlugField(max_length=64, default="", blank=True, editable=False)
   guideline    = models.ForeignKey(Guideline, on_delete=models.SET_NULL, null=True, default=None)
 
   class Meta:
@@ -285,7 +285,7 @@ class AuditGroupRuleScopeResult(RuleGroupResult):
 
   group_result = models.ForeignKey(AuditGroupResult, on_delete=models.CASCADE, related_name="group_rs_results")
 
-  slug           = models.SlugField(max_length=16, default="", blank=True, editable=False)
+  slug           = models.SlugField(max_length=64, default="", blank=True, editable=False)
   rule_scope   = models.ForeignKey(RuleScope, on_delete=models.SET_NULL, null=True, default=None)
 
   class Meta:

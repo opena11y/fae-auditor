@@ -215,7 +215,7 @@ class WebsiteResult(RuleGroupResult):
   unprocessed_urls_count = models.IntegerField(default=-1)
   filtered_urls_count    = models.IntegerField(default=-1)
 
-  data_dir_slug            = models.SlugField(max_length=50, editable=False)
+  data_dir_slug            = models.SlugField(max_length=64, editable=False)
   data_directory           = models.CharField('Data Directory',           max_length=1024, default="")
   data_property_file       = models.CharField('Property File Name',       max_length=1024, default="")
   data_authorization_file  = models.CharField('Authorization File Name',  max_length=1024, default="", blank=True)
@@ -675,7 +675,7 @@ class FilteredURL(models.Model):
 class WebsiteRuleCategoryResult(RuleGroupResult):
   id             = models.AutoField(primary_key=True)
 
-  slug           = models.SlugField(max_length=16, default="none", blank=True, editable=False)
+  slug           = models.SlugField(max_length=64, default="none", blank=True, editable=False)
 
   ws_report      = models.ForeignKey(WebsiteResult, on_delete=models.CASCADE, related_name="ws_rc_results")
 
@@ -720,7 +720,7 @@ class WebsiteGuidelineResult(RuleGroupResult):
 
   ws_report           = models.ForeignKey(WebsiteResult, on_delete=models.CASCADE, related_name="ws_gl_results")
 
-  slug  = models.SlugField(max_length=16, default="none", blank=True, editable=False)
+  slug  = models.SlugField(max_length=64, default="none", blank=True, editable=False)
 
   guideline            = models.ForeignKey(Guideline, on_delete=models.SET_NULL, null=True)
 
@@ -762,7 +762,7 @@ class WebsiteGuidelineResult(RuleGroupResult):
 class WebsiteRuleScopeResult(RuleGroupResult):
   id               = models.AutoField(primary_key=True)
 
-  slug  = models.SlugField(max_length=16, default="none", blank=True, editable=False)
+  slug  = models.SlugField(max_length=64, default="none", blank=True, editable=False)
 
   ws_report        = models.ForeignKey(WebsiteResult, on_delete=models.CASCADE, related_name="ws_rs_results")
 

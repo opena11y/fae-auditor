@@ -62,6 +62,13 @@ AUDIT_STATUS = (
 )
 
 
+
+class AuditGroup2Result:
+  pass
+
+class AuditGroupResult:
+  pass
+
 # ---------------------------------------------------------------
 #
 # SummaryRuleGroup
@@ -90,7 +97,7 @@ class AuditResult(AllRuleGroupResult):
 
   title    = models.CharField('Audit Result Title', max_length=512, default="")
   audit    = models.ForeignKey(Audit, related_name="audit_results", blank=True, null=True)
-  slug     = models.SlugField(max_length=60, default="none", blank=True)
+  slug     = models.SlugField(max_length=64, default="none", blank=True)
 
   ruleset           = models.ForeignKey(Ruleset, on_delete=models.SET_NULL, null=True, default=2, blank=False)
   depth             = models.IntegerField(choices=DEPTH_CHOICES, default=2)
@@ -311,7 +318,7 @@ class AuditRuleCategoryResult(RuleGroupResult):
 
   audit_result   = models.ForeignKey(AuditResult, on_delete=models.CASCADE, related_name="audit_rc_results")
 
-  slug           = models.SlugField(max_length=16, default="", blank=True, editable=False)
+  slug           = models.SlugField(max_length=64, default="", blank=True, editable=False)
   rule_category  = models.ForeignKey(RuleCategory, on_delete=models.SET_NULL, null=True, default=None)
 
   class Meta:
@@ -353,7 +360,7 @@ class AuditGuidelineResult(RuleGroupResult):
 
   audit_result = models.ForeignKey(AuditResult, on_delete=models.CASCADE, related_name="audit_gl_results")
 
-  slug           = models.SlugField(max_length=16, default="", blank=True, editable=False)
+  slug           = models.SlugField(max_length=64, default="", blank=True, editable=False)
   guideline    = models.ForeignKey(Guideline, on_delete=models.SET_NULL, null=True, default=None)
 
   class Meta:
@@ -391,7 +398,7 @@ class AuditRuleScopeResult(RuleGroupResult):
 
   audit_result = models.ForeignKey(AuditResult, on_delete=models.CASCADE, related_name="audit_rs_results")
 
-  slug           = models.SlugField(max_length=16, default="", blank=True, editable=False)
+  slug           = models.SlugField(max_length=64, default="", blank=True, editable=False)
   rule_scope   = models.ForeignKey(RuleScope, on_delete=models.SET_NULL, null=True, default=None)
 
   class Meta:

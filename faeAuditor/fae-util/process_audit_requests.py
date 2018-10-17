@@ -102,6 +102,8 @@ def error(s):
       log.flush()
 
 
+
+
 def init_oaa_script_file():
   f = open(fae_util_path + '/openajax_a11y/scripts.txt', 'w')
   f.write(fae_util_path  + '/openajax_a11y/oaa_a11y_evaluation.js\n')
@@ -112,79 +114,92 @@ def init_oaa_script_file():
 
 def init_audit_result(audit_result):
 
-    def get_audit_group_result(group_item):
+  def get_audit_group_result(group_item):
+
+    print('[get_audit_group_result]: ' + str(group_item) + ' ' + str(group_item.slug))
+
+    try:
+      agr = AuditGroupResult.objects.get(audit_result=audit_result, group_item=group_item)
+    except:
+      agr = AuditGroupResult(audit_result=audit_result, group_item=group_item, slug=group_item.slug)
+      agr.save()
+
+    print(str(agr))
+    return agr
+
+  def get_audit_group2_result(group_result, group2_item):
+
+    print('[get_audit2_group_result]: ' + str(group_result) + ' ' + str(group2_item) + ' ' + str(group2_item.slug))
+
+    try:
+      ag2r = AuditGroup2Result.objects.get(group_result=group_result, group2_item=group2_item)
+    except:
+      ag2r = AuditGroup2Result(group_result=group_result, group2_item=group2_item, slug=group2_item.slug)
+      ag2r.save()
+
+    print(str(ag2r))
+    return ag2r
+
+  def get_website_result(website, group_result, group2_result):
+    try:
+      wsr = WebsiteResult.objects.get(slug=website.slug, audit_result=audit_result, group_result=group_result, group2_result=group2_result)
+    except:
       try:
-        agr = AuditGroupResult.objects.get(audit_result=audit_result, group_item=group_item)
+        wsr = WebsiteResult(slug=website.slug,
+                          url=website.url,
+                          title=website.title,
+                          follow=website.follow,
+                          depth=website.depth,
+                          max_pages=website.max_pages,
+                          ruleset=audit_result.ruleset,
+                          browser_emulation=audit_result.browser_emulation,
+                          wait_time=audit_result.wait_time,
+                          span_sub_domains=website.span_sub_domains,
+                          exclude_sub_domains=website.exclude_sub_domains,
+                          include_domains=website.include_domains,
+                          audit_result=audit_result,
+                          group_result=group_result,
+                          group2_result=group2_result)
+        wsr.save()
       except:
-        agr = AuditGroupResult(audit_result=audit_result, group_item=group_item, slug=group_item.slug)
-        agr.save()
+        print("Unexpected error:", str(sys.exc_info()))
 
-      return agr
-
-    def get_audit_group2_result(group_result, group2_item):
-      try:
-        ag2r = AuditGroup2Result.objects.get(group_result=group_result, group2_item=group2_item)
-      except:
-        ag2r = AuditGroup2Result(group_result=group_result, group2_item=group2_item, slug=group2_item.slug)
-        ag2r.save()
-
-      return ag2r
-
-    def get_website_result(website, group_result, group2_result):
-      try:
-        wsr = WebsiteResult.objects.get(slug=website.slug, audit_result=audit_result, group_result=group_result, group2_result=group2_result)
-      except:
-        try:
-          wsr = WebsiteResult(slug=website.slug,
-                            url=website.url,
-                            title=website.title,
-                            follow=website.follow,
-                            depth=website.depth,
-                            max_pages=website.max_pages,
-                            ruleset=audit_result.ruleset,
-                            browser_emulation=audit_result.browser_emulation,
-                            wait_time=audit_result.wait_time,
-                            span_sub_domains=website.span_sub_domains,
-                            exclude_sub_domains=website.exclude_sub_domains,
-                            include_domains=website.include_domains,
-                            audit_result=audit_result,
-                            group_result=group_result,
-                            group2_result=group2_result)
-          wsr.save()
-        except:
-          print("Unexpected error:", str(sys.exc_info()))
-
-      return wsr
+    return wsr
 
 
-    audit = audit_result.audit
+  audit = audit_result.audit
 
-    if audit:
 
-      try:
+  if audit:
 
-        for ws in audit.websites.all():
+    try:
+      print("Number of websites: " + str(len(audit.websites.all())))
+      for ws in audit.websites.all():
+        print('\n  Website: ' + str(ws)+ ' ' + str(ws.group_item) + ' ' + str(ws.group2_item))
 
-          if ws.group_item:
-            agr = get_audit_group_result(ws.group_item)
+        if ws.group_item:
+          agr = get_audit_group_result(ws.group_item)
+          print('    Group: ' + str(agr))
 
-            if ws.group2_item:
-              ag2r = get_audit_group2_result(agr, ws.group2_item)
+          if ws.group2_item:
+            ag2r = get_audit_group2_result(agr, ws.group2_item)
+            print('    Group2: ' + str(ag2r))
 
-              wsr = get_website_result(ws, agr, ag2r)
-            else:
-              wsr = get_website_result(ws, agr, None)
-
+            wsr = get_website_result(ws, agr, ag2r)
           else:
-            wsr = get_website_result(ws, None, None)
+            wsr = get_website_result(ws, agr, None)
 
-          print("[AudtResult][init_results][wsr]: " + str(wsr))
+        else:
+          wsr = get_website_result(ws, None, None)
 
-      except:
-        pass
+        print("[AudtResult][init][wsr]: " + str(wsr))
 
-    audit_result.status = "I"
-    audit_result.save()
+    except:
+      pass
+
+  audit_result.status = "I"
+  audit_result.save()
+
 
 def initWebsiteResult(ws_report):
 
@@ -338,6 +353,11 @@ def main(argv):
     ws_saving    = WebsiteResult.objects.filter(status="S")
 
     processing_count = len(ws_analyzing) + len(ws_saving)
+
+    info("   [CREATED COUNT]: " + str(created_count));
+    info("[PROCESSING COUNT]: " + str(processing_count));
+
+    sys.exit(0)
 
     if created_count and processing_count <= PROCESSING_THREADS:
       ws_report = ws_created[0]
