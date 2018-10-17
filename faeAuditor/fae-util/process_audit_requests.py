@@ -112,7 +112,7 @@ def init_oaa_script_file():
 
 def init_audit_result(audit_result):
 
-  def get_audit_group_result(group_item):0
+  def get_audit_group_result(group_item):
 
     try:
       agr = AuditGroupResult.objects.get(audit_result=audit_result, group_item=group_item)
