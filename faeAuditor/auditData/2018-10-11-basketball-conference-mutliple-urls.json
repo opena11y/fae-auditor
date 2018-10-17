@@ -1,5 +1,5 @@
-{ "title"        : "2018 Basketball Conferences",
-  "audit_slug"   : "2018-bb-conf",
+{ "title"        : "2018 Basketball Conferences II",
+  "audit_slug"   : "2018-bb-conf-2",
   "depth"        : 2,
   "ruleset_id"   : "ARIA_STRICT",
   "wait_time"    : 90000,
