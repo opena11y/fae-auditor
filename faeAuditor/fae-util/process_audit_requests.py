@@ -73,8 +73,6 @@ INFO=True
 
 log = open(os.path.join(APP_DIR + 'logs/process-evaluation.log'), 'w')
 
-print(str(log))
-
 def debug(s):
   if DEBUG and log:
     log.write('[PROC_EVAL_REQ][DEBUG]: ' + str(s) + '\n')
@@ -114,9 +112,7 @@ def init_oaa_script_file():
 
 def init_audit_result(audit_result):
 
-  def get_audit_group_result(group_item):
-
-    print('[get_audit_group_result]: ' + str(group_item) + ' ' + str(group_item.slug))
+  def get_audit_group_result(group_item):0
 
     try:
       agr = AuditGroupResult.objects.get(audit_result=audit_result, group_item=group_item)
@@ -124,12 +120,9 @@ def init_audit_result(audit_result):
       agr = AuditGroupResult(audit_result=audit_result, group_item=group_item, slug=group_item.slug)
       agr.save()
 
-    print(str(agr))
     return agr
 
   def get_audit_group2_result(group_result, group2_item):
-
-    print('[get_audit2_group_result]: ' + str(group_result) + ' ' + str(group2_item) + ' ' + str(group2_item.slug))
 
     try:
       ag2r = AuditGroup2Result.objects.get(group_result=group_result, group2_item=group2_item)
@@ -137,7 +130,6 @@ def init_audit_result(audit_result):
       ag2r = AuditGroup2Result(group_result=group_result, group2_item=group2_item, slug=group2_item.slug)
       ag2r.save()
 
-    print(str(ag2r))
     return ag2r
 
   def get_website_result(website, group_result, group2_result):
@@ -162,7 +154,7 @@ def init_audit_result(audit_result):
                           group2_result=group2_result)
         wsr.save()
       except:
-        print("Unexpected error:", str(sys.exc_info()))
+        error("Unexpected error:", str(sys.exc_info()))
 
     return wsr
 
@@ -173,17 +165,13 @@ def init_audit_result(audit_result):
   if audit:
 
     try:
-      print("Number of websites: " + str(len(audit.websites.all())))
       for ws in audit.websites.all():
-        print('\n  Website: ' + str(ws)+ ' ' + str(ws.group_item) + ' ' + str(ws.group2_item))
 
         if ws.group_item:
           agr = get_audit_group_result(ws.group_item)
-          print('    Group: ' + str(agr))
 
           if ws.group2_item:
             ag2r = get_audit_group2_result(agr, ws.group2_item)
-            print('    Group2: ' + str(ag2r))
 
             wsr = get_website_result(ws, agr, ag2r)
           else:
@@ -191,8 +179,6 @@ def init_audit_result(audit_result):
 
         else:
           wsr = get_website_result(ws, None, None)
-
-        print("[AudtResult][init][wsr]: " + str(wsr))
 
     except:
       pass
@@ -353,11 +339,6 @@ def main(argv):
     ws_saving    = WebsiteResult.objects.filter(status="S")
 
     processing_count = len(ws_analyzing) + len(ws_saving)
-
-    info("   [CREATED COUNT]: " + str(created_count));
-    info("[PROCESSING COUNT]: " + str(processing_count));
-
-    sys.exit(0)
 
     if created_count and processing_count <= PROCESSING_THREADS:
       ws_report = ws_created[0]
