@@ -99,7 +99,7 @@ acc north_carolina las http://college.unc.edu
 acc north_carolina government https://sog.unc.edu
 acc north_carolina media_journalism https://mj.unc.edu
 acc north_carolina dentistry https://www.dentistry.unc.edu
-acc north_caroline graduate_school https://gradschool.unc.edu
+acc north_carolina graduate_school https://gradschool.unc.edu
 acc north_carolina medical_school https://med.unc.edu
 acc north_carolina education https://soe.unc.edu
 acc north_carolina information_science https://sils.unc.edu
@@ -366,7 +366,7 @@ atlantic10 saint_josephs admissions https://www.sju.edu/admission
 atlantic10 saint_josephs businesshttps://www.sju.edu/academics/haub-school-business
 atlantic10 saint_josephs education https://she.sju.edu/
 atlantic10 saint_josephs las https://www.sju.edu/academics/college-arts-and-sciences
-atlantic10 saint_jospehs disability https://sites.sju.edu/thesuccesscenter/sds/
+atlantic10 saint_josephs disability https://sites.sju.edu/thesuccesscenter/sds/
 atlantic10 saint_josephs financial_aid https://sites.sju.edu/finaid/
 
 
@@ -424,13 +424,13 @@ atlantic10 st_louis financial_aid https://www.slu.edu/financial-aid/index.php
 atlantic10 george_mason home http://www2.gmu.edu/
 atlantic10 george_mason admissions http://www2.gmu.edu/admissions-aid
 atlantic10 george_mason financial_aid https://www2.gmu.edu/admissions-aid/visit-mason
-atlantic10 goerge_mason law https://www.law.gmu.edu/
+atlantic10 george_mason law https://www.law.gmu.edu/
 atlantic10 george_mason health_services https://chhs.gmu.edu/
 atlantic10 george_mason humanities https://chss.gmu.edu/
 atlantic10 george_mason science https://cos.gmu.edu/
 atlantic10 george_mason fine_arts https://cvpa.gmu.edu/
 atlantic10 george_mason government https://schar.gmu.edu/
-atlantic10 geroge_mason conflict_analysis https://scar.gmu.edu/
+atlantic10 george_mason conflict_analysis https://scar.gmu.edu/
 atlantic10 george_mason business http://business.gmu.edu/
 atlantic10 george_mason education https://cehd.gmu.edu/
 atlantic10 george_mason engineering http://volgenau.gmu.edu/
@@ -496,7 +496,7 @@ big10 minnesota las https://cla.umn.edu/
 big10 minnesota biological_sciences https://cbs.umn.edu
 big10 minnesota continuing_studies https://ccaps.umn.edu/
 big10 minnesota dentistry https://www.dentistry.umn.edu/
-big10 mineesota design https://design.umn.edu/
+big10 minnesota design https://design.umn.edu/
 big10 minnesota education http://www.cehd.umn.edu/
 big10 minnesota management https://carlsonschool.umn.edu/
 big10 minnesota law https://www.law.umn.edu/
@@ -983,8 +983,8 @@ bigwest hawaii nursing https://nursing.hawaii.edu/
 bigwest hawaii ocean_science https://www.soest.hawaii.edu/soestwp/
 bigwest hawaii asia_pacific_studies http://manoa.hawaii.edu/spas/
 bigwest hawaii social_work http://www.hawaii.edu/sswork/
-biggest hawaii travel_industry_management https://tim.hawaii.edu/
-biggest hawaii disability http://www.hawaii.edu/kokua/
+bigwest hawaii travel_industry_management https://tim.hawaii.edu/
+bigwest hawaii disability http://www.hawaii.edu/kokua/
 
 
 bigwest longbeach_state home http://www.csulb.edu
@@ -1082,7 +1082,7 @@ bigeast depaul science_health https://csh.depaul.edu/Pages/default.aspx
 bigeast depaul music https://music.depaul.edu/Pages/default.aspx
 bigeast depaul new_learning https://snl.depaul.edu/Pages/default.aspx
 bigeast depaul theatre_school https://theatre.depaul.edu/Pages/default.aspx
-biggest depaul disability https://offices.depaul.edu/student-affairs/about/departments/Pages/csd.aspx
+bigeast depaul disability https://offices.depaul.edu/student-affairs/about/departments/Pages/csd.aspx
 
 
 
