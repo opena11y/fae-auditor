@@ -13,25 +13,39 @@ Audit Processing
 
 {% block content %}
 
-
 <table class="details table table-striped table-hover sortable"  aria-labelledby="{{id_title}}">
         <thead>
             <tr>
-                <th class="text">Title</th>
-                <th class="text">Created</th>
+                <th id="id_title" rowspan="2" class="text">Title</th>
+                <th id="id_date"  rowspan="2" class="text">Date/Time Created</th>
+                <th id="id_wsps"  colspan="5"  class="center">Website Processing Status</th>
+            </tr>
+            <tr>
+                <th id="id_init" class="num">Initialized</th>
+                <th id="id_anal" class="num">Analyzing</th>
+                <th id="id_savi" class="num">Saving</th>
+                <th id="id_comp" class="num">Complete</th>
+                <th id="id_eror" class="num">Error</th>
             </tr>
         </thead>
         <tbody>
             {% if audit_results_processing.count %}
             {% for a in audit_results_processing %}
             <tr>
-                <td class="text" style="min-width: 15em;">
+                <td id="id_{{a.id}}" headers="id_title" class="text" style="min-width: 15em;">
                 {{a.title}}
                 </td>
-                
-                <td class="text date">
+
+                <td headers="id_{{a.id}} id_date" class="text date">
                     {{ a.created|date:"Y-m-d H:i" }}
                 </td>
+
+                <td headers="id_{{a.id}} id_init" class="num">{{a.get_websiteresults_initialized}}</td>
+                <td headers="id_{{a.id}} id_anal" class="num">{{a.get_websiteresults_analyzing}}</td>
+                <td headers="id_{{a.id}} id_savi" class="num">{{a.get_websiteresults_saving}}</td>
+                <td headers="id_{{a.id}} id_comp" class="num">{{a.get_websiteresults_complete}}</td>
+                <td headers="id_{{a.id}} id_erro" class="num">{{a.get_websiteresults_error}}</td>
+
             </tr>
             {% endfor %}
             {% else %}
@@ -39,10 +53,10 @@ Audit Processing
                 <td>No audits processing</td>
             </tr>
             {% endif %}
-            
+
         </tbody>
-        
+
     </table>
 
-    
+
 {% endblock %}

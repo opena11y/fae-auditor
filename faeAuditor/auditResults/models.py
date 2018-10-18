@@ -55,7 +55,7 @@ AUDIT_STATUS = (
     ('-', 'Created'),
     ('I', 'Initalized'),
     ('A', 'Analyzing'),
-    ('S', 'saving Group Results'),
+    ('S', 'Saving Group Results'),
     ('C', 'Complete'),
     ('E', 'Error'),
     ('D', 'Marked for deletion'),
@@ -204,6 +204,12 @@ class AuditResult(AllRuleGroupResult):
     count = self.ws_results.filter(status='A').count()
     count += self.ws_results.filter(status='S').count()
     return count
+
+  def get_websiteresults_analyzing(self):
+    return self.ws_results.filter(status='A').count()
+
+  def get_websiteresults_saving(self):
+    return self.ws_results.filter(status='S').count()
 
   def get_websiteresults_complete(self):
     return self.ws_results.filter(status='C').count()
