@@ -73,7 +73,7 @@ def main():
 
 
         if ar.group_results:
-          print('  reseting group results... (' + str(len(ar.group_results.all())) + ')')
+          print('\n\n  reseting group results... (' + str(len(ar.group_results.all())) + ')')
           if len(ar.group_results.all()):
             for agr in ar.group_results.all():
               print('     reseting a group result: ' + str(agr))
@@ -100,7 +100,7 @@ def main():
             print('  no group results')
 
 
-        print('  computing audit results...')
+        print('\n  computing audit results...\n')
 
         ar.compute_audit_results(True)
 

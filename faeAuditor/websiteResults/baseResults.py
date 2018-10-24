@@ -176,10 +176,10 @@ class RuleElementResult(RuleResult):
       total = pass_fail_total
 
     if pass_fail_total:
-      self.implementation_pass_fail_score  =  (100 * passed) / pass_fail_total
+      self.implementation_pass_fail_score  =  int((100 * passed) / pass_fail_total)
 
     if total:
-      self.implementation_score            =  (100 * passed) / total
+      self.implementation_score            =  int((100 * passed) / total)
 
     if total > 0:
       if self.elements_violation:
@@ -327,6 +327,7 @@ class RuleGroupResult(RuleResult):
 
   total_pages                   = models.IntegerField(default=0)
   implementation_summ           = models.IntegerField(default=0)
+  total_pages_pass_fail         = models.IntegerField(default=0)
   implementation_pass_fail_summ = models.IntegerField(default=0)
 
 
@@ -346,6 +347,7 @@ class RuleGroupResult(RuleResult):
 
     self.total_pages = 0
     self.implementation_summ = 0
+    self.total_pages_pass_fail = 0
     self.implementation_pass_fail_summ = 0
 
     super(RuleGroupResult, self).reset()
@@ -372,13 +374,17 @@ class RuleGroupResult(RuleResult):
     pc = rule_result.get_page_count_with_results()
 
     if pc > 0:
-      self.total_pages += pc
 
-      self.implementation_pass_fail_summ += pc * rule_result.implementation_pass_fail_score
-      self.implementation_summ           += pc * rule_result.implementation_score
+      if rule_result.implementation_pass_fail_score > 0:
+        self.total_pages_pass_fail += pc
+        self.implementation_pass_fail_summ += pc * rule_result.implementation_pass_fail_score
+        self.implementation_pass_fail_score = int(self.implementation_pass_fail_summ / self.total_pages_pass_fail)
 
-      self.implementation_pass_fail_score = self.implementation_pass_fail_summ / self.total_pages
-      self.implementation_score           = self.implementation_summ / self.total_pages
+      if rule_result.implementation_score > 0:
+        self.total_pages += pc
+        self.implementation_summ  += pc * rule_result.implementation_score
+        self.implementation_score  = int(self.implementation_summ / self.total_pages)
+
 
       self.has_manual_checks = self.has_manual_checks or rule_result.has_unresolved_manual_checks()
 
@@ -405,14 +411,12 @@ class AllRuleGroupResult(RuleGroupResult):
       print('      computing results for group: ' + str(self))
 
       for rule in rules:
-#        print('        Rule: ' + str(rule))
 
         ws_results = self.ws_results.filter(status='C')
 
         group_rule_result = self.get_group_rule_result(rule)
 
         for ws_result in ws_results:
-#          print('          Website: ' + str(ws_result)  + ' ' + str(rule) + ' ' + str(group_rule_result))
 
           try:
             ws_rule_result = ws_result.ws_rule_results.get(rule=rule)
