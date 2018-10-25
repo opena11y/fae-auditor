@@ -3,7 +3,7 @@
     <tr>
       <th id="id_grp" class="text"  rowspan="2">Website</th>
       <th id="id_agr" class="text"  rowspan="2">Group</th>
-      <th id="id_res" class="text"  rowspan="2">Result</th>
+      <th id="id_res" class="text"  rowspan="2" data-defaultsort="true">Result</th>
       <th id="id_nop" class="center"  colspan="5" data-defaultsort="disabled">Number of Pages</th>
       <th rowspan="2" data-defaultsort="disabled">&nbsp;</th>
       <th id="id_imp" class="center"  colspan="4"  data-defaultsort="disabled">Implementation Level</th>
@@ -14,7 +14,7 @@
       <th id="id_man" class="num"   title="Manual Checks">MC</th>
       <th id="id_pas" class="num"   title="Passed">P</th>
       <th id="id_not" class="num"   title="Not Applicable">N/A</th>
-      <th id="id_scpf" class="num sep"   title="Implementation Score for rule results with Pass/Fail results" data-defaultsort="true">Pass/Fail Score</th>
+      <th id="id_scpf" class="num sep"   title="Implementation Score for rule results with Pass/Fail results" >Pass/Fail Score</th>
       <th id="id_stpf" class="text"      title="Implementation Status for rule results with Pass/Fail results">Pass/Fail Status</th>
       <th id="id_scal" class="num sep"   title="Implementation Score for all rule results">All Results Score</th>
       <th id="id_stal" class="text"      title="Implementation Status for all rule results">All Results Status</th>
@@ -29,7 +29,7 @@
         </a>
       </td>
       <td headers="id_vio id_grp" class="text">{{wsrr.ws_report.group_result.group_item.abbreviation}}</td>
-      {% include 'common/rule_result_value.html' with value=prr.result_value %}
+      {% include 'common/rule_result_value.html' with value=wsrr.result_value %}
       <td headers="id_vio id_vio" class="num">{{wsrr.pages_violation}}</td>
       <td headers="id_war id_war" class="num">{{wsrr.pages_warning}}</td>
       <td headers="id_man id_man" class="num">{{wsrr.pages_manual_check}}</td>

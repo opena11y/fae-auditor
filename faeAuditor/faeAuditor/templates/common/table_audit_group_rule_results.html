@@ -27,7 +27,7 @@
           {{agrr.group_result.group_item.title}}
         </a>
       </td>
-      {% include 'common/rule_result_value.html' with value=prr.result_value %}
+      {% include 'common/rule_result_value.html' with value=agrr.result_value %}
       <td headers="id_vio id_nop" class="num">{{agrr.websites_violation}}</td>
       <td headers="id_war id_nop" class="num">{{agrr.websites_warning}}</td>
       <td headers="id_man id_nop" class="num">{{agrr.websites_manual_check}}</td>
