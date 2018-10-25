@@ -5,9 +5,9 @@
       <th id="id_grp" class="text"  rowspan="2">Website</th>
       <th id="id_agr" class="text"  rowspan="2">Group</th>
       <th id="id_pgs" class="num"  rowspan="2">Pages</th>
-      <th id="id_nop" class="text"  colspan="5">Number of Rules</th>
-      <th rowspan="2">&nbsp;</th>
-      <th id="id_imp" class="text"  colspan="4" style="text-align: center">Implementation Level</th>
+      <th id="id_nop" class="text"  colspan="5" data-defaultsort="disabled">Number of Rules</th>
+      <th rowspan="2" data-defaultsort="disabled">&nbsp;</th>
+      <th id="id_imp" class="center"  colspan="4" data-defaultsort="disabled">Implementation Level</th>
     </tr>
     <tr>
       <th id="id_vio" class="num"   title="Violations">V</th>
@@ -60,7 +60,7 @@
     {% endfor %}
 
     {% if summary %}
-    <tr class="summary">
+    <tr class="summary" data-disablesort="true">
       <td class="text" headers="id_grp" colspan="2">
         Totals
       </td>

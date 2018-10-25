@@ -4,9 +4,9 @@
       <th id="id_grp" class="text"  rowspan="2">{{ group_column_header|default:audit_result.group_title }}</th>
       <th id="id_wsc" class="num"  rowspan="2" title="Number of Websites">Websites</th>
       <th id="id_pgc" class="num pad_right"  rowspan="2" title="Number of Pages">Pages</th>
-      <th id="id_nop" class="center" colspan="5">Number of Rules</th>
-      <th rowspan="2">&nbsp;</th>
-      <th id="id_imp" class="center"  colspan="4">Implementation Level</th>
+      <th id="id_nop" class="center" colspan="5" data-defaultsort="disabled">Number of Rules</th>
+      <th rowspan="2" data-defaultsort="disabled">&nbsp;</th>
+      <th id="id_imp" class="center"  colspan="4" data-defaultsort="disabled">Implementation Level</th>
     </tr>
     <tr>
       <th id="id_vio" class="num"   title="Violations">V</th>
@@ -57,7 +57,7 @@
     </tr>
     {% endfor %}
     {% if summary %}
-    <tr class="summary">
+    <tr class="summary" data-disablesort="true">
       <td class="text" headers="id_grp">
         Totals
       </td>
