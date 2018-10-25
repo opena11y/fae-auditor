@@ -285,6 +285,15 @@ table tbody td ul li {
     margin-top: -1em;
 }
 
+main table thead th.focus {
+    outline: black thin solid;
+    background-color: #EEE;
+}
+
+main table thead th [role=button]:focus {
+    outline: none;
+}
+
 main table th.sep {
     min-width: 6em;
 }
