@@ -375,12 +375,12 @@ class RuleGroupResult(RuleResult):
 
     if pc > 0:
 
-      if rule_result.implementation_pass_fail_score > 0:
+      if rule_result.implementation_pass_fail_score >= 0:
         self.total_pages_pass_fail += pc
         self.implementation_pass_fail_summ += pc * rule_result.implementation_pass_fail_score
         self.implementation_pass_fail_score = int(self.implementation_pass_fail_summ / self.total_pages_pass_fail)
 
-      if rule_result.implementation_score > 0:
+      if rule_result.implementation_score >= 0:
         self.total_pages += pc
         self.implementation_summ  += pc * rule_result.implementation_score
         self.implementation_score  = int(self.implementation_summ / self.total_pages)
@@ -412,7 +412,7 @@ class AllRuleGroupResult(RuleGroupResult):
 
       for rule in rules:
 
-        ws_results = self.ws_results.filter(status='C')
+        ws_results = self.ws_results.filter(page_count__gte=0)
 
         group_rule_result = self.get_group_rule_result(rule)
 
