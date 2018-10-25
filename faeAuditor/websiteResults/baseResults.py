@@ -69,8 +69,8 @@ MC_STATUS_CHOICES = (
 class RuleResult(models.Model):
   result_value           = models.IntegerField(default=0)
 
-  implementation_pass_fail_score  = models.IntegerField(default=-1)
-  implementation_score            = models.IntegerField(default=-1)
+  implementation_pass_fail_score  = models.DecimalField(max_digits=4, decimal_places=1)
+  implementation_score            = models.DecimalField(max_digits=4, decimal_places=1)
 
   implementation_pass_fail_status  = models.CharField("Implementation Pass/Fail Status",  max_length=8, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
   implementation_status            = models.CharField("Implementation Status",  max_length=8, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
@@ -176,10 +176,10 @@ class RuleElementResult(RuleResult):
       total = pass_fail_total
 
     if pass_fail_total:
-      self.implementation_pass_fail_score  =  int((100 * passed) / pass_fail_total)
+      self.implementation_pass_fail_score  =  (100 * passed) / pass_fail_total
 
     if total:
-      self.implementation_score            =  int((100 * passed) / total)
+      self.implementation_score            =  (100 * passed) / total
 
     if total > 0:
       if self.elements_violation:
@@ -378,12 +378,12 @@ class RuleGroupResult(RuleResult):
       if rule_result.implementation_pass_fail_score >= 0:
         self.total_pages_pass_fail += pc
         self.implementation_pass_fail_summ += pc * rule_result.implementation_pass_fail_score
-        self.implementation_pass_fail_score = int(self.implementation_pass_fail_summ / self.total_pages_pass_fail)
+        self.implementation_pass_fail_score = self.implementation_pass_fail_summ / self.total_pages_pass_fail
 
       if rule_result.implementation_score >= 0:
         self.total_pages += pc
         self.implementation_summ  += pc * rule_result.implementation_score
-        self.implementation_score  = int(self.implementation_summ / self.total_pages)
+        self.implementation_score  = self.implementation_summ / self.total_pages
 
 
       self.has_manual_checks = self.has_manual_checks or rule_result.has_unresolved_manual_checks()
