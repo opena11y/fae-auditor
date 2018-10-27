@@ -22,22 +22,22 @@
        },
        {
         "slug" : "big10",
-        "title": "BIG TEN",
+        "title": "Big Ten",
         "abbrev": "Big10"
        },
        {
         "slug" : "big12",
-        "title": "BIG 12",
+        "title": "Big 12",
         "abbrev": "Big12"
        },
        {
         "slug" : "bigwest",
-        "title": "BIG West",
+        "title": "Big West",
         "abbrev": "BigWest"
        },
        {
         "slug" : "bigeast",
-        "title": "BIG East",
+        "title": "Big East",
         "abbrev": "BigEast"
        },
        {
@@ -47,7 +47,7 @@
        },
        {
         "slug" : "ivy",
-        "title": "IVY",
+        "title": "Ivy League",
         "abbrev": "IVY"
        },
        {
@@ -62,7 +62,7 @@
        },
        {
         "slug" : "noconference",
-        "title": "Noconference",
+        "title": "No Conference",
         "abbrev": "Noconference"
        },
        {
@@ -300,7 +300,7 @@
        {
         "group": "big10",
         "slug": "osu",
-        "title": "THE Ohio State University",
+        "title": "Ohio State",
         "abbrev": "OSU"
        },
        {
@@ -431,9 +431,9 @@
        },
        {
         "group": "bigwest",
-        "slug": "longbeach_state",
-        "title": "Longbeach State",
-        "abbrev": "Longbeach State"
+        "slug": "long_beach",
+        "title": "Long Beach State",
+        "abbrev": "Long Beach"
        },
        {
         "group": "bigwest",
@@ -457,7 +457,7 @@
         "group": "bigwest",
         "slug": "uc_santa_barbara",
         "title": "UC Santa Barbara",
-        "abbrev": "UC Santa Barbara"
+        "abbrev": "UCSB"
        },
        {
         "group": "bigeast",
@@ -493,7 +493,7 @@
         "group": "bigeast",
         "slug": "st_johns",
         "title": "St. Johns",
-        "abbrev": "ST Johns"
+        "abbrev": "St. Johns"
        },
        {
         "group": "bigeast",
@@ -534,7 +534,7 @@
        {
         "group": "conferenceusa",
         "slug": "southern_miss",
-        "title": "Southern Miss",
+        "title": "Southern Mississippi",
         "abbrev": "Southern Miss"
        },
        {
@@ -558,32 +558,32 @@
        {
         "group": "conferenceusa",
         "slug": "florida_int",
-        "title": "Florida INT",
-        "abbrev": "Florida INT"
+        "title": "Florida International",
+        "abbrev": "Florida Int"
        },
        {
         "group": "conferenceusa",
         "slug": "florida_atl",
-        "title": "Florida ATL",
-        "abbrev": "Florida ATL"
+        "title": "Florida Atlantic",
+        "abbrev": "Florida Atl"
        },
        {
         "group": "conferenceusa",
         "slug": "louisiana_tech",
-        "title": "Louisiana Tech",
+        "title": "Louisiana Technological University",
         "abbrev": "Louisiana Tech"
        },
        {
         "group": "conferenceusa",
         "slug": "middle_tn_u",
-        "title": "Middle TN University of",
-        "abbrev": "Middle TN U"
+        "title": "Middle Tennesse",
+        "abbrev": "Middle Tenn."
        },
        {
         "group": "conferenceusa",
         "slug": "north_tx",
         "title": "North Texas",
-        "abbrev": "North TX"
+        "abbrev": "North Tx"
        },
        {
         "group": "conferenceusa",
@@ -594,8 +594,8 @@
        {
         "group": "conferenceusa",
         "slug": "u_tx_san_antonio",
-        "title": "University of Texas San Antonio",
-        "abbrev": "U TX San Antonio"
+        "title": "Texas San Antonio",
+        "abbrev": "San Antonio"
        },
        {
         "group": "ivy",
@@ -937,7 +937,7 @@
         "group": "sec",
         "slug": "texas_a_and_m",
         "title": "Texas A and M",
-        "abbrev": "Texas A M"
+        "abbrev": "Texas A and M"
        },
        {
         "group": "sec",
@@ -955,7 +955,7 @@
         "group": "wac",
         "slug": "seattle",
         "title": "Seattle University",
-        "abbrev": "SeaU"
+        "abbrev": "SeattleU"
        },
        {
         "group": "wac",
@@ -973,13 +973,13 @@
         "group": "wac",
         "slug": "u_mo_kc",
         "title": "Missouri at Kansas City",
-        "abbrev": "MoKC"
+        "abbrev": "Mo. KC"
        },
        {
         "group": "wac",
         "slug": "u_tx_rio_grande",
-        "title": "Texas RIO Grande",
-        "abbrev": "TexRG"
+        "title": "Texas Rio Grande",
+        "abbrev": "Tx Rio Grande"
        },
        {
         "group": "wac",
