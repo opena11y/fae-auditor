@@ -52,7 +52,7 @@ coverage.xml
 *.log
 local_settings.py
 data/
-logs/*
+logs/
 faeAuditor/faeAuditor/secrets.json
 faeAuditor/faeAuditor/static/
 faeAuditor/fae-util/test/
