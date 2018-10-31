@@ -281,8 +281,10 @@ class DataResult(object):
     self.implementation_pass_fail_score  = -1
     self.implementation_pass_fail_status = "U"
 
-    self.implementation_score  = -1
-    self.implementation_status = "U"
+    self.implementation_score       = -1
+    self.implementation_score_fail  = -1
+    self.implementation_score_mc    = -1
+    self.implementation_status      = "U"
 
     self.manual_check_status = "NC"
 
@@ -305,6 +307,8 @@ class DataResult(object):
     insert_str += "implementation_pass_fail_score, "
     insert_str += "implementation_pass_fail_status, "
     insert_str += "implementation_score, "
+    insert_str += "implementation_score_fail, "
+    insert_str += "implementation_score_mc, "
     insert_str += "implementation_status, "
     insert_str += "manual_check_status"
     insert_str += ") VALUES ( "
@@ -319,6 +323,8 @@ class DataResult(object):
     insert_str +=  str(self.implementation_pass_fail_score) + ", "
     insert_str +=  "'" + self.implementation_pass_fail_status + "', "
     insert_str +=  str(self.implementation_score) + ", "
+    insert_str +=  str(self.implementation_score_fail) + ", "
+    insert_str +=  str(self.implementation_score_mc) + ", "
     insert_str +=  "'" + self.implementation_status + "', "
     insert_str +=  "'" + self.manual_check_status + "'"
     insert_str +=  ")"
@@ -419,9 +425,12 @@ class DataRuleResult(DataResult):
     self.result_value = RULE_RESULT.NOT_APPLICABLE
 
     self.implementation_pass_fail_score  = -1
-    self.implementation_score  = -1
     self.implementation_pass_fail_status = "U"
-    self.implementation_status = "U"
+
+    self.implementation_score      = -1
+    self.implementation_score_fail = -1
+    self.implementation_score_mc   = -1
+    self.implementation_status     = "U"
 
     for rr in self.rule_results:
       self.addRuleResult(rr)
@@ -446,8 +455,9 @@ class DataRuleResult(DataResult):
     pass_fail_count = 0
     pass_fail_count_complete = 0
 
-    total = 0
-    count = 0
+    total      = 0
+    total_fail = 0
+    count      = 0
     count_complete = 0
 
     for r in self.rule_results:
@@ -458,8 +468,9 @@ class DataRuleResult(DataResult):
           pass_fail_count_complete += 1
 
       if r.implementation_score >= 0:
-        total += r.implementation_score
-        count += 1
+        total      += r.implementation_score
+        total_fail += r.implementation_score_fail
+        count      += 1
         if r.implementation_status == 'C':
           count_complete += 1
 
@@ -472,7 +483,9 @@ class DataRuleResult(DataResult):
 
 #    debug("[DataRuleResult][calculateImplementation] 3")
     if count > 0:
-      self.implementation_score = int(round(total / count))
+      self.implementation_score      = total / count
+      self.implementation_score_fail = total_fail / count
+      self.implementation_score_mc   = 100 - self.implementation_score - self.implementation_score_fail
 
     set_status(  0, 'NI')
     set_status( 50, 'PI')
@@ -559,25 +572,32 @@ class DataPageRuleResult(DataResult):
 
     self.implementation_pass_fail_score  = -1
     self.implementation_score            = -1
+    self.implementation_score_fail       = -1
+    self.implementation_score_mc         = -1
 
     self.implementation_pass_fail_status = "NA"
     self.implementation_status           = "NA"
 
-    pass_fail_total = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
+    passed = self.elements_passed + self.elements_mc_passed
+    failed = self.elements_violation + self.elements_warning + self.elements_mc_failed
+
+    pass_fail_total = passed + failed
 
     total = self.elements_mc_identified - self.elements_mc_passed - self.elements_mc_failed - self.elements_mc_na
+
     if total > 0:
       total = pass_fail_total + total
     else:
       total = pass_fail_total
 
-    passed = self.elements_passed + self.elements_mc_passed
 
     if pass_fail_total:
       self.implementation_pass_fail_score =  (100 * passed) / pass_fail_total
 
-    if total:
-      self.implementation_score =  (100 * passed) / total
+    if total > 0:
+      self.implementation_score      = (100 * passed) / total
+      self.implementation_score_fail = (100 * failed) / total
+      self.implementation_score_mc   = 100 - self.implementation_score - self.implementation_score_fail
 
     set_status( 0, 'NI')
     set_status( 50, 'PI')
@@ -678,7 +698,9 @@ class DataPageRuleCategoryResult(DataRuleResult):
 
     self.addColumnValue("implementation_pass_fail_summ", "0")
     self.addColumnValue("implementation_summ", "0")
+    self.addColumnValue("implementation_summ_fail", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("total_pages_pass_fail", "0")
     self.addColumnValue("has_manual_checks", "false")
 
 
@@ -729,7 +751,9 @@ class DataPageRuleScopeResult(DataRuleResult):
 
     self.addColumnValue("implementation_pass_fail_summ", "0")
     self.addColumnValue("implementation_summ", "0")
+    self.addColumnValue("implementation_summ_fail", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("total_pages_pass_fail", "0")
     self.addColumnValue("has_manual_checks", "false")
 
     try:
@@ -780,7 +804,9 @@ class DataPageGuidelineResult(DataRuleResult):
 
     self.addColumnValue("implementation_pass_fail_summ", "0")
     self.addColumnValue("implementation_summ", "0")
+    self.addColumnValue("implementation_summ_fail", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("total_pages_pass_fail", "0")
     self.addColumnValue("has_manual_checks", "false")
 
     try:
@@ -919,7 +945,9 @@ class DataPageResult(DataRuleResult):
 
     self.addColumnValue("implementation_pass_fail_summ", "0")
     self.addColumnValue("implementation_summ", "0")
+    self.addColumnValue("implementation_summ_fail", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("total_pages_pass_fail", "0")
     self.addColumnValue("has_manual_checks", "false")
 
 #    debug("[DataPageResult][saveToDango] A ")
@@ -1060,6 +1088,8 @@ class DataWebsiteRuleResult(DataResult):
         else:
           self.implementation_status = label + "-MC"
 
+#    debug("[WebsiteRuleResult][calculateImplementation]: 1 ")
+
     if self.pages_violation > 0:
       self.result_value = RULE_RESULT.VIOLATION
     elif self.pages_warning > 0:
@@ -1073,27 +1103,46 @@ class DataWebsiteRuleResult(DataResult):
 
     self.implementation_pass_fail_score  = -1
     self.implementation_score       = -1
+    self.implementation_score_fail  = -1
+    self.implementation_score_mc    = -1
     self.implementation_status      = "U"
+
+#    debug("[WebsiteRuleResult][calculateImplementation]: 2a ")
 
     pass_fail_total = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
 
     total = self.elements_mc_identified - self.elements_mc_passed - self.elements_mc_failed - self.elements_mc_na
+
     if total > 0:
       total = pass_fail_total + total
     else:
       total = pass_fail_total
 
     passed = self.elements_passed + self.elements_mc_passed
+    failed = self.elements_violation + self.elements_warning + self.elements_mc_failed
 
-    if pass_fail_total:
+#    debug("[WebsiteRuleResult][calculateImplementation]         [passed]: " + str(passed))
+#    debug("[WebsiteRuleResult][calculateImplementation][pass_fail_total]: " + str(pass_fail_total))
+
+    if pass_fail_total > 0:
       self.implementation_pass_fail_score =  (100 * passed) / pass_fail_total
 
-    if total:
-      self.implementation_score =  (100 * passed) / total
+#    debug("[WebsiteRuleResult][calculateImplementation][implementation_pass_fail_score]: " + str(self.implementation_pass_fail_score))
+
+    if total > 0:
+      self.implementation_score      =  (100 * passed) / total
+      self.implementation_score_fail =  (100 * failed) / total
+      self.implementation_score_mc   =  100 - self.implementation_score - self.implementation_score_fail
+
+#    debug("[WebsiteRuleResult][calculateImplementation][implementation_score]: " + str(self.implementation_score))
+
+#    debug("[WebsiteRuleResult][calculateImplementation]: 4 ")
 
     set_status( 0, 'NI')
     set_status( 50, 'PI')
     set_status( 95, 'AC')
+
+#    debug("[WebsiteRuleResult][calculateImplementation]: 5 ")
 
     if (pass_fail_total == passed) and (pass_fail_total > 0):
       self.implementation_pass_fail_status = 'C'
@@ -1193,6 +1242,9 @@ class DataWebsiteRuleCategoryResult(DataRuleResult):
     self.addColumnValue("implementation_pass_fail_summ", "0")
     self.addColumnValue("implementation_summ", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("implementation_summ_fail", "0")
+    self.addColumnValue("total_pages_pass_fail", "0")
+
     self.addColumnValue("has_manual_checks", "false")
 
 #    debug("[DataWebsiteRuleCategoryResult][saveToDjango][A][rc.category_id] " + str(rc.category_id))
@@ -1210,7 +1262,7 @@ class DataWebsiteRuleCategoryResult(DataRuleResult):
     except:
       error("[DataWebsiteRuleCategoryResult][saveToDjango] SQL select error")
 
-#    debug("[DataWebsiteRuleCategoryResult][saveToDjango][C][sql_id] " + str(self.sql_id))
+    debug("[DataWebsiteRuleCategoryResult][saveToDjango][C][sql_id] " + str(self.sql_id))
 
 
 # -----------------------------------------------------------------------------
@@ -1247,7 +1299,9 @@ class DataWebsiteGuidelineResult(DataRuleResult):
     self.addColumnValue("slug", self.slug)
     self.addColumnValue("implementation_pass_fail_summ", "0")
     self.addColumnValue("implementation_summ", "0")
+    self.addColumnValue("implementation_summ_fail", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("total_pages_pass_fail", "0")
     self.addColumnValue("has_manual_checks", "false")
 
     try:
@@ -1261,7 +1315,7 @@ class DataWebsiteGuidelineResult(DataRuleResult):
     except:
       error("[DataWebsiteGuidelineResult][saveToDjango] SQL select error: " + str(guideline))
 
-#    debug("  Found Website Evaluation Guideline Result: " + str(ws_eval_g_result.id))
+#    debug("[DataWebsiteGuidelineResult][saveToDjango] Found Website Evaluation Guideline Result: " + str(ws_eval_g_result.id))
 
 # ---------------------------------------------------------------
 #
@@ -1297,7 +1351,9 @@ class DataWebsiteRuleScopeResult(DataRuleResult):
     self.addColumnValue("slug", rs.slug)
     self.addColumnValue("implementation_pass_fail_summ", "0")
     self.addColumnValue("implementation_summ", "0")
+    self.addColumnValue("implementation_summ_fail", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("total_pages_pass_fail", "0")
     self.addColumnValue("has_manual_checks", "false")
 
     try:
@@ -1493,7 +1549,10 @@ class DataWebsiteResult(DataRuleResult):
 
           wsr.implementation_pass_fail_score   = self.implementation_pass_fail_score
           wsr.implementation_pass_fail_status  = self.implementation_pass_fail_status
+
           wsr.implementation_score             = self.implementation_score
+          wsr.implementation_score_fail        = self.implementation_score_fail
+          wsr.implementation_score_mc          = self.implementation_score_mc
           wsr.implementation_status            = self.implementation_status
 
 #          debug("[WebsiteResult][saveToDjango]: page_count= " + str(len(self.page_results)))
