@@ -69,8 +69,8 @@ MC_STATUS_CHOICES = (
 class RuleResult(models.Model):
   result_value           = models.IntegerField(default=0)
 
-  implementation_pass_fail_score  = models.DecimalField(max_digits=4, decimal_places=1)
-  implementation_score            = models.DecimalField(max_digits=4, decimal_places=1)
+  implementation_pass_fail_score  = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
+  implementation_score            = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
   implementation_score_fail       = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
   implementation_score_mc         = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
 
