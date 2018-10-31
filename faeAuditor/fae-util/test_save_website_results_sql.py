@@ -58,7 +58,7 @@ def main():
 
   message_flag = True
 
-  ws_reports = WebsiteResult.objects.all()
+  ws_reports = WebsiteResult.objects.filter(audit_result__slug='test-websites-g1-2018-10-31')
 
   for ws_report in ws_reports:
 
@@ -79,7 +79,6 @@ def main():
       saveResultsToDjango(ws_report, log)
     else:
       break
-
 
 
 if __name__ == "__main__":

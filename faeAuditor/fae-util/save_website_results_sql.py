@@ -700,6 +700,7 @@ class DataPageRuleCategoryResult(DataRuleResult):
     self.addColumnValue("implementation_summ", "0")
     self.addColumnValue("implementation_summ_fail", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("total_pages_fail", "0")
     self.addColumnValue("total_pages_pass_fail", "0")
     self.addColumnValue("has_manual_checks", "false")
 
@@ -753,6 +754,7 @@ class DataPageRuleScopeResult(DataRuleResult):
     self.addColumnValue("implementation_summ", "0")
     self.addColumnValue("implementation_summ_fail", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("total_pages_fail", "0")
     self.addColumnValue("total_pages_pass_fail", "0")
     self.addColumnValue("has_manual_checks", "false")
 
@@ -806,6 +808,7 @@ class DataPageGuidelineResult(DataRuleResult):
     self.addColumnValue("implementation_summ", "0")
     self.addColumnValue("implementation_summ_fail", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("total_pages_fail", "0")
     self.addColumnValue("total_pages_pass_fail", "0")
     self.addColumnValue("has_manual_checks", "false")
 
@@ -947,6 +950,7 @@ class DataPageResult(DataRuleResult):
     self.addColumnValue("implementation_summ", "0")
     self.addColumnValue("implementation_summ_fail", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("total_pages_fail", "0")
     self.addColumnValue("total_pages_pass_fail", "0")
     self.addColumnValue("has_manual_checks", "false")
 
@@ -1242,6 +1246,7 @@ class DataWebsiteRuleCategoryResult(DataRuleResult):
     self.addColumnValue("implementation_pass_fail_summ", "0")
     self.addColumnValue("implementation_summ", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("total_pages_fail", "0")
     self.addColumnValue("implementation_summ_fail", "0")
     self.addColumnValue("total_pages_pass_fail", "0")
 
@@ -1301,6 +1306,7 @@ class DataWebsiteGuidelineResult(DataRuleResult):
     self.addColumnValue("implementation_summ", "0")
     self.addColumnValue("implementation_summ_fail", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("total_pages_fail", "0")
     self.addColumnValue("total_pages_pass_fail", "0")
     self.addColumnValue("has_manual_checks", "false")
 
@@ -1353,6 +1359,7 @@ class DataWebsiteRuleScopeResult(DataRuleResult):
     self.addColumnValue("implementation_summ", "0")
     self.addColumnValue("implementation_summ_fail", "0")
     self.addColumnValue("total_pages", "0")
+    self.addColumnValue("total_pages_fail", "0")
     self.addColumnValue("total_pages_pass_fail", "0")
     self.addColumnValue("has_manual_checks", "false")
 

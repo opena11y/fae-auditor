@@ -336,6 +336,8 @@ class RuleGroupResult(RuleResult):
 
   total_pages                   = models.IntegerField(default=0)
   implementation_summ           = models.IntegerField(default=0)
+
+  total_pages_fail              = models.IntegerField(default=0)
   implementation_summ_fail      = models.IntegerField(default=0)
 
   total_pages_pass_fail         = models.IntegerField(default=0)
@@ -358,6 +360,8 @@ class RuleGroupResult(RuleResult):
 
     self.total_pages              = 0
     self.implementation_summ      = 0
+
+    self.total_pages_fail         = 0
     self.implementation_summ_fail = 0
 
     self.total_pages_pass_fail = 0
@@ -398,10 +402,18 @@ class RuleGroupResult(RuleResult):
         self.implementation_summ  += pc * rule_result.implementation_score
         self.implementation_score  = self.implementation_summ / self.total_pages
 
+      if rule_result.implementation_score_fail >= 0:
+        self.total_pages_fail += pc
         self.implementation_summ_fail  += pc * rule_result.implementation_score_fail
-        self.implementation_score_fail  = self.implementation_summ_fail / self.total_pages
+        self.implementation_score_fail  = self.implementation_summ_fail / self.total_pages_fail
 
-        self.implementation_score_mc = 100 - self.implementation_score + self.implementation_score_fail
+      self.implementation_score_mc = 100
+
+      if rule_result.implementation_score >= 0:
+        self.implementation_score_mc -= self.implementation_score
+
+      if rule_result.implementation_score_fail >= 0:
+        self.implementation_score_mc -= self.implementation_score_fail
 
       self.has_manual_checks = self.has_manual_checks or rule_result.has_unresolved_manual_checks()
 

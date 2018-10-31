@@ -100,7 +100,9 @@
 
       <td aria-label="empty cell"></td>
 
-      <td class="num" headers="id_scpf id_pf">{{summary.implementation_pass_fail_score}}</td>
+      <td class="num" headers="id_scpf id_pf">
+      {% include 'common/implementation_score.html' with impl_score=summary.implementation_pass_fail_score %}
+      </td>
       <td class="text" headers="id_stpf id_pf">
      {% include 'common/implementation_status.html' with impl_status=summary.implementation_pass_fail_status %}
       </td>
