@@ -7,6 +7,8 @@
       <th id="id_nop" class="center" colspan="5" data-defaultsort="disabled">Number of Rules</th>
       <th rowspan="2" data-defaultsort="disabled">&nbsp;</th>
       <th id="id_imp" class="center"  colspan="4" data-defaultsort="disabled">Implementation Level</th>
+      <th rowspan="2" data-defaultsort="disabled">&nbsp;</th>
+      <th id="id_pf" class="center"  colspan="2" data-defaultsort="disabled">Pass/Fail Only</th>
     </tr>
     <tr>
       <th id="id_vio" class="num"   title="Violations">V</th>
@@ -15,11 +17,13 @@
       <th id="id_pas" class="num"   title="Passed">P</th>
       <th id="id_not" class="num"   title="Not Applicable">N/A</th>
 
-      <th id="id_scpf" class="num sep"   title="Implementation Score for rule results with Pass/Fail results" data-defaultsort="true">Pass/Fail Score</th>
-      <th id="id_stpf" class="text"      title="Implementation Status for rule results with Pass/Fail results">Pass/Fail Status</th>
-      <th id="id_scal" class="num sep"   title="Implementation Score for all rule results">All Results Score</th>
-      <th id="id_stal" class="text"      title="Implementation Status for all rule results">All Results Status</th>
-    </tr>
+      <th id="id_sc_pa" class="num sep"   title="Percent of results that pass">Pass</th>
+      <th id="id_sc_fa" class="num"   title="Percent of results that fail">Fail</th>
+      <th id="id_sc_mc" class="num"   title="Percent of results that rquire manual check">MC</th>
+      <th id="id_stal"  class="text"      title="Implementation Status for all rule results">Status</th>
+
+      <th id="id_stpf"  class="text"      title="Implementation Score for rule results with Pass/Fail results">Score</th>
+      <th id="id_stpf"  class="text"      title="Implementation Status for rule results with Pass/Fail results">Status    </tr>
   </thead>
   <tbody>
     {% for agrr in audit_group_results %}
@@ -40,18 +44,27 @@
 
       <td aria-label="empty cell"></td>
 
-      <td class="num" headers="id_scpf id_imp">
-      {% include 'common/implementation_score.html' with impl_score=agrr.implementation_pass_fail_score %}
-      </td>
-      <td class="text" headers="id_stpf id_imp">
-     {% include 'common/implementation_status.html' with impl_status=agrr.implementation_pass_fail_status %}
-      </td>
-
-      <td class="num" headers="id_scal id_imp">
+      <td class="num" headers="id_sc_al id_imp">
       {% include 'common/implementation_score.html' with impl_score=agrr.implementation_score %}
+      </td>
+      <td class="num" headers="id_sc_fa id_imp">
+      {% include 'common/implementation_score.html' with impl_score=agrr.implementation_score_fail %}
+      </td>
+      <td class="num" headers="id_sc_mc id_imp">
+      {% include 'common/implementation_score.html' with impl_score=agrr.implementation_score_mc %}
       </td>
       <td class="text" headers="id_stal id_imp">
       {% include 'common/implementation_status.html' with impl_status=agrr.implementation_status %}
+      </td>
+
+      <td aria-label="empty cell"></td>
+
+      <td class="num" headers="id_scpf id_pf">
+      {% include 'common/implementation_score.html' with impl_score=agrr.implementation_pass_fail_score %}
+      </td>
+
+      <td class="text" headers="id_stpf id_pf">
+     {% include 'common/implementation_status.html' with impl_status=agrr.implementation_pass_fail_status %}
       </td>
 
     </tr>
@@ -72,15 +85,26 @@
 
       <td aria-label="empty cell"></td>
 
-      <td class="num" headers="id_scpf id_imp">{{summary.implementation_pass_fail_score}}</td>
-      <td class="text" headers="id_stpf id_imp">
-     {% include 'common/implementation_status.html' with impl_status=summary.implementation_pass_fail_status %}
+      <td class="num" headers="id_scal id_imp">
+        {% include 'common/implementation_score.html' with impl_score=summary.implementation_score %}
       </td>
-
-      <td class="num" headers="id_scal id_imp">{{summary.implementation_score}}</td>
+      <td class="num" headers="id_scal id_imp">
+        {% include 'common/implementation_score.html' with impl_score=summary.implementation_score_fail %}
+      </td>
+      <td class="num" headers="id_scal id_imp">
+        {% include 'common/implementation_score.html' with impl_score=summary.implementation_score_mc %}
+      </td>
       <td class="text" headers="id_stal id_imp">
       {% include 'common/implementation_status.html' with impl_status=summary.implementation_status %}
       </td>
+
+      <td aria-label="empty cell"></td>
+
+      <td class="num" headers="id_scpf id_pf">{{summary.implementation_pass_fail_score}}</td>
+      <td class="text" headers="id_stpf id_pf">
+     {% include 'common/implementation_status.html' with impl_status=summary.implementation_pass_fail_status %}
+      </td>
+
 
     </tr>
     {% endif %}
