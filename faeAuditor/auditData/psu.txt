@@ -1,7 +1,9 @@
-https://www.psu.edu/
-https://software.psu.edu/
-https://sites.psu.edu/accessibility/
-https://cce.ais.psu.edu/tuition-calculator-ui/#!/
-https://nittanylioninn.psu.edu/
-http://office365.psu.edu/
-https://www.southhills.edu/
+
+https://www.psu.edu/ Depth - 3
+https://software.psu.edu/ Depth - 1
+https://sites.psu.edu/accessibility/ Depth - 5
+https://cce.ais.psu.edu/tuition-calculator-ui/#!/ Depth - 1
+https://nittanylioninn.psu.edu/ Depth 10
+http://office365.psu.edu/ Depth - 5
+OPTIONAL one with known issues that aren't being addressed even though
+they know about the issues. https://www.southhills.edu/ Depth - 3
