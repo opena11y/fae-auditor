@@ -57,7 +57,7 @@ def reset_group_items(group):
 
 def main():
 
-    audit_results = AuditResult.objects.all()
+    audit_results = AuditResult.objects.filter(slug='test-websites-g1-2018-10-31')
 
     for ar in audit_results:
         print('Recomputing audit result: ' + str(ar))

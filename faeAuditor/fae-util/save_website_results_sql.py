@@ -283,6 +283,8 @@ class DataResult(object):
 
     self.implementation_score       = -1
     self.implementation_score_fail  = -1
+    self.implementation_score_v     = -1
+    self.implementation_score_w     = -1
     self.implementation_score_mc    = -1
     self.implementation_status      = "U"
 
@@ -308,6 +310,8 @@ class DataResult(object):
     insert_str += "implementation_pass_fail_status, "
     insert_str += "implementation_score, "
     insert_str += "implementation_score_fail, "
+    insert_str += "implementation_score_v, "
+    insert_str += "implementation_score_w, "
     insert_str += "implementation_score_mc, "
     insert_str += "implementation_status, "
     insert_str += "manual_check_status"
@@ -324,6 +328,8 @@ class DataResult(object):
     insert_str +=  "'" + self.implementation_pass_fail_status + "', "
     insert_str +=  str(self.implementation_score) + ", "
     insert_str +=  str(self.implementation_score_fail) + ", "
+    insert_str +=  str(self.implementation_score_v) + ", "
+    insert_str +=  str(self.implementation_score_w) + ", "
     insert_str +=  str(self.implementation_score_mc) + ", "
     insert_str +=  "'" + self.implementation_status + "', "
     insert_str +=  "'" + self.manual_check_status + "'"
@@ -429,6 +435,8 @@ class DataRuleResult(DataResult):
 
     self.implementation_score      = -1
     self.implementation_score_fail = -1
+    self.implementation_score_v    = -1
+    self.implementation_score_w    = -1
     self.implementation_score_mc   = -1
     self.implementation_status     = "U"
 
@@ -457,6 +465,8 @@ class DataRuleResult(DataResult):
 
     total      = 0
     total_fail = 0
+    total_v    = 0
+    total_w    = 0
     count      = 0
     count_complete = 0
 
@@ -470,6 +480,8 @@ class DataRuleResult(DataResult):
       if r.implementation_score >= 0:
         total      += r.implementation_score
         total_fail += r.implementation_score_fail
+        total_v    += r.implementation_score_v
+        total_w    += r.implementation_score_w
         count      += 1
         if r.implementation_status == 'C':
           count_complete += 1
@@ -485,6 +497,8 @@ class DataRuleResult(DataResult):
     if count > 0:
       self.implementation_score      = total / count
       self.implementation_score_fail = total_fail / count
+      self.implementation_score_v    = total_v / count
+      self.implementation_score_w    = total_w / count
       self.implementation_score_mc   = 100 - self.implementation_score - self.implementation_score_fail
 
     set_status(  0, 'NI')
@@ -573,6 +587,8 @@ class DataPageRuleResult(DataResult):
     self.implementation_pass_fail_score  = -1
     self.implementation_score            = -1
     self.implementation_score_fail       = -1
+    self.implementation_score_v          = -1
+    self.implementation_score_w          = -1
     self.implementation_score_mc         = -1
 
     self.implementation_pass_fail_status = "NA"
@@ -597,6 +613,8 @@ class DataPageRuleResult(DataResult):
     if total > 0:
       self.implementation_score      = (100 * passed) / total
       self.implementation_score_fail = (100 * failed) / total
+      self.implementation_score_v    = (100 * self.elements_violation + self.elements_mc_failed) / total
+      self.implementation_score_w    = (100 * self.elements_warning) / total
       self.implementation_score_mc   = 100 - self.implementation_score - self.implementation_score_fail
 
     set_status( 0, 'NI')
@@ -1108,6 +1126,8 @@ class DataWebsiteRuleResult(DataResult):
     self.implementation_pass_fail_score  = -1
     self.implementation_score       = -1
     self.implementation_score_fail  = -1
+    self.implementation_score_v     = -1
+    self.implementation_score_w     = -1
     self.implementation_score_mc    = -1
     self.implementation_status      = "U"
 
@@ -1136,6 +1156,8 @@ class DataWebsiteRuleResult(DataResult):
     if total > 0:
       self.implementation_score      =  (100 * passed) / total
       self.implementation_score_fail =  (100 * failed) / total
+      self.implementation_score_v    =  (100 * self.elements_violation + self.elements_mc_failed) / total
+      self.implementation_score_w    =  (100 * self.elements_warning) / total
       self.implementation_score_mc   =  100 - self.implementation_score - self.implementation_score_fail
 
 #    debug("[WebsiteRuleResult][calculateImplementation][implementation_score]: " + str(self.implementation_score))
@@ -1559,6 +1581,8 @@ class DataWebsiteResult(DataRuleResult):
 
           wsr.implementation_score             = self.implementation_score
           wsr.implementation_score_fail        = self.implementation_score_fail
+          wsr.implementation_score_v           = self.implementation_score_v
+          wsr.implementation_score_w           = self.implementation_score_w
           wsr.implementation_score_mc          = self.implementation_score_mc
           wsr.implementation_status            = self.implementation_status
 

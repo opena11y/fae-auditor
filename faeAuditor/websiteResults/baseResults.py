@@ -72,6 +72,8 @@ class RuleResult(models.Model):
   implementation_pass_fail_score  = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
   implementation_score            = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
   implementation_score_fail       = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
+  implementation_score_v          = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
+  implementation_score_w          = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
   implementation_score_mc         = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
 
   implementation_pass_fail_status  = models.CharField("Implementation Pass/Fail Status",  max_length=8, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
@@ -88,6 +90,8 @@ class RuleResult(models.Model):
     self.implementation_pass_fail_score  = -1
     self.implementation_score            = -1
     self.implementation_score_fail       = -1
+    self.implementation_score_v          = -1
+    self.implementation_score_w          = -1
     self.implementation_score_mc         = -1
 
     self.implementation_pass_fail_status  = 'U'
@@ -169,13 +173,15 @@ class RuleElementResult(RuleResult):
     self.implementation_pass_fail_score = -1
     self.implementation_score           = -1
     self.implementation_score_fail      = -1
+    self.implementation_score_v         = -1
+    self.implementation_score_w         = -1
     self.implementation_score_mc        = -1
 
     pass_fail_total = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
     mc_total = self.elements_mc_identified - self.elements_mc_passed - self.elements_mc_failed - self.elements_mc_na
 
     passed = self.elements_passed    + self.elements_mc_passed
-    failed   = self.elements_violation + self.elements_warning    + self.elements_mc_failed
+    failed   = self.elements_violation + self.elements_warning + self.elements_mc_failed
 
     if mc_total > 0:
       total = pass_fail_total + mc_total
@@ -188,6 +194,8 @@ class RuleElementResult(RuleResult):
     if total:
       self.implementation_score      =  (100 * passed) / total
       self.implementation_score_fail =  (100 * failed) / total
+      self.implementation_score_v    =  (100 * self.elements_violation + self.elements_mc_failed) / total
+      self.implementation_score_w    =  (100 * self.elements_warning) / total
       self.implementation_score_mc   =  (100 * mc_total) / total
 
     if total > 0:
