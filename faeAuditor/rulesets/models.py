@@ -81,7 +81,7 @@ class Ruleset(models.Model):
       
     super(Ruleset, self).save() # Call the "real" save() method.  
     
-  @models.permalink
+  #@models.permalink
   def get_show_ruleset_url(self):
     return ('ruleset', [self.slug, 'rc'])     
     

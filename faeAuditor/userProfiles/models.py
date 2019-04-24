@@ -31,7 +31,7 @@ from websiteResults.models      import WebsiteResult
 from django.contrib.sites.models import Site
 
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.template.loader   import render_to_string
 
 from django.db.models import Q
@@ -59,9 +59,9 @@ SUBSCRIPTION_STATUS_CHOICES = (
 
 class UserProfile(models.Model):
 
-    user          = models.OneToOneField(User, related_name="profile")
+    user          = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
 
-    account_type             = models.ForeignKey(AccountType, related_name="user_profiles")
+    account_type             = models.ForeignKey(AccountType, related_name="user_profiles", on_delete=models.CASCADE)
     
     subscription_start      = models.DateField(null=True, blank=True)
     subscription_end        = models.DateField(null=True, blank=True)

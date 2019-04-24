@@ -122,9 +122,9 @@ class PageRuleCategoryResult(RuleGroupResult):
 
   slug            = models.SlugField(max_length=32, default="none", blank=True, editable=False)
 
-  ws_rc_result    = models.ForeignKey(WebsiteRuleCategoryResult, related_name="page_rc_results", blank=True, null=True)
+  ws_rc_result    = models.ForeignKey(WebsiteRuleCategoryResult, related_name="page_rc_results", blank=True, null=True, on_delete=models.CASCADE)
 
-  rule_category   = models.ForeignKey(RuleCategory)
+  rule_category   = models.ForeignKey(RuleCategory, on_delete=models.CASCADE)
 
   class Meta:
     verbose_name        = "Page Rule Category Result"
@@ -160,9 +160,9 @@ class PageGuidelineResult(RuleGroupResult):
 
   slug            = models.SlugField(max_length=32, default="none", blank=True, editable=False)
 
-  ws_gl_result  = models.ForeignKey(WebsiteGuidelineResult, related_name="page_gl_results", blank=True, null=True)
+  ws_gl_result  = models.ForeignKey(WebsiteGuidelineResult, related_name="page_gl_results", blank=True, null=True, on_delete=models.CASCADE)
 
-  guideline     = models.ForeignKey(Guideline)
+  guideline     = models.ForeignKey(Guideline, on_delete=models.CASCADE)
 
   class Meta:
     verbose_name        = "Page Guideline Result"
@@ -197,9 +197,9 @@ class PageRuleScopeResult(RuleGroupResult):
 
   slug            = models.SlugField(max_length=32, default="none", blank=True, editable=False)
 
-  ws_rs_result  = models.ForeignKey(WebsiteRuleScopeResult, related_name="page_rs_results", blank=True, null=True)
+  ws_rs_result  = models.ForeignKey(WebsiteRuleScopeResult, related_name="page_rs_results", blank=True, null=True, on_delete=models.CASCADE)
 
-  rule_scope    = models.ForeignKey(RuleScope)
+  rule_scope    = models.ForeignKey(RuleScope, on_delete=models.CASCADE)
 
 
   class Meta:
@@ -233,12 +233,12 @@ class PageRuleScopeResult(RuleGroupResult):
 class PageRuleResult(RuleElementResult):
   id          = models.AutoField(primary_key=True)
 
-  ws_rule_result  = models.ForeignKey(WebsiteRuleResult,      related_name="page_rule_results", blank=True)
+  ws_rule_result  = models.ForeignKey(WebsiteRuleResult,      related_name="page_rule_results", blank=True, on_delete=models.CASCADE)
 
   page_result     = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="page_rule_results")
-  page_rc_result  = models.ForeignKey(PageRuleCategoryResult, related_name="page_rule_results")
-  page_gl_result  = models.ForeignKey(PageGuidelineResult,    related_name="page_rule_results")
-  page_rs_result  = models.ForeignKey(PageRuleScopeResult,    related_name="page_rule_results")
+  page_rc_result  = models.ForeignKey(PageRuleCategoryResult, related_name="page_rule_results", on_delete=models.CASCADE)
+  page_gl_result  = models.ForeignKey(PageGuidelineResult,    related_name="page_rule_results", on_delete=models.CASCADE)
+  page_rs_result  = models.ForeignKey(PageRuleScopeResult,    related_name="page_rule_results", on_delete=models.CASCADE)
 
   result_message  = models.CharField("Rule Result Message", max_length=4096, default="none")
 

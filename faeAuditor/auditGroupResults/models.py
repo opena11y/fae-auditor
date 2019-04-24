@@ -24,7 +24,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from audits.models import AuditGroupItem
 
@@ -58,9 +58,9 @@ from audits.models import BROWSER_CHOICES
 class AuditGroupResult(AllRuleGroupResult):
   id             = models.AutoField(primary_key=True)
 
-  audit_result   = models.ForeignKey(AuditResult, related_name="group_results")
+  audit_result   = models.ForeignKey(AuditResult, related_name="group_results", on_delete=models.CASCADE)
 
-  group_item     = models.ForeignKey(AuditGroupItem)
+  group_item     = models.ForeignKey(AuditGroupItem, on_delete=models.CASCADE)
 
   slug           = models.SlugField(max_length=64, default="none", blank=True, editable=False)
 

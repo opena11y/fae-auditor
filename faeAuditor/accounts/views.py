@@ -30,7 +30,7 @@ from django.contrib import messages
 
 from itertools import chain
 
-from django.core.urlresolvers import reverse_lazy, reverse
+from django.urls import reverse_lazy, reverse
 
 from django.views.generic import FormView 
 from django.views.generic import RedirectView
@@ -78,7 +78,8 @@ class LoginView(FormView):
 
     def get_success_url(self):
         redirect_to = self.request.POST.get(self.redirect_field_name)
-        if not is_safe_url(url=redirect_to, host=self.request.get_host()):
+        # if not is_safe_url(url=redirect_to, host=self.request.get_host()):
+        if not is_safe_url(redirect_to, self.request.get_host()):
             redirect_to = self.success_url
         return redirect_to
 

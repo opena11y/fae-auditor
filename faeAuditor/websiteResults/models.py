@@ -24,6 +24,7 @@ import sys
 import fnmatch
 import os
 from datetime import datetime
+from django.urls import reverse
 
 from os.path import join
 
@@ -35,13 +36,10 @@ install_aliases()
 from urllib.parse import urlparse
 from pytz import timezone
 
-from django.core.urlresolvers import reverse
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
 
 from django.db import models
-
-from django.core.urlresolvers import reverse
 
 from .baseResults import RuleResult
 from .baseResults import RuleElementPageResult
@@ -165,9 +163,9 @@ class WebsiteResult(RuleGroupResult):
 
   id    = models.AutoField(primary_key=True)
 
-  audit_result   = models.ForeignKey(AuditResult,       related_name="ws_results")
-  group_result   = models.ForeignKey(AuditGroupResult,  related_name="ws_results", null=True)
-  group2_result  = models.ForeignKey(AuditGroup2Result, related_name="ws_results", null=True)
+  audit_result   = models.ForeignKey(AuditResult,       related_name="ws_results", on_delete=models.CASCADE)
+  group_result   = models.ForeignKey(AuditGroupResult,  related_name="ws_results", null=True, on_delete=models.CASCADE)
+  group2_result  = models.ForeignKey(AuditGroup2Result, related_name="ws_results", null=True, on_delete=models.CASCADE)
 
   slug  = models.SlugField(max_length=256, editable=False)
 

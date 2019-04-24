@@ -1,7 +1,8 @@
-Django==1.11.8
+Django==2.1.8
 django-registration==2.2
 django-timezone-field==2.0
 future==0.16.0
 Markdown==2.6.8
 psycopg2==2.7.3
 pytz==2017.3
+sqlparse==0.3.0

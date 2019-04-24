@@ -79,7 +79,7 @@ class PageMarkupGroup(models.Model):
   name        = models.CharField("Group Name",   max_length=24)
   count       = models.IntegerField(default=0)
 
-  ws_markup_group = models.ForeignKey(WebsiteMarkupGroup, related_name="page_ws_markup_groups")
+  ws_markup_group = models.ForeignKey(WebsiteMarkupGroup, related_name="page_ws_markup_groups", on_delete=models.CASCADE)
 
 class PageMarkupItem(models.Model):
   id                = models.AutoField(primary_key=True)

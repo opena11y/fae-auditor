@@ -40,7 +40,7 @@ from django.contrib import admin
 
 
 urlpatterns = [
-    url(r'^admin/',   include(admin.site.urls)),
+    url(r'^admin/',   admin.site.urls),
     # fae2 specific
     url(r'^',           include('audits.urls')),
     url(r'^rules/',     include('auditResults.urls')),

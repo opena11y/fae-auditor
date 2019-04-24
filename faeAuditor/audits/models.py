@@ -62,14 +62,14 @@ FREQUENCY_CHOICES = (
 class Audit(models.Model):
 
   id       = models.AutoField(primary_key=True)
-  user     = models.ForeignKey(User)
+  user     = models.ForeignKey(User, on_delete=models.CASCADE)
   created  = models.DateTimeField(auto_now_add=True, editable=False)
 
   slug   = models.SlugField(max_length=64, blank=True)
 
   title             = models.CharField('Audit Title', max_length=512)
 
-  ruleset           = models.ForeignKey(Ruleset)
+  ruleset           = models.ForeignKey(Ruleset, on_delete=models.CASCADE)
   browser_emulation = models.CharField("Browser Emulation", max_length=32, choices=BROWSER_CHOICES, default="Chrome")
 
   depth      = models.IntegerField(default=2, choices=DEPTH_CHOICES)
@@ -91,11 +91,11 @@ class Audit(models.Model):
   def __unicode__(self):
       return "Audit: " + self.title
 
-  @models.permalink
+  #@models.permalink
   def get_show_audit_url(self):
     return ('show_audit', [self.id])
 
-  @models.permalink
+  #@models.permalink
   def get_audit_start_url(self):
     return ('audit_start', [self.id])
 
@@ -167,7 +167,7 @@ class AuditGroup(models.Model):
 
   id     = models.AutoField(primary_key=True)
 
-  audit  = models.ForeignKey(Audit, related_name="groups")
+  audit  = models.ForeignKey(Audit, related_name="groups", on_delete=models.CASCADE)
 
   slug   = models.SlugField(max_length=64, blank=True)
 
@@ -188,7 +188,7 @@ class AuditGroupItem(models.Model):
 
   id     = models.AutoField(primary_key=True)
 
-  group  = models.ForeignKey(AuditGroup, related_name="group_items")
+  group  = models.ForeignKey(AuditGroup, related_name="group_items", on_delete=models.CASCADE)
 
   slug   = models.SlugField(max_length=64, blank=True)
 
@@ -211,7 +211,7 @@ class AuditGroup2(models.Model):
 
   id     = models.AutoField(primary_key=True)
 
-  audit  = models.ForeignKey(Audit, related_name="group2s")
+  audit  = models.ForeignKey(Audit, related_name="group2s", on_delete=models.CASCADE)
 
   slug   = models.SlugField(max_length=64, blank=True)
 
@@ -235,8 +235,8 @@ class AuditGroup2Item(models.Model):
 
   id     = models.AutoField(primary_key=True)
 
-  group2     = models.ForeignKey(AuditGroup2,    related_name="group2_items")
-  group_item = models.ForeignKey(AuditGroupItem, related_name="group2_items")
+  group2     = models.ForeignKey(AuditGroup2,    related_name="group2_items", on_delete=models.CASCADE)
+  group_item = models.ForeignKey(AuditGroupItem, related_name="group2_items", on_delete=models.CASCADE)
 
   slug   = models.SlugField(max_length=64, blank=True)
 
@@ -259,9 +259,9 @@ class Website(models.Model):
 
   id     = models.AutoField(primary_key=True)
 
-  audit = models.ForeignKey(Audit, related_name="websites")
-  group_item = models.ForeignKey(AuditGroupItem, related_name="websites", null=True, blank=True)
-  group2_item = models.ForeignKey(AuditGroup2Item, related_name="websites", null=True, blank=True)
+  audit = models.ForeignKey(Audit, related_name="websites", on_delete=models.CASCADE)
+  group_item = models.ForeignKey(AuditGroupItem, related_name="websites", null=True, blank=True, on_delete=models.CASCADE)
+  group2_item = models.ForeignKey(AuditGroup2Item, related_name="websites", null=True, blank=True, on_delete=models.CASCADE)
 
   url    = models.URLField('Website URL',     max_length=1024)
   title  = models.CharField('Website Title',  max_length=512, default="no title")

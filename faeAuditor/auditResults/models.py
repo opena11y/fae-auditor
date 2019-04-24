@@ -25,7 +25,7 @@ from __future__ import unicode_literals
 from django.db import models
 from datetime  import datetime
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from django.contrib.auth.models import User
 
@@ -93,10 +93,10 @@ class AuditResult(AllRuleGroupResult):
   id             = models.AutoField(primary_key=True)
 
   created  = models.DateTimeField(auto_now_add=True, editable=False)
-  user     = models.ForeignKey(User)
+  user     = models.ForeignKey(User, on_delete=models.CASCADE)
 
   title    = models.CharField('Audit Result Title', max_length=512, default="")
-  audit    = models.ForeignKey(Audit, related_name="audit_results", blank=True, null=True)
+  audit    = models.ForeignKey(Audit, related_name="audit_results", blank=True, null=True, on_delete=models.CASCADE)
   slug     = models.SlugField(max_length=64, default="none", blank=True)
 
   ruleset           = models.ForeignKey(Ruleset, on_delete=models.SET_NULL, null=True, default=2, blank=False)
