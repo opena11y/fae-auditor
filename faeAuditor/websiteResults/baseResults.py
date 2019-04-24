@@ -72,6 +72,8 @@ class RuleResult(models.Model):
   implementation_pass_fail_score  = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
   implementation_score            = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
   implementation_score_fail       = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
+  implementation_score_v          = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
+  implementation_score_w          = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
   implementation_score_mc         = models.DecimalField(max_digits=4, decimal_places=1, default=-1)
 
   implementation_pass_fail_status  = models.CharField("Implementation Pass/Fail Status",  max_length=8, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
@@ -88,6 +90,8 @@ class RuleResult(models.Model):
     self.implementation_pass_fail_score  = -1
     self.implementation_score            = -1
     self.implementation_score_fail       = -1
+    self.implementation_score_v          = -1
+    self.implementation_score_w          = -1
     self.implementation_score_mc         = -1
 
     self.implementation_pass_fail_status  = 'U'
@@ -169,13 +173,15 @@ class RuleElementResult(RuleResult):
     self.implementation_pass_fail_score = -1
     self.implementation_score           = -1
     self.implementation_score_fail      = -1
+    self.implementation_score_v         = -1
+    self.implementation_score_w         = -1
     self.implementation_score_mc        = -1
 
     pass_fail_total = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
     mc_total = self.elements_mc_identified - self.elements_mc_passed - self.elements_mc_failed - self.elements_mc_na
 
     passed = self.elements_passed    + self.elements_mc_passed
-    failed   = self.elements_violation + self.elements_warning    + self.elements_mc_failed
+    failed   = self.elements_violation + self.elements_warning + self.elements_mc_failed
 
     if mc_total > 0:
       total = pass_fail_total + mc_total
@@ -188,6 +194,8 @@ class RuleElementResult(RuleResult):
     if total:
       self.implementation_score      =  (100 * passed) / total
       self.implementation_score_fail =  (100 * failed) / total
+      self.implementation_score_v    =  (100 * self.elements_violation + self.elements_mc_failed) / total
+      self.implementation_score_w    =  (100 * self.elements_warning) / total
       self.implementation_score_mc   =  (100 * mc_total) / total
 
     if total > 0:
@@ -336,6 +344,8 @@ class RuleGroupResult(RuleResult):
 
   total_pages                   = models.IntegerField(default=0)
   implementation_summ           = models.IntegerField(default=0)
+
+  total_pages_fail              = models.IntegerField(default=0)
   implementation_summ_fail      = models.IntegerField(default=0)
 
   total_pages_pass_fail         = models.IntegerField(default=0)
@@ -358,6 +368,8 @@ class RuleGroupResult(RuleResult):
 
     self.total_pages              = 0
     self.implementation_summ      = 0
+
+    self.total_pages_fail         = 0
     self.implementation_summ_fail = 0
 
     self.total_pages_pass_fail = 0
@@ -398,10 +410,18 @@ class RuleGroupResult(RuleResult):
         self.implementation_summ  += pc * rule_result.implementation_score
         self.implementation_score  = self.implementation_summ / self.total_pages
 
+      if rule_result.implementation_score_fail >= 0:
+        self.total_pages_fail += pc
         self.implementation_summ_fail  += pc * rule_result.implementation_score_fail
-        self.implementation_score_fail  = self.implementation_summ_fail / self.total_pages
+        self.implementation_score_fail  = self.implementation_summ_fail / self.total_pages_fail
 
-        self.implementation_score_mc = 100 - self.implementation_score + self.implementation_score_fail
+      self.implementation_score_mc = 100
+
+      if rule_result.implementation_score >= 0:
+        self.implementation_score_mc -= self.implementation_score
+
+      if rule_result.implementation_score_fail >= 0:
+        self.implementation_score_mc -= self.implementation_score_fail
 
       self.has_manual_checks = self.has_manual_checks or rule_result.has_unresolved_manual_checks()
 

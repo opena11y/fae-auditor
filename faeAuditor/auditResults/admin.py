@@ -31,31 +31,31 @@ from .models import AuditRuleResult
 
 
 class AuditResultAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'slug', 'depth', 'created', 'website_count', 'page_count', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_pass_fail_status', 'implementation_score', 'implementation_status', 'has_manual_checks', 'implementation_pass_fail_summ', 'implementation_summ', 'total_pages', 'ruleset')
+    list_display = ('title', 'status', 'slug', 'depth', 'created', 'website_count', 'page_count', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_pass_fail_status', 'implementation_score', 'implementation_score_fail', 'implementation_score_mc', 'implementation_status', 'has_manual_checks', 'implementation_pass_fail_summ', 'implementation_summ', 'total_pages', 'ruleset')
     list_filter  = ('audit', )
 
 admin.site.register(AuditResult, AuditResultAdmin)
 
 class AuditRuleCategoryResultAdmin(admin.ModelAdmin):
-    list_display = ('rule_category', 'slug', 'audit_result', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status', 'has_manual_checks', 'implementation_pass_fail_summ', 'implementation_summ', 'total_pages')
+    list_display = ('rule_category', 'slug', 'audit_result', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_score_fail', 'implementation_score_mc', 'implementation_status', 'has_manual_checks', 'implementation_pass_fail_summ', 'implementation_summ', 'total_pages')
     list_filter  = ('audit_result', 'rule_category')
 
 admin.site.register(AuditRuleCategoryResult, AuditRuleCategoryResultAdmin)
 
 class AuditGuidelineResultAdmin(admin.ModelAdmin):
-    list_display = ('guideline', 'slug', 'audit_result', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status', 'has_manual_checks', 'implementation_pass_fail_summ', 'implementation_summ', 'total_pages')
+    list_display = ('guideline', 'slug', 'audit_result', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_score_fail', 'implementation_score_mc', 'implementation_status', 'has_manual_checks', 'implementation_pass_fail_summ', 'implementation_summ', 'total_pages')
     list_filter  = ('audit_result', 'guideline')
 
 admin.site.register(AuditGuidelineResult, AuditGuidelineResultAdmin)
 
 class AuditRuleScopeResultAdmin(admin.ModelAdmin):
-    list_display = ('rule_scope', 'slug', 'audit_result', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status', 'has_manual_checks', 'implementation_pass_fail_summ', 'implementation_summ', 'total_pages')
+    list_display = ('rule_scope', 'slug', 'audit_result', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_score_fail', 'implementation_score_mc', 'implementation_status', 'has_manual_checks', 'implementation_pass_fail_summ', 'implementation_summ', 'total_pages')
     list_filter  = ('audit_result', 'rule_scope')
 
 admin.site.register(AuditRuleScopeResult, AuditRuleScopeResultAdmin)
 
 class AuditRuleResultAdmin(admin.ModelAdmin):
-    list_display = ('rule', 'audit_result', 'result_value', 'websites_violation', 'websites_warning', 'websites_manual_check', 'websites_passed', 'websites_na', 'pages_violation', 'pages_warning', 'pages_manual_check', 'pages_passed', 'pages_na', 'elements_violation', 'elements_warning', 'elements_mc_identified', 'elements_passed', 'elements_hidden', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
+    list_display = ('rule', 'audit_result', 'result_value', 'websites_violation', 'websites_warning', 'websites_manual_check', 'websites_passed', 'websites_na', 'pages_violation', 'pages_warning', 'pages_manual_check', 'pages_passed', 'pages_na', 'elements_violation', 'elements_warning', 'elements_mc_identified', 'elements_passed', 'elements_hidden', 'implementation_pass_fail_score', 'implementation_score', 'implementation_score_fail', 'implementation_score_mc', 'implementation_status')
     list_filter  = ('audit_result', 'rule')
 
 admin.site.register(AuditRuleResult, AuditRuleResultAdmin)
