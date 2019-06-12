@@ -127,6 +127,33 @@ class RuleResult(models.Model):
 
     self.save()
 
+  def addValueCSV(self, v):
+      return ',"' + str(v) + '"'
+
+  def toCSV(self):
+      valuesCSV = ''
+      valuesCSV += self.addValueCSV(self.result_value)
+      valuesCSV += self.addValueCSV(self.implementation_pass_fail_score)
+      valuesCSV += self.addValueCSV(self.implementation_score)
+      valuesCSV += self.addValueCSV(self.implementation_score_fail)
+      valuesCSV += self.addValueCSV(self.implementation_score_v)
+      valuesCSV += self.addValueCSV(self.implementation_score_w)
+      valuesCSV += self.addValueCSV(self.implementation_score_mc)
+      valuesCSV += self.addValueCSV(self.implementation_pass_fail_status)
+      valuesCSV += self.addValueCSV(self.implementation_status)
+      valuesCSV += self.addValueCSV(self.manual_check_status)
+
+      return valuesCSV
+
+  def csvColumnHeaders(self):
+      valuesCSV = ''
+      valuesCSV += 'Result Value'
+      valuesCSV += 'Implementation Score Pass/Fail'
+      valuesCSV += 'Implementation Score Pass/Fail'
+
+      return valuesCSV
+
+
 # ---------------------------------------------------------------
 #
 # RuleElementResult
@@ -431,26 +458,49 @@ class RuleGroupResult(RuleResult):
 
   def toCSV(self):
 
-    def addValueCSV(v):
-      return ',"' + str(v) + '"'
+    valuesCSV = self.addValueCSV(self.rules_violation)
+    valuesCSV += self.addValueCSV(self.rules_warning)
+    valuesCSV += self.addValueCSV(self.rules_manual_check)
+    valuesCSV += self.addValueCSV(self.rules_passed)
+    valuesCSV += self.addValueCSV(self.rules_na)
+    valuesCSV += self.addValueCSV(self.has_manual_checks)
+    valuesCSV += self.addValueCSV(self.rules_with_hidden_content)
 
-    valuesCSV = addValueCSV(self.rules_violation)
-    valuesCSV += addValueCSV(self.rules_warning)
-    valuesCSV += addValueCSV(self.rules_manual_check)
-    valuesCSV += addValueCSV(self.rules_passed)
-    valuesCSV += addValueCSV(self.rules_na)
-    valuesCSV += addValueCSV(self.has_manual_checks)
-    valuesCSV += addValueCSV(self.rules_with_hidden_content)
+    valuesCSV += self.addValueCSV(self.total_pages)
+    valuesCSV += self.addValueCSV(self.implementation_summ)
+    valuesCSV += self.addValueCSV(self.total_pages_fail)
+    valuesCSV += self.addValueCSV(self.implementation_summ_fail)
 
-    valuesCSV += addValueCSV(self.total_pages)
-    valuesCSV += addValueCSV(self.implementation_summ)
-    valuesCSV += addValueCSV(self.total_pages_fail)
-    valuesCSV += addValueCSV(self.implementation_summ_fail)
+    valuesCSV += self.addValueCSV(self.total_pages_pass_fail)
+    valuesCSV += self.addValueCSV(self.implementation_pass_fail_summ)
 
-    valuesCSV += addValueCSV(self.total_pages_pass_fail)
-    valuesCSV += addValueCSV(self.implementation_pass_fail_summ)
+    valuesCSV +=  super(RuleGroupResult, self).toCSV()
 
     return valuesCSV
+
+  def csvColumnHeaders(self):
+
+    valuesCSV = ''
+
+    valuesCSV += self.addValueCSV('Rules Violation')
+    valuesCSV += self.addValueCSV('Rules Warning')
+    valuesCSV += self.addValueCSV('Rules Manaul Check')
+    valuesCSV += self.addValueCSV('Rules Passed')
+    valuesCSV += self.addValueCSV('Rules Not Applicable')
+    valuesCSV += self.addValueCSV('Has Manual Checks')
+    valuesCSV += self.addValueCSV('Rules with Hidden Content')
+    valuesCSV += self.addValueCSV('Total Pages')
+    valuesCSV += self.addValueCSV('')
+    valuesCSV += self.addValueCSV('')
+    valuesCSV += self.addValueCSV('')
+    valuesCSV += self.addValueCSV('')
+    valuesCSV += self.addValueCSV('')
+    valuesCSV += self.addValueCSV('')
+
+    valuesCSV +=  super(RuleGroupResult, self).csvColumnHeaders()
+
+    return valuesCSV
+
 
 # ---------------------------------------------------------------
 #

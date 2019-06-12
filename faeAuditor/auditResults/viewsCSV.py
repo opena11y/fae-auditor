@@ -87,6 +87,9 @@ def AllRulesResultViewCSV(request, result_slug, rule_grouping):
             rule_group_results = ar.audit_rc_results.all()
 
     content = "<pre>"
+    content += '"All Rules Result View"\n'
+
+    content += rule_group_results[0].csvColumnHeaders()
 
     for rgr in rule_group_results:
         content += rgr.toCSV() + "\n"

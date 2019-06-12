@@ -356,6 +356,9 @@ class AuditRuleCategoryResult(RuleGroupResult):
   def toCSV(self):
     return '"' + self.title() + '"' + super(AuditRuleCategoryResult, self).toCSV()
 
+  def csvColumnHeaders(self):
+    return '"Title"' + super(AuditRuleCategoryResult, self).csvColumnHeaders()
+
 # ---------------------------------------------------------------
 #
 # AuditGuidelineResult
@@ -397,6 +400,9 @@ class AuditGuidelineResult(RuleGroupResult):
   def toCSV(self):
     return '"' + self.title() + '"' + super(AuditGuidelineResult, self).toCSV()
 
+  def csvColumnHeaders(self):
+    return '"Title"' + super(AuditGuidelineResult, self).csvColumnHeaders()
+
 # ---------------------------------------------------------------
 #
 # AuditRuleScopeResult
@@ -437,6 +443,9 @@ class AuditRuleScopeResult(RuleGroupResult):
 
   def toCSV(self):
     return '"' + self.title() + '"' + super(AuditRuleScopeResult, self).toCSV()
+
+  def csvColumnHeaders(self):
+    return '"Title"' + super(AuditRuleScopeResult, self).csvColumnHeaders()
 
 
 # ---------------------------------------------------------------
