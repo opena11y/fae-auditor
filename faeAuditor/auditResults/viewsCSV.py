@@ -1,0 +1,94 @@
+"""
+Copyright 2014-2016 University of Illinois
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+file: auditResults/viewsCSV.py
+
+Author: Jon Gunderson
+
+"""
+
+from __future__ import absolute_import
+
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.http import JsonResponse
+from django.shortcuts import redirect
+
+from django.contrib import messages
+
+from itertools import chain
+
+from django.urls import reverse_lazy, reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from django.contrib.auth.models import User
+
+from rules.models  import Rule
+from audits.models import Audit
+
+from .models       import AuditResult
+from .models       import AuditGuidelineResult
+from .models       import AuditRuleCategoryResult
+from .models       import AuditRuleScopeResult
+from .models       import AuditRuleResult
+
+from userProfiles.models import UserProfile
+
+from django.utils.http import is_safe_url
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import REDIRECT_FIELD_NAME, login as auth_login, logout as auth_logout
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.debug import sensitive_post_parameters
+from django.views.generic import FormView, RedirectView
+
+from auditGroupResults.models  import AuditGroupResult
+from auditGroupResults.models  import AuditGroupRuleResult
+
+from auditGroup2Results.models import AuditGroup2Result
+from auditGroup2Results.models import AuditGroup2RuleResult
+
+from websiteResults.models     import WebsiteResult
+from websiteResults.models     import WebsiteRuleResult
+
+from pageResults.models     import PageResult
+from pageResults.models     import PageRuleResult
+
+from ruleCategories.models import RuleCategory
+from wcag20.models         import Guideline
+from rules.models          import RuleScope
+from contacts.models       import Announcement
+
+def AllRulesResultViewCSV(request, result_slug, rule_grouping):
+    ar = AuditResult.objects.get(slug=result_slug)
+
+    if rule_grouping == 'gl':
+        rule_grouping_label = "Guideline"
+        rule_group_results = ar.audit_gl_results.all()
+    else:
+        if rule_grouping == 'rs':
+            rule_grouping_label = "Rule Scope"
+            rule_group_results = ar.audit_rs_results.all()
+        else:
+            rule_grouping_label = "Rule Category"
+            rule_group_results = ar.audit_rc_results.all()
+
+    content = "<pre>"
+
+    for rgr in rule_group_results:
+        content += rgr.toCSV() + "\n"
+
+    return HttpResponse(content, content_type="text/html")

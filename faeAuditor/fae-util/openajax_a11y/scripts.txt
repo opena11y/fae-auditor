@@ -1,3 +1,3 @@
-/home/ares/faeAuditor/faeAuditor/fae-util/openajax_a11y/oaa_a11y_evaluation.js
-/home/ares/faeAuditor/faeAuditor/fae-util/openajax_a11y/oaa_a11y_rules.js
-/home/ares/faeAuditor/faeAuditor/fae-util/openajax_a11y/oaa_a11y_rulesets.js
+/Users/jongunderson/GitHub/faeAuditor/faeAuditor/fae-util/openajax_a11y/oaa_a11y_evaluation.js
+/Users/jongunderson/GitHub/faeAuditor/faeAuditor/fae-util/openajax_a11y/oaa_a11y_rules.js
+/Users/jongunderson/GitHub/faeAuditor/faeAuditor/fae-util/openajax_a11y/oaa_a11y_rulesets.js

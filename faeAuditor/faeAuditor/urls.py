@@ -42,15 +42,16 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/',   admin.site.urls),
     # fae2 specific
-    url(r'^',           include('audits.urls')),
-    url(r'^rules/',     include('auditResults.urls')),
-    url(r'^group/',     include('auditGroupResults.urls')),
-    url(r'^group2/',    include('auditGroup2Results.urls')),
-    url(r'^websites/',  include('websiteResults.urls')),
-    url(r'^abouts/',    include('abouts.urls')),
-    url(r'^contacts/',  include('contacts.urls')),
-    url(r'^accounts/',  include('accounts.urls')),
-    url(r'^rulesets/',  include('rulesets.urls')),
+    url(r'^',            include('audits.urls')),
+    url(r'^rules/',      include('auditResults.urls')),
+    url(r'^csv/rules/',  include('auditResults.urlsCSV')),
+    url(r'^group/',      include('auditGroupResults.urls')),
+    url(r'^group2/',     include('auditGroup2Results.urls')),
+    url(r'^websites/',   include('websiteResults.urls')),
+    url(r'^abouts/',     include('abouts.urls')),
+    url(r'^contacts/',   include('contacts.urls')),
+    url(r'^accounts/',   include('accounts.urls')),
+    url(r'^rulesets/',   include('rulesets.urls')),
 ]
 
 

@@ -353,7 +353,8 @@ class AuditRuleCategoryResult(RuleGroupResult):
   def id(self):
     return 'arcr_' + self.rule_category.id
 
-
+  def toCSV(self):
+    return '"' + self.title() + '"' + super(AuditRuleCategoryResult, self).toCSV()
 
 # ---------------------------------------------------------------
 #
@@ -393,6 +394,9 @@ class AuditGuidelineResult(RuleGroupResult):
   def id(self):
     return 'aglr_' + self.guideline.id
 
+  def toCSV(self):
+    return '"' + self.title() + '"' + super(AuditGuidelineResult, self).toCSV()
+
 # ---------------------------------------------------------------
 #
 # AuditRuleScopeResult
@@ -430,6 +434,9 @@ class AuditRuleScopeResult(RuleGroupResult):
 
   def id(self):
     return 'arsr_' + self.rule_scope.id
+
+  def toCSV(self):
+    return '"' + self.title() + '"' + super(AuditRuleScopeResult, self).toCSV()
 
 
 # ---------------------------------------------------------------

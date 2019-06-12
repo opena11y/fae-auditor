@@ -429,6 +429,29 @@ class RuleGroupResult(RuleResult):
 
     self.save()
 
+  def toCSV(self):
+
+    def addValueCSV(v):
+      return ',"' + str(v) + '"'
+
+    valuesCSV = addValueCSV(self.rules_violation)
+    valuesCSV += addValueCSV(self.rules_warning)
+    valuesCSV += addValueCSV(self.rules_manual_check)
+    valuesCSV += addValueCSV(self.rules_passed)
+    valuesCSV += addValueCSV(self.rules_na)
+    valuesCSV += addValueCSV(self.has_manual_checks)
+    valuesCSV += addValueCSV(self.rules_with_hidden_content)
+
+    valuesCSV += addValueCSV(self.total_pages)
+    valuesCSV += addValueCSV(self.implementation_summ)
+    valuesCSV += addValueCSV(self.total_pages_fail)
+    valuesCSV += addValueCSV(self.implementation_summ_fail)
+
+    valuesCSV += addValueCSV(self.total_pages_pass_fail)
+    valuesCSV += addValueCSV(self.implementation_pass_fail_summ)
+
+    return valuesCSV
+
 # ---------------------------------------------------------------
 #
 # AllRuleGroupResult
