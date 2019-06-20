@@ -96,3 +96,30 @@ def AllRulesResultViewCSV(request, result_slug, rule_grouping):
         content += rgr.toCSV() + "\n"
 
     return HttpResponse(content, content_type="text/html")
+
+
+def RuleGroupResultViewCSV(request, result_slug, rule_grouping, rule_group_slug):
+    ar = AuditResult.objects.get(slug=result_slug)
+
+    if rule_grouping == 'gl':
+        rule_group_label  = Guideline.objects.get(slug=rule_group_slug).title
+        rule_group_result = ar.audit_gl_results.get(slug=rule_group_slug)
+    else:
+        if rule_grouping == 'rs':
+            rule_group_label  = RuleScope.objects.get(slug=rule_group_slug).title
+            rule_group_result = ar.audit_rs_results.get(slug=rule_group_slug)
+        else:
+            rule_group_label  = RuleCategory.objects.get(slug=rule_group_slug).title
+            rule_group_result = ar.audit_rc_results.get(slug=rule_group_slug)
+
+
+    content = "<pre>"
+    content += '"Rule Group Result View"\n'
+
+    content += rule_group_result.audit_rule_results.first().csvColumnHeaders()
+    content += '\n'
+
+    for rr in rule_group_result.audit_rule_results.all():
+        content += rr.toCSV() + "\n"
+
+    return HttpResponse(content, content_type="text/html")
