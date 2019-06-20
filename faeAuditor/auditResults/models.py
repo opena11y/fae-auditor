@@ -484,4 +484,8 @@ class AuditRuleResult(RuleElementPageWebsiteResult):
   def title(self):
     return self.rule.summary
 
+  def toCSV(self):
+    return '"' + self.title() + '"' + super(AuditRuleResult, self).toCSV()
 
+  def csvColumnHeaders(self):
+    return '"Title"' + super(AuditRuleResult, self).csvColumnHeaders()

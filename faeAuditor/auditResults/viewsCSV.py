@@ -90,6 +90,7 @@ def AllRulesResultViewCSV(request, result_slug, rule_grouping):
     content += '"All Rules Result View"\n'
 
     content += rule_group_results[0].csvColumnHeaders()
+    content += '\n'
 
     for rgr in rule_group_results:
         content += rgr.toCSV() + "\n"
