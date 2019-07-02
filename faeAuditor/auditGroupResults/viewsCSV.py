@@ -80,6 +80,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from audits.resultNavigationMixin import ResultNavigationMixin
 
+def makeCSV(s):
+    return '"' + s + '"'
 
 # ==============================================================
 #
@@ -88,32 +90,16 @@ from audits.resultNavigationMixin import ResultNavigationMixin
 # ==============================================================
 
 def GroupResultsViewCSV(request, result_slug, rule_grouping):
-    # ar = AuditResult.objects.get(slug=result_slug)
+    ar = AuditResult.objects.get(slug=result_slug)
 
-    # agrs = ar.group_results.all()
-
-    # # Setup report navigation
-    # self.result_nav.set_audit_result(ar, 'group', self.request.path)
-    # self.result_nav.set_rule_grouping(rule_grouping)
-    # self.result_nav.create_result_navigation()
-
-    # for agr in agrs:
-    #     agr.title = agr.get_title()
-    #     agr.href  = reverse('group_results_audit_group', args=[result_slug, rule_grouping, agr.slug])
-
-    # # slugs used for urls
-    # context['audit_slug']     = ar.audit.slug
-    # context['result_slug']    = result_slug
-    # context['rule_grouping']  = rule_grouping
-
-    # # objects for rendering content
-    # context['audit']         = ar.audit
-    # context['audit_result']  = ar
-    # context['user_profile']  = user_profile
-
-    # context['audit_group_results'] = agrs
+    agrs = ar.group_results.all()
 
     content = "<pre>"
     content += '"All Rules Group Result View"\n'
+
+    content += agrs[0].csvColumnHeaders()
+
+    for agr in agrs:
+        content += agr.toCSV()
 
     return HttpResponse(content, content_type="text/html")

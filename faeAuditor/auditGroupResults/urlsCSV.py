@@ -27,8 +27,9 @@ from .viewsCSV  import GroupResultsViewCSV
 
 urlpatterns = [
 
-    url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/$',
+    url(r'^all/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/$',
       GroupResultsViewCSV,
-      name='group_results_csv'),
+      name='group_results_csv')
 
 ]
+

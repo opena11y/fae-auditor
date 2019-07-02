@@ -127,8 +127,11 @@ class RuleResult(models.Model):
 
     self.save()
 
-  def addValueCSV(self, v):
-      return ',"' + str(v) + '"'
+  def addValueCSV(self, v, flag=True):
+      s = '"' + str(v) + '"'
+      if flag:
+        s = ',' + s
+      return s
 
   def toCSV(self):
       valuesCSV = ''
@@ -327,7 +330,7 @@ class RuleElementPageResult(RuleElementResult):
     valuesCSV += self.addValueCSV('Passed')
     valuesCSV += self.addValueCSV('Not Available')
     valuesCSV += self.addValueCSV('Hidden Content')
-    
+
     return valuesCSV
 
 
@@ -423,7 +426,7 @@ class RuleElementPageWebsiteResult(RuleElementPageResult):
     valuesCSV += self.addValueCSV('Passed')
     valuesCSV += self.addValueCSV('Not Available')
     valuesCSV += self.addValueCSV('Hidden Content')
-    
+
     return valuesCSV
 
 
@@ -633,3 +636,10 @@ class AllRuleGroupResult(RuleGroupResult):
         rs = self.get_group_rs_result(arr.rule.scope, arr)
         rs.add_rule_result(arr)
 
+  def toCSV(self):
+    valuesCSV = super(AllRuleGroupResult, self).toCSV()
+    return valuesCSV
+
+  def csvColumnHeaders(self):
+    valuesCSV = super(AllRuleGroupResult, self).csvColumnHeaders()
+    return valuesCSV

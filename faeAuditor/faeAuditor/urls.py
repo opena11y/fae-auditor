@@ -46,6 +46,7 @@ urlpatterns = [
     url(r'^rules/',      include('auditResults.urls')),
     url(r'^csv/rules/',  include('auditResults.urlsCSV')),
     url(r'^group/',      include('auditGroupResults.urls')),
+    url(r'^csv/group/',  include('auditGroupResults.urlsCSV')),
     url(r'^group2/',     include('auditGroup2Results.urls')),
     url(r'^websites/',   include('websiteResults.urls')),
     url(r'^abouts/',     include('abouts.urls')),

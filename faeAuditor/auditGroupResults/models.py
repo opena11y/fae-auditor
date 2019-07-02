@@ -175,6 +175,20 @@ class AuditGroupResult(AllRuleGroupResult):
         agrsr.save()
       return agrsr
 
+  def toCSV(self):
+    valuesCSV = self.addValueCSV(self.get_title(), False)
+    valuesCSV += self.addValueCSV(str(self.get_website_count()))
+    valuesCSV += self.addValueCSV(str(self.get_page_count()))
+    valuesCSV += super(AuditGroupResult, self).toCSV() + "\n"
+    return valuesCSV
+
+  def csvColumnHeaders(self):
+    valuesCSV = self.addValueCSV('Group Item Title', False)
+    valuesCSV += self.addValueCSV('Websites')
+    valuesCSV += self.addValueCSV('Pages')
+    valuesCSV += super(AuditGroupResult, self).csvColumnHeaders()
+    return valuesCSV
+
 
 # ---------------------------------------------------------------
 #
