@@ -187,6 +187,7 @@ class AuditGroupResult(AllRuleGroupResult):
     valuesCSV += self.addValueCSV('Websites')
     valuesCSV += self.addValueCSV('Pages')
     valuesCSV += super(AuditGroupResult, self).csvColumnHeaders()
+    valuesCSV += '\n'
     return valuesCSV
 
 
