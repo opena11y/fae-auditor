@@ -526,6 +526,21 @@ class WebsiteResult(RuleGroupResult):
 
     return urls
 
+  def toCSV(self):
+    valuesCSV = self.addValueCSV(self.group_title(), False)
+    valuesCSV += self.addValueCSV(str(self.group2_title()))
+    valuesCSV += self.addValueCSV(str(self.get_page_count()))
+    valuesCSV += super(WebsiteResult, self).toCSV() + "\n"
+    return valuesCSV
+
+  def csvColumnHeaders(self):
+    valuesCSV = self.addValueCSV('Website Item Title', False)
+    valuesCSV += self.addValueCSV('Group')
+    valuesCSV += self.addValueCSV('Sub-Group')
+    valuesCSV += super(WebsiteResult, self).csvColumnHeaders()
+    valuesCSV += '\n'
+    return valuesCSV
+
 
 # ---------------------------------------------------------------
 #
