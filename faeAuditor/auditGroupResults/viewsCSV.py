@@ -95,7 +95,7 @@ def GroupResultsViewCSV(request, result_slug, rule_grouping):
     agrs = ar.group_results.all()
 
     content = "<pre>"
-    content += '"All Rules Group Result View"\n'
+    content += '"All Rules Result View"\n'
 
     content += agrs[0].csvColumnHeaders()
 
@@ -103,3 +103,43 @@ def GroupResultsViewCSV(request, result_slug, rule_grouping):
         content += agr.toCSV()
 
     return HttpResponse(content, content_type="text/html")
+
+
+def GroupResultsAuditGroupViewCSV(request, result_slug, rule_grouping, audit_group_slug):
+    ar = AuditResult.objects.get(slug=result_slug)
+
+    agrs = ar.group_results.get(slug=audit_group_slug)
+
+    content = "<pre>"
+    content += '"Rule Group Result View"\n'
+
+    content += agrs[0].csvColumnHeaders()
+
+    for agr in agrs:
+        content += agr.toCSV()
+
+    return HttpResponse(content, content_type="text/html")
+
+
+def GroupRuleGroupResultsViewCSV(request, result_slug, rule_grouping, rule_group_slug):
+    ar  = AuditResult.objects.get(slug=result_slug)
+
+    if rule_grouping == 'gl':
+        agrs = AuditGroupGuidelineResult.objects.filter(group_result__audit_result=ar, slug=rule_group_slug)
+    else:
+        if rule_grouping == 'rs':
+            agrs = AuditGroupRuleScopeResult.objects.filter(group_result__audit_result=ar, slug=rule_group_slug)
+        else:
+            agrs = AuditGroupRuleCategoryResult.objects.filter(group_result__audit_result=ar, slug=rule_group_slug)
+
+    content = "<pre>"
+    content += '"Rule Group Result View"\n'
+
+    content += agrs[0].csvColumnHeaders()
+
+    for agr in agrs:
+        content += agr.toCSV()
+
+    return HttpResponse(content, content_type="text/html")
+
+

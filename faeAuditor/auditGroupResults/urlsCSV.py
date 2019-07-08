@@ -24,12 +24,24 @@ from __future__ import absolute_import
 from django.conf.urls import url
 
 from .viewsCSV  import GroupResultsViewCSV
+from .viewsCSV  import GroupResultsAuditGroupViewCSV
+from .viewsCSV  import GroupRuleGroupResultsViewCSV
 
 urlpatterns = [
 
     url(r'^all/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/$',
       GroupResultsViewCSV,
-      name='group_results_csv')
+      name='group_results_csv'),
+
+    url(r'^all/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/$',
+      GroupResultsAuditGroupViewCSV,
+      name='group_results_audit_group_csv'),
+
+# Rule grouping result views
+
+    url(r'^some/(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/$',
+      GroupRuleGroupResultsViewCSV,
+      name='group_rule_group_results_csv')
 
 ]
 

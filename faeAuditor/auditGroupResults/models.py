@@ -240,6 +240,20 @@ class AuditGroupRuleCategoryResult(RuleGroupResult):
   def get_website_count(self):
     return self.group_result.get_website_count()
 
+  def toCSV(self):
+    valuesCSV = self.addValueCSV(self.get_title(), False)
+    valuesCSV += self.addValueCSV(str(self.get_website_count()))
+    valuesCSV += self.addValueCSV(str(self.get_page_count()))
+    valuesCSV += super(AuditGroupRuleCategoryResult, self).toCSV() + "\n"
+    return valuesCSV
+
+  def csvColumnHeaders(self):
+    valuesCSV = self.addValueCSV('Group Item Title', False)
+    valuesCSV += self.addValueCSV('Websites')
+    valuesCSV += self.addValueCSV('Pages')
+    valuesCSV += super(AuditGroupRuleCategoryResult, self).csvColumnHeaders()
+    valuesCSV += '\n'
+    return valuesCSV
 
 # ---------------------------------------------------------------
 #
@@ -288,6 +302,20 @@ class AuditGroupGuidelineResult(RuleGroupResult):
   def get_website_count(self):
     return self.group_result.get_website_count()
 
+  def toCSV(self):
+    valuesCSV = self.addValueCSV(self.get_title(), False)
+    valuesCSV += self.addValueCSV(str(self.get_website_count()))
+    valuesCSV += self.addValueCSV(str(self.get_page_count()))
+    valuesCSV += super(AuditGroupGuidelineResult, self).toCSV() + "\n"
+    return valuesCSV
+
+  def csvColumnHeaders(self):
+    valuesCSV = self.addValueCSV('Group Item Title', False)
+    valuesCSV += self.addValueCSV('Websites')
+    valuesCSV += self.addValueCSV('Pages')
+    valuesCSV += super(AuditGroupGuidelineResult, self).csvColumnHeaders()
+    valuesCSV += '\n'
+    return valuesCSV
 
 # ---------------------------------------------------------------
 #
@@ -336,6 +364,21 @@ class AuditGroupRuleScopeResult(RuleGroupResult):
 
   def get_website_count(self):
     return self.group_result.get_website_count()
+
+  def toCSV(self):
+    valuesCSV = self.addValueCSV(self.get_title(), False)
+    valuesCSV += self.addValueCSV(str(self.get_website_count()))
+    valuesCSV += self.addValueCSV(str(self.get_page_count()))
+    valuesCSV += super(AuditGroupRuleScopeResult, self).toCSV() + "\n"
+    return valuesCSV
+
+  def csvColumnHeaders(self):
+    valuesCSV = self.addValueCSV('Group Item Title', False)
+    valuesCSV += self.addValueCSV('Websites')
+    valuesCSV += self.addValueCSV('Pages')
+    valuesCSV += super(AuditGroupRuleScopeResult, self).csvColumnHeaders()
+    valuesCSV += '\n'
+    return valuesCSV
 
 # ---------------------------------------------------------------
 #
