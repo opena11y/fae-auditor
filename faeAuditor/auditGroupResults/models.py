@@ -426,7 +426,7 @@ class AuditGroupRuleResult(RuleElementPageWebsiteResult):
     return valuesCSV
 
   def csvColumnHeaders(self):
-    valuesCSV = self.addValueCSV('Conference', False)
+    valuesCSV = self.addValueCSV('Rule', False)
     valuesCSV += super(AuditGroupRuleResult, self).csvColumnHeaders()
     valuesCSV += '\n'
     return valuesCSV

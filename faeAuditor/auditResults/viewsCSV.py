@@ -116,10 +116,12 @@ def RuleGroupResultViewCSV(request, result_slug, rule_grouping, rule_group_slug)
     content = "<pre>"
     content += '"Rule Group Result View"\n'
 
+    content += '"Rule Group",'
     content += rule_group_result.audit_rule_results.first().csvColumnHeaders()
     content += '\n'
 
     for rr in rule_group_result.audit_rule_results.all():
+        content += '"' + rule_group_label + '",'
         content += rr.toCSV() + "\n"
 
     return HttpResponse(content, content_type="text/html")
