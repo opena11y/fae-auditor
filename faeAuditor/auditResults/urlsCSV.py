@@ -25,6 +25,7 @@ from django.conf.urls import url
 
 from .viewsCSV  import AllRulesResultViewCSV
 from .viewsCSV  import RuleGroupResultViewCSV
+from .viewsCSV  import RuleGroupResultRuleViewCSV
 
 urlpatterns = [
 
@@ -36,5 +37,11 @@ urlpatterns = [
       RuleGroupResultViewCSV,
       name='rule_group_result_csv'),
 
+    url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/$',
+      RuleGroupResultRuleViewCSV,
+      name='rule_group_result_rule_csv'),
 
+    # url(r'^(?P<result_slug>[\w-]+)/(?P<rule_grouping>[\w-]+)/rg/(?P<rule_group_slug>[\w-]+)/rule/(?P<rule_slug>[\w-]+)/g/(?P<audit_group_slug>[\w-]+)/$',
+    #   RuleGroupResultRuleAuditGroupViewCSV,
+    #   name='rule_group_result_rule_audit_group_csv'),
 ]

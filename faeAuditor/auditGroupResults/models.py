@@ -420,3 +420,14 @@ class AuditGroupRuleResult(RuleElementPageWebsiteResult):
   def get_abbrev(self):
     return self.group_result.get_abbrev()
 
+  def toCSV(self):
+    valuesCSV = self.addValueCSV(self.get_title(), False)
+    valuesCSV += super(AuditGroupRuleResult, self).toCSV() + "\n"
+    return valuesCSV
+
+  def csvColumnHeaders(self):
+    valuesCSV = self.addValueCSV('Conference', False)
+    valuesCSV += super(AuditGroupRuleResult, self).csvColumnHeaders()
+    valuesCSV += '\n'
+    return valuesCSV
+

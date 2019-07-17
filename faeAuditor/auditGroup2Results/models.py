@@ -392,3 +392,15 @@ class AuditGroup2RuleResult(RuleElementPageWebsiteResult):
 
     super(AuditGroup2RuleResult, self).save() # Call the "real" save() method.
 
+  def toCSV(self):
+    valuesCSV = self.addValueCSV(self.get_title(), False)
+    valuesCSV += self.addValueCSV(self.get_abbrev())
+    valuesCSV += super(AuditGroup2RuleResult, self).toCSV() + "\n"
+    return valuesCSV
+
+  def csvColumnHeaders(self):
+    valuesCSV = self.addValueCSV("University", False)
+    valuesCSV += self.addValueCSV("Group")
+    valuesCSV += super(AuditGroup2RuleResult, self).csvColumnHeaders()
+    valuesCSV += '\n'
+    return valuesCSV

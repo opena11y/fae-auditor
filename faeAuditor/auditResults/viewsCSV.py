@@ -123,3 +123,47 @@ def RuleGroupResultViewCSV(request, result_slug, rule_grouping, rule_group_slug)
         content += rr.toCSV() + "\n"
 
     return HttpResponse(content, content_type="text/html")
+
+def RuleGroupResultRuleViewCSV(request, result_slug, rule_grouping, rule_group_slug, rule_slug):
+
+    ar  = AuditResult.objects.get(slug=result_slug)
+    arr = AuditRuleResult.objects.get(audit_result=ar, slug=rule_slug)
+
+    if rule_grouping == 'gl':
+        rule_group_label    = Guideline.objects.get(slug=rule_group_slug).title
+    else:
+        if rule_grouping == 'rs':
+            rule_group_label    = RuleScope.objects.get(slug=rule_group_slug).title
+        else:
+            rule_group_label    = RuleCategory.objects.get(slug=rule_group_slug).title
+            rule_grouping       = 'rc'
+
+    wsrrs  = WebsiteRuleResult.objects.filter(ws_report__audit_result=ar, slug=rule_slug)
+
+    content = "<pre>"
+    content += '"Rule Group Result View Rule"\n'
+
+    # Check if audit has audit grouping
+    if ar.audit.groups.count():
+        agrrs  = AuditGroupRuleResult.objects.filter(group_result__audit_result=ar, slug=rule_slug)
+        content += agrrs[0].csvColumnHeaders()
+        for agrr in agrrs:
+            content += agrr.toCSV()
+
+    content += '\n'
+
+    # Check if audit has audit sub grouping
+    if ar.audit.group2s.count():
+        ag2rrs = AuditGroup2RuleResult.objects.filter(group2_result__group_result__audit_result=ar, slug=rule_slug)
+        content += ag2rrs[0].csvColumnHeaders()
+        for ag2rr in ag2rrs:
+            content += ag2rr.toCSV()
+
+    content += '\n'
+
+    if wsrrs.count():
+        content += wsrrs[0].csvColumnHeaders()
+        for wsrr in wsrrs:
+            content += wsrr.toCSV()
+
+    return HttpResponse(content, content_type="text/html")

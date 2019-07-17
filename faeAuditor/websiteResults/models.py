@@ -843,6 +843,15 @@ class WebsiteRuleResult(RuleElementPageResult):
   def get_title(self):
     return self.rule.summary_text
 
+  def get_website_title(self):
+    return self.ws_report.group_title.url()
+
+  def get_group_title(self):
+    return self.ws_report.group_title()
+
+  def get_group2_title(self):
+    return self.ws_report.group2_title()
+
   def to_json_results(self):
     json = {}
     json['id']        = self.rule.nls_rule_id
@@ -873,4 +882,30 @@ class WebsiteRuleResult(RuleElementPageResult):
 
     return json
 
+  def toCSV(self):
+    valuesCSV = ''
+    # valuesCSV += self.addValueCSV(self.get_title(), False)
+    valuesCSV += self.addValueCSV(self.get_group_title())
+    valuesCSV += self.addValueCSV(self.get_group2_title())
+    valuesCSV += self.addValueCSV(self.pages_violation)
+    valuesCSV += self.addValueCSV(self.pages_warning)
+    valuesCSV += self.addValueCSV(self.pages_manual_check)
+    valuesCSV += self.addValueCSV(self.pages_passed)
+    valuesCSV += self.addValueCSV(self.pages_na)
+    valuesCSV += self.addValueCSV(self.pages_with_hidden_content)
+    valuesCSV += '\n'
+    return valuesCSV
 
+  def csvColumnHeaders(self):
+    valuesCSV = ''
+    valuesCSV += self.addValueCSV('Group', False)
+    valuesCSV += self.addValueCSV('Sub-Group')
+    valuesCSV += self.addValueCSV('Violations')
+    valuesCSV += self.addValueCSV('Warnings')
+    valuesCSV += self.addValueCSV('Manual Checks')
+    valuesCSV += self.addValueCSV('Passed')
+    valuesCSV += self.addValueCSV('Not Available')
+    valuesCSV += self.addValueCSV('Hidden Content')
+    valuesCSV += '\n'
+
+    return valuesCSV
