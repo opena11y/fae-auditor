@@ -108,15 +108,24 @@ def GroupResultsViewCSV(request, result_slug, rule_grouping):
 def GroupResultsAuditGroupViewCSV(request, result_slug, rule_grouping, audit_group_slug):
     ar = AuditResult.objects.get(slug=result_slug)
 
-    agrs = ar.group_results.get(slug=audit_group_slug)
+    agr = ar.group_results.get(slug=audit_group_slug)
 
-    content = "<pre>"
+    ag2rs = agr.group2_results.all()
+    wsrs  = agr.ws_results.all()
+
+    content = '<pre>'
     content += '"Rule Group Result View"\n'
 
-    content += agrs[0].csvColumnHeaders()
+    content += ag2rs[0].csvColumnHeaders()
 
-    for agr in agrs:
-        content += agr.toCSV()
+    for ag2r in ag2rs:
+        content += ag2r.toCSV()
+
+    content += '\n\n' + wsrs[0].csvColumnHeaders()
+
+    for wsr in wsrs:
+        content += makeCSV(wsr.title) + ','
+        content += wsr.toCSV()
 
     return HttpResponse(content, content_type="text/html")
 
