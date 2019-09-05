@@ -257,7 +257,7 @@ def addAudit(data):
 
 # Get title and other information for the audit
 
-user = User.objects.get(username='ares')
+user = User.objects.get(username='jongund')
 date = time.strftime('%Y-%m-%d')
 
 if len(sys.argv) < 3:
