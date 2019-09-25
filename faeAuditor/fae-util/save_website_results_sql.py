@@ -1762,8 +1762,7 @@ def saveResultsToDjango(ws_report, l):
     wsr.saveToDjango()
     info("Set status complete")
     ws_report.set_page_numbers()
-    # save data for now
-    ws_report.set_status_complete(True)
+    ws_report.set_status_complete(False)
 
     page_count = wsr.page_count
     total = "{:10.4f}".format(time.time()-start)
