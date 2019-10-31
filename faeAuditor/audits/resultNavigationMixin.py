@@ -50,7 +50,6 @@ from pageResults.models    import PageRuleCategoryResult
 from pageResults.models    import PageGuidelineResult
 from pageResults.models    import PageRuleScopeResult
 from rulesets.models       import Ruleset
-from userProfiles.models   import UserProfile
 
 from ruleCategories.models import RuleCategory
 from wcag20.models         import Guideline

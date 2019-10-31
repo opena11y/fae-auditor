@@ -60,7 +60,6 @@ from pageResults.models    import PageRuleCategoryResult
 from pageResults.models    import PageGuidelineResult
 from pageResults.models    import PageRuleScopeResult
 from rulesets.models       import Ruleset
-from userProfiles.models   import UserProfile
 
 from ruleCategories.models import RuleCategory
 from wcag20.models         import Guideline
@@ -88,9 +87,6 @@ class Group2ResultsView(ResultNavigationMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(Group2ResultsView, self).get_context_data(**kwargs)
 
-        user           = self.request.user
-        user_profile = UserProfile.objects.get(user=user)
-
         result_slug    = kwargs['result_slug']
         rule_grouping  = kwargs['rule_grouping']
 
@@ -117,8 +113,6 @@ class Group2ResultsView(ResultNavigationMixin, TemplateView):
         # objects for rendering content
         context['audit']         = ar.audit
         context['audit_result']  = ar
-        context['user_profile']  = user_profile
-
         context['audit_group2_results'] = ag2rs
 
         return context
@@ -128,11 +122,6 @@ class Group2ResultsAuditGroup2View(ResultNavigationMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(Group2ResultsAuditGroup2View, self).get_context_data(**kwargs)
-
-        print('\n[view][Group2ResultsAuditGroup2View]')
-
-        user           = self.request.user
-        user_profile = UserProfile.objects.get(user=user)
 
         result_slug       = kwargs['result_slug']
         rule_grouping     = kwargs['rule_grouping']
@@ -163,8 +152,6 @@ class Group2ResultsAuditGroup2View(ResultNavigationMixin, TemplateView):
         # objects for rendering content
         context['audit']         = ar.audit
         context['audit_result']  = ar
-        context['user_profile']  = user_profile
-
         context['audit_group2_result']  = ag2r
         context['website_results']      = wsrs
 
@@ -175,11 +162,6 @@ class Group2ResultsAuditGroup2WebsiteView(ResultNavigationMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(Group2ResultsAuditGroup2WebsiteView, self).get_context_data(**kwargs)
-
-        print('\n[view][Group2ResultsAuditGroup2WebsiteView]')
-
-        user           = self.request.user
-        user_profile = UserProfile.objects.get(user=user)
 
         result_slug       = kwargs['result_slug']
         rule_grouping     = kwargs['rule_grouping']
@@ -215,8 +197,6 @@ class Group2ResultsAuditGroup2WebsiteView(ResultNavigationMixin, TemplateView):
         # objects for rendering content
         context['audit']         = ar.audit
         context['audit_result']  = ar
-        context['user_profile']  = user_profile
-
         context['audit_group2_result'] = ag2r
         context['website_result']      = wsr
         context['page_results']        = prs
@@ -228,9 +208,6 @@ class Group2ResultsAuditGroup2WebsitePageView(ResultNavigationMixin, TemplateVie
 
     def get_context_data(self, **kwargs):
         context = super(Group2ResultsAuditGroup2WebsitePageView, self).get_context_data(**kwargs)
-
-        user           = self.request.user
-        user_profile = UserProfile.objects.get(user=user)
 
         result_slug       = kwargs['result_slug']
         rule_grouping     = kwargs['rule_grouping']
@@ -269,8 +246,6 @@ class Group2ResultsAuditGroup2WebsitePageView(ResultNavigationMixin, TemplateVie
         # objects for rendering content
         context['audit']         = ar.audit
         context['audit_result']  = ar
-        context['user_profile']  = user_profile
-
         context['audit_group2_result']  = ag2r
         context['website_result']       = wsr
         context['page_result']          = pr
@@ -283,9 +258,6 @@ class Group2ResultsAuditGroup2WebsitePageRuleView(ResultNavigationMixin, Templat
 
     def get_context_data(self, **kwargs):
         context = super(Group2ResultsAuditGroup2WebsitePageRuleView, self).get_context_data(**kwargs)
-
-        user           = self.request.user
-        user_profile = UserProfile.objects.get(user=user)
 
         result_slug       = kwargs['result_slug']
         rule_grouping     = kwargs['rule_grouping']
@@ -322,8 +294,6 @@ class Group2ResultsAuditGroup2WebsitePageRuleView(ResultNavigationMixin, Templat
         # objects for rendering content
         context['audit']         = ar.audit
         context['audit_result']  = ar
-        context['user_profile']  = user_profile
-
         context['audit_group2_result'] = ag2r
         context['website_result']      = wsr
         context['page_result']         = pr
@@ -341,9 +311,6 @@ class Group2RuleGroupResultsView(ResultNavigationMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(Group2RuleGroupResultsView, self).get_context_data(**kwargs)
-
-        user           = self.request.user
-        user_profile = UserProfile.objects.get(user=user)
 
         result_slug      = kwargs['result_slug']
         rule_grouping    = kwargs['rule_grouping']
@@ -386,8 +353,6 @@ class Group2RuleGroupResultsView(ResultNavigationMixin, TemplateView):
         # objects for rendering content
         context['audit']         = ar.audit
         context['audit_result']  = ar
-        context['user_profile']  = user_profile
-
         context['rule_group']           = rule_group
         context['audit_group2_results'] = ag2rs
 
@@ -398,9 +363,6 @@ class Group2RuleGroupResultsAuditGroup2View(ResultNavigationMixin, TemplateView)
 
     def get_context_data(self, **kwargs):
         context = super(Group2RuleGroupResultsAuditGroup2View, self).get_context_data(**kwargs)
-
-        user           = self.request.user
-        user_profile = UserProfile.objects.get(user=user)
 
         result_slug       = kwargs['result_slug']
         rule_grouping     = kwargs['rule_grouping']
@@ -449,8 +411,6 @@ class Group2RuleGroupResultsAuditGroup2View(ResultNavigationMixin, TemplateView)
         # objects for rendering content
         context['audit']         = ar.audit
         context['audit_result']  = ar
-        context['user_profile']  = user_profile
-
         context['rule_group']           = rule_group
         context['audit_group2_result']  = ag2grr
         context['website_results']      = wsrgrs
@@ -463,9 +423,6 @@ class Group2RuleGroupResultsAuditGroup2WebsiteView(ResultNavigationMixin, Templa
 
     def get_context_data(self, **kwargs):
         context = super(Group2RuleGroupResultsAuditGroup2WebsiteView, self).get_context_data(**kwargs)
-
-        user           = self.request.user
-        user_profile = UserProfile.objects.get(user=user)
 
         result_slug       = kwargs['result_slug']
         rule_grouping     = kwargs['rule_grouping']
@@ -516,8 +473,6 @@ class Group2RuleGroupResultsAuditGroup2WebsiteView(ResultNavigationMixin, Templa
         # objects for rendering content
         context['audit']         = ar.audit
         context['audit_result']  = ar
-        context['user_profile']  = user_profile
-
         context['rule_group']    = rule_group
 
         context['audit_group2_result']  = ag2r
@@ -531,9 +486,6 @@ class Group2RuleGroupResultsAuditGroup2WebsitePageView(ResultNavigationMixin, Te
 
     def get_context_data(self, **kwargs):
         context = super(Group2RuleGroupResultsAuditGroup2WebsitePageView, self).get_context_data(**kwargs)
-
-        user           = self.request.user
-        user_profile = UserProfile.objects.get(user=user)
 
         result_slug       = kwargs['result_slug']
         rule_grouping     = kwargs['rule_grouping']
@@ -588,8 +540,6 @@ class Group2RuleGroupResultsAuditGroup2WebsitePageView(ResultNavigationMixin, Te
         # objects for rendering content
         context['audit']         = ar.audit
         context['audit_result']  = ar
-        context['user_profile']  = user_profile
-
         context['rule_group']    = rule_group
 
         context['audit_group2_result']  = ag2r
@@ -604,9 +554,6 @@ class Group2RuleGroupResultsAuditGroup2WebsitePageRuleView(ResultNavigationMixin
 
     def get_context_data(self, **kwargs):
         context = super(Group2RuleGroupResultsAuditGroup2WebsitePageRuleView, self).get_context_data(**kwargs)
-
-        user           = self.request.user
-        user_profile = UserProfile.objects.get(user=user)
 
         result_slug       = kwargs['result_slug']
         rule_grouping     = kwargs['rule_grouping']
@@ -657,8 +604,6 @@ class Group2RuleGroupResultsAuditGroup2WebsitePageRuleView(ResultNavigationMixin
         # objects for rendering content
         context['audit']         = ar.audit
         context['audit_result']  = ar
-        context['user_profile']  = user_profile
-
         context['rule_group']    = rule_group
 
         context['audit_group2_result']  = ag2r
