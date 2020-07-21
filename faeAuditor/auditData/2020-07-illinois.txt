@@ -1,0 +1,7 @@
+ahs home https://ahs.illinois.edu/
+ahs kines https://ahs.illinois.edu/kinesiology
+ahs commhlth https://ahs.illinois.edu/community-health
+ahs disability https://disability.illinois.edu
+las home https://las.illinois.edu/
+las scs https://scs.illinois.edu/
+las english https://english.illinois.edu/
