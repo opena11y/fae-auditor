@@ -51,7 +51,7 @@ def getDomain(s):
   return domain
 
 if len(sys.argv) < 3:
-  print("python audut-one-group-to-csv.py file1.txt file2.csv")
+  print("python audit-one-group-to-csv.py file1.txt file2.csv")
   exit()
 
 # Read in the list of the urls

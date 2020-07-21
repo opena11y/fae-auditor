@@ -48,7 +48,7 @@ law home https://law.illinois.edu/
 social home https://socialwork.illinois.edu
 support disability https://disability.illinois.edu
 support housing https://housing.illinois.edu/
-support tech https://techsupports.illinois.edu/
+support tech https://techservices.illinois.edu/
 support krannert https://krannertcenter.com/
 support kam https://kam.illinois.edu/
 support medical https://mckinley.illinois.edu/
@@ -56,6 +56,7 @@ support counseling https://www.counselingcenter.illinois.edu/
 support career https://www.careercenter.illinois.edu
 support admissions https://admissions.illinois.edu/
 support catalog http://catalog.illinois.edu
+support fs https://fs.illinois.edu/
 admin home https://illinois.edu
 admin chancellor https://chancellor.illinois.edu/
 admin provost https://provost.illinois.edu/

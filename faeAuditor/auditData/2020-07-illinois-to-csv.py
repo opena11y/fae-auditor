@@ -141,6 +141,30 @@ def makeTitle(s):
   if s == 'las':
     s = 'Liberal Arts and Sciences'
 
+  if s == 'engr':
+    s = 'Grainger Engineering'
+
+  if s == 'aces':
+    s = 'Agriculture, Consumer and Enivronmental Sciences'
+
+  if s == 'faa':
+    s = 'Fine and Applied Arts'
+
+  if s == 'ischool':
+    s = 'School of Information Sciences'
+
+  if s == 'law':
+    s = 'Law School'
+
+  if s == 'social':
+    s = 'School of Social Work'
+
+  if s == 'support':
+    s = 'Support Units and Divisions'
+
+  if s == 'admin':
+    s = 'Administration'
+
   s = s.replace('_', ' ')
   words = s.split(' ')
 

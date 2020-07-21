@@ -19,6 +19,46 @@
         "slug" : "las",
         "title": "Liberal Arts and Sciences",
         "abbrev": "LAS"
+       },
+       {
+        "slug" : "engr",
+        "title": "Grainger Engineering",
+        "abbrev": "Engr"
+       },
+       {
+        "slug" : "aces",
+        "title": "Agriculture, Consumer and Enivronmental Sciences",
+        "abbrev": "Aces"
+       },
+       {
+        "slug" : "faa",
+        "title": "Fine and Applied Arts",
+        "abbrev": "FAA"
+       },
+       {
+        "slug" : "ischool",
+        "title": "School of Information Sciences",
+        "abbrev": "Ischool"
+       },
+       {
+        "slug" : "law",
+        "title": "LAW School",
+        "abbrev": "LAW"
+       },
+       {
+        "slug" : "social",
+        "title": "School of Social Work",
+        "abbrev": "Social"
+       },
+       {
+        "slug" : "support",
+        "title": "Support Units and Divisions",
+        "abbrev": "Support"
+       },
+       {
+        "slug" : "admin",
+        "title": "Administration",
+        "abbrev": "Admin"
        }
     ]
   }
