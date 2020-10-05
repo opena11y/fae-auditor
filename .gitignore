@@ -1,6 +1,6 @@
 # MacOS file
 .DS_STORE
-*.class
+*/*.class
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -64,7 +64,7 @@ faeAuditor/fae-util/test/
 !faeAuditor/fae-util/test.properties
 faeAuditor/fae-util/*.properties
 faeAuditor/fae-util/openajax_a11y/scripts.txt
-*.class
+faeAuditor/fae-util/org/fae/util/*.class
 
 # Flask stuff:
 instance/
