@@ -11,6 +11,12 @@
 <li>{{audit_group2_result.get_title}}</li>
 {% endblock %}
 
+
+{% block content_before_title %}
+    {% include "common/audit_group2_result_information.html" %}
+{% endblock %}
+
+
 {% block title %}
 {{audit_group2_result.get_title}} Websites: All Rules
 {% endblock %}

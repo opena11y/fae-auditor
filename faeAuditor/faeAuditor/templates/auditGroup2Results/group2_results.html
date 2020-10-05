@@ -8,6 +8,10 @@
 <li>{{audit_result.group2_title}}</li>
 {% endblock %}
 
+{% block content_before_title %}
+    {% include "common/audit_result_information.html" %}
+{% endblock %}
+
 {% block title %}
 {{audit_result.group2_title_plural}}: All Rules
 {% endblock %}

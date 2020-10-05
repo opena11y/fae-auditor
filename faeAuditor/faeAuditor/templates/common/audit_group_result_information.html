@@ -1,0 +1,24 @@
+ {% load tz %}
+<section id="information" aria-label="Audit Result Information">
+
+  <div class="title">Audit Title: <strong>{{audit_result.title}}</strong></div>
+
+  <div class="date">
+    {{ audit_result.created|date:"F d, Y H:i" }}
+  </div>
+
+
+  <div class="eval_info">
+     <ul>
+        <li>{{audit_result.group_title_plural}}: {{audit_group_result.group_item.title}}</li>
+        {% if audit_group_result.group2_count > 0 %}
+        <li>{{audit_result.group2_title_plural}}: {{audit_group_result.group2_count}}</li>
+        {% endif %}
+        <li>Websites: {{  audit_group_result.website_count }}</a></li>
+        <li>Pages: {{  audit_group_result.page_count }}</a></li>
+        <li>Depth:    {{  audit_result.depth }}</li>
+        <li>Ruleset:   <a title="{{audit_result.ruleset.title_text}}" href="{% url 'ruleset' audit_result.ruleset.slug %}">{{ audit_result.ruleset }}</a></li>
+     </ul>
+  </div>
+
+</section>

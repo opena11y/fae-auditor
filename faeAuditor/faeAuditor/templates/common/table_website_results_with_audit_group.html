@@ -2,6 +2,7 @@
 <table class="details table table-striped table-hover sortable"  aria-label="Website results for {{rule.summary_text}}">
   <thead>
     <tr>
+      <th id="id_rank" class="num" rowspan="2">Rank</th>
       <th id="id_grp" class="text"  rowspan="2">Website</th>
       <th id="id_agr" class="text"  rowspan="2">Group</th>
       <th id="id_pgs" class="num"  rowspan="2">Pages</th>
@@ -26,13 +27,14 @@
       <th id="id_stal" class="text"      title="Implementation Status for all rule results">Status</th>
 
 
-      <th id="id_scpf" class="num sep"   title="Implementation Score for rule results with Pass/Fail results" data-defaultsort="true">Pass/Fail Score</th>
+      <th id="id_scpf" class="num sep"   title="Implementation Score for rule results with Pass/Fail results">Pass/Fail Score</th>
       <th id="id_stpf" class="text"      title="Implementation Status for rule results with Pass/Fail results">Pass/Fail Status</th>
     </tr>
   </thead>
   <tbody>
     {% if website_results|length %}
     {% for wsr in website_results %}
+    <td class="num" headers="id_rank">{{ forloop.counter }}</td>
     <tr>
       <td headers="id_grp" class="text">
         <a href="{{wsr.href}}">

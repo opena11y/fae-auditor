@@ -1,6 +1,7 @@
 <table class="details table table-striped table-hover sortable"  aria-label="Group results for {{audit_result.group_title}}">
   <thead>
     <tr>
+      <th id="id_rank" class="num" rowspan="2">Rank</th>
       <th id="id_grp" class="text"  rowspan="2">{{ group_column_header|default:audit_result.group_title }}</th>
       <th id="id_wsc" class="num"  rowspan="2" title="Number of Websites">Websites</th>
       <th id="id_pgc" class="num pad_right"  rowspan="2" title="Number of Pages">Pages</th>
@@ -28,6 +29,7 @@
   <tbody>
     {% for agrr in audit_group_results %}
     <tr>
+      <td class="num" headers="id_rank">{{ forloop.counter }}</td>
       <td class="text" headers="id_grp">
         <a href="{{agrr.href}}">
           {{agrr.title}}
@@ -71,7 +73,7 @@
     {% endfor %}
     {% if summary %}
     <tr class="summary" data-disablesort="true">
-      <td class="text" headers="id_grp">
+      <td class="text" headers="id_grp" colspan="2">
         Totals
       </td>
       <td class="num" headers="id_wsc">{{summary.get_website_count}}</td>
