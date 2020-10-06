@@ -8,6 +8,9 @@
 <li>Website Results</li>
 {% endblock %}
 
+{% block content_before_title %}
+    {% include "common/audit_result_information.html" %}
+{% endblock %}
 
 {% block title %}
 Website Results: All Websites
