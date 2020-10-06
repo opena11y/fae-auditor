@@ -226,7 +226,7 @@ class WebsiteResult(RuleGroupResult):
   class Meta:
     verbose_name        = "Website Result"
     verbose_name_plural = "Website Results"
-    ordering = ['-archive', '-created']
+    ordering = ['-implementation_score']
 
   def __unicode__(self):
     return "Website Result: " + self.get_title()
@@ -697,7 +697,7 @@ class WebsiteRuleCategoryResult(RuleGroupResult):
   class Meta:
     verbose_name        = "Website Rule Category Result"
     verbose_name_plural = "Website Rule Category Results"
-    ordering            = ['rule_category']
+    ordering            = ['-implementation_score']
 
   def __unicode__(self):
     return self.rule_category.title_plural
@@ -740,7 +740,7 @@ class WebsiteGuidelineResult(RuleGroupResult):
   class Meta:
     verbose_name        = "Website Guideline Result"
     verbose_name_plural = "Website Guideline Results"
-    ordering            = ['guideline']
+    ordering            = ['-implementation_score']
 
   def __unicode__(self):
     return str(self.guideline)
@@ -785,7 +785,7 @@ class WebsiteRuleScopeResult(RuleGroupResult):
   class Meta:
     verbose_name        = "Website Rule Scope Result"
     verbose_name_plural = "Website Rule Scope Results"
-    ordering            = ['-rule_scope']
+    ordering            = ['-implementation_score']
 
   def __unicode__(self):
     return self.rule_scope.title
@@ -829,7 +829,7 @@ class WebsiteRuleResult(RuleElementPageResult):
   class Meta:
     verbose_name        = "Website Rule Result"
     verbose_name_plural = "Website Rule Results"
-    ordering = ['-pages_violation', '-pages_warning', '-pages_manual_check', '-pages_passed', '-pages_with_hidden_content', '-rule__scope']
+    ordering = ['-implementation_score']
 
   def __unicode__(self):
     return "Website Rule Result: " + self.rule.summary_text

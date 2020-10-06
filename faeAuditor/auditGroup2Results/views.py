@@ -131,7 +131,7 @@ class Group2ResultsAuditGroup2View(ResultNavigationMixin, TemplateView):
 
         ag2rs = AuditGroup2Result.objects.filter(group_result__audit_result=ar)
         ag2r  = ag2rs.get(slug=audit_group2_slug)
-        wsrs  = ag2r.ws_results.all()
+        wsrs  = ag2r.ws_results.filter(status='C')
 
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'group2', self.request.path)

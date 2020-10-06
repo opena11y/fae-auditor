@@ -13,6 +13,10 @@
 <li>{{rule.nls_rule_id}}</li>
 {% endblock %}
 
+{% block content_before_title %}
+    {% include "common/audit_result_information.html" %}
+{% endblock %}
+
 {% block title %}
 {{rule.nls_rule_id}}: {{rule.summary_html|safe}}
 {% endblock %}

@@ -8,6 +8,11 @@
 <li>Rule Results</li>
 {% endblock %}
 
+
+{% block content_before_title %}
+    {% include "common/audit_result_information.html" %}
+{% endblock %}
+
 {% block title %}
 All Rules
 {% endblock %}

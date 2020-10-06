@@ -71,7 +71,7 @@ class AuditGroup2Result(AllRuleGroupResult):
   class Meta:
     verbose_name        = "Group2 Result"
     verbose_name_plural = "Group2 Results"
-    ordering = ['group2_item__title']
+    ordering = ['-implementation_score']
 
   def __unicode__(self):
       return 'Group2: ' + self.group2_item.title
@@ -87,7 +87,7 @@ class AuditGroup2Result(AllRuleGroupResult):
   def get_page_count(self):
     if self.page_count == 0:
       self.website_count = 0
-      for wsr in self.ws_results.all():
+      for wsr in self.ws_results.filter(status='C'):
         self.website_count += 1
         self.page_count += wsr.get_page_count()
 
@@ -98,7 +98,7 @@ class AuditGroup2Result(AllRuleGroupResult):
   def get_website_count(self):
     if self.website_count == 0:
       self.page_count = 0
-      for wsr in self.ws_results.all():
+      for wsr in self.ws_results.filter(status='C'):
         self.website_count += 1
         self.page_count += wsr.get_page_count()
 
@@ -110,7 +110,7 @@ class AuditGroup2Result(AllRuleGroupResult):
       self.page_count = 0
       self.website_count = 0
 
-      for wsr in self.ws_results.all():
+      for wsr in self.ws_results.filter(status='C'):
         self.website_count = self.website_count + 1
         self.page_count    = self.page_count + wsr.page_count
 
@@ -178,7 +178,7 @@ class AuditGroup2Result(AllRuleGroupResult):
 
   def website_rule_results(self, rule_slug):
     website_rule_results = []
-    for wsr in self.ws_results.all():
+    for wsr in self.ws_results.filter(status='C'):
       try:
           website_rule_results.append(wsr.ws_rule_results.get(slug=rule_slug))
       except:
@@ -219,7 +219,7 @@ class AuditGroup2RuleCategoryResult(RuleGroupResult):
   class Meta:
     verbose_name        = "Group2 Rule Category Result"
     verbose_name_plural = "Group2 Rule Category Results"
-    ordering            = ['rule_category']
+    ordering            = ['-implementation_score']
 
 
   def __unicode__(self):
@@ -267,7 +267,7 @@ class AuditGroup2GuidelineResult(RuleGroupResult):
   class Meta:
     verbose_name        = "Group2 Guideline Result"
     verbose_name_plural = "Group2 Guideline Result"
-    ordering = ['guideline']
+    ordering = ['-implementation_score']
 
   def __unicode__(self):
     return 'Group2 GL: ' + self.group2_result.group2_item.title
@@ -314,7 +314,7 @@ class AuditGroup2RuleScopeResult(RuleGroupResult):
   class Meta:
     verbose_name        = "Group2 Rule Scope Result"
     verbose_name_plural = "Group2 Rule Scope Results"
-    ordering = ['-rule_scope']
+    ordering = ['-implementation_score']
 
   def __unicode__(self):
     return 'Group2 RS: ' + self.rule_scope.title
@@ -362,7 +362,7 @@ class AuditGroup2RuleResult(RuleElementPageWebsiteResult):
   class Meta:
     verbose_name        = "Group2 Rule Result"
     verbose_name_plural = "Group2 Rule Results"
-    ordering = ['implementation_score']
+    ordering = ['-implementation_score']
 
   def __unicode__(self):
     return 'Group2 Rule: ' + self.rule_scope.title

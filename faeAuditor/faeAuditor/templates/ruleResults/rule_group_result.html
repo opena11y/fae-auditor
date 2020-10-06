@@ -9,6 +9,10 @@
 <li>{{rule_group_label}}</li>
 {% endblock %}
 
+{% block content_before_title %}
+    {% include "common/audit_result_information.html" %}
+{% endblock %}
+
 {% block title %}
 {{rule_group_result.title}} Rules
 {% endblock %}

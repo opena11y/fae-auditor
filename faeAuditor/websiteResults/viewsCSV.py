@@ -75,7 +75,7 @@ def WebsiteResultsViewCSV(request, result_slug, rule_grouping):
 
     ar = AuditResult.objects.get(slug=result_slug)
 
-    wsrs = ar.ws_results.all()
+    wsrs = ar.ws_results.filter(status='C')
 
     content = "<pre>"
     content += '"All Rules Website Results View"'

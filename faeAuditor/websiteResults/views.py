@@ -136,7 +136,7 @@ class WebsiteResultsView(ResultNavigationMixin, TemplateView):
 
         ar = AuditResult.objects.get(slug=result_slug)
 
-        wsrs = ar.ws_results.all()
+        wsrs = ar.ws_results.filter(status='C')
 
         for wsr in wsrs:
             wsr.title = wsr.get_title()

@@ -111,7 +111,7 @@ def GroupResultsAuditGroupViewCSV(request, result_slug, rule_grouping, audit_gro
     agr = ar.group_results.get(slug=audit_group_slug)
 
     ag2rs = agr.group2_results.all()
-    wsrs  = agr.ws_results.all()
+    wsrs  = agr.ws_results.filter(status='C')
 
     content = '<pre>'
     content += '"Rule Group Result View"\n'

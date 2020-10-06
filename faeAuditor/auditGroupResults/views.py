@@ -139,7 +139,7 @@ class GroupResultsAuditGroupView(ResultNavigationMixin, TemplateView):
         agr = ar.group_results.get(slug=audit_group_slug)
 
         ag2rs = agr.group2_results.all()
-        wsrs  = agr.ws_results.all()
+        wsrs  = agr.ws_results.filter(status='C')
 
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'group', self.request.path)
@@ -192,7 +192,7 @@ class GroupResultsAuditGroupAuditGroup2View(ResultNavigationMixin, TemplateView)
         ar   = AuditResult.objects.get(slug=result_slug)
         agr  = ar.group_results.get(slug=audit_group_slug)
         ag2r = agr.group2_results.get(slug=audit_group2_slug)
-        wsrs = ag2r.ws_results.all()
+        wsrs = ag2r.ws_results.filter(status='C')
 
         # Setup report navigation
         self.result_nav.set_audit_result(ar, 'group', self.request.path)
@@ -238,7 +238,7 @@ class GroupResultsAuditGroupAuditGroup2WebsiteView(ResultNavigationMixin, Templa
         ar   = AuditResult.objects.get(slug=result_slug)
         agr  = ar.group_results.get(slug=audit_group_slug)
         ag2r = agr.group2_results.get(slug=audit_group2_slug)
-        wsrs = ag2r.ws_results.all()
+        wsrs = ag2r.ws_results.filter(status='C')
         wsr  = wsrs.get(slug=website_slug)
         prs = wsr.page_all_results.all()
 
@@ -292,7 +292,7 @@ class GroupResultsAuditGroupAuditGroup2WebsitePageView(ResultNavigationMixin, Te
         ar   = AuditResult.objects.get(slug=result_slug)
         agr  = ar.group_results.get(slug=audit_group_slug)
         ag2r = agr.group2_results.get(slug=audit_group2_slug)
-        wsrs = ag2r.ws_results.all()
+        wsrs = ag2r.ws_results.filter(status='C')
         wsr  = wsrs.get(slug=website_slug)
         pr   = wsr.page_all_results.get(page_number=page_num)
         prrs = pr.page_rule_results.all()
@@ -349,7 +349,7 @@ class GroupResultsAuditGroupAuditGroup2WebsitePageRuleView(ResultNavigationMixin
         ar   = AuditResult.objects.get(slug=result_slug)
         agr  = ar.group_results.get(slug=audit_group_slug)
         ag2r = agr.group2_results.get(slug=audit_group2_slug)
-        wsrs = ag2r.ws_results.all()
+        wsrs = ag2r.ws_results.filter(status='C')
         wsr  = wsrs.get(slug=website_slug)
         pr   = wsr.page_all_results.get(page_number=page_num)
         prr  = pr.page_rule_results.get(slug=rule_slug)
@@ -402,7 +402,7 @@ class GroupResultsAuditGroupWebsiteView(ResultNavigationMixin, TemplateView):
 
         ar   = AuditResult.objects.get(slug=result_slug)
         agr  = ar.group_results.get(slug=audit_group_slug)
-        wsrs = agr.ws_results.all()
+        wsrs = agr.ws_results.filter(status='C')
         wsr  = wsrs.get(slug=website_slug)
         prs  = wsr.page_all_results.all()
 
@@ -451,7 +451,7 @@ class GroupResultsAuditGroupWebsitePageView(ResultNavigationMixin, TemplateView)
 
         ar   = AuditResult.objects.get(slug=result_slug)
         agr  = ar.group_results.get(slug=audit_group_slug)
-        wsrs = agr.ws_results.all()
+        wsrs = agr.ws_results.filter(status='C')
         wsr  = wsrs.get(slug=website_slug)
         pr   = wsr.page_all_results.get(page_number=page_num)
         prrs = pr.page_rule_results.all()
@@ -503,7 +503,7 @@ class GroupResultsAuditGroupWebsitePageRuleView(ResultNavigationMixin, TemplateV
 
         ar   = AuditResult.objects.get(slug=result_slug)
         agr  = ar.group_results.get(slug=audit_group_slug)
-        wsrs = agr.ws_results.all()
+        wsrs = agr.ws_results.filter(status='C')
         wsr  = wsrs.get(slug=website_slug)
         pr   = wsr.page_all_results.get(page_number=page_num)
         prr  = pr.page_rule_results.get(slug=rule_slug)
@@ -889,7 +889,7 @@ class GroupRuleGroupResultsAuditGroupAuditGroup2WebsitePageRuleView(ResultNaviga
         ar   = AuditResult.objects.get(slug=result_slug)
         agr  = ar.group_results.get(slug=audit_group_slug)
         ag2r = agr.group2_results.get(slug=audit_group2_slug)
-        wsrs = ag2r.ws_results.all()
+        wsrs = ag2r.ws_results.filter(status='C')
         wsr  = wsrs.get(slug=website_slug)
         pr   = wsr.page_all_results.get(page_number=page_num)
         prr  = pr.page_rule_results.get(slug=rule_slug)
