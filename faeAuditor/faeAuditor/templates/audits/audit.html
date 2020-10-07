@@ -18,11 +18,11 @@ Audit: {{audit.title}}
 <h2 id="id_result">Audit Results</h2>
 <table class="details table table-striped table-hover sortable"  aria-labelledby="id_info">
 <thead>
-    <tr>
-        <th class="text">Date</th>
-    </tr>
       <tr>
-        <th id="id_grp" class="text"  rowspan="2">Date</th>
+        <th id="id_title" class="text"  rowspan="2">Title</th>
+        <th id="id_date" class="text"  rowspan="2">Date</th>
+        <th id="id_ws" class="num"  rowspan="2">Wesbites</th>
+        <th id="id_pg" class="num"  rowspan="2">Pages</th>
         <th id="id_nor" class="text"  colspan="5">Number of Rules</th>
         <th id="id_imp" class="text"  colspan="2">Implementation Level</th>
       </tr>
@@ -39,7 +39,10 @@ Audit: {{audit.title}}
 <tbody>
     {% for ar in audit.audit_results.all %}
     <tr>
-        <td class="text"><a href="{% url 'all_rules_result' ar.slug 'rc' %}">{{ar.created | date:"Y-m-d"}}</a></td>
+       <td class="text"><a href="{% url 'all_rules_result' ar.slug 'rc' %}">{{ar.title}}</a></td>
+       <td class="text">{{ar.created | date:"Y-m-d"}}</td>
+       <td class="num">{{ar.website_count}}</td>
+       <td class="num">{{ar.page_count}}</td>
 
         <td class="num"  headers="id_r{{forloop.counter}} id_vio">
         {% if ar.rules_violation > 0 %}
