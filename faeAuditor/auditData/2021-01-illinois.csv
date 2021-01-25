@@ -1,249 +1,248 @@
-"","","","Department of Agricultural and Biological Engineering :: College of ACES, University of Illinois","https://abe.illinois.edu/","aces","","abe"
-"","","","Agricultural Leadership, Education and Communications :: College of ACES, University of Illinois","https://aged.illinois.edu/","aces","","aged"
-"","","","Animal Sciences Collaborative Group and Laboratories","https://ansc.illinois.edu/labs","aces","","ansc"
-"","","","Child Care Resource Service","http://ccrs.illinois.edu/","aces","","ccrs"
-"","","","Crop Sciences","https://cropsci.illinois.edu/","aces","","cropsci"
-"","","","Family Resiliency Center","http://familyresiliency.illinois.edu/","aces","","family"
-"","","","Department of Food Science and Human Nutrition","https://fshn.illinois.edu/","aces","","fshn"
-"","","","International Programs","https://intlprograms.aces.illinois.edu/","aces","","intlprograms"
-"","","","Marketing Communications","https://itcs.illinois.edu/","aces","","itcs"
-"","","","Secure Server","https://maizecoop.cropsci.illinois.edu/","aces","","maizecoop"
-"","","","Natural Resources and Environmental Sciences","https://nres.illinois.edu/","aces","","nres"
-"","","","Welcome","https://nsrl.illinois.edu/","aces","","nsrl"
-"","","","Division of Nutritional Sciences :: College of ACES, University of Illinois","https://nutrsci.illinois.edu/","aces","","nutrsci"
-"","","","Agricultural and Consumer Economics","https://www.ace.illinois.edu/","aces","","ace"
-"","","","College of Agricultural, Consumer and Environmental Sciences :: University of Illinois","https://www.aces.illinois.edu/","aces","","aces"
-"","","","Department of Animal Sciences","https://www.ansc.illinois.edu/","aces","","ansci"
-"","","","Crop Sciences","https://www.cropsci.illinois.edu/","aces","","edu"
-"","","","Department of Human Development and Family Studies","https://www.hcd.illinois.edu/","aces","","hcd"
-"","","","IIS Windows Server","https://aacup.illinois.edu/","admin","","aacup"
-"","","","University of Illinois Undergraduate Admissions","https://admissions.illinois.edu/","admin","","admissions"
-"","","","Air Force ROTC Detachment 190","https://afrotc.illinois.edu/","admin","","afrotc"
-"","","","Allerton Park and Retreat Center","https://allerton.illinois.edu/","admin","","allerton"
-"","","","Center for Innovation in Teaching and Learning","https://citl.illinois.edu/","admin","","citl"
-"","","","Illinois Commencement ; Website for Illinois Commencement","https://commencement.illinois.edu/","admin","","commencement"
-"","","","Office of Corporate Relations, University of Illinois Urbana-Champaign","https://corporaterelations.illinois.edu/","admin","","corporaterelations"
-"","","","Campus Research Board","https://crb.research.illinois.edu/","admin","","crb"
-"","","","Office of Strategic Marketing and Branding","https://creativeservices.illinois.edu/","admin","","creativeservices"
-"","","","Division of General Studies","https://dgs.illinois.edu/","admin","","dgs"
-"","","","IIS Windows Server","https://engagement.illinois.edu/","admin","","engagement"
-"","","","Enrollment Management","https://enrollmentmanagement.illinois.edu/","admin","","enrollmentmanagement"
-"","","","University of Illinois Facilities and Services","https://fs.illinois.edu/","admin","","fs"
-"","","","Faculty/Staff Assistance Program","https://fsap.illinois.edu/","admin","","fsap"
-"","","","Illinois Human Resources","https://humanresources.illinois.edu","admin","","humanresources"
-"","","","University of Illinois Urbana-Champaign","https://illinois.edu/","admin","","illinois"
-"","","","Illinois International","https://international.illinois.edu/","admin","","international"
-"","","","International Student and Scholar Services","https://isss.illinois.edu/","admin","","isss"
-"","","","News Bureau","https://news.illinois.edu/","admin","","news"
-"","","","Office of Inclusion and Intercultural Relations","http://oiir.illinois.edu","oiir","","oiir"
-"","","","Asian American Cultural Center","https://oiir.illinois.edu/aacc","oiir","","aacc"
-"","","","Bruce D. Nesbitt African American Cultural Center","https://oiir.illinois.edu/bnaacc","oiir","","bnaacc"
-"","","","Diversity and Social Justice Education","https://oiir.illinois.edu/diversityed","oiir","","diversityed"
-"","","","La Casa Cultural Latina","https://oiir.illinois.edu/la-casa-cultural-latina","oiir","","la-casa-cultural-latina"
-"","","","LGBT Resource Center","https://oiir.illinois.edu/lgbt-resource-center","oiir","","lgbt-resource-center"
-"","","","Native American House","https://oiir.illinois.edu/native-american-house","oiir","","native-american-house"
-"","","","Women's Resources Center","https://oiir.illinois.edu/womens-center","oiir","","womens-center"
-"","","","UIUC Office of Technology Management","https://otm.illinois.edu/","admin","","otm"
-"","","","University of Illinois Police Department","https://police.illinois.edu/","admin","","police"
-"","","","Public Affairs","https://publicaffairs.illinois.edu/","admin","","publicaffairs"
-"","","","Office of the Vice Chancellor for Research","https://research.illinois.edu","admin","","research"
-"","","","Research Park","https://researchpark.illinois.edu/","admin","","researchpark"
-"","","","University of Illinois, NROTC","https://rotc.navy.illinois.edu/","admin","","rotc"
-"","","","Student Affairs","https://studentaffairs.illinois.edu/","admin","","studentaffairs"
-"","","","National and International Scholarship Program","https://topscholars.illinois.edu/","admin","","topscholars"
-"","","","Illinois Human Resources","https://trainingcenter.illinois.edu/","admin","","trainingcenter"
-"","","","Advancement at Illinois ; With Illinois ; The Campaign for Illinois","https://vcia.illinois.edu","admin","","vcia"
-"","","","University of Illinois Webstore","https://webstore.illinois.edu/","admin","","webstore"
-"","","","Illinois Human Resources","https://humanresources.illinois.edu/","admin","","humanres"
-"","","","Council of Academic Professionals","https://www.cap.illinois.edu/","admin","","cap"
-"","","","The Career Center at Illinois","https://www.careercenter.illinois.edu/","admin","","careercenter"
-"","","","Children and Family Research Center","https://www.cfrc.illinois.edu/","admin","","cfrc"
-"","","","Office for Student Conflict Resolution at the University of Illinois","https://www.conflictresolution.illinois.edu/","admin","","conflictresolution"
-"","","","University of Illinois Counseling Center","https://www.counselingcenter.illinois.edu/","admin","","counselingcenter"
-"","","","CPRD","https://www.cprd.illinois.edu/","admin","","cprd"
-"","","","Division of Management Information (Institutional Research)","https://www.dmi.illinois.edu/","admin","","dmi"
-"","","","- Division of Research Safety","https://www.drs.illinois.edu/","admin","","drs"
-"","","","University of Illinois Extension","https://www.extension.illinois.edu/","admin","","extension"
-"","","","Office of the Dean of Students at the University of Illinois","https://www.odos.illinois.edu/","admin","","odos"
-"","","","Office of Student Financial Aid","https://www.osfa.illinois.edu/","admin","","osfa"
-"","","","Welcome","https://www.parking.illinois.edu/","admin","","parking"
-"","","","Office of the Provost","https://www.provost.illinois.edu/","admin","","provost"
-"","","","Advancement at Illinois ; With Illinois ; The Campaign for Illinois","https://www.vcia.illinois.edu/","admin","",""
-"","","","Office of the Chancellor","https://chancellor.illinois.edu","admin","","chancellor"
-"","","","Center on Health, Aging and Disability","https://chad.illinois.edu/","ahs","","chad"
-"","","","Interdisciplinary Health Sciences home","https://ihealth.illinois.edu/","ahs","","ihealth"
-"","","","Chez Veterans Center","http://chezveteranscenter.ahs.illinois.edu/","ahs","","chezveterancenter"
-"","","","College of Applied Health Sciences","https://www.ahs.illinois.edu/","ahs","","ahs"
-"","","","Disability Resources and Educational Services","https://www.disability.illinois.edu/","ahs","","disability"
-"","","","School of Architecture","https://www.arch.illinois.edu/","architech","","arch"
-"","","","University of Illinois Athletics","https://www.fightingillini.com/","athletics","","fightingillini"
-"","","","Home","https://beckman.illinois.edu/","beckman","","beckman"
-"","","","Welcome, Beckman Institute Biomedical Imaging Center, Illinois","http://bic.beckman.illinois.edu/","beckman","","bic"
-"","","","ITG","https://itg.beckman.illinois.edu/","beckman","","itg"
-"","","","Gies College of Business","https://giesbusiness.illinois.edu","business","","giesbusiness"
-"","","","iMBA","https://onlinemba.illinois.edu","business","","onlinemba"
-"","","","Online Master of Accounting","http://onlinemsa.illinois.edu","business","","onlinemsa"
-"","","","Home : Illinois MSFE (STEM): University of Illinois","https://msfe.illinois.edu","business","","msfe"
-"","","","MS Strategic Brand Communication","https://sbc.illinois.edu","business","","sbc"
-"","","","Online Students","https://onlinestudents.giesbusiness.illinois.edu","business","","onlinestudents"
-"","","","Program in Arms Control and Domestic and International Security at Illinois","https://acdis.illinois.edu/","center","","acdis"
-"","","","Air","https://acrc.mechse.illinois.edu/","center","","acrc"
-"","","","Illinois State Archaeological Survey","https://isas.illinois.edu/","center","","isas"
-"","","","None: Isgs","https://isgs.illinois.edu/","center","","isgs"
-"","","","Welcome","http://nano.illinois.edu/","center","","nano"
-"","","","Child Development Laboratory ; They Learn. We Learn.","https://cdl.illinois.edu/","education","","cdl"
-"","","","The Center for the Study of Reading","https://csr.education.illinois.edu/","education","","csr"
-"","","","ECAP. University of Illinois","https://ecap.crc.illinois.edu/","education","","ecap"
-"","","","ECRP: Early Childhood Research and Practice","https://ecrp.illinois.edu/","education","","ecrp"
-"","","","College of Education","https://education.illinois.edu/","education","","education"
-"","","","Curriculum & Instruction","https://education.illinois.edu/ci","education","","ci"
-"","","","Educational Psychology","https://education.illinois.edu/EDPSY","education","","EDPSY"
-"","","","Education Policy, Organization & Leadership","https://education.illinois.edu/epol","education","","epol"
-"","","","Special Education","https://education.illinois.edu/SPED","education","","SPED"
-"","","","Illinois Early Learning Project","https://illinoisearlylearning.org/","education","","illinoisearlylearning"
-"","","","I","https://istem.illinois.edu/","education","","istem"
-"","","","Home Page, MSTE, University of Illinois","https://mste.illinois.edu/","education","","mste"
-"","","","OCCRL","https://occrl.illinois.edu/","education","","occrl"
-"","","","Advanced Digital Sciences Center in Singapore","https://adsc.illinois.edu/","engineering","","adsc"
-"","","","Aerospace Engineering","https://aerospace.illinois.edu/","engineering","","aerospace"
-"","","","Applied Research Institute","https://appliedresearch.illinois.edu/","engineering","","appliedresearch"
-"","","","Integrated Bioprocessing Research Laboratory &#8212; University of Illinois, Urbana","https://bioenergy.illinois.edu/","engineering","","bioenergy"
-"","","","Bioengineering","https://bioengineering.illinois.edu/","engineering","","bioengineering"
-"","","","Center for Biophysics and Quantitative Biology at Illinois","https://biophysics.illinois.edu/","engineering","","biophysics"
-"","","","Civil and Environmental Engineering","https://cee.illinois.edu/","engineering","","cee"
-"","","","About CPMI","https://cpmi.illinois.edu/","engineering","","cpmi"
-"","","","Computer Science","https://cs.illinois.edu/","engineering","","cs"
-"","","","Energy and Sustainability Engineering","https://ease.illinois.edu/","engineering","","ease"
-"","","","Electrical & Computer Engineering","https://ece.illinois.edu/","engineering","","ece"
-"","","","Grainger Engineering","https://engineering.illinois.edu/","engineering","","engineering"
-"","","","Online Degree and Certificate Programs","https://engineering.illinois.edu/online/","engineering","","online"
-"","","","Women in Engineering","https://engineering.illinois.edu/wie","engineering","","wie"
-"","","","Illinois Center for Transportation","https://ict.illinois.edu/","engineering","","ict"
-"","","","Department of Industrial and Enterprise Systems Engineering","https://ise.illinois.edu/","engineering","","ise"
-"","","","Engineering IT","https://it.engineering.illinois.edu/","engineering","","it"
-"","","","Information Trust Institute","https://iti.illinois.edu/","engineering","","iti"
-"","","","MAE Center Creating a Multi","http://mae.cee.illinois.edu/","engineering","","mae"
-"","","","Holonyak Micro & Nanotechnology Lab","https://mntl.illinois.edu/","engineering","","mntl"
-"","","","Materials Research Lab","https://mrl.illinois.edu/","engineering","","mrl"
-"","","","Nuclear, Plasma & Radiological Engineering","https://npre.illinois.edu/","engineering","","npre"
-"","","","Chemical and Biomolecular Engineering","https://www.chbe.illinois.edu/","engineering","","chbe"
-"","","","Computational Science and Engineering","https://www.cse.illinois.edu/","engineering","","cse"
-"","","","Materials Science & Engineering","https://www.matse.illinois.edu/","engineering","","matse"
-"","","","Mechanical Science and Engineering","https://mechanical.illinois.edu/","engineering","","mechanical"
-"","","","National Center for Supercomputing Applications (NCSA) at the University of Illinois","https://www.ncsa.illinois.edu/","engineering","","ncsa"
-"","","","Art + Design","https://art.illinois.edu/","faa","","art"
-"","","","Dance at Illinois","https://dance.illinois.edu/","faa","","dance"
-"","","","College of Fine + Applied Arts","https://faa.illinois.edu/","faa","","faa"
-"","","","Japan House","https://japanhouse.illinois.edu/","faa","","japanhouse"
-"","","","Krannert Art Museum","https://kam.illinois.edu/","faa","","kam"
-"","","","The University of Illinois Bands","https://www.bands.illinois.edu/","faa","","bands"
-"","","","Landscape Architecture at Illinois","https://www.landarch.illinois.edu/","faa","","landarch"
-"","","","Illinois Theatre","https://theatre.illinois.edu/","faa","","theatre"
-"","","","Music at Illinois","https://music.illinois.edu/","faa","","music"
-"","","","The Graduate College at the University of Illinois at Urbana","https://www.grad.illinois.edu/","graduate","","grad"
-"","","","Petition and Record Requests","https://www.grad.illinois.edu/academic-support","graduate","","academic-support"
-"","","","Apply","https://www.grad.illinois.edu/admissions","graduate","","gradadmin"
-"","","","About Career Development","https://www.grad.illinois.edu/careerdevelopment","graduate","","careerdevelopment"
-"","","","Achieving Excellence Through Diversity, Equity and Inclusion","https://www.grad.illinois.edu/diversity","graduate","","diversity"
-"","","","About the Fellowship Office","https://www.grad.illinois.edu/fellowships","graduate","","fellowships"
-"","","","Thesis and Dissertation","https://www.grad.illinois.edu/thesis-dissertation","graduate","","thesis-dissertation"
-"","","","Center for Children';s Books","https://ccb.ischool.illinois.edu/","ischool","","ccb"
-"","","","Illinois Identity Provider Selection","https://cirss.lis.illinois.edu/","ischool","","cirss"
-"","","","School of Information Sciences","https://ischool.illinois.edu/","ischool","","ischool"
-"","","","Chemistry at Illinois","https://chemistry.illinois.edu/","las","","chemistry"
-"","","","Unit for Criticism and Interpretive Theory","https://criticism.english.illinois.edu/","las","","criticism"
-"","","","Mathematics at Illinois","https://math.illinois.edu/","las","","math"
-"","","","The School of Molecular and Cellular Biology","https://mcb.illinois.edu/","las","","mcb"
-"","","","Welcome to Biochemistry","https://mcb.illinois.edu/departments/biochemistry","las","","departments"
-"","","","Welcome","https://mcb.illinois.edu/departments/cdb","las","","cdb"
-"","","","Welcome","https://mcb.illinois.edu/departments/microbiology","las","","microbiology"
-"","","","Welcome","https://mcb.illinois.edu/departments/mip","las","","mip"
-"","","","Neuroscience Program at Illinois","https://neuroscience.illinois.edu/","las","","neuroscience"
-"","","","Online Master of Science Teaching Biology Program","http://omst.sib.illinois.edu/","las","","omst"
-"","","","PEEC","https://peec.illinois.edu/","las","","peec"
-"","","","ILLINOIS PHYSICS","https://physics.illinois.edu/","las","","physics"
-"","","","School of Chemical Sciences at Illinois","https://scs.illinois.edu/","las","","scs"
-"","","","School of Integrative Biology","https://sib.illinois.edu/","las","","sib"
-"","","","African American Studies at Illinois","https://www.afro.illinois.edu/","las","","afro"
-"","","","Anthropology at Illinois","https://www.anthro.illinois.edu/","las","","anthro"
-"","","","Astronomy at Illinois","https://www.astro.illinois.edu/","las","","astro"
-"","","","ATLAS","https://www.atlas.illinois.edu/","las","","atlas"
-"","","","Atmospheric Sciences at Illinois","https://www.atmos.illinois.edu/","las","","atmos"
-"","","","Classics at Illinois","https://www.classics.illinois.edu/","las","","classics"
-"","","","Cline Center","https://www.clinecenter.illinois.edu/","las","","clinecenter"
-"","","","Communication at Illinois","https://www.communication.illinois.edu/","las","","communication"
-"","","","Comparative & World Literature","https://www.complit.illinois.edu/","las","","complit"
-"","","","Center for South Asian and Middle Eastern Studies at Illinois","https://www.csames.illinois.edu/","las","","csames"
-"","","","Center for Writing Studies at Illinois","https://www.cws.illinois.edu/","las","","cws"
-"","","","EALC at Illinois","https://www.ealc.illinois.edu/","las","","ealc"
-"","","","Center for East Asian and Pacific Studies at Illinois","https://www.eaps.illinois.edu/","las","","eaps"
-"","","","School of Earth, Society, and Environment at Illinois","https://www.earth.illinois.edu/","las","","earth"
-"","","","Economics at Illinois","https://www.economics.illinois.edu/","las","","economics"
-"","","","English at Illinois","https://www.english.illinois.edu/","las","","english"
-"","","","French and Italian at Illinois","https://www.frit.illinois.edu/","las","","frit"
-"","","","Geography and Geographic Information Science at Illinois","https://www.geog.illinois.edu/","las","","geog"
-"","","","Geology at Illinois","https://www.geology.illinois.edu/","las","","geology"
-"","","","Germanic Languages and Literatures at Illinois","https://www.germanic.illinois.edu/","las","","germanic"
-"","","","Global Studies at Illinois","https://www.globalstudies.illinois.edu/","las","","globalstudies"
-"","","","Department of Gender and Women Studies at Illinois","https://www.gws.illinois.edu/","las","","gws"
-"","","","History at Illinois","https://www.history.illinois.edu/","las","","history"
-"","","","LAS","https://www.las.illinois.edu/","las","","las"
-"","","","Linguistics at Illinois","https://www.linguistics.illinois.edu/","las","","linguistics"
-"","","","Latina/Latino Studies at Illinois","https://www.lls.illinois.edu/","las","","lls"
-"","","","Classics at Illinois","https://classics.illinois.edu/","las","","classics"
-"","","","Philosophy at Illinois","https://www.philosophy.illinois.edu/","las","","philosophy"
-"","","","Political Science at Illinois","https://www.pol.illinois.edu/","las","","pol"
-"","","","Psychology at Illinois","https://www.psychology.illinois.edu/","las","","psychology"
-"","","","Sociology at Illinois","https://www.sociology.illinois.edu/","las","","sociology"
-"","","","Statistics at Illinois","https://www.stat.illinois.edu/","las","","stat"
-"","","","Library ; University of Illinois College of Law","https://law.illinois.edu/library","law","","lawlib"
-"","","","University of Illinois College of Law","https://www.law.illinois.edu/","law","","law"
-"","","","University of Illinois at Urbana-Champaign","https://www.ler.illinois.edu/","ler","","ler"
-"","","","University of Illinois Archives","https://archives.library.illinois.edu/","library","","archives"
-"","","","IDEALS @ Illinois: IDEALS Home","https://www.ideals.illinois.edu/","library","","ideals"
-"","","","University Library, University of Illinois","https://www.library.illinois.edu/","library","","library"
-"","","","Illinois Public Media","https://will.illinois.edu/","media","","will"
-"","","","Community","https://will.illinois.edu/community/services","media","","community"
-"","","","College of Media","https://media.illinois.edu//","media","","media"
-"","","","University of Illinois College of Medicine","https://www.med.illinois.edu/","medicine","","med"
-"","","","Psychiatry","https://www.med.illinois.edu/departments/psychiatry","medicne","","psychiatry"
-"","","","IIS Windows Server","https://bis.illinois.edu/","other","","bis"
-"","","","European Union Center at Illinois","https://europe.illinois.edu/","other","","europe"
-"","","","Illinois Leadership Center","https://leadership.illinois.edu/","other","","leadership"
-"","","","Illini Union","https://union.illinois.edu/","other","","union"
-"","","","Request Rooms/Space","https://union.illinois.edu/services/meeting_rooms/Default.aspx","other","","aspx"
-"","","","Tech Zone","https://union.illinois.edu/shop/techzone","other","","shop"
-"","","","Center for African Studies at Illinois","https://www.afrst.illinois.edu/","other","","afrst"
-"","","","American Indian Studies Program at Illinois","https://www.ais.illinois.edu/","other","","ais"
-"","","","The Arboretum","http://www.arboretum.illinois.edu/","other","","arboretum"
-"","","","Asian American Studies at Illinois","https://www.asianam.illinois.edu/","other","","asianam"
-"","","","Welcome to Biotech","https://www.biotech.illinois.edu/","other","","biotech"
-"","","","CARLI","https://www.carli.illinois.edu/","other","","carli"
-"","","","Center for Advanced Study","https://www.cas.illinois.edu/","other","","cas"
-"","","","Center for Global Studies at Illinois","https://www.cgs.illinois.edu/","other","","cgs"
-"","","","Center for Latin American and Caribbean Studies at Illinois","https://www.clacs.illinois.edu/","other","","clacs"
-"","","","Council on Teacher Education","https://www.cote.illinois.edu/","other","","cote"
-"","","","The Daily Illini","https://www.dailyillini.com/","other","","dailyillini"
-"","","","Family Resiliency Center","http://www.familyresiliency.illinois.edu/","other","","familyresiliency"
-"","","","Foellinger Auditorium, University of Illinois","https://www.foellinger.illinois.edu/","other","","foellinger"
-"","","","University of Illinois Fire Service Institute","https://www.fsi.illinois.edu/","other","","fsi"
-"","","","Campus Honors Program, University of Illinois","https://www.honors.illinois.edu/","other","","honors"
-"","","","University Housing at the University of Illinois","https://www.housing.illinois.edu/","other","","housing"
-"","","","Private Certified Housing","https://www.certified.housing.illinois.edu/","other","","certified"
-"","","","Intensive English Institute at Illinois","https://www.iei.illinois.edu/","other","","iei"
-"","","","Carl R. Woese Institute for Genomic Biology","https://www.igb.illinois.edu/","other","","igb"
-"","","","Illini Center ; Illini Center","https://www.illinicenter.illinois.edu/","other","","illinicenter"
-"","","","Illini Media ; Illini Media","http://www.illinimedia.com/","other","","illinimedia"
-"","","","Illinois Natural History Survey Home","https://inhs.illinois.edu/","other","","inhs"
-"","","","ISTC","https://istc.illinois.edu/","other","","istc"
-"","","","Jewish Culture and Society at Illinois","https://www.jewishculture.illinois.edu/","other","","jewishculture"
-"","","","Krannert Center for the Performing Arts","https://www.krannertcenter.com/","other","","krannertcenter"
-"","","","McKinley Health Center","https://www.mckinley.illinois.edu/","other","","mckinley"
-"","","","Military Education Council, University of Illinois","https://www.militaryed.illinois.edu/","other","","militaryed"
-"","","","Office of Minority Student Affairs at the University of Illinois","https://www.omsa.illinois.edu/","other","","omsa"
-"","","","Office for the Protection of Research Subjects","https://oprs.research.illinois.edu/","other","","oprs"
-"","","","School of Social Work, University of Illinois","https://socialwork.illinois.edu","social","","socialwork"
-"","","","Welcome to Technology Services","https://techservices.illinois.edu/","techsrv","","techservices"
-"","","","Office of the CIO","https://techservices.illinois.edu/office-cio","techsrv","","office-cio"
-"","","","University of Illinois College of Veterinary Medicine","https://vetmed.illinois.edu/","vetmed","","vetmed"
-"ERROR 0",https://isgs.illinois.edu/
+aces,abe,https://abe.illinois.edu/
+aces,aged,https://aged.illinois.edu/
+aces,ansc,https://ansc.illinois.edu/labs
+aces,ccrs,http://ccrs.illinois.edu/
+aces,cropsci,https://cropsci.illinois.edu/
+aces,family,http://familyresiliency.illinois.edu/
+aces,fshn,https://fshn.illinois.edu/
+aces,intlprograms,https://intlprograms.aces.illinois.edu/
+aces,itcs,https://itcs.illinois.edu/
+aces,maizecoop,https://maizecoop.cropsci.illinois.edu/
+aces,nres,https://nres.illinois.edu/
+aces,nsrl,https://nsrl.illinois.edu/
+aces,nutrsci,https://nutrsci.illinois.edu/
+aces,ace,https://www.ace.illinois.edu/
+aces,aces,https://www.aces.illinois.edu/
+aces,ansci,https://www.ansc.illinois.edu/
+aces,edu,https://www.cropsci.illinois.edu/
+aces,hcd,https://www.hcd.illinois.edu/
+admin,aacup,https://aacup.illinois.edu/
+admin,admissions,https://admissions.illinois.edu/
+admin,afrotc,https://afrotc.illinois.edu/
+admin,allerton,https://allerton.illinois.edu/
+admin,citl,https://citl.illinois.edu/
+admin,commencement,https://commencement.illinois.edu/
+admin,corporaterelations,https://corporaterelations.illinois.edu/
+admin,crb,https://crb.research.illinois.edu/
+admin,creativeservices,https://creativeservices.illinois.edu/
+admin,dgs,https://dgs.illinois.edu/
+admin,engagement,https://engagement.illinois.edu/
+admin,enrollmentmanagement,https://enrollmentmanagement.illinois.edu/
+admin,fs,https://fs.illinois.edu/
+admin,fsap,https://fsap.illinois.edu/
+admin,humanresources,https://humanresources.illinois.edu
+admin,illinois,https://illinois.edu/
+admin,international,https://international.illinois.edu/
+admin,isss,https://isss.illinois.edu/
+admin,news,https://news.illinois.edu/
+oiir,oiir,http://oiir.illinois.edu
+oiir,aacc,https://oiir.illinois.edu/aacc
+oiir,bnaacc,https://oiir.illinois.edu/bnaacc
+oiir,diversityed,https://oiir.illinois.edu/diversityed
+oiir,la-casa-cultural-latina,https://oiir.illinois.edu/la-casa-cultural-latina
+oiir,lgbt-resource-center,https://oiir.illinois.edu/lgbt-resource-center
+oiir,native-american-house,https://oiir.illinois.edu/native-american-house
+oiir,womens-center,https://oiir.illinois.edu/womens-center
+admin,otm,https://otm.illinois.edu/
+admin,police,https://police.illinois.edu/
+admin,publicaffairs,https://publicaffairs.illinois.edu/
+admin,research,https://research.illinois.edu
+admin,researchpark,https://researchpark.illinois.edu/
+admin,rotc,https://rotc.navy.illinois.edu/
+admin,studentaffairs,https://studentaffairs.illinois.edu/
+admin,topscholars,https://topscholars.illinois.edu/
+admin,trainingcenter,https://trainingcenter.illinois.edu/
+admin,vcia,https://vcia.illinois.edu
+admin,webstore,https://webstore.illinois.edu/
+admin,humanres,https://humanresources.illinois.edu/
+admin,cap,https://www.cap.illinois.edu/
+admin,careercenter,https://www.careercenter.illinois.edu/
+admin,cfrc,https://www.cfrc.illinois.edu/
+admin,conflictresolution,https://www.conflictresolution.illinois.edu/
+admin,counselingcenter,https://www.counselingcenter.illinois.edu/
+admin,cprd,https://www.cprd.illinois.edu/
+admin,dmi,https://www.dmi.illinois.edu/
+admin,drs,https://www.drs.illinois.edu/
+admin,extension,https://www.extension.illinois.edu/
+admin,odos,https://www.odos.illinois.edu/
+admin,osfa,https://www.osfa.illinois.edu/
+admin,parking,https://www.parking.illinois.edu/
+admin,provost,https://www.provost.illinois.edu/
+admin,,https://www.vcia.illinois.edu/
+admin,chancellor,https://chancellor.illinois.edu
+ahs,chad,https://chad.illinois.edu/
+ahs,ihealth,https://ihealth.illinois.edu/
+ahs,chezveterancenter,http://chezveteranscenter.ahs.illinois.edu/
+ahs,ahs,https://www.ahs.illinois.edu/
+ahs,disability,https://www.disability.illinois.edu/
+architech,arch,https://www.arch.illinois.edu/
+athletics,fightingillini,https://www.fightingillini.com/
+beckman,beckman,https://beckman.illinois.edu/
+beckman,bic,http://bic.beckman.illinois.edu/
+beckman,itg,https://itg.beckman.illinois.edu/
+business,giesbusiness,https://giesbusiness.illinois.edu
+business,onlinemba,https://onlinemba.illinois.edu
+business,onlinemsa,http://onlinemsa.illinois.edu
+business,msfe,https://msfe.illinois.edu
+business,sbc,https://sbc.illinois.edu
+business,onlinestudents,https://onlinestudents.giesbusiness.illinois.edu
+center,acdis,https://acdis.illinois.edu/
+center,acrc,https://acrc.mechse.illinois.edu/
+center,isas,https://isas.illinois.edu/
+center,isgs,https://isgs.illinois.edu/
+center,nano,http://nano.illinois.edu/
+education,cdl,https://cdl.illinois.edu/
+education,csr,https://csr.education.illinois.edu/
+education,ecap,https://ecap.crc.illinois.edu/
+education,ecrp,https://ecrp.illinois.edu/
+education,education,https://education.illinois.edu/
+education,ci,https://education.illinois.edu/ci
+education,EDPSY,https://education.illinois.edu/EDPSY
+education,epol,https://education.illinois.edu/epol
+education,SPED,https://education.illinois.edu/SPED
+education,illinoisearlylearning,https://illinoisearlylearning.org/
+education,istem,https://istem.illinois.edu/
+education,mste,https://mste.illinois.edu/
+education,occrl,https://occrl.illinois.edu/
+engineering,adsc,https://adsc.illinois.edu/
+engineering,aerospace,https://aerospace.illinois.edu/
+engineering,appliedresearch,https://appliedresearch.illinois.edu/
+engineering,bioenergy,https://bioenergy.illinois.edu/
+engineering,bioengineering,https://bioengineering.illinois.edu/
+engineering,biophysics,https://biophysics.illinois.edu/
+engineering,cee,https://cee.illinois.edu/
+engineering,cpmi,https://cpmi.illinois.edu/
+engineering,cs,https://cs.illinois.edu/
+engineering,ease,https://ease.illinois.edu/
+engineering,ece,https://ece.illinois.edu/
+engineering,engineering,https://engineering.illinois.edu/
+engineering,online,https://engineering.illinois.edu/online/
+engineering,wie,https://engineering.illinois.edu/wie
+engineering,ict,https://ict.illinois.edu/
+engineering,ise,https://ise.illinois.edu/
+engineering,it,https://it.engineering.illinois.edu/
+engineering,iti,https://iti.illinois.edu/
+engineering,mae,http://mae.cee.illinois.edu/
+engineering,mntl,https://mntl.illinois.edu/
+engineering,mrl,https://mrl.illinois.edu/
+engineering,npre,https://npre.illinois.edu/
+engineering,chbe,https://www.chbe.illinois.edu/
+engineering,cse,https://www.cse.illinois.edu/
+engineering,matse,https://www.matse.illinois.edu/
+engineering,mechanical,https://mechanical.illinois.edu/
+engineering,ncsa,https://www.ncsa.illinois.edu/
+faa,art,https://art.illinois.edu/
+faa,dance,https://dance.illinois.edu/
+faa,faa,https://faa.illinois.edu/
+faa,japanhouse,https://japanhouse.illinois.edu/
+faa,kam,https://kam.illinois.edu/
+faa,bands,https://www.bands.illinois.edu/
+faa,landarch,https://www.landarch.illinois.edu/
+faa,theatre,https://theatre.illinois.edu/
+faa,music,https://music.illinois.edu/
+graduate,grad,https://www.grad.illinois.edu/
+graduate,academic-support,https://www.grad.illinois.edu/academic-support
+graduate,gradadmin,https://www.grad.illinois.edu/admissions
+graduate,careerdevelopment,https://www.grad.illinois.edu/careerdevelopment
+graduate,diversity,https://www.grad.illinois.edu/diversity
+graduate,fellowships,https://www.grad.illinois.edu/fellowships
+graduate,thesis-dissertation,https://www.grad.illinois.edu/thesis-dissertation
+ischool,ccb,https://ccb.ischool.illinois.edu/
+ischool,cirss,https://cirss.lis.illinois.edu/
+ischool,ischool,https://ischool.illinois.edu/
+las,chemistry,https://chemistry.illinois.edu/
+las,criticism,https://criticism.english.illinois.edu/
+las,math,https://math.illinois.edu/
+las,mcb,https://mcb.illinois.edu/
+las,departments,https://mcb.illinois.edu/departments/biochemistry
+las,cdb,https://mcb.illinois.edu/departments/cdb
+las,microbiology,https://mcb.illinois.edu/departments/microbiology
+las,mip,https://mcb.illinois.edu/departments/mip
+las,neuroscience,https://neuroscience.illinois.edu/
+las,omst,http://omst.sib.illinois.edu/
+las,peec,https://peec.illinois.edu/
+las,physics,https://physics.illinois.edu/
+las,scs,https://scs.illinois.edu/
+las,sib,https://sib.illinois.edu/
+las,afro,https://www.afro.illinois.edu/
+las,anthro,https://www.anthro.illinois.edu/
+las,astro,https://www.astro.illinois.edu/
+las,atlas,https://www.atlas.illinois.edu/
+las,atmos,https://www.atmos.illinois.edu/
+las,classics,https://www.classics.illinois.edu/
+las,clinecenter,https://www.clinecenter.illinois.edu/
+las,communication,https://www.communication.illinois.edu/
+las,complit,https://www.complit.illinois.edu/
+las,csames,https://www.csames.illinois.edu/
+las,cws,https://www.cws.illinois.edu/
+las,ealc,https://www.ealc.illinois.edu/
+las,eaps,https://www.eaps.illinois.edu/
+las,earth,https://www.earth.illinois.edu/
+las,economics,https://www.economics.illinois.edu/
+las,english,https://www.english.illinois.edu/
+las,frit,https://www.frit.illinois.edu/
+las,geog,https://www.geog.illinois.edu/
+las,geology,https://www.geology.illinois.edu/
+las,germanic,https://www.germanic.illinois.edu/
+las,globalstudies,https://www.globalstudies.illinois.edu/
+las,gws,https://www.gws.illinois.edu/
+las,history,https://www.history.illinois.edu/
+las,las,https://www.las.illinois.edu/
+las,linguistics,https://www.linguistics.illinois.edu/
+las,lls,https://www.lls.illinois.edu/
+las,classics,https://classics.illinois.edu/
+las,philosophy,https://www.philosophy.illinois.edu/
+las,pol,https://www.pol.illinois.edu/
+las,psychology,https://www.psychology.illinois.edu/
+las,sociology,https://www.sociology.illinois.edu/
+las,stat,https://www.stat.illinois.edu/
+law,lawlib,https://law.illinois.edu/library
+law,law,https://www.law.illinois.edu/
+ler,ler,https://www.ler.illinois.edu/
+library,archives,https://archives.library.illinois.edu/
+library,ideals,https://www.ideals.illinois.edu/
+library,library,https://www.library.illinois.edu/
+media,will,https://will.illinois.edu/
+media,community,https://will.illinois.edu/community/services
+media,media,https://media.illinois.edu//
+medicine,med,https://www.med.illinois.edu/
+medicne,psychiatry,https://www.med.illinois.edu/departments/psychiatry
+other,bis,https://bis.illinois.edu/
+other,europe,https://europe.illinois.edu/
+other,leadership,https://leadership.illinois.edu/
+other,union,https://union.illinois.edu/
+other,aspx,https://union.illinois.edu/services/meeting_rooms/Default.aspx
+other,shop,https://union.illinois.edu/shop/techzone
+other,afrst,https://www.afrst.illinois.edu/
+other,ais,https://www.ais.illinois.edu/
+other,arboretum,http://www.arboretum.illinois.edu/
+other,asianam,https://www.asianam.illinois.edu/
+other,biotech,https://www.biotech.illinois.edu/
+other,carli,https://www.carli.illinois.edu/
+other,cas,https://www.cas.illinois.edu/
+other,cgs,https://www.cgs.illinois.edu/
+other,clacs,https://www.clacs.illinois.edu/
+other,cote,https://www.cote.illinois.edu/
+other,dailyillini,https://www.dailyillini.com/
+other,familyresiliency,http://www.familyresiliency.illinois.edu/
+other,foellinger,https://www.foellinger.illinois.edu/
+other,fsi,https://www.fsi.illinois.edu/
+other,honors,https://www.honors.illinois.edu/
+other,housing,https://www.housing.illinois.edu/
+other,certified,https://www.certified.housing.illinois.edu/
+other,iei,https://www.iei.illinois.edu/
+other,igb,https://www.igb.illinois.edu/
+other,illinicenter,https://www.illinicenter.illinois.edu/
+other,illinimedia,http://www.illinimedia.com/
+other,inhs,https://inhs.illinois.edu/
+other,istc,https://istc.illinois.edu/
+other,jewishculture,https://www.jewishculture.illinois.edu/
+other,krannertcenter,https://www.krannertcenter.com/
+other,mckinley,https://www.mckinley.illinois.edu/
+other,militaryed,https://www.militaryed.illinois.edu/
+other,omsa,https://www.omsa.illinois.edu/
+other,oprs,https://oprs.research.illinois.edu/
+social,socialwork,https://socialwork.illinois.edu
+techsrv,techservices,https://techservices.illinois.edu/
+techsrv,office-cio,https://techservices.illinois.edu/office-cio
+vetmed,vetmed,https://vetmed.illinois.edu/
