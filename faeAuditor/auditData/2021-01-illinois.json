@@ -1,0 +1,141 @@
+{ "title"        : "2021 University of Illinois Colleges",
+  "audit_slug"   : "illinois-websites",
+  "depth"        : 4,
+  "ruleset_id"   : "ARIA_STRICT",
+  "wait_time"    : 90000,
+  "max_pages"    : 600,
+  "groups"       : [
+  {
+    "id"           : "units",
+    "title"        : "College or Unit",
+    "title_plural" : "Colleges and Units",
+    "members" : [
+       {
+        "slug" : "aces",
+        "title": "Agriculture, Consumer and Enivronmental Sciences",
+        "abbrev": "Aces"
+       },
+       {
+        "slug" : "admin",
+        "title": "Administration",
+        "abbrev": "Admin"
+       },
+       {
+        "slug" : "oiir",
+        "title": "Inclusion and Intercutural Relations",
+        "abbrev": "Oiir"
+       },
+       {
+        "slug" : "ahs",
+        "title": "Applied Health Sciences",
+        "abbrev": "AHS"
+       },
+       {
+        "slug" : "architech",
+        "title": "Architecture",
+        "abbrev": "Architech"
+       },
+       {
+        "slug" : "athletics",
+        "title": "Intercollegiate Athletics",
+        "abbrev": "Athletics"
+       },
+       {
+        "slug" : "beckman",
+        "title": "Beckman",
+        "abbrev": "Beckman"
+       },
+       {
+        "slug" : "business",
+        "title": "College of Business",
+        "abbrev": "Business"
+       },
+       {
+        "slug" : "center",
+        "title": "Research Centers",
+        "abbrev": "Center"
+       },
+       {
+        "slug" : "education",
+        "title": "College of Education",
+        "abbrev": "Education"
+       },
+       {
+        "slug" : "engineering",
+        "title": "College of Engineering",
+        "abbrev": "Engineering"
+       },
+       {
+        "slug" : "faa",
+        "title": "Fine and Applied Arts",
+        "abbrev": "FAA"
+       },
+       {
+        "slug" : "graduate",
+        "title": "Graduate College",
+        "abbrev": "Graduate"
+       },
+       {
+        "slug" : "ischool",
+        "title": "School of Information Sciences",
+        "abbrev": "Ischool"
+       },
+       {
+        "slug" : "las",
+        "title": "Liberal Arts and Sciences",
+        "abbrev": "LAS"
+       },
+       {
+        "slug" : "law",
+        "title": "LAW School",
+        "abbrev": "LAW"
+       },
+       {
+        "slug" : "ler",
+        "title": "School of Labor and Employment Relations",
+        "abbrev": "LER"
+       },
+       {
+        "slug" : "library",
+        "title": "Liberal Arts and Sciences",
+        "abbrev": "Library"
+       },
+       {
+        "slug" : "media",
+        "title": "College of Media",
+        "abbrev": "Media"
+       },
+       {
+        "slug" : "medicine",
+        "title": "College of Medicine",
+        "abbrev": "Medicine"
+       },
+       {
+        "slug" : "medicne",
+        "title": "Medicne",
+        "abbrev": "Medicne"
+       },
+       {
+        "slug" : "other",
+        "title": "Other Programs",
+        "abbrev": "Other"
+       },
+       {
+        "slug" : "social",
+        "title": "School of Social Work",
+        "abbrev": "Social"
+       },
+       {
+        "slug" : "techsrv",
+        "title": "Technology Services",
+        "abbrev": "Techsrv"
+       },
+       {
+        "slug" : "vetmed",
+        "title": "Support Units and Divisions",
+        "abbrev": "Vetmed"
+       }
+    ]
+  }
+  ]
+}

@@ -1,0 +1,21 @@
+{ "title"        : "2020 University of Illinois Colleges",
+  "audit_slug"   : "illinois-colleges",
+  "depth"        : 3,
+  "ruleset_id"   : "ARIA_STRICT",
+  "wait_time"    : 90000,
+  "max_pages"    : 400,
+  "groups"       : [
+  {
+    "id"           : "colleges",
+    "title"        : "College",
+    "title_plural" : "Colleges",
+    "members" : [
+       {
+        "slug" : "aces",
+        "title": "Agriculture, Consumer and Enivronmental Sciences",
+        "abbrev": "Aces"
+       }
+    ]
+  }
+  ]
+}
