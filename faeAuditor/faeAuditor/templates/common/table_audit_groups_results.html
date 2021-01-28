@@ -73,7 +73,9 @@
     {% endfor %}
     {% if summary %}
     <tr class="summary" data-disablesort="true">
-      <td class="text" headers="id_grp" colspan="2">
+      <td aria-label="empty cell"></td>
+
+      <td class="text" headers="id_grp">
         Totals
       </td>
       <td class="num" headers="id_wsc">{{summary.get_website_count}}</td>
