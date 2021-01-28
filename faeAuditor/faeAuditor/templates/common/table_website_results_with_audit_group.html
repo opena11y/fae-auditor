@@ -34,8 +34,8 @@
   <tbody>
     {% if website_results|length %}
     {% for wsr in website_results %}
-    <td class="num" headers="id_rank">{{ forloop.counter }}</td>
     <tr>
+      <td class="num" headers="id_rank">{{ forloop.counter }}</td>
       <td headers="id_grp" class="text">
         <a href="{{wsr.href}}">
           {{wsr.title}}
@@ -81,6 +81,7 @@
 
     {% if summary %}
     <tr class="summary" data-disablesort="true">
+      <td aria-label="empty cell"></td>
       <td class="text" headers="id_grp" colspan="2">
         Totals
       </td>
