@@ -5,4 +5,4 @@ future==0.16.0
 Markdown==2.6.8
 psycopg2-binary
 pytz==2017.3
-sqlparse==0.3.0
+sqlparse==0.4.4
